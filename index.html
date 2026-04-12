@@ -184,11 +184,15 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       <div class="step-panel" data-panel="1">
         <h3>Context Assembly</h3>
         <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
+        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
+          <strong style="font-size:.9rem;color:var(--accent3)">How Hooks Load Context Automatically</strong>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong style="color:var(--green)">SessionStart hook</strong> runs before every session — a PowerShell script reads <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
+        </div>
         <div class="detail-grid">
-          <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior.</span></div>
-          <div class="detail-card"><strong>Skills Library</strong><span>60+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows.</span></div>
-          <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge across sessions.</span></div>
-          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services.</span></div>
+          <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior for that specific context.</span></div>
+          <div class="detail-card"><strong>Skills Library</strong><span>60+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
+          <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge injected via SessionStart hook.</span></div>
+          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services on every call.</span></div>
         </div>
       </div>
       <!-- Panel 2 -->
@@ -206,26 +210,38 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       <div class="step-panel" data-panel="3">
         <h3>Tools Execute</h3>
         <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
+        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
+          <strong style="font-size:.9rem;color:var(--accent3)">What is MCP?</strong>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">MCP (Model Context Protocol) is a standard that lets Claude call external services through a unified interface. Each MCP server exposes "tools" — functions Claude can invoke. When you ask "what's on my calendar," Claude calls the Google Calendar MCP's <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">list_events</code> tool. The server handles auth, API calls, and returns structured data. This means Claude can read your email, check your calendar, search your files, and generate designs — all through the same protocol, without knowing the underlying APIs.</p>
+        </div>
         <div class="detail-grid">
-          <div class="detail-card"><strong>Gmail MCP</strong><span>Search, read, draft, manage labels. Triage client emails, draft responses, track threads.</span></div>
-          <div class="detail-card"><strong>Google Calendar</strong><span>Create events, find free time, check availability, manage meeting schedules.</span></div>
-          <div class="detail-card"><strong>Google Drive</strong><span>Search and fetch documents. Access shared folders, client files, internal docs.</span></div>
-          <div class="detail-card"><strong>Canva MCP</strong><span>Generate designs, edit presentations, export to PDF/PNG. Brand kit integration.</span></div>
-          <div class="detail-card"><strong>Kiwi Flights</strong><span>Search flights, compare prices, find optimal routes. Integrated travel planning.</span></div>
-          <div class="detail-card"><strong>File System</strong><span>Read, write, edit files directly. Create docx, xlsx, pptx, pdf deliverables.</span></div>
-          <div class="detail-card"><strong>Browser (Chrome)</strong><span>Navigate, click, fill forms, take screenshots. Full web automation.</span></div>
-          <div class="detail-card"><strong>Linux Sandbox</strong><span>Python, Node, shell commands. Run analysis scripts, data processing, code builds.</span></div>
+          <div class="detail-card"><strong>Gmail MCP</strong><span>Search by sender/subject/date, read full threads, draft replies, apply labels, archive. Triage client emails and track outstanding threads without opening a browser.</span></div>
+          <div class="detail-card"><strong>Google Calendar</strong><span>List upcoming events, create meetings, check free/busy across multiple calendars, set reminders. Used for morning briefing and scheduling automation.</span></div>
+          <div class="detail-card"><strong>Google Drive</strong><span>Full-text search across all Drive files, fetch document content, list folder contents. Access shared client folders, internal docs, custodian exports.</span></div>
+          <div class="detail-card"><strong>Canva MCP</strong><span>Generate new designs from templates, edit existing presentations, swap images, update text, export to PDF/PNG. Brand kit ensures consistent visual identity.</span></div>
+          <div class="detail-card"><strong>Kiwi Flights</strong><span>Search flights by route/date/price, compare itineraries, find optimal layovers. Integrated into the Costa Rica and Fora Travel planning workflows.</span></div>
+          <div class="detail-card"><strong>File System</strong><span>Read, write, edit any local file. Create Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and PDF deliverables directly from Claude without external apps.</span></div>
+          <div class="detail-card"><strong>Browser (Chrome)</strong><span>Full browser automation: navigate pages, click elements, fill forms, scrape content, take screenshots. Used for web research, form submission, and UI testing.</span></div>
+          <div class="detail-card"><strong>Linux Sandbox</strong><span>Run Python, Node.js, and shell commands in an isolated environment. Data analysis, financial calculations, code builds, and script execution.</span></div>
         </div>
       </div>
       <!-- Panel 4 -->
       <div class="step-panel" data-panel="4">
         <h3>Memory Persists</h3>
         <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
+        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
+          <strong style="font-size:.9rem;color:var(--accent3)">How Obsidian Works</strong>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Obsidian is a local-first markdown knowledge base. Notes use <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">[[wikilinks]]</code> to create a connected knowledge graph. The <strong style="color:var(--amber)">Knowledge-Base vault</strong> holds 13 client household profiles with financial data, custodian exports, and CRM records — structured so Claude can instantly pull up any household's full picture. The <strong style="color:var(--accent3)">second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
+        </div>
+        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
+          <strong style="font-size:.9rem;color:var(--accent3)">How Hooks Work</strong>
+          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Claude Code supports hooks — scripts that run automatically at session start/end. The <strong style="color:var(--green)">SessionStart hook</strong> fires before every Claude Code session: a PowerShell script reads <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">North-Star.md</code> (current priorities), lists all vault files, and shows what changed in the last 3 days. Claude has your priorities and recent work loaded before you type a single word. A complementary <strong style="color:var(--green)">SessionEnd hook</strong> prompts capture of decisions and lessons into the vault's append-only logs.</p>
+        </div>
         <div class="detail-grid">
-          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (client wiki, raw data, templates) and second-brain (projects, concepts, decisions).</span></div>
-          <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals across sessions.</span></div>
+          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (13 client households, custodian exports, CRM data) and second-brain (projects, North Star, decisions, lessons).</span></div>
+          <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals. Survives across Claude Code sessions.</span></div>
           <div class="detail-card"><strong>decisions.md</strong><span>Structured log of every architectural and business decision with context, alternatives considered, and rationale.</span></div>
-          <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward.</span></div>
+          <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward into future sessions.</span></div>
         </div>
       </div>
       <!-- Panel 5 -->
@@ -345,13 +361,23 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
       <div class="infra-list">
         <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">Lacrosse platform</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">AI travel advisor</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">FitTrack</span><span class="infra-meta">Fitness analytics</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Predictive Sniper</span><span class="infra-meta">Prediction markets</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Rink mgmt</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Snapshooter</span><span class="infra-meta">Screenshot tool</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Paperclip</span><span class="infra-meta">AI automation</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">React Native + Expo</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Supabase + Paperclip</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">FitTrack</span><span class="infra-meta">React + Vite + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Predictive Sniper</span><span class="infra-meta">Python + async</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Paperclip</span><span class="infra-meta">Multi-agent AI orchestration</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Grateful Bites</span><span class="infra-meta">Next.js + Vercel</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">JST Toolkit</span><span class="infra-meta">Deal sourcing + CIM analysis</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">Equity research pipeline</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Independent RIA</span><span class="infra-meta">Practice management tools</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">Bond portfolio analytics</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">Stress testing + risk analysis</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Vault Dashboard</span><span class="infra-meta">Personal systems dashboard</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">Self-improving AI agent framework</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Scoreboard Media</span><span class="infra-meta">Sale Forever AI engine</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Builder Rep</span><span class="infra-meta">Construction lead generation</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Costa Rica Itinerary</span><span class="infra-meta">Family trip planning app</span></div>
       </div>
     </div>
 
