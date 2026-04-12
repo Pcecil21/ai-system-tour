@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pete's AI System — Architecture Tour</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--surface:#12121a;--card:#1a1a26;--border:#2a2a3a;
+  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#a78bfa;
+  --green:#22c55e;--amber:#f59e0b;--rose:#f43f5e;--cyan:#06b6d4;--pink:#ec4899;
+  --text:#e2e8f0;--muted:#94a3b8;--dim:#64748b;
+  --glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.07);
+  --radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+
+/* ── Hero ── */
+.hero{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:3rem 1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50% 50%,rgba(99,102,241,.08) 0%,transparent 50%);animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border:1px solid var(--border);border-radius:99px;font-size:.75rem;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:1.5rem;background:var(--glass)}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:1rem;background:linear-gradient(135deg,#fff 0%,var(--accent3) 50%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:600px;color:var(--muted);font-size:1.05rem}
+
+/* ── Nav dots ── */
+.section-nav{position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.75rem;z-index:100}
+.section-nav a{width:10px;height:10px;border-radius:50%;background:var(--border);transition:all .3s;display:block}
+.section-nav a:hover,.section-nav a.active{background:var(--accent);transform:scale(1.4)}
+
+/* ── Section base ── */
+.section{padding:5rem 1.5rem;max-width:1200px;margin:0 auto}
+.section-label{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.section-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.5rem}
+.section-sub{color:var(--muted);max-width:600px;margin-bottom:2.5rem}
+
+/* ── Part 1: Stepper ── */
+.stepper-wrap{display:flex;gap:2rem;flex-wrap:wrap}
+.stepper-tabs{display:flex;flex-direction:column;gap:.25rem;min-width:220px}
+.step-tab{padding:.75rem 1rem;border-radius:var(--radius-sm);cursor:pointer;transition:all .25s;border:1px solid transparent;display:flex;align-items:center;gap:.75rem;font-size:.9rem;color:var(--muted)}
+.step-tab:hover{background:var(--glass2);color:var(--text)}
+.step-tab.active{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.1));border-color:var(--accent);color:#fff}
+.step-tab .step-num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;background:var(--card);border:1px solid var(--border);flex-shrink:0;transition:all .25s}
+.step-tab.active .step-num{background:var(--accent);border-color:var(--accent);color:#fff}
+.step-content{flex:1;min-width:300px}
+.step-panel{display:none;padding:2rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);animation:fadeUp .35s ease}
+.step-panel.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.step-panel h3{font-size:1.2rem;font-weight:600;margin-bottom:.5rem}
+.step-panel p{color:var(--muted);font-size:.92rem;margin-bottom:1rem}
+.step-panel .detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:.75rem}
+.detail-card{padding:.75rem;border-radius:var(--radius-sm);background:var(--glass2);border:1px solid var(--border);font-size:.82rem;transition:border-color .2s}
+.detail-card:hover{border-color:var(--accent)}
+.detail-card strong{display:block;color:var(--text);margin-bottom:.25rem;font-size:.85rem}
+.detail-card span{color:var(--dim);font-size:.78rem}
+.tag{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.7rem;font-weight:600;margin-right:.25rem}
+.tag-purple{background:rgba(139,92,246,.2);color:var(--accent3)}
+.tag-green{background:rgba(34,197,94,.15);color:var(--green)}
+.tag-amber{background:rgba(245,158,11,.15);color:var(--amber)}
+.tag-cyan{background:rgba(6,182,212,.15);color:var(--cyan)}
+.tag-rose{background:rgba(244,63,94,.15);color:var(--rose)}
+.tag-pink{background:rgba(236,72,153,.15);color:var(--pink)}
+
+/* ── Part 2: Skills ── */
+.cat-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.cat-pill{padding:.45rem 1rem;border-radius:99px;cursor:pointer;font-size:.8rem;border:1px solid var(--border);background:var(--glass);color:var(--muted);transition:all .25s;white-space:nowrap}
+.cat-pill:hover{border-color:var(--accent);color:var(--text)}
+.cat-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.cat-pill .pill-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;border-radius:99px;font-size:.65rem;font-weight:700;margin-left:.4rem;background:rgba(255,255,255,.15)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.75rem}
+.skill-card{padding:1rem;border-radius:var(--radius-sm);background:var(--card);border:1px solid var(--border);cursor:pointer;transition:all .25s;position:relative;overflow:hidden}
+.skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-2px)}.skill-card:hover::before{transform:scaleX(1)}
+.skill-card h4{font-size:.88rem;font-weight:600;margin-bottom:.35rem}
+.skill-card p{font-size:.78rem;color:var(--dim);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.skill-card .skill-tag{position:absolute;top:.75rem;right:.75rem}
+.skill-expanded{display:none;margin-top:.75rem;padding-top:.75rem;border-top:1px solid var(--border);font-size:.8rem;color:var(--muted);line-height:1.6}
+.skill-card.open .skill-expanded{display:block}
+.skill-card.open p{-webkit-line-clamp:unset}
+
+/* ── Part 3: Memory ── */
+.vaults-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;margin-bottom:3rem}
+.vault-card{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);overflow:hidden}
+.vault-header{padding:1rem 1.25rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid var(--border);background:var(--glass)}
+.vault-header .vault-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.vault-header h3{font-size:1rem;font-weight:600}
+.vault-tree{padding:1rem 1.25rem;font-family:'JetBrains Mono','Fira Code',monospace;font-size:.78rem;line-height:1.8;color:var(--muted)}
+.vault-tree .folder{color:var(--amber);font-weight:600}
+.vault-tree .file{color:var(--dim)}
+.vault-tree .note{color:var(--accent3);font-style:italic;font-size:.72rem}
+
+.pipeline-wrap{padding:2rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);overflow-x:auto}
+.pipeline{display:flex;align-items:center;gap:.5rem;min-width:max-content;padding:.5rem 0}
+.pipe-node{padding:.6rem 1.1rem;border-radius:var(--radius-sm);font-size:.78rem;font-weight:600;white-space:nowrap;border:1px solid var(--border);text-align:center;transition:transform .2s}
+.pipe-node:hover{transform:scale(1.05)}
+.pipe-arrow{color:var(--dim);font-size:1.2rem;flex-shrink:0}
+.pipe-raw{background:rgba(244,63,94,.1);border-color:rgba(244,63,94,.3);color:var(--rose)}
+.pipe-proc{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3);color:var(--amber)}
+.pipe-wiki{background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.3);color:var(--cyan)}
+.pipe-strat{background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.3);color:var(--accent3)}
+.pipe-dec{background:rgba(34,197,94,.1);border-color:rgba(34,197,94,.3);color:var(--green)}
+.pipe-claude{background:rgba(99,102,241,.15);border-color:rgba(99,102,241,.4);color:var(--accent)}
+
+/* ── Part 4: Infrastructure ── */
+.infra-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.infra-block{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);overflow:hidden}
+.infra-block-header{padding:1rem 1.25rem;font-weight:600;font-size:.95rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.6rem}
+.infra-block-header .icon{font-size:1.1rem}
+.infra-list{padding:.75rem 1.25rem}
+.infra-item{display:flex;align-items:center;gap:.75rem;padding:.55rem 0;border-bottom:1px solid var(--glass2);font-size:.85rem}
+.infra-item:last-child{border-bottom:none}
+.infra-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.infra-item span.infra-label{flex:1;color:var(--text)}
+.infra-item span.infra-meta{color:var(--dim);font-size:.75rem;font-family:monospace}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:3rem 1.5rem;color:var(--dim);font-size:.78rem;border-top:1px solid var(--border);margin-top:3rem}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .stepper-wrap{flex-direction:column}
+  .stepper-tabs{flex-direction:row;overflow-x:auto;min-width:unset;padding-bottom:.5rem}
+  .step-tab{min-width:max-content;padding:.5rem .75rem;font-size:.8rem}
+  .section-nav{display:none}
+  .vaults-grid{grid-template-columns:1fr}
+  .infra-section{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- Section Nav Dots -->
+<nav class="section-nav" id="secNav">
+  <a href="#hero" title="Top"></a>
+  <a href="#overview" title="Overview"></a>
+  <a href="#skills" title="Skills"></a>
+  <a href="#memory" title="Memory"></a>
+  <a href="#infra" title="Infrastructure"></a>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-badge"><span></span> System Online</div>
+  <h1>Pete's AI System</h1>
+  <p>An interactive tour through the architecture, skills, memory, and infrastructure that power a fully AI-augmented wealth management practice.</p>
+</section>
+
+<!-- Part 1: Big Picture Overview -->
+<section class="section" id="overview">
+  <div class="section-label">Part 1</div>
+  <div class="section-title">Big Picture Overview</div>
+  <p class="section-sub">How every request travels from interface to execution. Click each layer to explore.</p>
+
+  <div class="stepper-wrap">
+    <div class="stepper-tabs" id="stepperTabs">
+      <div class="step-tab active" data-step="0"><span class="step-num">1</span> Interface Layer</div>
+      <div class="step-tab" data-step="1"><span class="step-num">2</span> Context Assembly</div>
+      <div class="step-tab" data-step="2"><span class="step-num">3</span> Skills Activate</div>
+      <div class="step-tab" data-step="3"><span class="step-num">4</span> Tools Execute</div>
+      <div class="step-tab" data-step="4"><span class="step-num">5</span> Memory Persists</div>
+      <div class="step-tab" data-step="5"><span class="step-num">6</span> Code Ships</div>
+      <div class="step-tab" data-step="6"><span class="step-num">7</span> Automation Runs</div>
+    </div>
+    <div class="step-content" id="stepContent">
+      <!-- Panel 0 -->
+      <div class="step-panel active" data-panel="0">
+        <h3>Interface Layer</h3>
+        <p>Three entry points into the same underlying Claude system, each optimized for different workflows.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>Claude.ai</strong><span>Web and mobile chat. Long-form reasoning, research, brainstorming. Accessible anywhere.</span></div>
+          <div class="detail-card"><strong>Claude Code CLI</strong><span>Terminal-native agent. Builds full-stack apps, manages GitHub repos, runs tests. Powers the 45+ repo portfolio.</span></div>
+          <div class="detail-card"><strong>Cowork Desktop</strong><span>Non-developer automation hub. File management, MCP connectors, scheduled tasks, skill library. The daily cockpit.</span></div>
+        </div>
+      </div>
+      <!-- Panel 1 -->
+      <div class="step-panel" data-panel="1">
+        <h3>Context Assembly</h3>
+        <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior.</span></div>
+          <div class="detail-card"><strong>Skills Library</strong><span>60+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows.</span></div>
+          <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge across sessions.</span></div>
+          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services.</span></div>
+        </div>
+      </div>
+      <!-- Panel 2 -->
+      <div class="step-panel" data-panel="2">
+        <h3>Skills Activate</h3>
+        <p>Skills are keyword-triggered instruction sets. When you say "trade rationale" or "onboarding checklist," the matching skill loads domain-specific best practices, templates, and workflows.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>Trigger Words</strong><span>Each skill defines exact phrases that activate it. "Backdoor Roth," "billing QA," "LinkedIn post" each load different instruction packs.</span></div>
+          <div class="detail-card"><strong>Domain Expertise</strong><span>Skills encode expert knowledge: compliance rules, tax logic, CRM field mappings, document formatting standards.</span></div>
+          <div class="detail-card"><strong>Composable</strong><span>Multiple skills can chain together. A client review might activate style-client-persona-pack + planning-annual-review-packet + docx.</span></div>
+          <div class="detail-card"><strong>Self-Improving</strong><span>The skill-creator skill builds and benchmarks new skills. Meta-skills route ambiguous requests to the right pack.</span></div>
+        </div>
+      </div>
+      <!-- Panel 3 -->
+      <div class="step-panel" data-panel="3">
+        <h3>Tools Execute</h3>
+        <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>Gmail MCP</strong><span>Search, read, draft, manage labels. Triage client emails, draft responses, track threads.</span></div>
+          <div class="detail-card"><strong>Google Calendar</strong><span>Create events, find free time, check availability, manage meeting schedules.</span></div>
+          <div class="detail-card"><strong>Google Drive</strong><span>Search and fetch documents. Access shared folders, client files, internal docs.</span></div>
+          <div class="detail-card"><strong>Canva MCP</strong><span>Generate designs, edit presentations, export to PDF/PNG. Brand kit integration.</span></div>
+          <div class="detail-card"><strong>Kiwi Flights</strong><span>Search flights, compare prices, find optimal routes. Integrated travel planning.</span></div>
+          <div class="detail-card"><strong>File System</strong><span>Read, write, edit files directly. Create docx, xlsx, pptx, pdf deliverables.</span></div>
+          <div class="detail-card"><strong>Browser (Chrome)</strong><span>Navigate, click, fill forms, take screenshots. Full web automation.</span></div>
+          <div class="detail-card"><strong>Linux Sandbox</strong><span>Python, Node, shell commands. Run analysis scripts, data processing, code builds.</span></div>
+        </div>
+      </div>
+      <!-- Panel 4 -->
+      <div class="step-panel" data-panel="4">
+        <h3>Memory Persists</h3>
+        <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (client wiki, raw data, templates) and second-brain (projects, concepts, decisions).</span></div>
+          <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals across sessions.</span></div>
+          <div class="detail-card"><strong>decisions.md</strong><span>Structured log of every architectural and business decision with context, alternatives considered, and rationale.</span></div>
+          <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward.</span></div>
+        </div>
+      </div>
+      <!-- Panel 5 -->
+      <div class="step-panel" data-panel="5">
+        <h3>Code Ships</h3>
+        <p>Claude Code manages a portfolio of 45+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>GitHub</strong><span>Pcecil21 account. 45+ repos spanning web apps, APIs, tools, and automation scripts across 2 machines.</span></div>
+          <div class="detail-card"><strong>Vercel</strong><span>Frontend deployments. Next.js apps with instant previews, edge functions, analytics.</span></div>
+          <div class="detail-card"><strong>Railway</strong><span>Backend services. Persistent servers, cron jobs, databases, WebSocket endpoints.</span></div>
+          <div class="detail-card"><strong>Supabase</strong><span>Database layer. PostgreSQL, auth, real-time subscriptions, edge functions, storage.</span></div>
+        </div>
+      </div>
+      <!-- Panel 6 -->
+      <div class="step-panel" data-panel="6">
+        <h3>Automation Runs</h3>
+        <p>Scheduled tasks run autonomously on cron schedules, handling routine operations without manual intervention.</p>
+        <div class="detail-grid">
+          <div class="detail-card"><strong>Morning Cockpit</strong><span>Weekdays at 7:00 AM. Scans calendar, email, tasks. Produces a daily briefing with priorities and flags.</span></div>
+          <div class="detail-card"><strong>Weekly Project Health</strong><span>Sundays at 7:00 PM. Audits all active projects for stale PRs, failing tests, dependency drift.</span></div>
+          <div class="detail-card"><strong>Token Waste Scanner</strong><span>Fridays at 8:00 PM. Analyzes recent sessions for inefficient tool use, redundant reads, and cost optimization.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Part 2: Skill Library -->
+<section class="section" id="skills">
+  <div class="section-label">Part 2</div>
+  <div class="section-title">Skill Library</div>
+  <p class="section-sub">60+ domain-specific instruction sets, organized by category. Click any skill to expand its details.</p>
+
+  <div class="cat-pills" id="catPills"></div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<!-- Part 3: Memory System -->
+<section class="section" id="memory">
+  <div class="section-label">Part 3</div>
+  <div class="section-title">Memory System</div>
+  <p class="section-sub">Two Obsidian vaults store persistent knowledge, fed by a Karpathy-inspired processing pipeline.</p>
+
+  <div class="vaults-grid">
+    <!-- Knowledge-Base Vault -->
+    <div class="vault-card">
+      <div class="vault-header">
+        <div class="vault-icon" style="background:rgba(245,158,11,.15);color:var(--amber)">&#128218;</div>
+        <h3>Knowledge-Base Vault</h3>
+      </div>
+      <div class="vault-tree">
+        <span class="folder">wiki/</span><br>
+        &nbsp;&nbsp;<span class="folder">clients/</span> <span class="note">— 13 household profiles</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-anderson.md</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-chen.md</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">... 11 more households</span><br>
+        <span class="folder">raw/</span><br>
+        &nbsp;&nbsp;<span class="folder">data/</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">adviceworks/</span> <span class="note">— planning exports</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— Fidelity statements</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">redtail/</span> <span class="note">— CRM data</span><br>
+        <span class="folder">_templates/</span> <span class="note">— reusable output templates</span><br>
+        <span class="folder">output/</span> <span class="note">— generated deliverables</span>
+      </div>
+    </div>
+    <!-- Second-Brain Vault -->
+    <div class="vault-card">
+      <div class="vault-header">
+        <div class="vault-icon" style="background:rgba(139,92,246,.15);color:var(--accent2)">&#129504;</div>
+        <h3>Second-Brain Vault</h3>
+      </div>
+      <div class="vault-tree">
+        <span class="folder">projects/</span><br>
+        &nbsp;&nbsp;<span class="file">fora-travel/</span> <span class="note">— AI travel platform</span><br>
+        &nbsp;&nbsp;<span class="file">ice-scheduler/</span> <span class="note">— rink scheduling</span><br>
+        &nbsp;&nbsp;<span class="file">laxverse/</span> <span class="note">— lacrosse platform</span><br>
+        &nbsp;&nbsp;<span class="file">paperclip/</span> <span class="note">— AI automation</span><br>
+        &nbsp;&nbsp;<span class="file">prediction-arb/</span> <span class="note">— prediction markets</span><br>
+        <span class="folder">wiki/</span><br>
+        &nbsp;&nbsp;<span class="folder">concepts/</span> &nbsp;<span class="folder">decisions/</span><br>
+        &nbsp;&nbsp;<span class="folder">entities/</span> &nbsp;<span class="folder">processes/</span><br>
+        <span class="folder">brain/</span><br>
+        &nbsp;&nbsp;<span class="file">North-Star.md</span> <span class="note">— guiding principles</span><br>
+        <span class="folder">research/</span> &nbsp;<span class="folder">learning/</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Karpathy Pipeline -->
+  <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--text)">The Karpathy Pipeline</h3>
+  <div class="pipeline-wrap">
+    <div class="pipeline">
+      <div class="pipe-node pipe-raw">Raw Inputs<br><small style="font-weight:400;opacity:.7">emails, calls, statements</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node pipe-proc">Processed Notes<br><small style="font-weight:400;opacity:.7">cleaned, tagged, linked</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node pipe-wiki">Wiki<br><small style="font-weight:400;opacity:.7">entities, concepts, clients</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node pipe-strat">Project Strategy<br><small style="font-weight:400;opacity:.7">goals, plans, roadmaps</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node pipe-dec">Decisions<br><small style="font-weight:400;opacity:.7">rationale, alternatives, outcomes</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node pipe-claude">CLAUDE.md<br><small style="font-weight:400;opacity:.7">persona + instructions</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- Part 4: Live Infrastructure -->
+<section class="section" id="infra">
+  <div class="section-label">Part 4</div>
+  <div class="section-title">Live Infrastructure</div>
+  <p class="section-sub">Active projects, connected services, and autonomous scheduled tasks running the practice.</p>
+
+  <div class="infra-section">
+    <!-- Projects -->
+    <div class="infra-block">
+      <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
+      <div class="infra-list">
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">Lacrosse platform</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">AI travel advisor</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">FitTrack</span><span class="infra-meta">Fitness analytics</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Predictive Sniper</span><span class="infra-meta">Prediction markets</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Rink mgmt</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Snapshooter</span><span class="infra-meta">Screenshot tool</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Paperclip</span><span class="infra-meta">AI automation</span></div>
+      </div>
+    </div>
+
+    <!-- MCP Servers -->
+    <div class="infra-block">
+      <div class="infra-block-header"><span class="icon">&#128268;</span> MCP Servers</div>
+      <div class="infra-list">
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Gmail</span><span class="infra-meta">search, read, draft</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Drive</span><span class="infra-meta">search, fetch docs</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search</span></div>
+      </div>
+    </div>
+
+    <!-- Scheduled Tasks -->
+    <div class="infra-block">
+      <div class="infra-block-header"><span class="icon">&#9200;</span> Scheduled Tasks</div>
+      <div class="infra-list">
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Morning Cockpit</span><span class="infra-meta">M-F 7:00 AM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Sun 7:00 PM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Token Waste Scanner</span><span class="infra-meta">Fri 8:00 PM</span></div>
+      </div>
+    </div>
+
+    <!-- GitHub -->
+    <div class="infra-block">
+      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub</div>
+      <div class="infra-list">
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">45+ repositories</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Deployment</span><span class="infra-meta">Vercel + Railway</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL)</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Machines</span><span class="infra-meta">2 dev environments</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Pete's AI System Architecture &mdash; Built with Claude &mdash; April 2026
+</footer>
+
+<script>
+// ── Skills Data ──
+const SKILLS = {
+  "RIA / Finance": [
+    {id:"adviceworks-client-summary",name:"AdviceWorks Client Summary",desc:"Turns AdviceWorks exports into a client-ready summary with highlights, changes, allocation, and next actions.",tag:"purple"},
+    {id:"compliance-manual-builder",name:"Compliance Manual Builder",desc:"Drafts sections of an RIA compliance manual (policies and procedures) tailored to the firm's specific structure, custody arrangements, and personnel.",tag:"rose"},
+    {id:"compliance-sop-policy",name:"Compliance SOP Policy",desc:"Drafts an SOP/policy with steps, controls, evidence, and owner assignments for any workflow.",tag:"rose"},
+    {id:"compliance-trade-rationale",name:"Compliance Trade Rationale",desc:"Drafts a compliant trade rationale / investment committee note documenting the decision and supporting analysis.",tag:"rose"},
+    {id:"custodian-setup-tracker",name:"Custodian Setup Tracker",desc:"Tracks the custodian setup and onboarding process (Fidelity primary, Altruist backup) for the new RIA.",tag:"amber"},
+    {id:"ria-registration-checklist",name:"RIA Registration Checklist",desc:"Creates a registration checklist and tracks progress through Form ADV, state filing, compliance manual, and regulatory approvals.",tag:"amber"},
+    {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
+    {id:"breakaway-transition-plan",name:"Breakaway Transition Plan",desc:"Creates a phased breakaway transition plan with timelines, task ownership, and risk flags for leaving a broker-dealer.",tag:"amber"},
+    {id:"client-transition-letter",name:"Client Transition Letter",desc:"Drafts personalized client transition letters and communication sequences for an advisor moving from a BD to an independent RIA.",tag:"amber"},
+    {id:"roth-conversion-tracker",name:"Roth Conversion Tracker",desc:"Tracks and plans Roth conversion strategy for a partner with a large traditional IRA and a time-limited low-income window.",tag:"green"},
+    {id:"retirement-plan-setup",name:"Retirement Plan Setup",desc:"Guides design, vendor selection, and implementation of retirement plans (cash balance + 401k with profit sharing) for a small RIA.",tag:"green"}
+  ],
+  "Operations": [
+    {id:"ops-billing-qa",name:"Billing QA",desc:"Reviews billing exports for exceptions — tiers, householding, missing accounts. Catches fee errors before they reach clients.",tag:"rose"},
+    {id:"ops-client-question-triage",name:"Client Question Triage",desc:"Classifies and drafts responses to client emails/questions, flags compliance/tax/ops items for routing.",tag:"cyan"},
+    {id:"ops-export-normalizer",name:"Export Normalizer",desc:"Normalizes exports from different custodians into consistent columns for cross-platform analysis.",tag:"cyan"},
+    {id:"ops-onboarding-checklist",name:"Onboarding Checklist",desc:"Generates a client onboarding checklist by household type with all required forms and steps.",tag:"amber"},
+    {id:"ops-payables-queue",name:"Payables Queue",desc:"Turns vendor bills, invoices, and emails into a prioritized payables queue with due dates.",tag:"amber"},
+    {id:"ops-receipts-from-emails",name:"Receipts from Emails",desc:"Extracts receipt info from email text or exports into a structured ledger table.",tag:"cyan"},
+    {id:"ops-statement-extract",name:"Statement Extract",desc:"Extracts key data from custodian statements — values, activity, fees — for review and analysis.",tag:"cyan"},
+    {id:"redtail-email-triage",name:"Redtail Email Triage",desc:"Triages a client email: classifies request type (ops/tax/planning/investments), drafts response, creates Redtail tasks.",tag:"purple"},
+    {id:"redtail-meeting-notes",name:"Redtail Meeting Notes",desc:"Converts meeting notes into Redtail-ready artifacts: a Note summary, a Task list, and a client recap email.",tag:"purple"},
+    {id:"redtail-onboarding-checklist",name:"Redtail Onboarding Checklist",desc:"Creates a phased onboarding plan and Redtail task checklist for new client intake.",tag:"purple"}
+  ],
+  "Planning": [
+    {id:"planning-annual-review-packet",name:"Annual Review Packet",desc:"Builds an annual client review packet from notes and exports with polished formatting.",tag:"green"},
+    {id:"planning-backdoor-roth",name:"Backdoor Roth",desc:"Creates step-by-step client instructions for backdoor or mega backdoor Roth conversions.",tag:"green"},
+    {id:"planning-discovery-plan",name:"Discovery Plan",desc:"Turns discovery call notes/intake into a prioritized plan of attack with action items.",tag:"cyan"},
+    {id:"planning-equity-comp",name:"Equity Comp",desc:"Explains RSUs/stock options in plain English and outlines tax timing with an action checklist.",tag:"green"},
+    {id:"planning-rmd-qcd",name:"RMD / QCD",desc:"Builds an RMD/QCD action plan and instructions from DOB, IRA balances, and charitable intent.",tag:"green"},
+    {id:"year-end-tax-checklist",name:"Year-End Tax Checklist",desc:"Creates a year-end tax planning checklist and client email from household snapshot data.",tag:"amber"},
+    {id:"model-to-household-mapping",name:"Model-to-Household Mapping",desc:"Maps model targets to household accounts with tax-aware placement notes for optimal asset location.",tag:"purple"}
+  ],
+  "Investments": [
+    {id:"invest-fund-one-pager",name:"Fund One-Pager",desc:"Turns a fund/manager factsheet into a client-safe one-pager with key metrics and narrative.",tag:"cyan"},
+    {id:"invest-holdings-delta",name:"Holdings Delta",desc:"Compares two holdings exports and produces a 'what changed' delta report with additions, removals, and weight shifts.",tag:"cyan"},
+    {id:"invest-risk-summary",name:"Risk Summary",desc:"Generates a plain-English risk summary from holdings/allocation covering drawdown, concentration, and stress scenarios.",tag:"rose"},
+    {id:"trade-rationale-note",name:"Trade Rationale Note",desc:"Drafts a compliant trade rationale / investment committee note with proposed trade details and documentation.",tag:"rose"},
+    {id:"wm-client-report",name:"WM: Client Report",desc:"Generates a client performance report with returns, allocation, and commentary.",tag:"purple"},
+    {id:"wm-client-review",name:"WM: Client Review",desc:"Prepares materials and agenda for a client review meeting.",tag:"purple"},
+    {id:"wm-financial-plan",name:"WM: Financial Plan",desc:"Builds or updates a comprehensive financial plan with projections and recommendations.",tag:"purple"},
+    {id:"wm-investment-proposal",name:"WM: Investment Proposal",desc:"Creates an investment proposal for a prospect with strategy, allocation, and fee schedule.",tag:"purple"},
+    {id:"wm-portfolio-rebalance",name:"WM: Portfolio Rebalance",desc:"Analyzes drift and generates rebalancing trades to return to target allocation.",tag:"amber"},
+    {id:"wm-tax-loss-harvesting",name:"WM: Tax-Loss Harvesting",desc:"Identifies tax-loss harvesting opportunities across portfolios with wash-sale awareness.",tag:"green"}
+  ],
+  "Business Dev": [
+    {id:"bd-intro-workflow",name:"BD Intro Workflow",desc:"Manages Mike's business development introduction workflow from prospect identification through warm handoff while staying within compliance guardrails.",tag:"amber"},
+    {id:"referral-nurture-drip",name:"Referral Nurture Drip",desc:"Generates a referral thank-you and nurture email sequence when an existing client makes an introduction.",tag:"green"},
+    {id:"linkedin-content-creator",name:"LinkedIn Content Creator",desc:"Creates LinkedIn posts and content in the advisor's voice for thought leadership and business development.",tag:"cyan"},
+    {id:"new-client-onboarding-pipeline",name:"New Client Onboarding Pipeline",desc:"Creates a full onboarding pipeline for new clients from initial prospect meeting through first 90-day review.",tag:"amber"},
+    {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"}
+  ],
+  "Development": [
+    {id:"mcp-builder",name:"MCP Builder",desc:"Guide for creating high-quality MCP servers that enable LLMs to interact with external services through well-designed tools.",tag:"purple"},
+    {id:"skill-creator",name:"Skill Creator",desc:"Creates new skills, modifies existing ones, runs evaluations, benchmarks performance with variance analysis.",tag:"purple"},
+    {id:"canvas-design",name:"Canvas Design",desc:"Creates beautiful visual art in .png and .pdf documents using design philosophy. Museum-quality output.",tag:"pink"}
+  ],
+  "Documents": [
+    {id:"docx",name:"Word Documents (.docx)",desc:"Comprehensive Word document creation, reading, editing, and manipulation with professional formatting.",tag:"cyan"},
+    {id:"xlsx",name:"Spreadsheets (.xlsx)",desc:"Excel spreadsheet handling with formulas, formatting, data analysis, charts, and visualization.",tag:"green"},
+    {id:"pptx",name:"Presentations (.pptx)",desc:"PowerPoint creation and editing — slide decks, pitch decks, speaker notes, layouts, and templates.",tag:"amber"},
+    {id:"pdf",name:"PDF Processing",desc:"PDF manipulation toolkit: extract text/tables, create new PDFs, merge, split, rotate, watermark, fill forms.",tag:"rose"}
+  ],
+  "Meta / System": [
+    {id:"meta-ria-router",name:"RIA Router",desc:"Routes ambiguous requests to the correct RIA skill pack across Redtail, AdviceWorks, planning, ops, or investments.",tag:"purple"},
+    {id:"meta-ask-3-then-output",name:"Ask 3 Then Output",desc:"Forces a maximum of 3 clarifying questions, then proceeds with TBDs. Minimizes back-and-forth.",tag:"cyan"},
+    {id:"decision-council",name:"Decision Council",desc:"Multi-perspective analysis framework that stress-tests decisions through a dynamically assembled panel of expert personas.",tag:"rose"},
+    {id:"brain-mcp",name:"Brain MCP",desc:"Persistent knowledge brain for cross-session memory. Searches and writes knowledge about people, companies, projects, deals.",tag:"purple"},
+    {id:"schedule",name:"Schedule",desc:"Creates scheduled tasks that run on demand or automatically on an interval. Powers the automation layer.",tag:"amber"},
+    {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"},
+    {id:"meeting-notes-to-crm-followup",name:"Meeting Notes to CRM Follow-up",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
+  ]
+};
+
+const TAG_COLORS = {purple:"tag-purple",green:"tag-green",amber:"tag-amber",cyan:"tag-cyan",rose:"tag-rose",pink:"tag-pink"};
+
+// ── Stepper ──
+document.querySelectorAll('.step-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.step-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelector(`.step-panel[data-panel="${tab.dataset.step}"]`).classList.add('active');
+  });
+});
+
+// ── Skills ──
+const catPills = document.getElementById('catPills');
+const skillsGrid = document.getElementById('skillsGrid');
+const categories = Object.keys(SKILLS);
+let activeCat = categories[0];
+
+function renderPills() {
+  catPills.innerHTML = '';
+  categories.forEach(cat => {
+    const pill = document.createElement('div');
+    pill.className = 'cat-pill' + (cat === activeCat ? ' active' : '');
+    pill.innerHTML = `${cat}<span class="pill-count">${SKILLS[cat].length}</span>`;
+    pill.addEventListener('click', () => { activeCat = cat; renderPills(); renderSkills(); });
+    catPills.appendChild(pill);
+  });
+}
+
+function renderSkills() {
+  skillsGrid.innerHTML = '';
+  SKILLS[activeCat].forEach(s => {
+    const card = document.createElement('div');
+    card.className = 'skill-card';
+    card.innerHTML = `
+      <span class="skill-tag tag ${TAG_COLORS[s.tag]}">${s.id}</span>
+      <h4>${s.name}</h4>
+      <p>${s.desc}</p>
+    `;
+    card.addEventListener('click', () => card.classList.toggle('open'));
+    skillsGrid.appendChild(card);
+  });
+}
+
+renderPills();
+renderSkills();
+
+// ── Section Nav highlight ──
+const sections = ['hero','overview','skills','memory','infra'];
+const navLinks = document.querySelectorAll('.section-nav a');
+function updateNav() {
+  const scrollY = window.scrollY + 200;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && scrollY >= el.offsetTop && scrollY < el.offsetTop + el.offsetHeight) {
+      navLinks.forEach(a => a.classList.remove('active'));
+      navLinks[i]?.classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateNav);
+updateNav();
+</script>
+</body>
+</html>
