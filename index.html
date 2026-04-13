@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pete Cecil &middot; AI in wealth management practice</title>
 <meta name="description" content="How I use AI in day-to-day wealth management — compliance, trading, portfolio monitoring. A look inside an AI-augmented advisor practice.">
 
@@ -14,167 +14,685 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pete Cecil &middot; AI in wealth management practice">
 <meta name="twitter:description" content="How I use AI in day-to-day wealth management — compliance, trading, portfolio monitoring.">
+<meta name="theme-color" content="#050506">
 
 <!-- Favicon (inline SVG) -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%236366f1'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='18' font-weight='700' fill='%23fff'%3EP%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%236366f1'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='16' font-weight='600' fill='%23fff'%3EP%3C/text%3E%3C/svg%3E">
+
+<!-- Typography: Geist + Instrument Serif -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0a0f;--surface:#12121a;--card:#1a1a26;--border:#2a2a3a;
-  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#a78bfa;
-  --green:#22c55e;--amber:#f59e0b;--rose:#f43f5e;
-  --text:#e2e8f0;--muted:#94a3b8;--dim:#64748b;
-  --glass:rgba(255,255,255,.04);--glass2:rgba(255,255,255,.07);
-  --radius:14px;--radius-sm:8px;
+  --bg:#050506;
+  --surface:rgba(255,255,255,.025);
+  --card:#0c0c10;
+  --hairline:rgba(255,255,255,.06);
+  --hairline-strong:rgba(255,255,255,.11);
+  --inset-hi:rgba(255,255,255,.08);
+  --indigo:#6366f1;
+  --purple:#8b5cf6;
+  --lavender:#b8a7f2;
+  --text:#eeeef2;
+  --muted:#8a8a94;
+  --dim:#4a4a54;
+  --sans:'Geist',-apple-system,system-ui,sans-serif;
+  --serif:'Instrument Serif','Times New Roman',serif;
+  --ease-out:cubic-bezier(.32,.72,0,1);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;font-feature-settings:"ss01","cv11"}
-::selection{background:var(--accent);color:#fff}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.55;
+  letter-spacing:-.011em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  min-height:100dvh;
+}
+::selection{background:var(--indigo);color:#fff}
 
-/* ── Layout shell ── */
-.wrap{max-width:760px;margin:0 auto;padding:0 1.5rem}
+/* Film grain overlay */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  z-index:50;
+  pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  opacity:.04;
+  mix-blend-mode:overlay;
+}
 
-/* ── Hero ── */
-.hero{min-height:72vh;display:flex;flex-direction:column;justify-content:center;padding:5rem 1.5rem 4rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,rgba(99,102,241,.12),transparent 60%);pointer-events:none;z-index:0}
-.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto;width:100%}
-.kicker{display:inline-flex;align-items:center;gap:.55rem;padding:.35rem .85rem;border:1px solid var(--border);border-radius:999px;font-size:.72rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.75rem;background:var(--glass)}
-.kicker span.dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.035em;line-height:1.08;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,var(--accent3) 70%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.lede{font-size:1.15rem;color:var(--muted);max-width:620px;line-height:1.7}
+/* Ambient radial orbs (decorative, behind content) */
+.orb{position:fixed;pointer-events:none;z-index:-1;border-radius:999px;filter:blur(40px)}
+.orb-1{top:-15%;left:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,.14),transparent 60%)}
+.orb-2{bottom:-25%;right:-15%;width:900px;height:900px;background:radial-gradient(circle,rgba(139,92,246,.1),transparent 65%)}
+.orb-3{top:40%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(184,167,242,.05),transparent 70%)}
+
+/* Floating pill nav */
+.nav{
+  position:fixed;
+  top:1.5rem;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:60;
+  display:flex;
+  align-items:center;
+  gap:1.25rem;
+  padding:.4rem .5rem .4rem 1.25rem;
+  background:rgba(10,10,13,.65);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  backdrop-filter:blur(20px) saturate(1.4);
+  border:1px solid var(--hairline);
+  border-radius:999px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 12px 40px rgba(0,0,0,.4);
+  transition:all 700ms var(--ease-out);
+}
+.nav .mark{
+  font-size:.78rem;
+  font-weight:500;
+  letter-spacing:-.01em;
+  color:var(--text);
+  white-space:nowrap;
+}
+.nav .mark .dim-t{color:var(--muted);font-weight:400}
+.nav .inv-link{
+  display:inline-flex;
+  align-items:center;
+  gap:.55rem;
+  padding:.4rem .45rem .4rem .95rem;
+  font-size:.78rem;
+  font-weight:500;
+  color:var(--text);
+  text-decoration:none;
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:999px;
+  transition:all 500ms var(--ease-out);
+}
+.nav .inv-link:hover{border-color:var(--hairline-strong);background:rgba(255,255,255,.04)}
+.nav .inv-link .ar{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:1.25rem;
+  height:1.25rem;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--indigo),var(--purple));
+  color:#fff;
+  font-size:.65rem;
+  transition:transform 500ms var(--ease-spring);
+}
+.nav .inv-link:hover .ar{transform:translate(1px,-1px) scale(1.08)}
+
+/* Layout shell */
+.wrap{max-width:1040px;margin:0 auto;padding:0 2rem}
+
+/* Eyebrow tag */
+.eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  padding:.35rem .8rem;
+  font-size:10px;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.2em;
+  color:var(--muted);
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:999px;
+}
+.eyebrow .dot{
+  width:5px;
+  height:5px;
+  border-radius:999px;
+  background:#22c55e;
+  box-shadow:0 0 8px rgba(34,197,94,.6);
+}
+
+/* HERO */
+.hero{
+  min-height:100dvh;
+  padding:10rem 0 6rem;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+}
+.hero h1{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:clamp(2.75rem,7vw,5.5rem);
+  line-height:.98;
+  letter-spacing:-.045em;
+  margin:1.5rem 0;
+  max-width:16ch;
+}
+.hero h1 em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:-.025em;
+  background:linear-gradient(135deg,#fff 0%,var(--lavender) 70%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+.lede{
+  max-width:54ch;
+  font-size:1.15rem;
+  color:var(--muted);
+  line-height:1.65;
+  margin-top:1.5rem;
+}
 .lede strong{color:var(--text);font-weight:500}
 
-/* ── Transition ── */
-.divider{display:flex;align-items:center;gap:1rem;max-width:760px;margin:0 auto;padding:0 1.5rem;color:var(--dim)}
-.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border)}
-.divider span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+/* Sections */
+.section{padding:6rem 0}
 
-/* ── Stories ── */
-.stories{padding:4rem 1.5rem 2rem}
-.story{max-width:760px;margin:0 auto 3rem;padding:2rem 2.25rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);position:relative;transition:border-color .3s,transform .3s}
-.story:hover{border-color:var(--accent);transform:translateY(-2px)}
-.story-num{position:absolute;top:-14px;left:2.25rem;background:var(--bg);padding:0 .65rem;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent3);font-weight:600}
-.story h2{font-size:1.4rem;font-weight:600;margin-bottom:1rem;letter-spacing:-.015em;color:var(--text);line-height:1.3}
-.story p{color:var(--muted);font-size:1rem;line-height:1.75}
-.story p + p{margin-top:.9rem}
-.story strong{color:var(--text);font-weight:500}
+/* Double-Bezel component */
+.bezel{
+  padding:6px;
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:28px;
+  transition:all 700ms var(--ease-out);
+  position:relative;
+}
+.bezel:hover{
+  border-color:var(--hairline-strong);
+  background:rgba(255,255,255,.035);
+}
+.bezel-inner{
+  background:var(--card);
+  border-radius:22px;
+  box-shadow:inset 0 1px 0 var(--inset-hi);
+  padding:1.75rem;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:1.25rem;
+  position:relative;
+  overflow:hidden;
+}
 
-/* ── Stats strip ── */
-.stats{max-width:760px;margin:0 auto;padding:0 1.5rem 2rem}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.75rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(139,92,246,.04));border:1px solid var(--border)}
-.stat{text-align:center}
-.stat .num{display:block;font-size:1.9rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
-.stat .lbl{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.5rem;line-height:1.4}
-@media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:.75rem;padding:1.25rem} .stat .num{font-size:1.5rem}}
+/* Stats asymmetrical bento */
+.bento{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-auto-rows:minmax(150px,auto);
+  gap:1rem;
+}
+.stat-big{grid-column:1 / 3;grid-row:1 / 3}
+.stat-big .bezel-inner{padding:2.25rem}
+.stat-big .bezel-inner::after{
+  content:'';
+  position:absolute;
+  top:-30%;
+  right:-20%;
+  width:320px;
+  height:320px;
+  background:radial-gradient(circle,rgba(99,102,241,.08),transparent 65%);
+  pointer-events:none;
+}
+.num-big{
+  font-size:clamp(3.5rem,7vw,5.5rem);
+  font-weight:500;
+  letter-spacing:-.055em;
+  line-height:.95;
+  background:linear-gradient(180deg,#fff 10%,var(--muted) 120%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+  position:relative;
+  z-index:1;
+}
+.stat-big .lbl{
+  font-size:1.05rem;
+  color:var(--muted);
+  max-width:22ch;
+  line-height:1.45;
+  position:relative;
+  z-index:1;
+}
+.stat-sm .num-sm{
+  font-size:2.4rem;
+  font-weight:500;
+  letter-spacing:-.035em;
+  line-height:.95;
+  color:var(--text);
+}
+.stat-sm .num-sm .suffix{
+  font-size:1.1rem;
+  font-weight:400;
+  color:var(--muted);
+  letter-spacing:0;
+  margin-left:.1em;
+}
+.stat-sm .lbl{
+  font-size:.82rem;
+  color:var(--muted);
+  line-height:1.45;
+}
 
-/* ── Philosophy block ── */
-.philosophy{max-width:760px;margin:3rem auto 0;padding:2.5rem 2rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border)}
-.philosophy h3{font-size:1.25rem;font-weight:600;margin-bottom:1rem;letter-spacing:-.015em;color:var(--text)}
-.philosophy p{color:var(--muted);font-size:1rem;line-height:1.75}
-.philosophy p + p{margin-top:.9rem}
-.philosophy strong{color:var(--text);font-weight:500}
+/* Section divider */
+.divider-row{
+  display:flex;
+  align-items:center;
+  gap:1.5rem;
+  margin:5rem 0 3rem;
+}
+.divider-line{
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--hairline) 15%,var(--hairline) 85%,transparent);
+}
 
-/* ── Inventory button (big CTA-style card) ── */
-.inv-cta{max-width:760px;margin:2.5rem auto 0;padding:0 1.5rem}
-.inv-cta a{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.75rem 2rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.08));border:1px solid var(--accent);color:var(--text);text-decoration:none;transition:all .3s;position:relative;overflow:hidden}
-.inv-cta a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transition:left .6s}
-.inv-cta a:hover{transform:translateY(-2px);border-color:var(--accent3);box-shadow:0 8px 30px rgba(99,102,241,.2)}
-.inv-cta a:hover::before{left:100%}
-.inv-cta .inv-text{flex:1}
-.inv-cta .inv-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent3);font-weight:600;display:block;margin-bottom:.4rem}
-.inv-cta .inv-title{font-size:1.2rem;font-weight:600;letter-spacing:-.015em;display:block;margin-bottom:.35rem}
-.inv-cta .inv-sub{font-size:.88rem;color:var(--muted);line-height:1.5}
-.inv-cta .inv-arrow{font-size:1.8rem;color:var(--accent3);flex-shrink:0;transition:transform .3s}
-.inv-cta a:hover .inv-arrow{transform:translateX(6px)}
-@media(max-width:640px){.inv-cta a{padding:1.5rem 1.25rem;gap:1rem} .inv-cta .inv-title{font-size:1.05rem}}
+/* Stories */
+.stories{display:flex;flex-direction:column;gap:1.5rem}
+.story-card{
+  padding:6px;
+  background:var(--surface);
+  border:1px solid var(--hairline);
+  border-radius:28px;
+  transition:all 800ms var(--ease-out);
+}
+.story-card:hover{
+  border-color:var(--hairline-strong);
+  transform:translateY(-3px);
+}
+.story-inner{
+  background:var(--card);
+  border-radius:22px;
+  box-shadow:inset 0 1px 0 var(--inset-hi);
+  padding:3rem 3.5rem;
+  position:relative;
+  overflow:hidden;
+}
+.story-inner::after{
+  content:'';
+  position:absolute;
+  top:-10%;
+  right:-10%;
+  width:340px;
+  height:340px;
+  background:radial-gradient(circle,rgba(139,92,246,.05),transparent 70%);
+  pointer-events:none;
+}
+.story-num{
+  font-family:var(--serif);
+  font-size:4.5rem;
+  font-style:italic;
+  font-weight:400;
+  color:var(--dim);
+  line-height:.9;
+  margin-bottom:1.5rem;
+  position:relative;
+  z-index:1;
+}
+.story h2{
+  font-family:var(--sans);
+  font-weight:500;
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  letter-spacing:-.03em;
+  line-height:1.15;
+  margin-bottom:1.5rem;
+  max-width:28ch;
+  position:relative;
+  z-index:1;
+  color:var(--text);
+}
+.story p{
+  font-size:1rem;
+  color:var(--muted);
+  line-height:1.75;
+  max-width:62ch;
+  position:relative;
+  z-index:1;
+}
+.story p + p{margin-top:1rem}
+.story p strong{color:var(--text);font-weight:500}
 
-/* ── Footer ── */
-.footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--dim);font-size:.75rem;border-top:1px solid var(--border);margin-top:4rem;letter-spacing:.02em}
-.footer strong{color:var(--muted);font-weight:500}
+/* Philosophy editorial block */
+.philosophy{
+  max-width:740px;
+  margin:6rem auto;
+  padding:0 1rem;
+  text-align:center;
+  position:relative;
+}
+.philosophy .q{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:7rem;
+  line-height:.5;
+  color:var(--dim);
+  margin-bottom:1.25rem;
+  display:block;
+}
+.philosophy h3{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:clamp(1.5rem,3.4vw,2.4rem);
+  line-height:1.25;
+  letter-spacing:-.03em;
+  color:var(--text);
+  margin-bottom:2rem;
+  max-width:22ch;
+  margin-left:auto;
+  margin-right:auto;
+}
+.philosophy h3 em{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:400;
+  color:var(--lavender);
+}
+.philosophy p{
+  font-size:1rem;
+  color:var(--muted);
+  line-height:1.75;
+  max-width:54ch;
+  margin:0 auto;
+}
 
-/* ── Responsive ── */
-@media(max-width:640px){
-  .hero{padding:4rem 1.25rem 3rem;min-height:60vh}
-  .story{padding:1.75rem 1.5rem;margin-bottom:2rem}
-  .story-num{left:1.5rem}
-  .stories{padding:2.5rem 1rem 1rem}
+/* Inventory CTA (button-in-button) */
+.inv-cta-wrap{margin:4rem 0 3rem}
+.inv-cta{
+  display:block;
+  padding:6px;
+  background:linear-gradient(135deg,rgba(99,102,241,.18),rgba(139,92,246,.09));
+  border:1px solid rgba(139,92,246,.25);
+  border-radius:28px;
+  text-decoration:none;
+  color:var(--text);
+  transition:all 800ms var(--ease-out);
+  position:relative;
+  overflow:hidden;
+}
+.inv-cta::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.05) 50%,transparent);
+  transform:translateX(-110%);
+  transition:transform 1400ms var(--ease-out);
+  pointer-events:none;
+}
+.inv-cta:hover::before{transform:translateX(110%)}
+.inv-cta:hover{
+  border-color:rgba(139,92,246,.45);
+  transform:translateY(-4px);
+  box-shadow:0 24px 60px -20px rgba(99,102,241,.35);
+}
+.inv-cta-inner{
+  background:var(--card);
+  border-radius:22px;
+  box-shadow:inset 0 1px 0 var(--inset-hi);
+  padding:2rem 2.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+  position:relative;
+  overflow:hidden;
+}
+.inv-cta-inner::after{
+  content:'';
+  position:absolute;
+  top:-50%;
+  right:-20%;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);
+  pointer-events:none;
+}
+.inv-cta-text{flex:1;position:relative;z-index:1}
+.inv-cta-text .e{
+  display:inline-block;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--lavender);
+  font-weight:500;
+  margin-bottom:.6rem;
+}
+.inv-cta-text .t{
+  font-size:1.4rem;
+  font-weight:500;
+  letter-spacing:-.025em;
+  margin-bottom:.4rem;
+  line-height:1.2;
+}
+.inv-cta-text .s{
+  font-size:.92rem;
+  color:var(--muted);
+  max-width:50ch;
+  line-height:1.55;
+}
+.inv-cta-arrow{
+  flex-shrink:0;
+  width:56px;
+  height:56px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--indigo),var(--purple));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.25rem;
+  transition:transform 600ms var(--ease-spring);
+  box-shadow:0 12px 30px rgba(99,102,241,.35),inset 0 1px 0 rgba(255,255,255,.2);
+  position:relative;
+  z-index:1;
+}
+.inv-cta:hover .inv-cta-arrow{transform:translate(4px,-4px) scale(1.06)}
+
+/* Footer */
+footer{
+  padding:4rem 2rem 3rem;
+  text-align:center;
+  color:var(--dim);
+  font-size:.78rem;
+  letter-spacing:.02em;
+  border-top:1px solid var(--hairline);
+  margin-top:5rem;
+}
+footer strong{color:var(--muted);font-weight:500}
+footer .sep{color:var(--dim);margin:0 .5rem}
+
+/* Scroll reveal */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  filter:blur(6px);
+  transition:opacity 1000ms var(--ease-expo),transform 1000ms var(--ease-expo),filter 1000ms var(--ease-expo);
+  will-change:transform,opacity,filter;
+}
+.reveal.in{opacity:1;transform:translateY(0);filter:blur(0)}
+.stagger > *{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity 800ms var(--ease-out),transform 800ms var(--ease-out);
+}
+.stagger.in > *:nth-child(1){transition-delay:0ms;opacity:1;transform:translateY(0)}
+.stagger.in > *:nth-child(2){transition-delay:90ms;opacity:1;transform:translateY(0)}
+.stagger.in > *:nth-child(3){transition-delay:180ms;opacity:1;transform:translateY(0)}
+.stagger.in > *:nth-child(4){transition-delay:270ms;opacity:1;transform:translateY(0)}
+
+/* Responsive (Universal Mobile Override) */
+@media(max-width:768px){
+  .wrap{padding:0 1.25rem}
+  .hero{padding:7rem 0 3rem;min-height:85dvh}
+  .section{padding:3rem 0}
+  .bento{grid-template-columns:1fr;gap:.75rem}
+  .stat-big{grid-column:1;grid-row:auto}
+  .stat-big .bezel-inner{padding:1.75rem}
+  .num-big{font-size:3.5rem}
+  .story-inner{padding:2rem 1.5rem}
+  .story-num{font-size:3rem}
+  .philosophy{margin:3.5rem auto;padding:0 .5rem}
+  .philosophy .q{font-size:5rem}
+  .inv-cta-inner{flex-direction:column;text-align:center;padding:1.75rem;gap:1.25rem}
+  .inv-cta-arrow{width:48px;height:48px;font-size:1.1rem}
+  .nav{top:.75rem;padding:.35rem .4rem .35rem 1rem;gap:.75rem}
+  .nav .mark{font-size:.72rem}
+  .nav .inv-link{font-size:.72rem;padding:.35rem .4rem .35rem .7rem}
+  .divider-row{margin:3.5rem 0 2rem;gap:1rem}
+  .divider-row .eyebrow{font-size:9px}
+  footer{margin-top:3rem;padding:3rem 1.5rem 2rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  .reveal,.stagger > *{opacity:1;transform:none;filter:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ────────── HERO ────────── -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="kicker"><span class="dot"></span> Peter Cecil Financial Planning</div>
-    <h1>Modern wealth management, with AI on my side of the desk.</h1>
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- Floating pill nav -->
+<nav class="nav">
+  <span class="mark">Pete Cecil <span class="dim-t">/ financial planning</span></span>
+  <a class="inv-link" href="inventory.html">The system <span class="ar">&rarr;</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <div class="reveal">
+    <span class="eyebrow"><span class="dot"></span> Peter Cecil Financial Planning</span>
+    <h1>Modern wealth management, with AI <em>on my side of the desk</em>.</h1>
     <p class="lede">I'm an independent financial advisor building a practice where AI is the <strong>force multiplier</strong>, not the product. What follows are three places it's already doing real work — not demo work.</p>
   </div>
 </section>
 
-<!-- ────────── STATS STRIP ────────── -->
-<section class="stats">
-  <div class="stats-grid">
-    <div class="stat"><span class="num">80+</span><span class="lbl">Playbooks<br>in the practice</span></div>
-    <div class="stat"><span class="num">110+</span><span class="lbl">AI specialists<br>on call</span></div>
-    <div class="stat"><span class="num">13</span><span class="lbl">Live connections<br>to my tools</span></div>
-    <div class="stat"><span class="num">7<span style="font-size:1.1rem">AM</span></span><span class="lbl">Morning briefing<br>lands</span></div>
+<!-- STATS BENTO -->
+<section class="section wrap">
+  <div class="bento stagger">
+    <div class="bezel stat-big">
+      <div class="bezel-inner">
+        <span class="eyebrow">Playbooks in the practice</span>
+        <div>
+          <div class="num-big">80<span style="color:var(--lavender);font-weight:400">+</span></div>
+          <div class="lbl" style="margin-top:1rem">Distilled workflows — from trade rationales to client onboarding — that Claude can run in my voice.</div>
+        </div>
+      </div>
+    </div>
+    <div class="bezel stat-sm">
+      <div class="bezel-inner">
+        <div class="num-sm">110<span class="suffix">+</span></div>
+        <div class="lbl">AI specialists on call for focused work</div>
+      </div>
+    </div>
+    <div class="bezel stat-sm">
+      <div class="bezel-inner">
+        <div class="num-sm">13</div>
+        <div class="lbl">Live connections to the tools I use daily</div>
+      </div>
+    </div>
+    <div class="bezel stat-sm">
+      <div class="bezel-inner">
+        <div class="num-sm">7<span class="suffix">AM</span></div>
+        <div class="lbl">My briefing lands every weekday morning</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<div class="divider"><span>Three things it's doing for me</span></div>
-
-<!-- ────────── THREE STORIES ────────── -->
-<div class="stories">
-
-  <article class="story">
-    <div class="story-num">One</div>
-    <h2>A compliance manual that didn't eat my weekends.</h2>
-    <p>Writing an RIA compliance manual from scratch is <strong>eighty-plus hours</strong> of solo grinding. Most advisors either put it off or pay $15,000 for a boilerplate template and spend weeks trying to make it fit.</p>
-    <p>I drafted mine section by section with Claude as a research assistant that actually understood my custodian structure and the specific regulations I care about. It got written in evenings. My family barely noticed.</p>
-  </article>
-
-  <article class="story">
-    <div class="story-num">Two</div>
-    <h2>Trade rationales that don't sit in drafts.</h2>
-    <p>A compliant trade rationale takes focused writing — the kind you kick down the road when the week fills up. I used to. Rationales would stack up. Compliance would slip.</p>
-    <p>Now the note gets drafted from the trade details in <strong>under a minute</strong>. I review, I edit, I sign. Nothing stacks up.</p>
-  </article>
-
-  <article class="story">
-    <div class="story-num">Three</div>
-    <h2>Portfolio drift I catch in days, not quarters.</h2>
-    <p>Drift in a client portfolio used to go unseen until the next quarterly review — two or three months of misalignment before anyone noticed.</p>
-    <p>Every morning, a scan runs across all twelve households, flags anything above threshold, and hands me a ranked list by 7am. Issues get caught in <strong>days, not quarters</strong>.</p>
-  </article>
-
+<!-- DIVIDER -->
+<div class="wrap">
+  <div class="divider-row">
+    <span class="divider-line"></span>
+    <span class="eyebrow">Three things it's doing for me</span>
+    <span class="divider-line"></span>
+  </div>
 </div>
 
-<!-- ────────── PHILOSOPHY ────────── -->
-<section class="philosophy">
-  <h3>The thing that's actually different.</h3>
-  <p>Most advisors treat technology as overhead — a line item, a compliance headache, a thing the <strong>younger guy</strong> at the firm understands. I treat it as a teammate. Every repeatable part of my week — the compliance work, the trade documentation, the portfolio monitoring, the client correspondence, the board memos — runs through a system I've designed to do the pattern work so I can do the judgment work.</p>
-  <p>That's the whole bet: human attention is the scarce resource in wealth management. AI handles the rest.</p>
+<!-- STORIES -->
+<section class="wrap">
+  <div class="stories">
+    <article class="story-card reveal story">
+      <div class="story-inner">
+        <div class="story-num">01</div>
+        <h2>A compliance manual that didn't eat my weekends.</h2>
+        <p>Writing an RIA compliance manual from scratch is <strong>eighty-plus hours</strong> of solo grinding. Most advisors either put it off or pay $15,000 for a boilerplate template and spend weeks trying to make it fit.</p>
+        <p>I drafted mine section by section with Claude as a research assistant that actually understood my custodian structure and the specific regulations I care about. It got written in evenings. My family barely noticed.</p>
+      </div>
+    </article>
+
+    <article class="story-card reveal story">
+      <div class="story-inner">
+        <div class="story-num">02</div>
+        <h2>Trade rationales that don't sit in drafts.</h2>
+        <p>A compliant trade rationale takes focused writing — the kind you kick down the road when the week fills up. I used to. Rationales would stack up. Compliance would slip.</p>
+        <p>Now the note gets drafted from the trade details in <strong>under a minute</strong>. I review, I edit, I sign. Nothing stacks up.</p>
+      </div>
+    </article>
+
+    <article class="story-card reveal story">
+      <div class="story-inner">
+        <div class="story-num">03</div>
+        <h2>Portfolio drift I catch in days, not quarters.</h2>
+        <p>Drift in a client portfolio used to go unseen until the next quarterly review — two or three months of misalignment before anyone noticed.</p>
+        <p>Every morning, a scan runs across all twelve households, flags anything above threshold, and hands me a ranked list by 7am. Issues get caught in <strong>days, not quarters</strong>.</p>
+      </div>
+    </article>
+  </div>
 </section>
 
-<!-- ────────── INVENTORY BUTTON ────────── -->
-<section class="inv-cta">
-  <a href="inventory.html">
-    <div class="inv-text">
-      <span class="inv-label">For the curious</span>
-      <span class="inv-title">The full technical inventory</span>
-      <span class="inv-sub">Every playbook, every specialist, every live connection. An interactive tour of what's running under the hood.</span>
-    </div>
-    <span class="inv-arrow">&rarr;</span>
-  </a>
+<!-- PHILOSOPHY -->
+<section class="wrap">
+  <div class="philosophy reveal">
+    <span class="q">&ldquo;</span>
+    <h3>Most advisors treat technology as overhead. I treat it as <em>a teammate</em>.</h3>
+    <p>Every repeatable part of my week — compliance work, trade documentation, portfolio monitoring, client correspondence, board memos — runs through a system designed to do the pattern work, so I can do the judgment work. Human attention is the scarce resource in wealth management. AI handles the rest.</p>
+  </div>
 </section>
 
-<!-- ────────── FOOTER ────────── -->
-<footer class="footer">
-  <strong>Peter Cecil Financial Planning</strong> &middot; Evanston, IL &middot; Built with Claude
+<!-- INVENTORY CTA -->
+<section class="wrap">
+  <div class="inv-cta-wrap reveal">
+    <a class="inv-cta" href="inventory.html">
+      <div class="inv-cta-inner">
+        <div class="inv-cta-text">
+          <span class="e">For the curious</span>
+          <div class="t">The full technical inventory</div>
+          <div class="s">Every playbook, every specialist, every live connection. An interactive tour of what's running under the hood.</div>
+        </div>
+        <div class="inv-cta-arrow">&rarr;</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <strong>Peter Cecil Financial Planning</strong><span class="sep">&middot;</span>Evanston, IL<span class="sep">&middot;</span>Built with Claude
 </footer>
 
+<script>
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.15,rootMargin:'0px 0px -80px 0px'});
+  document.querySelectorAll('.reveal,.stagger').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
