@@ -142,6 +142,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   <a href="#hero" title="Top"></a>
   <a href="#overview" title="Overview"></a>
   <a href="#skills" title="Skills"></a>
+  <a href="#agents" title="Agents"></a>
   <a href="#memory" title="Memory"></a>
   <a href="#infra" title="Infrastructure"></a>
 </nav>
@@ -150,7 +151,7 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 <section class="hero" id="hero">
   <div class="hero-badge"><span></span> System Online</div>
   <h1>Pete's AI System</h1>
-  <p>An interactive tour through the architecture, skills, memory, and infrastructure that power a fully AI-augmented wealth management practice.</p>
+  <p>An interactive tour through the architecture, skills, agents, memory, and infrastructure that power a fully AI-augmented wealth management practice and product portfolio.</p>
 </section>
 
 <!-- Part 1: Big Picture Overview -->
@@ -273,15 +274,25 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 <section class="section" id="skills">
   <div class="section-label">Part 2</div>
   <div class="section-title">Skill Library</div>
-  <p class="section-sub">60+ domain-specific instruction sets, organized by category. Click any skill to expand its details.</p>
+  <p class="section-sub">80+ domain-specific instruction sets across RIA operations, full-stack development, content, and system meta. Click any skill to expand.</p>
 
   <div class="cat-pills" id="catPills"></div>
   <div class="skills-grid" id="skillsGrid"></div>
 </section>
 
-<!-- Part 3: Memory System -->
-<section class="section" id="memory">
+<!-- Part 3: Agent Library -->
+<section class="section" id="agents">
   <div class="section-label">Part 3</div>
+  <div class="section-title">Agent Library</div>
+  <p class="section-sub">100+ specialized subagents spanning engineering, design, product, marketing, testing, and regional playbooks. Claude routes tasks to the right expert on demand.</p>
+
+  <div class="cat-pills" id="agentCatPills"></div>
+  <div class="skills-grid" id="agentsGrid"></div>
+</section>
+
+<!-- Part 4: Memory System -->
+<section class="section" id="memory">
+  <div class="section-label">Part 4</div>
   <div class="section-title">Memory System</div>
   <p class="section-sub">Two Obsidian vaults store persistent knowledge, fed by a Karpathy-inspired processing pipeline.</p>
 
@@ -349,9 +360,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   </div>
 </section>
 
-<!-- Part 4: Live Infrastructure -->
+<!-- Part 5: Live Infrastructure -->
 <section class="section" id="infra">
-  <div class="section-label">Part 4</div>
+  <div class="section-label">Part 5</div>
   <div class="section-title">Live Infrastructure</div>
   <p class="section-sub">Active projects, connected services, and autonomous scheduled tasks running the practice.</p>
 
@@ -360,24 +371,40 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--rose)"></span><span class="infra-label">Independent RIA / Peter Cecil FP</span><span class="infra-meta">breakaway in flight — ~$23M AUM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Paperclip Platform</span><span class="infra-meta">ECC Phase 1 — 15-agent hyperagent</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools (WHA)</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — 12 clients, $10.2M</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">live :3009 — stress testing</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Tax Modeler</span><span class="infra-meta">:3010 — next activation</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">ShelfIQ</span><span class="infra-meta">Shopify content optimization</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">SMB Scout / Plumbing Acq</span><span class="infra-meta">BizBuySell #2168981</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">bond portfolio analytics</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Advisor Workstation</span><span class="infra-meta">unified advisor cockpit</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Bonvoy Workstation</span><span class="infra-meta">travel + loyalty ops</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Paperclip module</span></div>
         <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">React Native + Expo</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Supabase + Paperclip</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">FitTrack</span><span class="infra-meta">React + Vite + Supabase</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Predictive Sniper</span><span class="infra-meta">Python + async</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Paperclip</span><span class="infra-meta">Multi-agent AI orchestration</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Grateful Bites</span><span class="infra-meta">Next.js + Vercel</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">JST Toolkit</span><span class="infra-meta">Deal sourcing + CIM analysis</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">Equity research pipeline</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Independent RIA</span><span class="infra-meta">Practice management tools</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">Bond portfolio analytics</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">Stress testing + risk analysis</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Vault Dashboard</span><span class="infra-meta">Personal systems dashboard</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">Self-improving AI agent framework</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Scoreboard Media</span><span class="infra-meta">Sale Forever AI engine</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Builder Rep</span><span class="infra-meta">Construction lead generation</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Costa Rica Itinerary</span><span class="infra-meta">Family trip planning app</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Hockey Dad Corner</span><span class="infra-meta">Jr. Trevians tooling</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">self-improving agent framework</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Meta Harness</span><span class="infra-meta">agent orchestration testbed</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">persistent knowledge server</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">equity research pipeline</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Trade Analyzer</span><span class="infra-meta">trade reconciliation + analytics</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Subscription Tracker</span><span class="infra-meta">recurring spend audit</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Vault Dashboard</span><span class="infra-meta">personal systems dashboard</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Port Dashboard</span><span class="infra-meta">dev port + service map</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Knowledge Monitor</span><span class="infra-meta">vault drift + health checks</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Gmail → Obsidian</span><span class="infra-meta">inbox-to-vault sync</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting notes ingestion</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">GDrive Renamer</span><span class="infra-meta">Drive normalization bot</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">token/tool-waste scanner</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">AI Portfolio</span><span class="infra-meta">portfolio site / case studies</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">AI System Tour</span><span class="infra-meta">this site</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Scoreboard Media</span><span class="infra-meta">advisor — Sale Forever AI</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Masters Calcutta / Draft</span><span class="infra-meta">tournament tooling</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Family Budget</span><span class="infra-meta">household cashflow tracker</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Production Readiness Analyzer</span><span class="infra-meta">pre-launch health checks</span></div>
       </div>
     </div>
 
@@ -386,10 +413,18 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       <div class="infra-block-header"><span class="icon">&#128268;</span> MCP Servers</div>
       <div class="infra-list">
         <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Gmail</span><span class="infra-meta">search, read, draft</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Drive</span><span class="infra-meta">search, fetch docs</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability, meetings</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Drive</span><span class="infra-meta">full Docs/Sheets/Slides API</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export, brand kit</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search + routing</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Morningstar</span><span class="infra-meta">Advisor Assist + research</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">entity graph, search, timeline</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">read/write second-brain + KB</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Supabase</span><span class="infra-meta">project mgmt, SQL, migrations</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Context7</span><span class="infra-meta">live library documentation</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">DeepWiki</span><span class="infra-meta">GitHub repo knowledge index</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">GitNexus</span><span class="infra-meta">code graph, impact, route maps</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">IDE</span><span class="infra-meta">diagnostics, code execution</span></div>
       </div>
     </div>
 
@@ -397,27 +432,32 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#9200;</span> Scheduled Tasks</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Morning Cockpit</span><span class="infra-meta">M-F 7:00 AM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Morning Dashboard</span><span class="infra-meta">M-F 7:00 AM</span></div>
         <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Sun 7:00 PM</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Token Waste Scanner</span><span class="infra-meta">Fri 8:00 PM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">Fri 8:00 PM</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">EOD Shutdown</span><span class="infra-meta">on demand — session end</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Gmail → Obsidian Sync</span><span class="infra-meta">hourly inbox pull</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting note ingest</span></div>
       </div>
     </div>
 
     <!-- GitHub -->
     <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub</div>
+      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub & Infra</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">45+ repositories</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Deployment</span><span class="infra-meta">Vercel + Railway</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL)</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">55+ repositories</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Frontend Deploy</span><span class="infra-meta">Vercel (Next.js + edge)</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Backend Deploy</span><span class="infra-meta">Railway (services + cron)</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL + RLS)</span></div>
         <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Machines</span><span class="infra-meta">2 dev environments</span></div>
+        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Workflows</span><span class="infra-meta">GitHub Actions + Claude Code CI</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <footer class="footer">
-  Pete's AI System Architecture &mdash; Built with Claude &mdash; April 2026
+  Pete's AI System Architecture &mdash; Built with Claude &mdash; Updated April 2026
 </footer>
 
 <script>
@@ -425,16 +465,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 const SKILLS = {
   "RIA / Finance": [
     {id:"adviceworks-client-summary",name:"AdviceWorks Client Summary",desc:"Turns AdviceWorks exports into a client-ready summary with highlights, changes, allocation, and next actions.",tag:"purple"},
-    {id:"compliance-manual-builder",name:"Compliance Manual Builder",desc:"Drafts sections of an RIA compliance manual (policies and procedures) tailored to the firm's specific structure, custody arrangements, and personnel.",tag:"rose"},
     {id:"compliance-sop-policy",name:"Compliance SOP Policy",desc:"Drafts an SOP/policy with steps, controls, evidence, and owner assignments for any workflow.",tag:"rose"},
     {id:"compliance-trade-rationale",name:"Compliance Trade Rationale",desc:"Drafts a compliant trade rationale / investment committee note documenting the decision and supporting analysis.",tag:"rose"},
-    {id:"custodian-setup-tracker",name:"Custodian Setup Tracker",desc:"Tracks the custodian setup and onboarding process (Fidelity primary, Altruist backup) for the new RIA.",tag:"amber"},
-    {id:"ria-registration-checklist",name:"RIA Registration Checklist",desc:"Creates a registration checklist and tracks progress through Form ADV, state filing, compliance manual, and regulatory approvals.",tag:"amber"},
     {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
-    {id:"breakaway-transition-plan",name:"Breakaway Transition Plan",desc:"Creates a phased breakaway transition plan with timelines, task ownership, and risk flags for leaving a broker-dealer.",tag:"amber"},
-    {id:"client-transition-letter",name:"Client Transition Letter",desc:"Drafts personalized client transition letters and communication sequences for an advisor moving from a BD to an independent RIA.",tag:"amber"},
-    {id:"roth-conversion-tracker",name:"Roth Conversion Tracker",desc:"Tracks and plans Roth conversion strategy for a partner with a large traditional IRA and a time-limited low-income window.",tag:"green"},
-    {id:"retirement-plan-setup",name:"Retirement Plan Setup",desc:"Guides design, vendor selection, and implementation of retirement plans (cash balance + 401k with profit sharing) for a small RIA.",tag:"green"}
+    {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"},
+    {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"}
   ],
   "Operations": [
     {id:"ops-billing-qa",name:"Billing QA",desc:"Reviews billing exports for exceptions — tiers, householding, missing accounts. Catches fee errors before they reach clients.",tag:"rose"},
@@ -446,7 +481,8 @@ const SKILLS = {
     {id:"ops-statement-extract",name:"Statement Extract",desc:"Extracts key data from custodian statements — values, activity, fees — for review and analysis.",tag:"cyan"},
     {id:"redtail-email-triage",name:"Redtail Email Triage",desc:"Triages a client email: classifies request type (ops/tax/planning/investments), drafts response, creates Redtail tasks.",tag:"purple"},
     {id:"redtail-meeting-notes",name:"Redtail Meeting Notes",desc:"Converts meeting notes into Redtail-ready artifacts: a Note summary, a Task list, and a client recap email.",tag:"purple"},
-    {id:"redtail-onboarding-checklist",name:"Redtail Onboarding Checklist",desc:"Creates a phased onboarding plan and Redtail task checklist for new client intake.",tag:"purple"}
+    {id:"redtail-onboarding-checklist",name:"Redtail Onboarding Checklist",desc:"Creates a phased onboarding plan and Redtail task checklist for new client intake.",tag:"purple"},
+    {id:"meeting-notes-to-crm-followup",name:"Meeting Notes → CRM",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
   ],
   "Planning": [
     {id:"planning-annual-review-packet",name:"Annual Review Packet",desc:"Builds an annual client review packet from notes and exports with polished formatting.",tag:"green"},
@@ -460,26 +496,53 @@ const SKILLS = {
   "Investments": [
     {id:"invest-fund-one-pager",name:"Fund One-Pager",desc:"Turns a fund/manager factsheet into a client-safe one-pager with key metrics and narrative.",tag:"cyan"},
     {id:"invest-holdings-delta",name:"Holdings Delta",desc:"Compares two holdings exports and produces a 'what changed' delta report with additions, removals, and weight shifts.",tag:"cyan"},
-    {id:"invest-risk-summary",name:"Risk Summary",desc:"Generates a plain-English risk summary from holdings/allocation covering drawdown, concentration, and stress scenarios.",tag:"rose"},
-    {id:"trade-rationale-note",name:"Trade Rationale Note",desc:"Drafts a compliant trade rationale / investment committee note with proposed trade details and documentation.",tag:"rose"},
-    {id:"wm-client-report",name:"WM: Client Report",desc:"Generates a client performance report with returns, allocation, and commentary.",tag:"purple"},
-    {id:"wm-client-review",name:"WM: Client Review",desc:"Prepares materials and agenda for a client review meeting.",tag:"purple"},
-    {id:"wm-financial-plan",name:"WM: Financial Plan",desc:"Builds or updates a comprehensive financial plan with projections and recommendations.",tag:"purple"},
-    {id:"wm-investment-proposal",name:"WM: Investment Proposal",desc:"Creates an investment proposal for a prospect with strategy, allocation, and fee schedule.",tag:"purple"},
-    {id:"wm-portfolio-rebalance",name:"WM: Portfolio Rebalance",desc:"Analyzes drift and generates rebalancing trades to return to target allocation.",tag:"amber"},
-    {id:"wm-tax-loss-harvesting",name:"WM: Tax-Loss Harvesting",desc:"Identifies tax-loss harvesting opportunities across portfolios with wash-sale awareness.",tag:"green"}
+    {id:"invest-risk-summary",name:"Risk Summary",desc:"Generates a plain-English risk summary from holdings/allocation covering drawdown, concentration, and stress scenarios.",tag:"rose"}
   ],
   "Business Dev": [
-    {id:"bd-intro-workflow",name:"BD Intro Workflow",desc:"Manages Mike's business development introduction workflow from prospect identification through warm handoff while staying within compliance guardrails.",tag:"amber"},
-    {id:"referral-nurture-drip",name:"Referral Nurture Drip",desc:"Generates a referral thank-you and nurture email sequence when an existing client makes an introduction.",tag:"green"},
     {id:"linkedin-content-creator",name:"LinkedIn Content Creator",desc:"Creates LinkedIn posts and content in the advisor's voice for thought leadership and business development.",tag:"cyan"},
-    {id:"new-client-onboarding-pipeline",name:"New Client Onboarding Pipeline",desc:"Creates a full onboarding pipeline for new clients from initial prospect meeting through first 90-day review.",tag:"amber"},
-    {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"}
+    {id:"content-repurpose",name:"Content Repurpose",desc:"Turns one piece of content into multiple platform-specific versions using brand voice and tone guidelines.",tag:"pink"}
   ],
-  "Development": [
-    {id:"mcp-builder",name:"MCP Builder",desc:"Guide for creating high-quality MCP servers that enable LLMs to interact with external services through well-designed tools.",tag:"purple"},
-    {id:"skill-creator",name:"Skill Creator",desc:"Creates new skills, modifies existing ones, runs evaluations, benchmarks performance with variance analysis.",tag:"purple"},
-    {id:"canvas-design",name:"Canvas Design",desc:"Creates beautiful visual art in .png and .pdf documents using design philosophy. Museum-quality output.",tag:"pink"}
+  "Dev — Frontend": [
+    {id:"next-best-practices",name:"Next.js Best Practices",desc:"File conventions, RSC boundaries, data patterns, async APIs, metadata, error handling, route handlers, image/font optimization.",tag:"cyan"},
+    {id:"next-cache-components",name:"Next.js 16 Cache Components",desc:"PPR, use cache directive, cacheLife, cacheTag, updateTag — partial prerendering patterns.",tag:"cyan"},
+    {id:"next-upgrade",name:"Next.js Upgrade",desc:"Upgrade Next.js to the latest version following official migration guides and codemods.",tag:"cyan"},
+    {id:"tailwind-css-patterns",name:"Tailwind CSS Patterns",desc:"Utility-first styling: responsive design, flexbox, grid, spacing, typography, and modern CSS best practices.",tag:"cyan"},
+    {id:"vercel-react-best-practices",name:"Vercel React Best Practices",desc:"React and Next.js performance optimization guidelines from Vercel Engineering.",tag:"cyan"},
+    {id:"vercel-composition-patterns",name:"React Composition Patterns",desc:"Compound components, render props, context providers — flexible component APIs that scale.",tag:"cyan"},
+    {id:"frontend-design",name:"Frontend Design",desc:"Distinctive, production-grade frontend interfaces. Avoids generic AI aesthetics with polished, creative code.",tag:"pink"},
+    {id:"typescript-advanced-types",name:"TypeScript Advanced Types",desc:"Generics, conditional types, mapped types, template literals, utility types for type-safe applications.",tag:"cyan"}
+  ],
+  "Dev — Backend": [
+    {id:"supabase",name:"Supabase",desc:"Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues — plus supabase-js / @supabase/ssr integration.",tag:"green"},
+    {id:"supabase-postgres-best-practices",name:"Postgres Best Practices",desc:"Postgres performance optimization: query tuning, schema design, RLS patterns from Supabase.",tag:"green"},
+    {id:"vitest",name:"Vitest",desc:"Fast unit testing: mocking, coverage, test filtering, fixtures. Jest-compatible API powered by Vite.",tag:"green"},
+    {id:"mcp-server",name:"MCP Server",desc:"Build Model Context Protocol servers that expose tools Claude can invoke across external services.",tag:"green"},
+    {id:"claude-memory-server",name:"Claude Memory Server",desc:"Persistent memory layer for Claude agents with semantic retrieval and structured entity storage.",tag:"green"},
+    {id:"claude-api",name:"Claude API / SDK",desc:"Build, debug, and optimize Claude API apps with Anthropic SDK. Includes prompt caching patterns.",tag:"green"}
+  ],
+  "Dev — Workflow": [
+    {id:"gstack",name:"Gstack",desc:"Headless browser for QA: navigate URLs, interact, verify state, diff before/after, annotated screenshots, responsive testing.",tag:"amber"},
+    {id:"autoresearch",name:"Autoresearch",desc:"Autonomous research loop: scope, metric, direction, verify. Iterates until goal is met.",tag:"amber"},
+    {id:"autoresearch-debug",name:"Autoresearch: Debug",desc:"Autonomous bug-hunting loop using scientific method. Finds ALL bugs, not just one.",tag:"amber"},
+    {id:"autoresearch-fix",name:"Autoresearch: Fix",desc:"Iteratively repairs errors until zero remain. One fix per iteration, atomic, auto-reverted on failure.",tag:"amber"},
+    {id:"autoresearch-security",name:"Autoresearch: Security",desc:"Autonomous security audit — STRIDE threat model + OWASP Top 10 + red-team adversarial personas.",tag:"amber"},
+    {id:"dep-audit",name:"Dependency Audit",desc:"Audit dependencies for security advisories, outdated versions, unused packages, license compliance.",tag:"amber"},
+    {id:"pr-prep",name:"PR Prep",desc:"Prepare a PR: review diff, write description with motivation, run checks, surface risks.",tag:"amber"},
+    {id:"eod-shutdown",name:"EOD Shutdown",desc:"End-of-day review: capture open loops, prep tomorrow, update project tracking, vault sync.",tag:"amber"},
+    {id:"full-output-enforcement",name:"Full Output Enforcement",desc:"Overrides default LLM truncation. Enforces complete code generation, bans placeholder patterns.",tag:"amber"},
+    {id:"loop",name:"Loop",desc:"Run a prompt or slash command on a recurring interval, or let the model self-pace iterations.",tag:"amber"},
+    {id:"schedule",name:"Schedule",desc:"Creates scheduled remote agents (triggers) that execute on cron. Powers the automation layer.",tag:"amber"},
+    {id:"skill-creator",name:"Skill Creator",desc:"Scaffold new skills with proper SKILL.md frontmatter, references, and assets folders.",tag:"purple"},
+    {id:"skill-router",name:"Skill Router",desc:"Meta-router that reads task context and loads only the matched skills. First call on every task.",tag:"purple"},
+    {id:"codex-rescue",name:"Codex Rescue",desc:"Delegate investigation, fix requests, or follow-up rescue work to the Codex rescue subagent.",tag:"purple"}
+  ],
+  "Content & Comms": [
+    {id:"meeting-prep",name:"Meeting Prep",desc:"Pre-meeting research and briefing — person/company research, email history, talking points.",tag:"pink"},
+    {id:"morning-dashboard",name:"Morning Dashboard",desc:"Start-of-day briefing — calendar, email summary, priorities, and open client needs.",tag:"pink"},
+    {id:"decision-drop",name:"Decision Drop",desc:"Quick decision capture into the decisions log with context, alternatives, and rationale.",tag:"pink"}
+  ],
+  "Accessibility": [
+    {id:"accessibility",name:"Accessibility Audit",desc:"Audit and improve web accessibility following WCAG 2.2: screen reader support, keyboard nav, color contrast.",tag:"rose"}
   ],
   "Documents": [
     {id:"docx",name:"Word Documents (.docx)",desc:"Comprehensive Word document creation, reading, editing, and manipulation with professional formatting.",tag:"cyan"},
@@ -488,13 +551,158 @@ const SKILLS = {
     {id:"pdf",name:"PDF Processing",desc:"PDF manipulation toolkit: extract text/tables, create new PDFs, merge, split, rotate, watermark, fill forms.",tag:"rose"}
   ],
   "Meta / System": [
-    {id:"meta-ria-router",name:"RIA Router",desc:"Routes ambiguous requests to the correct RIA skill pack across Redtail, AdviceWorks, planning, ops, or investments.",tag:"purple"},
-    {id:"meta-ask-3-then-output",name:"Ask 3 Then Output",desc:"Forces a maximum of 3 clarifying questions, then proceeds with TBDs. Minimizes back-and-forth.",tag:"cyan"},
-    {id:"decision-council",name:"Decision Council",desc:"Multi-perspective analysis framework that stress-tests decisions through a dynamically assembled panel of expert personas.",tag:"rose"},
     {id:"brain-mcp",name:"Brain MCP",desc:"Persistent knowledge brain for cross-session memory. Searches and writes knowledge about people, companies, projects, deals.",tag:"purple"},
-    {id:"schedule",name:"Schedule",desc:"Creates scheduled tasks that run on demand or automatically on an interval. Powers the automation layer.",tag:"amber"},
-    {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"},
-    {id:"meeting-notes-to-crm-followup",name:"Meeting Notes to CRM Follow-up",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
+    {id:"update-config",name:"Update Config",desc:"Configure Claude Code harness via settings.json. Wires automated behaviors, hooks, and lifecycle events.",tag:"purple"},
+    {id:"keybindings-help",name:"Keybindings Help",desc:"Customize keyboard shortcuts, chord bindings, and the submit key via ~/.claude/keybindings.json.",tag:"purple"},
+    {id:"simplify",name:"Simplify",desc:"Review changed code for reuse, quality, and efficiency, then fix any issues found.",tag:"purple"},
+    {id:"codex-setup",name:"Codex Setup",desc:"Check whether the local Codex CLI is ready and toggle the stop-time review gate.",tag:"purple"}
+  ]
+};
+
+// ── Agents Data ──
+const AGENTS = {
+  "Core": [
+    {id:"general-purpose",name:"General Purpose",desc:"Multi-step research and code search across the whole codebase when the right file isn't obvious."},
+    {id:"Explore",name:"Explore",desc:"Fast codebase explorer. Finds files, searches code, answers structural questions at 3 thoroughness levels."},
+    {id:"Plan",name:"Plan",desc:"Software architect. Designs implementation plans, identifies critical files, weighs architectural trade-offs."},
+    {id:"architect",name:"Architect",desc:"Senior architect for system-level design decisions, boundary definitions, and major refactors."},
+    {id:"code-reviewer",name:"Code Reviewer",desc:"Independent review of migrations, risky changes, and production-bound code."},
+    {id:"claude-code-guide",name:"Claude Code Guide",desc:"Answers questions about Claude Code, the Agent SDK, and the Anthropic API."}
+  ],
+  "Engineering": [
+    {id:"AI Engineer",name:"AI Engineer",desc:"ML model development, deployment, and production AI integration. Data pipelines, scalable AI features."},
+    {id:"Backend Architect",name:"Backend Architect",desc:"Scalable system design, database architecture, API development, cloud infrastructure."},
+    {id:"Frontend Developer",name:"Frontend Developer",desc:"Modern React/Vue/Angular, UI implementation, performance optimization."},
+    {id:"Senior Developer",name:"Senior Developer",desc:"Premium implementation — Laravel/Livewire/FluxUI, advanced CSS, Three.js integration."},
+    {id:"Mobile App Builder",name:"Mobile App Builder",desc:"Native iOS/Android + cross-platform frameworks (React Native, Expo, Flutter)."},
+    {id:"Rapid Prototyper",name:"Rapid Prototyper",desc:"Ultra-fast proof-of-concept and MVP creation with efficient tools and frameworks."},
+    {id:"DevOps Automator",name:"DevOps Automator",desc:"Infrastructure automation, CI/CD pipelines, cloud operations."},
+    {id:"Data Engineer",name:"Data Engineer",desc:"Lakehouse, ETL/ELT, Apache Spark, dbt, streaming systems, cloud data platforms."},
+    {id:"Security Engineer",name:"Security Engineer",desc:"Threat modeling, vulnerability assessment, secure code review, security architecture."},
+    {id:"Embedded Firmware Engineer",name:"Embedded Firmware",desc:"ESP32/ESP-IDF, ARM Cortex-M, STM32 HAL, Nordic nRF5, FreeRTOS, Zephyr."},
+    {id:"Incident Response Commander",name:"Incident Response",desc:"Production incident management, structured response coordination, post-mortem facilitation, SLO/SLI."},
+    {id:"Technical Writer",name:"Technical Writer",desc:"Developer docs, API references, READMEs, tutorials — clear, accurate, engaging."},
+    {id:"Solidity Smart Contract Engineer",name:"Solidity Engineer",desc:"EVM smart contracts, gas optimization, upgradeable proxies, DeFi protocol development."},
+    {id:"Threat Detection Engineer",name:"Threat Detection",desc:"SIEM rules, MITRE ATT&CK mapping, threat hunting, detection-as-code pipelines."}
+  ],
+  "Design": [
+    {id:"UI Designer",name:"UI Designer",desc:"Visual design systems, component libraries, pixel-perfect interfaces, accessible UI."},
+    {id:"UX Architect",name:"UX Architect",desc:"Technical architecture + UX. CSS systems and clear implementation guidance for developers."},
+    {id:"UX Researcher",name:"UX Researcher",desc:"User behavior analysis, usability testing, data-driven design insights."},
+    {id:"Brand Guardian",name:"Brand Guardian",desc:"Brand identity development, consistency maintenance, strategic positioning."},
+    {id:"Visual Storyteller",name:"Visual Storyteller",desc:"Compelling visual narratives and multimedia storytelling for brand experiences."},
+    {id:"Whimsy Injector",name:"Whimsy Injector",desc:"Adds personality, delight, playful moments to differentiate brand experiences."},
+    {id:"Image Prompt Engineer",name:"Image Prompt Engineer",desc:"Crafts detailed prompts for AI image generation that produce stunning, professional photography."},
+    {id:"Inclusive Visuals Specialist",name:"Inclusive Visuals",desc:"Defeats systemic AI bias to generate culturally accurate, affirming, non-stereotypical images."}
+  ],
+  "Product": [
+    {id:"Sprint Prioritizer",name:"Sprint Prioritizer",desc:"Agile sprint planning, feature prioritization, resource allocation, data-driven frameworks."},
+    {id:"Trend Researcher",name:"Trend Researcher",desc:"Market intelligence, emerging trend identification, competitive analysis, opportunity assessment."},
+    {id:"Feedback Synthesizer",name:"Feedback Synthesizer",desc:"Collects and synthesizes user feedback across channels into actionable product insights."},
+    {id:"Behavioral Nudge Engine",name:"Behavioral Nudge Engine",desc:"Adapts software interaction cadences to maximize user motivation and success."}
+  ],
+  "Project Mgmt": [
+    {id:"Senior Project Manager",name:"Senior Project Manager",desc:"Converts specs to tasks, remembers prior projects, realistic scope, exact spec adherence."},
+    {id:"Project Shepherd",name:"Project Shepherd",desc:"Cross-functional coordination, timeline management, stakeholder alignment, risk management."},
+    {id:"Studio Producer",name:"Studio Producer",desc:"High-level creative/technical orchestration, resource allocation, multi-project portfolio."},
+    {id:"Studio Operations",name:"Studio Operations",desc:"Day-to-day studio efficiency, process optimization, resource coordination."},
+    {id:"Experiment Tracker",name:"Experiment Tracker",desc:"A/B tests, feature experiments, hypothesis validation, rigorous analysis."},
+    {id:"Jira Workflow Steward",name:"Jira Workflow Steward",desc:"Enforces Jira-linked Git workflows, traceable commits, structured PRs, release-safe branching."}
+  ],
+  "Marketing": [
+    {id:"Content Creator",name:"Content Creator",desc:"Multi-platform editorial calendars, compelling copy, brand storytelling, engagement optimization."},
+    {id:"Growth Hacker",name:"Growth Hacker",desc:"Rapid user acquisition via data-driven experimentation. Viral loops, funnel optimization."},
+    {id:"SEO Specialist",name:"SEO Specialist",desc:"Technical SEO, content optimization, link authority, organic search growth."},
+    {id:"Social Media Strategist",name:"Social Media Strategist",desc:"LinkedIn, Twitter, professional platforms. Cross-platform campaigns and thought leadership."},
+    {id:"Instagram Curator",name:"Instagram Curator",desc:"Visual storytelling, community building, multi-format content optimization."},
+    {id:"TikTok Strategist",name:"TikTok Strategist",desc:"Viral content creation, algorithm optimization, community building."},
+    {id:"Twitter Engager",name:"Twitter Engager",desc:"Real-time engagement, thought leadership, authentic conversation participation."},
+    {id:"Reddit Community Builder",name:"Reddit Community Builder",desc:"Authentic community engagement, value-driven content, Reddit culture navigation."},
+    {id:"Developer Advocate",name:"Developer Advocate",desc:"Dev communities, technical content, DX optimization, platform adoption."},
+    {id:"App Store Optimizer",name:"App Store Optimizer",desc:"ASO, conversion rate optimization, app discoverability."},
+    {id:"Carousel Growth Engine",name:"Carousel Growth Engine",desc:"Autonomous TikTok/Instagram carousel generation and analytics feedback loop."}
+  ],
+  "Paid Media": [
+    {id:"Paid Media Auditor",name:"Paid Media Auditor",desc:"Google Ads, Microsoft Ads, Meta audits across 200+ checkpoints. Prioritized recommendations."},
+    {id:"PPC Campaign Strategist",name:"PPC Campaign Strategist",desc:"Large-scale search/shopping/PMax campaign architecture. Scales $10K → $10M+ monthly."},
+    {id:"Paid Social Strategist",name:"Paid Social Strategist",desc:"Full-funnel Meta, LinkedIn, TikTok, Pinterest, X, Snap social ad programs."},
+    {id:"Ad Creative Strategist",name:"Ad Creative Strategist",desc:"Ad copywriting, RSA optimization, asset group design, creative testing frameworks."},
+    {id:"Programmatic & Display Buyer",name:"Programmatic Display",desc:"GDN, DV360, trade desk platforms, ABM display via Demandbase/6Sense."},
+    {id:"Search Query Analyst",name:"Search Query Analyst",desc:"Search term analysis, negative keyword architecture, query-to-intent mapping."},
+    {id:"Tracking & Measurement Specialist",name:"Tracking & Measurement",desc:"GTM, GA4, Google Ads, Meta CAPI, LinkedIn Insight Tag, server-side tracking."}
+  ],
+  "Strategy & Ops": [
+    {id:"Finance Tracker",name:"Finance Tracker",desc:"Financial planning, budget management, business performance, cash flow optimization."},
+    {id:"Analytics Reporter",name:"Analytics Reporter",desc:"Dashboards, KPI tracking, statistical analysis, strategic decision support."},
+    {id:"Executive Summary Generator",name:"Executive Summary",desc:"Consultant-grade briefs using McKinsey SCQA, BCG Pyramid, Bain frameworks."},
+    {id:"Infrastructure Maintainer",name:"Infrastructure Maintainer",desc:"System reliability, performance optimization, cost efficiency, security hardening."},
+    {id:"Legal Compliance Checker",name:"Legal Compliance",desc:"Business ops, data handling, content compliance across multiple jurisdictions."},
+    {id:"Support Responder",name:"Support Responder",desc:"Multi-channel customer support, proactive care, issue resolution."},
+    {id:"Cultural Intelligence Strategist",name:"Cultural Intelligence",desc:"Detects invisible exclusion, ensures software resonates across intersectional identities."}
+  ],
+  "Testing & QA": [
+    {id:"Accessibility Auditor",name:"Accessibility Auditor",desc:"WCAG audits, assistive tech testing, inclusive design. Defaults to finding barriers."},
+    {id:"API Tester",name:"API Tester",desc:"Comprehensive API validation, performance testing, quality assurance across integrations."},
+    {id:"Performance Benchmarker",name:"Performance Benchmarker",desc:"Measures, analyzes, and improves system performance across apps and infrastructure."},
+    {id:"Reality Checker",name:"Reality Checker",desc:"Stops fantasy approvals. Evidence-based certification — defaults to 'NEEDS WORK'."},
+    {id:"Evidence Collector",name:"Evidence Collector",desc:"Screenshot-obsessed, fantasy-allergic QA. Requires visual proof for everything."},
+    {id:"Test Results Analyzer",name:"Test Results Analyzer",desc:"Test result evaluation, quality metrics, actionable insight generation."},
+    {id:"Tool Evaluator",name:"Tool Evaluator",desc:"Evaluates, tests, recommends tools and platforms for business and productivity."},
+    {id:"Workflow Optimizer",name:"Workflow Optimizer",desc:"Analyzes, optimizes, automates workflows across all business functions."}
+  ],
+  "Specialized Agents": [
+    {id:"Agents Orchestrator",name:"Agents Orchestrator",desc:"Autonomous pipeline manager. Orchestrates the entire multi-agent development workflow."},
+    {id:"Accounts Payable Agent",name:"Accounts Payable",desc:"Autonomous vendor payments, contractor invoices, recurring bills — crypto, fiat, stablecoins."},
+    {id:"Agentic Identity & Trust Architect",name:"Agent Identity & Trust",desc:"Identity, auth, and trust verification for autonomous agents in multi-agent environments."},
+    {id:"Identity Graph Operator",name:"Identity Graph Operator",desc:"Shared entity graph that multiple agents resolve against for canonical answers."},
+    {id:"Autonomous Optimization Architect",name:"Optimization Architect",desc:"Shadow-tests APIs for performance with strict financial and security guardrails."},
+    {id:"Blockchain Security Auditor",name:"Blockchain Security",desc:"Smart contract security audits, vulnerability detection, formal verification, exploit analysis."},
+    {id:"Compliance Auditor",name:"Compliance Auditor",desc:"SOC 2, ISO 27001, HIPAA, PCI-DSS audits from readiness through certification."},
+    {id:"Data Analytics Reporter",name:"Data Analytics Reporter",desc:"Raw data → actionable business insights. Dashboards, KPIs, visualization."},
+    {id:"Sales Data Extraction Agent",name:"Sales Data Extraction",desc:"Monitors Excel files and extracts MTD/YTD/Year End sales metrics for live reporting."},
+    {id:"Data Consolidation Agent",name:"Data Consolidation",desc:"Consolidates extracted sales data into live dashboards by territory, rep, and pipeline."},
+    {id:"Report Distribution Agent",name:"Report Distribution",desc:"Automates sales report distribution to reps based on territorial parameters."},
+    {id:"Model QA Specialist",name:"Model QA Specialist",desc:"Audits ML/statistical models end-to-end — documentation, replication, calibration, reporting."},
+    {id:"LSP/Index Engineer",name:"LSP/Index Engineer",desc:"Language Server Protocol + unified code intelligence through semantic indexing."},
+    {id:"ZK Steward",name:"ZK Steward",desc:"Zettelkasten knowledge-base steward in the spirit of Luhmann. Atomic notes, connectivity, validation."},
+    {id:"presentation-curator",name:"Presentation Curator",desc:"Proactively updates presentation slides, structure, styling, and weights."}
+  ],
+  "Game & Spatial": [
+    {id:"Game Designer",name:"Game Designer",desc:"GDD authorship, player psychology, economy balancing, gameplay loop design."},
+    {id:"Level Designer",name:"Level Designer",desc:"Spatial storytelling, layout theory, pacing architecture, encounter design."},
+    {id:"Narrative Designer",name:"Narrative Designer",desc:"Branching dialogue, lore architecture, environmental storytelling."},
+    {id:"Game Audio Engineer",name:"Game Audio Engineer",desc:"FMOD/Wwise, adaptive music, spatial audio, audio performance budgeting."},
+    {id:"Technical Artist",name:"Technical Artist",desc:"Art-to-engine pipeline. Shaders, VFX, LOD pipelines, performance budgeting."},
+    {id:"Unity Architect",name:"Unity Architect",desc:"ScriptableObjects, decoupled systems, single-responsibility components for scalable Unity."},
+    {id:"Unity Multiplayer Engineer",name:"Unity Multiplayer",desc:"Netcode for GameObjects, Relay/Lobby, client-server authority, lag compensation."},
+    {id:"Unity Shader Graph Artist",name:"Unity Shader Graph",desc:"Shader Graph, HLSL, URP/HDRP, custom pass authoring for real-time VFX."},
+    {id:"Unity Editor Tool Developer",name:"Unity Editor Tools",desc:"EditorWindows, PropertyDrawers, AssetPostprocessors, pipeline automation."},
+    {id:"Unreal Systems Engineer",name:"Unreal Systems",desc:"C++/Blueprint, Nanite, Lumen, Gameplay Ability System for AAA UE5 projects."},
+    {id:"Unreal Multiplayer Architect",name:"Unreal Multiplayer",desc:"Actor replication, GameMode/State, server-authoritative gameplay, network prediction."},
+    {id:"Unreal World Builder",name:"Unreal World Builder",desc:"UE5 World Partition, Landscape, procedural foliage, HLOD, level streaming."},
+    {id:"Unreal Technical Artist",name:"Unreal Technical Artist",desc:"Material Editor, Niagara VFX, PCG, art-to-engine pipeline for UE5."},
+    {id:"Godot Gameplay Scripter",name:"Godot Gameplay Scripter",desc:"GDScript 2.0, C# integration, node-based architecture, type-safe signals."},
+    {id:"Godot Multiplayer Engineer",name:"Godot Multiplayer",desc:"MultiplayerAPI, scene replication, ENet/WebRTC, RPCs, authority models."},
+    {id:"Godot Shader Developer",name:"Godot Shader Developer",desc:"Godot Shading Language, VisualShader, CanvasItem/Spatial shaders, post-processing."},
+    {id:"Roblox Systems Scripter",name:"Roblox Systems",desc:"Luau, client-server security, RemoteEvents, DataStore, module architecture."},
+    {id:"Roblox Experience Designer",name:"Roblox Experience",desc:"Engagement loops, DataStore progression, monetization (Passes, Products, UGC)."},
+    {id:"Roblox Avatar Creator",name:"Roblox Avatar Creator",desc:"UGC pipeline, avatar system, accessory rigging, Creator Marketplace submission."},
+    {id:"visionOS Spatial Engineer",name:"visionOS Spatial",desc:"Native visionOS, SwiftUI volumetric interfaces, Liquid Glass design."},
+    {id:"macOS Spatial/Metal Engineer",name:"macOS Metal/Spatial",desc:"Native Swift + Metal, high-perf 3D rendering, spatial computing for Mac and Vision Pro."},
+    {id:"XR Immersive Developer",name:"XR Immersive",desc:"WebXR, browser-based AR/VR/XR applications."},
+    {id:"XR Interface Architect",name:"XR Interface Architect",desc:"Spatial interaction design and interface strategy for immersive environments."},
+    {id:"XR Cockpit Interaction Specialist",name:"XR Cockpit",desc:"Immersive cockpit-based control systems for XR environments."},
+    {id:"Terminal Integration Specialist",name:"Terminal Integration",desc:"Terminal emulation, text rendering, SwiftTerm integration for Swift apps."}
+  ],
+  "China / Regional": [
+    {id:"Baidu SEO Specialist",name:"Baidu SEO",desc:"Chinese search ranking, Baidu ecosystem, ICP compliance, Chinese keyword research."},
+    {id:"Bilibili Content Strategist",name:"Bilibili",desc:"UP主 growth, danmaku culture, B站 algorithm, branded content strategy."},
+    {id:"China E-Commerce Operator",name:"China E-Commerce",desc:"Taobao, Tmall, Pinduoduo, JD. Live commerce, 618/Double 11 campaigns."},
+    {id:"Kuaishou Strategist",name:"Kuaishou",desc:"Lower-tier city markets, live commerce, grassroots audience growth on 快手."},
+    {id:"WeChat Official Account Manager",name:"WeChat OA",desc:"Content marketing, subscriber engagement, conversion optimization for WeChat OAs."},
+    {id:"WeChat Mini Program Developer",name:"WeChat Mini Program",desc:"小程序 with WXML/WXSS/WXS, WeChat API, payment, subscription messaging."},
+    {id:"Xiaohongshu Specialist",name:"Xiaohongshu",desc:"Lifestyle content, trend-driven strategies, aesthetic storytelling on 小红书."},
+    {id:"Zhihu Strategist",name:"Zhihu",desc:"Thought leadership, Q&A strategy, authentic expertise sharing on 知乎."}
   ]
 };
 
@@ -510,43 +718,59 @@ document.querySelectorAll('.step-tab').forEach(tab => {
   });
 });
 
-// ── Skills ──
-const catPills = document.getElementById('catPills');
-const skillsGrid = document.getElementById('skillsGrid');
-const categories = Object.keys(SKILLS);
-let activeCat = categories[0];
+// ── Generic library renderer (works for skills + agents) ──
+function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
+  const cats = Object.keys(data);
+  let active = cats[0];
 
-function renderPills() {
-  catPills.innerHTML = '';
-  categories.forEach(cat => {
-    const pill = document.createElement('div');
-    pill.className = 'cat-pill' + (cat === activeCat ? ' active' : '');
-    pill.innerHTML = `${cat}<span class="pill-count">${SKILLS[cat].length}</span>`;
-    pill.addEventListener('click', () => { activeCat = cat; renderPills(); renderSkills(); });
-    catPills.appendChild(pill);
-  });
+  function renderPills() {
+    pillsEl.innerHTML = '';
+    cats.forEach(cat => {
+      const pill = document.createElement('div');
+      pill.className = 'cat-pill' + (cat === active ? ' active' : '');
+      pill.innerHTML = `${cat}<span class="pill-count">${data[cat].length}</span>`;
+      pill.addEventListener('click', () => { active = cat; renderPills(); renderGrid(); });
+      pillsEl.appendChild(pill);
+    });
+  }
+
+  function renderGrid() {
+    gridEl.innerHTML = '';
+    data[active].forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'skill-card';
+      const tagClass = TAG_COLORS[item.tag || defaultTag];
+      const tagHtml = item.tag ? `<span class="skill-tag tag ${tagClass}">${item.id}</span>` : '';
+      card.innerHTML = `
+        ${tagHtml}
+        <h4>${item.name}</h4>
+        <p>${item.desc}</p>
+      `;
+      card.addEventListener('click', () => card.classList.toggle('open'));
+      gridEl.appendChild(card);
+    });
+  }
+
+  renderPills();
+  renderGrid();
 }
 
-function renderSkills() {
-  skillsGrid.innerHTML = '';
-  SKILLS[activeCat].forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'skill-card';
-    card.innerHTML = `
-      <span class="skill-tag tag ${TAG_COLORS[s.tag]}">${s.id}</span>
-      <h4>${s.name}</h4>
-      <p>${s.desc}</p>
-    `;
-    card.addEventListener('click', () => card.classList.toggle('open'));
-    skillsGrid.appendChild(card);
-  });
-}
+buildLibrary({
+  data: SKILLS,
+  pillsEl: document.getElementById('catPills'),
+  gridEl: document.getElementById('skillsGrid'),
+  defaultTag: 'purple'
+});
 
-renderPills();
-renderSkills();
+buildLibrary({
+  data: AGENTS,
+  pillsEl: document.getElementById('agentCatPills'),
+  gridEl: document.getElementById('agentsGrid'),
+  defaultTag: 'cyan'
+});
 
 // ── Section Nav highlight ──
-const sections = ['hero','overview','skills','memory','infra'];
+const sections = ['hero','overview','skills','agents','memory','infra'];
 const navLinks = document.querySelectorAll('.section-nav a');
 function updateNav() {
   const scrollY = window.scrollY + 200;
