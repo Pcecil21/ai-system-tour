@@ -121,6 +121,37 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 .infra-item span.infra-label{flex:1;color:var(--text)}
 .infra-item span.infra-meta{color:var(--dim);font-size:.75rem;font-family:monospace}
 
+/* ── Intro box ── */
+.intro-box{max-width:820px;margin:0 auto;padding:2rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.05));border:1px solid var(--border)}
+.intro-h{font-size:1.1rem;font-weight:600;margin-bottom:.75rem;color:var(--text)}
+.intro-p{color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:.9rem}
+.intro-p strong{color:var(--accent3);font-weight:600}
+.intro-p em{color:var(--text);font-style:normal;font-weight:500}
+.intro-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.intro-stat{text-align:center}
+.intro-stat strong{display:block;font-size:1.6rem;font-weight:700;color:var(--accent3);letter-spacing:-.02em}
+.intro-stat span{font-size:.75rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em}
+
+/* ── Jargon tooltip ── */
+.term{position:relative;color:var(--accent3);border-bottom:1px dashed var(--accent2);cursor:help}
+.term::after{content:attr(data-def);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#000;color:#fff;padding:.6rem .8rem;border-radius:6px;font-size:.78rem;line-height:1.5;white-space:normal;width:260px;opacity:0;pointer-events:none;transition:opacity .2s;border:1px solid var(--border);z-index:200;font-weight:400}
+.term:hover::after{opacity:1}
+.term::before{content:'';position:absolute;bottom:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#000;opacity:0;transition:opacity .2s;z-index:200}
+.term:hover::before{opacity:1}
+
+/* ── Step tab plain + technical ── */
+.step-tab .step-plain{font-weight:500;font-size:.9rem;display:block;line-height:1.3}
+.step-tab .step-tech{font-size:.7rem;color:var(--dim);font-weight:400;margin-top:.15rem;display:block}
+.step-tab.active .step-tech{color:var(--accent3)}
+
+/* ── Panel plain-English lead ── */
+.plain-lead{padding:.9rem 1rem;margin-bottom:1rem;border-left:3px solid var(--accent);background:rgba(99,102,241,.06);border-radius:4px;color:var(--text);font-size:.92rem;line-height:1.6}
+.plain-lead strong{color:var(--accent3)}
+
+/* ── Section plain-English subtitle ── */
+.section-plain{color:var(--text);font-size:1rem;margin-bottom:.5rem;font-weight:500}
+.section-tech{color:var(--dim);font-size:.78rem;margin-bottom:2rem;text-transform:uppercase;letter-spacing:.08em}
+
 /* ── Footer ── */
 .footer{text-align:center;padding:3rem 1.5rem;color:var(--dim);font-size:.78rem;border-top:1px solid var(--border);margin-top:3rem}
 
@@ -151,29 +182,45 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 <section class="hero" id="hero">
   <div class="hero-badge"><span></span> System Online</div>
   <h1>Pete's AI System</h1>
-  <p>An interactive tour through the architecture, skills, agents, memory, and infrastructure that power a fully AI-augmented wealth management practice and product portfolio.</p>
+  <p>A guided tour of how I use AI every day to run a wealth management practice, build software, and stay ahead of a very full plate.</p>
+</section>
+
+<!-- Plain-English Intro -->
+<section class="section" id="intro" style="padding-top:2rem;padding-bottom:2rem">
+  <div class="intro-box">
+    <h3 class="intro-h">What am I looking at?</h3>
+    <p class="intro-p">Claude is an AI assistant — like ChatGPT, but from Anthropic. On its own it's already useful. What makes this <strong>system</strong> is everything I've built <em>around</em> it: a library of specialized instructions (<strong>playbooks</strong>), a roster of expert personas (<strong>specialists</strong>), connections to my Gmail / Drive / Calendar / custodian data, and a memory layer so it knows my clients, projects, and priorities without me re-explaining every time.</p>
+    <p class="intro-p">The tour below walks through the pieces. If a word looks technical, hover the <span class="term">blue underlines</span> for a plain-English definition.</p>
+    <div class="intro-stats">
+      <div class="intro-stat"><strong>70+</strong><span>Playbooks</span></div>
+      <div class="intro-stat"><strong>110+</strong><span>Specialists</span></div>
+      <div class="intro-stat"><strong>13</strong><span>Live connections</span></div>
+      <div class="intro-stat"><strong>30+</strong><span>Active projects</span></div>
+    </div>
+  </div>
 </section>
 
 <!-- Part 1: Big Picture Overview -->
 <section class="section" id="overview">
   <div class="section-label">Part 1</div>
-  <div class="section-title">Big Picture Overview</div>
-  <p class="section-sub">How every request travels from interface to execution. Click each layer to explore.</p>
+  <div class="section-title">How it works, step by step</div>
+  <p class="section-sub">Walk through what happens when I ask Claude to do something. Click any step to dig in.</p>
 
   <div class="stepper-wrap">
     <div class="stepper-tabs" id="stepperTabs">
-      <div class="step-tab active" data-step="0"><span class="step-num">1</span> Interface Layer</div>
-      <div class="step-tab" data-step="1"><span class="step-num">2</span> Context Assembly</div>
-      <div class="step-tab" data-step="2"><span class="step-num">3</span> Skills Activate</div>
-      <div class="step-tab" data-step="3"><span class="step-num">4</span> Tools Execute</div>
-      <div class="step-tab" data-step="4"><span class="step-num">5</span> Memory Persists</div>
-      <div class="step-tab" data-step="5"><span class="step-num">6</span> Code Ships</div>
-      <div class="step-tab" data-step="6"><span class="step-num">7</span> Automation Runs</div>
+      <div class="step-tab active" data-step="0"><span class="step-num">1</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
+      <div class="step-tab" data-step="1"><span class="step-num">2</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
+      <div class="step-tab" data-step="2"><span class="step-num">3</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
+      <div class="step-tab" data-step="3"><span class="step-num">4</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
+      <div class="step-tab" data-step="4"><span class="step-num">5</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
+      <div class="step-tab" data-step="5"><span class="step-num">6</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
+      <div class="step-tab" data-step="6"><span class="step-num">7</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
     </div>
     <div class="step-content" id="stepContent">
       <!-- Panel 0 -->
       <div class="step-panel active" data-panel="0">
-        <h3>Interface Layer</h3>
+        <h3>How I talk to Claude</h3>
+        <div class="plain-lead">There are three ways I reach Claude depending on what I'm doing: <strong>chat in a browser</strong> for questions and writing, a <strong>coding terminal</strong> for building software, and a <strong>desktop app</strong> for everyday automation.</div>
         <p>Three entry points into the same underlying Claude system, each optimized for different workflows.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>Claude.ai</strong><span>Web and mobile chat. Long-form reasoning, research, brainstorming. Accessible anywhere.</span></div>
@@ -183,7 +230,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 1 -->
       <div class="step-panel" data-panel="1">
-        <h3>Context Assembly</h3>
+        <h3>What Claude knows before I say hi</h3>
+        <div class="plain-lead">Before I even type a message, Claude already knows my current priorities, recent work, project preferences, and which clients/projects I'm active on. I never have to start a conversation with "by the way, here's what I'm working on."</div>
         <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
         <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
           <strong style="font-size:.9rem;color:var(--accent3)">How Hooks Load Context Automatically</strong>
@@ -198,7 +246,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 2 -->
       <div class="step-panel" data-panel="2">
-        <h3>Skills Activate</h3>
+        <h3>It picks the right playbook</h3>
+        <div class="plain-lead">If I say "draft a trade rationale" or "build an onboarding checklist," Claude automatically grabs the matching <strong>playbook</strong> — think of it as a recipe card that tells Claude exactly how I like that kind of work done.</div>
         <p>Skills are keyword-triggered instruction sets. When you say "trade rationale" or "onboarding checklist," the matching skill loads domain-specific best practices, templates, and workflows.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>Trigger Words</strong><span>Each skill defines exact phrases that activate it. "Backdoor Roth," "billing QA," "LinkedIn post" each load different instruction packs.</span></div>
@@ -209,7 +258,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 3 -->
       <div class="step-panel" data-panel="3">
-        <h3>Tools Execute</h3>
+        <h3>It uses live tools, not just text</h3>
+        <div class="plain-lead">Claude doesn't just talk — it actually does things. It can read my email, check my calendar, pull documents from Google Drive, design in Canva, open web pages, run code, and create Word/Excel/PDF files. Each of these is a "live connection" it can use on my behalf.</div>
         <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
         <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
           <strong style="font-size:.9rem;color:var(--accent3)">What is MCP?</strong>
@@ -228,7 +278,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 4 -->
       <div class="step-panel" data-panel="4">
-        <h3>Memory Persists</h3>
+        <h3>It remembers what matters</h3>
+        <div class="plain-lead">When I close a conversation with Claude, it doesn't all disappear. Important decisions, lessons, and client context get saved into <strong>notebooks</strong> (digital binders of notes). Next time I talk to Claude, it can look things up instead of asking me to re-explain.</div>
         <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
         <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
           <strong style="font-size:.9rem;color:var(--accent3)">How Obsidian Works</strong>
@@ -247,8 +298,9 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 5 -->
       <div class="step-panel" data-panel="5">
-        <h3>Code Ships</h3>
-        <p>Claude Code manages a portfolio of 45+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
+        <h3>Finished work gets published</h3>
+        <div class="plain-lead">When Claude builds software for me, it doesn't just hand me files — it commits the work to GitHub (a code storage service), and the site or app goes live automatically on the internet. I can hand a link to anyone within minutes.</div>
+        <p>Claude Code manages a portfolio of 55+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>GitHub</strong><span>Pcecil21 account. 45+ repos spanning web apps, APIs, tools, and automation scripts across 2 machines.</span></div>
           <div class="detail-card"><strong>Vercel</strong><span>Frontend deployments. Next.js apps with instant previews, edge functions, analytics.</span></div>
@@ -258,7 +310,8 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
       </div>
       <!-- Panel 6 -->
       <div class="step-panel" data-panel="6">
-        <h3>Automation Runs</h3>
+        <h3>Some things run by themselves</h3>
+        <div class="plain-lead">I don't kick off every task manually. Every weekday morning a briefing lands in my inbox. Every Sunday night my projects get a health check. Every Friday evening a scan looks for waste. These run on a schedule, unattended.</div>
         <p>Scheduled tasks run autonomously on cron schedules, handling routine operations without manual intervention.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>Morning Cockpit</strong><span>Weekdays at 7:00 AM. Scans calendar, email, tasks. Produces a daily briefing with priorities and flags.</span></div>
@@ -270,31 +323,44 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   </div>
 </section>
 
-<!-- Part 2: Skill Library -->
+<!-- Part 2: Playbooks -->
 <section class="section" id="skills">
-  <div class="section-label">Part 2</div>
-  <div class="section-title">Skill Library</div>
-  <p class="section-sub">80+ domain-specific instruction sets across RIA operations, full-stack development, content, and system meta. Click any skill to expand.</p>
+  <div class="section-label">Part 2 &middot; Skill Library</div>
+  <div class="section-title">Playbooks</div>
+  <p class="section-sub">70+ recipe cards that tell Claude exactly how I want specific kinds of work done — from drafting a trade rationale to setting up a Next.js site. Browse by category.</p>
+
+  <div class="intro-box" style="padding:1rem 1.25rem;margin-bottom:1.5rem">
+    <details>
+      <summary style="cursor:pointer;color:var(--accent3);font-weight:600;font-size:.9rem">What are these words? (click to expand)</summary>
+      <div style="margin-top:.75rem;font-size:.85rem;color:var(--muted);line-height:1.7">
+        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Playbook (a.k.a. Skill)</strong> — a saved set of instructions. When I say a trigger phrase, Claude loads the instructions and does the work my way.</p>
+        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Specialist (a.k.a. Agent)</strong> — a focused AI persona with a single area of expertise. Claude can hand off a subtask to a specialist when it needs deeper knowledge.</p>
+        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Live connection (a.k.a. MCP)</strong> — a plug-in that lets Claude actually reach out to Gmail, Calendar, Drive, custodian data, etc.</p>
+        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Notebook (a.k.a. Vault)</strong> — a folder of markdown notes Claude can read from and write to. Its long-term memory.</p>
+        <p><strong style="color:var(--text)">Trigger (a.k.a. Hook)</strong> — a little automation that fires on a specific event, like every time I start a new Claude session.</p>
+      </div>
+    </details>
+  </div>
 
   <div class="cat-pills" id="catPills"></div>
   <div class="skills-grid" id="skillsGrid"></div>
 </section>
 
-<!-- Part 3: Agent Library -->
+<!-- Part 3: Specialists -->
 <section class="section" id="agents">
-  <div class="section-label">Part 3</div>
-  <div class="section-title">Agent Library</div>
-  <p class="section-sub">100+ specialized subagents spanning engineering, design, product, marketing, testing, and regional playbooks. Claude routes tasks to the right expert on demand.</p>
+  <div class="section-label">Part 3 &middot; Agent Library</div>
+  <div class="section-title">Specialists</div>
+  <p class="section-sub">100+ expert personas Claude can call on when a task needs deep focus — a backend engineer, a UX designer, a financial analyst, a QA tester, etc. Each has their own personality and approach.</p>
 
   <div class="cat-pills" id="agentCatPills"></div>
   <div class="skills-grid" id="agentsGrid"></div>
 </section>
 
-<!-- Part 4: Memory System -->
+<!-- Part 4: Memory -->
 <section class="section" id="memory">
-  <div class="section-label">Part 4</div>
-  <div class="section-title">Memory System</div>
-  <p class="section-sub">Two Obsidian vaults store persistent knowledge, fed by a Karpathy-inspired processing pipeline.</p>
+  <div class="section-label">Part 4 &middot; Memory System</div>
+  <div class="section-title">What Claude remembers</div>
+  <p class="section-sub">Two digital notebooks hold everything Claude needs to keep straight across days and projects — one for client data, one for ideas and decisions. New information gets filtered through a pipeline before it lands.</p>
 
   <div class="vaults-grid">
     <!-- Knowledge-Base Vault -->
@@ -360,11 +426,11 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   </div>
 </section>
 
-<!-- Part 5: Live Infrastructure -->
+<!-- Part 5: What's Running -->
 <section class="section" id="infra">
-  <div class="section-label">Part 5</div>
-  <div class="section-title">Live Infrastructure</div>
-  <p class="section-sub">Active projects, connected services, and autonomous scheduled tasks running the practice.</p>
+  <div class="section-label">Part 5 &middot; Live Infrastructure</div>
+  <div class="section-title">What's running right now</div>
+  <p class="section-sub">A live snapshot of the active projects, connected services, and background tasks that keep the practice — and a half-dozen side builds — moving without me touching them all day.</p>
 
   <div class="infra-section">
     <!-- Projects -->
@@ -468,6 +534,7 @@ const SKILLS = {
     {id:"compliance-sop-policy",name:"Compliance SOP Policy",desc:"Drafts an SOP/policy with steps, controls, evidence, and owner assignments for any workflow.",tag:"rose"},
     {id:"compliance-trade-rationale",name:"Compliance Trade Rationale",desc:"Drafts a compliant trade rationale / investment committee note documenting the decision and supporting analysis.",tag:"rose"},
     {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
+    {id:"estate-alignment-check",name:"Estate Alignment Check",desc:"Compares account beneficiary designations against estate document provisions and produces a structured gap report.",tag:"rose"},
     {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"},
     {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"}
   ],
@@ -502,7 +569,7 @@ const SKILLS = {
     {id:"linkedin-content-creator",name:"LinkedIn Content Creator",desc:"Creates LinkedIn posts and content in the advisor's voice for thought leadership and business development.",tag:"cyan"},
     {id:"content-repurpose",name:"Content Repurpose",desc:"Turns one piece of content into multiple platform-specific versions using brand voice and tone guidelines.",tag:"pink"}
   ],
-  "Dev — Frontend": [
+  "Websites & Apps": [
     {id:"next-best-practices",name:"Next.js Best Practices",desc:"File conventions, RSC boundaries, data patterns, async APIs, metadata, error handling, route handlers, image/font optimization.",tag:"cyan"},
     {id:"next-cache-components",name:"Next.js 16 Cache Components",desc:"PPR, use cache directive, cacheLife, cacheTag, updateTag — partial prerendering patterns.",tag:"cyan"},
     {id:"next-upgrade",name:"Next.js Upgrade",desc:"Upgrade Next.js to the latest version following official migration guides and codemods.",tag:"cyan"},
@@ -512,7 +579,7 @@ const SKILLS = {
     {id:"frontend-design",name:"Frontend Design",desc:"Distinctive, production-grade frontend interfaces. Avoids generic AI aesthetics with polished, creative code.",tag:"pink"},
     {id:"typescript-advanced-types",name:"TypeScript Advanced Types",desc:"Generics, conditional types, mapped types, template literals, utility types for type-safe applications.",tag:"cyan"}
   ],
-  "Dev — Backend": [
+  "Data & Servers": [
     {id:"supabase",name:"Supabase",desc:"Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues — plus supabase-js / @supabase/ssr integration.",tag:"green"},
     {id:"supabase-postgres-best-practices",name:"Postgres Best Practices",desc:"Postgres performance optimization: query tuning, schema design, RLS patterns from Supabase.",tag:"green"},
     {id:"vitest",name:"Vitest",desc:"Fast unit testing: mocking, coverage, test filtering, fixtures. Jest-compatible API powered by Vite.",tag:"green"},
@@ -520,7 +587,7 @@ const SKILLS = {
     {id:"claude-memory-server",name:"Claude Memory Server",desc:"Persistent memory layer for Claude agents with semantic retrieval and structured entity storage.",tag:"green"},
     {id:"claude-api",name:"Claude API / SDK",desc:"Build, debug, and optimize Claude API apps with Anthropic SDK. Includes prompt caching patterns.",tag:"green"}
   ],
-  "Dev — Workflow": [
+  "Builder Tools": [
     {id:"gstack",name:"Gstack",desc:"Headless browser for QA: navigate URLs, interact, verify state, diff before/after, annotated screenshots, responsive testing.",tag:"amber"},
     {id:"autoresearch",name:"Autoresearch",desc:"Autonomous research loop: scope, metric, direction, verify. Iterates until goal is met.",tag:"amber"},
     {id:"autoresearch-debug",name:"Autoresearch: Debug",desc:"Autonomous bug-hunting loop using scientific method. Finds ALL bugs, not just one.",tag:"amber"},
@@ -550,7 +617,7 @@ const SKILLS = {
     {id:"pptx",name:"Presentations (.pptx)",desc:"PowerPoint creation and editing — slide decks, pitch decks, speaker notes, layouts, and templates.",tag:"amber"},
     {id:"pdf",name:"PDF Processing",desc:"PDF manipulation toolkit: extract text/tables, create new PDFs, merge, split, rotate, watermark, fill forms.",tag:"rose"}
   ],
-  "Meta / System": [
+  "System Setup": [
     {id:"brain-mcp",name:"Brain MCP",desc:"Persistent knowledge brain for cross-session memory. Searches and writes knowledge about people, companies, projects, deals.",tag:"purple"},
     {id:"update-config",name:"Update Config",desc:"Configure Claude Code harness via settings.json. Wires automated behaviors, hooks, and lifecycle events.",tag:"purple"},
     {id:"keybindings-help",name:"Keybindings Help",desc:"Customize keyboard shortcuts, chord bindings, and the submit key via ~/.claude/keybindings.json.",tag:"purple"},
@@ -561,7 +628,7 @@ const SKILLS = {
 
 // ── Agents Data ──
 const AGENTS = {
-  "Core": [
+  "Core Helpers": [
     {id:"general-purpose",name:"General Purpose",desc:"Multi-step research and code search across the whole codebase when the right file isn't obvious."},
     {id:"Explore",name:"Explore",desc:"Fast codebase explorer. Finds files, searches code, answers structural questions at 3 thoroughness levels."},
     {id:"Plan",name:"Plan",desc:"Software architect. Designs implementation plans, identifies critical files, weighs architectural trade-offs."},
@@ -650,7 +717,7 @@ const AGENTS = {
     {id:"Tool Evaluator",name:"Tool Evaluator",desc:"Evaluates, tests, recommends tools and platforms for business and productivity."},
     {id:"Workflow Optimizer",name:"Workflow Optimizer",desc:"Analyzes, optimizes, automates workflows across all business functions."}
   ],
-  "Specialized Agents": [
+  "Specialized": [
     {id:"Agents Orchestrator",name:"Agents Orchestrator",desc:"Autonomous pipeline manager. Orchestrates the entire multi-agent development workflow."},
     {id:"Accounts Payable Agent",name:"Accounts Payable",desc:"Autonomous vendor payments, contractor invoices, recurring bills — crypto, fiat, stablecoins."},
     {id:"Agentic Identity & Trust Architect",name:"Agent Identity & Trust",desc:"Identity, auth, and trust verification for autonomous agents in multi-agent environments."},
