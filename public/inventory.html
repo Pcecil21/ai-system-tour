@@ -70,18 +70,6 @@ body{
 ::-webkit-scrollbar-thumb{background:var(--hairline);border-radius:10px;border:2px solid var(--bg)}
 ::-webkit-scrollbar-thumb:hover{background:var(--hairline-strong)}
 
-/* Film grain overlay */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  z-index:50;
-  pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-  opacity:.035;
-  mix-blend-mode:overlay;
-}
-
 /* Ambient orbs */
 .orb{position:fixed;pointer-events:none;z-index:-1;border-radius:999px;filter:blur(40px)}
 .orb-1{top:-15%;left:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,.12),transparent 60%)}
