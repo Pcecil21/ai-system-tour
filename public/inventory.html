@@ -383,10 +383,11 @@ body{
   background:var(--card);
   border:1px solid var(--hairline);
   cursor:pointer;
-  transition:all 600ms var(--ease-out);
+  transition:background 600ms var(--ease-out),border-color 600ms var(--ease-out),transform 600ms var(--ease-out);
   position:relative;
   overflow:hidden;
   box-shadow:inset 0 1px 0 var(--inset-hi);
+  contain:content;
 }
 .skill-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
@@ -478,7 +479,8 @@ body{
   border:1px solid var(--hairline);
   border-radius:28px;
   overflow:hidden;
-  transition:all 600ms var(--ease-out);
+  transition:border-color 600ms var(--ease-out);
+  contain:content;
 }
 .infra-block:hover{border-color:var(--hairline-strong)}
 .infra-block > .infra-block-header,
