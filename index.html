@@ -61,10 +61,34 @@ h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.035em;l
 .story p + p{margin-top:.9rem}
 .story strong{color:var(--text);font-weight:500}
 
-/* ── Outro ── */
-.outro{max-width:760px;margin:3rem auto 0;padding:2rem 1.5rem;text-align:center;color:var(--dim);font-size:.95rem;line-height:1.75}
-.outro a{color:var(--accent3);text-decoration:none;border-bottom:1px dashed var(--accent2);transition:color .2s}
-.outro a:hover{color:#fff;border-bottom-color:var(--accent)}
+/* ── Stats strip ── */
+.stats{max-width:760px;margin:0 auto;padding:0 1.5rem 2rem}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding:1.75rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.07),rgba(139,92,246,.04));border:1px solid var(--border)}
+.stat{text-align:center}
+.stat .num{display:block;font-size:1.9rem;font-weight:700;letter-spacing:-.02em;background:linear-gradient(135deg,#fff,var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1}
+.stat .lbl{display:block;font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.5rem;line-height:1.4}
+@media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr);gap:.75rem;padding:1.25rem} .stat .num{font-size:1.5rem}}
+
+/* ── Philosophy block ── */
+.philosophy{max-width:760px;margin:3rem auto 0;padding:2.5rem 2rem;border-radius:var(--radius);background:var(--card);border:1px solid var(--border)}
+.philosophy h3{font-size:1.25rem;font-weight:600;margin-bottom:1rem;letter-spacing:-.015em;color:var(--text)}
+.philosophy p{color:var(--muted);font-size:1rem;line-height:1.75}
+.philosophy p + p{margin-top:.9rem}
+.philosophy strong{color:var(--text);font-weight:500}
+
+/* ── Inventory button (big CTA-style card) ── */
+.inv-cta{max-width:760px;margin:2.5rem auto 0;padding:0 1.5rem}
+.inv-cta a{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.75rem 2rem;border-radius:var(--radius);background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(139,92,246,.08));border:1px solid var(--accent);color:var(--text);text-decoration:none;transition:all .3s;position:relative;overflow:hidden}
+.inv-cta a::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);transition:left .6s}
+.inv-cta a:hover{transform:translateY(-2px);border-color:var(--accent3);box-shadow:0 8px 30px rgba(99,102,241,.2)}
+.inv-cta a:hover::before{left:100%}
+.inv-cta .inv-text{flex:1}
+.inv-cta .inv-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--accent3);font-weight:600;display:block;margin-bottom:.4rem}
+.inv-cta .inv-title{font-size:1.2rem;font-weight:600;letter-spacing:-.015em;display:block;margin-bottom:.35rem}
+.inv-cta .inv-sub{font-size:.88rem;color:var(--muted);line-height:1.5}
+.inv-cta .inv-arrow{font-size:1.8rem;color:var(--accent3);flex-shrink:0;transition:transform .3s}
+.inv-cta a:hover .inv-arrow{transform:translateX(6px)}
+@media(max-width:640px){.inv-cta a{padding:1.5rem 1.25rem;gap:1rem} .inv-cta .inv-title{font-size:1.05rem}}
 
 /* ── Footer ── */
 .footer{text-align:center;padding:3rem 1.5rem 2.5rem;color:var(--dim);font-size:.75rem;border-top:1px solid var(--border);margin-top:4rem;letter-spacing:.02em}
@@ -87,6 +111,16 @@ h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.035em;l
     <div class="kicker"><span class="dot"></span> Peter Cecil Financial Planning</div>
     <h1>Modern wealth management, with AI on my side of the desk.</h1>
     <p class="lede">I'm an independent financial advisor building a practice where AI is the <strong>force multiplier</strong>, not the product. What follows are three places it's already doing real work — not demo work.</p>
+  </div>
+</section>
+
+<!-- ────────── STATS STRIP ────────── -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat"><span class="num">80+</span><span class="lbl">Playbooks<br>in the practice</span></div>
+    <div class="stat"><span class="num">110+</span><span class="lbl">AI specialists<br>on call</span></div>
+    <div class="stat"><span class="num">13</span><span class="lbl">Live connections<br>to my tools</span></div>
+    <div class="stat"><span class="num">7<span style="font-size:1.1rem">AM</span></span><span class="lbl">Morning briefing<br>lands</span></div>
   </div>
 </section>
 
@@ -118,9 +152,23 @@ h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:700;letter-spacing:-.035em;l
 
 </div>
 
-<!-- ────────── OUTRO ────────── -->
-<section class="outro wrap">
-  <p>If you want the full technical inventory — every playbook, every specialist, every connected service — <a href="inventory.html">it's over here</a>.</p>
+<!-- ────────── PHILOSOPHY ────────── -->
+<section class="philosophy">
+  <h3>The thing that's actually different.</h3>
+  <p>Most advisors treat technology as overhead — a line item, a compliance headache, a thing the <strong>younger guy</strong> at the firm understands. I treat it as a teammate. Every repeatable part of my week — the compliance work, the trade documentation, the portfolio monitoring, the client correspondence, the board memos — runs through a system I've designed to do the pattern work so I can do the judgment work.</p>
+  <p>That's the whole bet: human attention is the scarce resource in wealth management. AI handles the rest.</p>
+</section>
+
+<!-- ────────── INVENTORY BUTTON ────────── -->
+<section class="inv-cta">
+  <a href="inventory.html">
+    <div class="inv-text">
+      <span class="inv-label">For the curious</span>
+      <span class="inv-title">The full technical inventory</span>
+      <span class="inv-sub">Every playbook, every specialist, every live connection. An interactive tour of what's running under the hood.</span>
+    </div>
+    <span class="inv-arrow">&rarr;</span>
+  </a>
 </section>
 
 <!-- ────────── FOOTER ────────── -->
