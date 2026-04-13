@@ -2,5 +2,3 @@ iteration	timestamp	change	score	best	decision	notes
 0	2026-04-13	baseline	87	87	baseline	Average of landing + inventory Lighthouse Performance
 1	2026-04-13	async-load Google Fonts	94	94	keep	+7 — fonts out of critical path
 2	2026-04-13	remove film-grain overlay	99	99	keep	+5 — mix-blend-mode compositor saved
-3	2026-04-13	drop redundant orb blur	99	99	keep	+0 — equal score less code
-4	2026-04-13	contain:content on inventory cards	99	99	discard	+0 and added code — reverted
