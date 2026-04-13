@@ -529,11 +529,14 @@ body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 // ── Skills Data ──
 const SKILLS = {
   "RIA / Finance": [
+    {id:"the-helm",name:"The Helm",desc:"The advisor's always-on operating system. Default skill for all advisory work — client situations, planning questions, meeting prep, drafts, tax scenarios, portfolio analysis, compliance questions. If it touches a client's financial life, it routes through here.",tag:"purple"},
     {id:"adviceworks-client-summary",name:"AdviceWorks Client Summary",desc:"Turns AdviceWorks exports into a client-ready summary with highlights, changes, allocation, and next actions.",tag:"purple"},
+    {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
     {id:"compliance-sop-policy",name:"Compliance SOP Policy",desc:"Drafts an SOP/policy with steps, controls, evidence, and owner assignments for any workflow.",tag:"rose"},
     {id:"compliance-trade-rationale",name:"Compliance Trade Rationale",desc:"Drafts a compliant trade rationale / investment committee note documenting the decision and supporting analysis.",tag:"rose"},
-    {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
     {id:"estate-alignment-check",name:"Estate Alignment Check",desc:"Compares account beneficiary designations against estate document provisions and produces a structured gap report.",tag:"rose"},
+    {id:"extract-docs",name:"Extract Docs",desc:"Advisor-initiated extraction of structured data from scrubbed client documents. Human-in-the-loop — advisor reviews scrubbed docs before any API call.",tag:"cyan"},
+    {id:"review-inbox",name:"Review Inbox",desc:"Review and approve pending data imports in the ria-hub pipeline. Approve, correct, or reject each item — corrections teach the system.",tag:"cyan"},
     {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"},
     {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"}
   ],
@@ -551,6 +554,9 @@ const SKILLS = {
     {id:"meeting-notes-to-crm-followup",name:"Meeting Notes → CRM",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
   ],
   "Planning": [
+    {id:"tax-alpha-audit",name:"Tax Alpha Audit",desc:"Universal onboarding deliverable per RIA Hub lifecycle pipeline. Audits a household for tax-planning alpha opportunities across every tax-sensitive surface.",tag:"amber"},
+    {id:"roth-conversion-tracker",name:"Roth Conversion Tracker",desc:"Multi-year Roth conversion roadmap with fill-the-bracket modeling for any client with traditional IRA balances. Coordinates with RMD planning.",tag:"green"},
+    {id:"care-planning",name:"Care Planning",desc:"Comprehensive playbook for clients facing serious illness, cognitive decline, long-term care, or end-of-life planning. Ingests trusts, POAs, and financial statements.",tag:"rose"},
     {id:"planning-annual-review-packet",name:"Annual Review Packet",desc:"Builds an annual client review packet from notes and exports with polished formatting.",tag:"green"},
     {id:"planning-backdoor-roth",name:"Backdoor Roth",desc:"Creates step-by-step client instructions for backdoor or mega backdoor Roth conversions.",tag:"green"},
     {id:"planning-discovery-plan",name:"Discovery Plan",desc:"Turns discovery call notes/intake into a prioritized plan of attack with action items.",tag:"cyan"},
