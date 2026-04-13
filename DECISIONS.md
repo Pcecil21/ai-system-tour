@@ -7,11 +7,12 @@
 - **Rationale**: RIA breakaway is the actual business priority; the site should not consume hours better spent on compliance manual / Fidelity setup / client transition. A sharp reduction delivers a credible portfolio piece in ~1 evening; expansion can come later once the RIA is live and needs a top-of-funnel.
 - **Open items**:
   - CTA decision: **no CTA** until RIA is officially launched (pre-launch compliance stance)
-  - Ship window: **hold until RIA launch** — draft the content now, deploy later
-  - 3 outcome stories: **SELECTED — #2 compliance manual, #5 trade rationale, #1 portfolio catch** (in that narrative order, pending voice edit from Pete)
-  - Appendix page `/inventory.html` to absorb what's cut — not yet built
-  - Delete root `index.html` after Vercel-only deploy is confirmed — not yet done
-  - OG/Twitter meta tags, favicon, analytics — deferred until pre-launch polish
+  - Ship window: **SHIPPED 2026-04-13** — Pete overrode the hold and shipped live. Merge commit `acc4d53`.
+  - 3 outcome stories: **SELECTED — #2 compliance manual, #5 trade rationale, #1 portfolio catch** (live; voice edit can happen in-place anytime)
+  - Appendix page `/inventory.html` — **SHIPPED** — preserves full catalog
+  - OG + Twitter meta + SVG favicon — **SHIPPED**
+  - Delete root `index.html` after Vercel-only deploy is confirmed — not yet done (P3)
+  - Analytics — deferred (P2)
 
 ## Story Candidates (for later selection — pick 3)
 
