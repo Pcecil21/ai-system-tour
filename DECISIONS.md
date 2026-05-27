@@ -11,8 +11,8 @@
   - 3 outcome stories: **SELECTED — #2 compliance manual, #5 trade rationale, #1 portfolio catch** (live; voice edit can happen in-place anytime)
   - Appendix page `/inventory.html` — **SHIPPED** — preserves full catalog
   - OG + Twitter meta + SVG favicon — **SHIPPED**
-  - Delete root `index.html` after Vercel-only deploy is confirmed — not yet done (P3)
-  - Analytics — deferred (P2)
+  - Delete root `index.html` after Vercel-only deploy is confirmed — **DONE 2026-05-27** (commit 18d8018)
+  - Analytics — **DONE 2026-05-27** — Vercel Analytics script added to both public HTML pages (commit 68b5ebb); enable in Vercel dashboard to activate
 
 ## Story Candidates (for later selection — pick 3)
 
