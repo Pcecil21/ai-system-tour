@@ -1195,7 +1195,13 @@ document.querySelectorAll('.step-tab').forEach(tab => {
     panel.setAttribute('tabindex', '0');
   };
   tab.addEventListener('click', activate);
-  tab.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  tab.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); return; }
+    const tabs = [...document.querySelectorAll('.step-tab')];
+    const idx = tabs.indexOf(tab);
+    if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+  });
 });
 
 // ── Generic library renderer (works for skills + agents) ──
