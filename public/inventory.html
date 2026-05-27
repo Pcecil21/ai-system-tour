@@ -241,11 +241,6 @@ body{
 }
 .intro-stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-top:.5rem;display:block}
 
-/* Jargon tooltip */
-.term{position:relative;color:var(--lavender);border-bottom:1px dashed var(--purple);cursor:help}
-.term::after{content:attr(data-def);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--card-lift);color:var(--text);padding:.7rem .85rem;border-radius:10px;font-size:.78rem;line-height:1.5;white-space:normal;width:260px;opacity:0;pointer-events:none;transition:opacity 300ms var(--ease-out);border:1px solid var(--hairline);box-shadow:0 12px 30px rgba(0,0,0,.5);z-index:200;font-weight:400}
-.term:hover::after{opacity:1}
-
 /* Stepper */
 .stepper-wrap{display:flex;gap:2rem;flex-wrap:wrap}
 .stepper-tabs{display:flex;flex-direction:column;gap:.35rem;min-width:260px}
