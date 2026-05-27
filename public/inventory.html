@@ -751,6 +751,7 @@ body{
 
   <div class="cat-pills" id="catPills"></div>
   <div class="skills-grid" id="skillsGrid"></div>
+  <span id="skillsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
 </section>
 
 <!-- Part 3: Specialists -->
@@ -761,6 +762,7 @@ body{
 
   <div class="cat-pills" id="agentCatPills"></div>
   <div class="skills-grid" id="agentsGrid"></div>
+  <span id="agentsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
 </section>
 
 <!-- Part 4: Memory -->
@@ -1205,7 +1207,7 @@ document.querySelectorAll('.step-tab').forEach(tab => {
 });
 
 // ── Generic library renderer (works for skills + agents) ──
-function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
+function buildLibrary({data, pillsEl, gridEl, statusEl, defaultTag}) {
   const cats = Object.keys(data);
   let active = cats[0];
 
@@ -1226,6 +1228,7 @@ function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
 
   function renderGrid() {
     gridEl.innerHTML = '';
+    if (statusEl) statusEl.textContent = `Showing ${data[active].length} items in ${active}`;
     data[active].forEach(item => {
       const card = document.createElement('div');
       card.className = 'skill-card';
@@ -1254,6 +1257,7 @@ buildLibrary({
   data: SKILLS,
   pillsEl: document.getElementById('catPills'),
   gridEl: document.getElementById('skillsGrid'),
+  statusEl: document.getElementById('skillsStatus'),
   defaultTag: 'purple'
 });
 
@@ -1261,6 +1265,7 @@ buildLibrary({
   data: AGENTS,
   pillsEl: document.getElementById('agentCatPills'),
   gridEl: document.getElementById('agentsGrid'),
+  statusEl: document.getElementById('agentsStatus'),
   defaultTag: 'cyan'
 });
 
