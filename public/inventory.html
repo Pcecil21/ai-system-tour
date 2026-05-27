@@ -609,18 +609,18 @@ body{
   <p class="section-sub">Walk through what happens when I ask Claude to do something. Click any step to dig in.</p>
 
   <div class="stepper-wrap">
-    <div class="stepper-tabs" id="stepperTabs">
-      <div class="step-tab active" data-step="0"><span class="step-num">1</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
-      <div class="step-tab" data-step="1"><span class="step-num">2</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
-      <div class="step-tab" data-step="2"><span class="step-num">3</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
-      <div class="step-tab" data-step="3"><span class="step-num">4</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
-      <div class="step-tab" data-step="4"><span class="step-num">5</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
-      <div class="step-tab" data-step="5"><span class="step-num">6</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
-      <div class="step-tab" data-step="6"><span class="step-num">7</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
+    <div class="stepper-tabs" id="stepperTabs" role="tablist">
+      <div class="step-tab active" data-step="0" id="step-tab-0" aria-controls="step-panel-0"><span class="step-num">1</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
+      <div class="step-tab" data-step="1" id="step-tab-1" aria-controls="step-panel-1"><span class="step-num">2</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
+      <div class="step-tab" data-step="2" id="step-tab-2" aria-controls="step-panel-2"><span class="step-num">3</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
+      <div class="step-tab" data-step="3" id="step-tab-3" aria-controls="step-panel-3"><span class="step-num">4</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
+      <div class="step-tab" data-step="4" id="step-tab-4" aria-controls="step-panel-4"><span class="step-num">5</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
+      <div class="step-tab" data-step="5" id="step-tab-5" aria-controls="step-panel-5"><span class="step-num">6</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
+      <div class="step-tab" data-step="6" id="step-tab-6" aria-controls="step-panel-6"><span class="step-num">7</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
     </div>
     <div class="step-content" id="stepContent">
       <!-- Panel 0 -->
-      <div class="step-panel active" data-panel="0">
+      <div class="step-panel active" data-panel="0" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0">
         <h3>How I talk to Claude</h3>
         <div class="plain-lead">There are three ways I reach Claude depending on what I'm doing: <strong>chat in a browser</strong> for questions and writing, a <strong>coding terminal</strong> for building software, and a <strong>desktop app</strong> for everyday automation.</div>
         <p>Three entry points into the same underlying Claude system, each optimized for different workflows.</p>
@@ -631,7 +631,7 @@ body{
         </div>
       </div>
       <!-- Panel 1 -->
-      <div class="step-panel" data-panel="1">
+      <div class="step-panel" data-panel="1" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" aria-hidden="true">
         <h3>What Claude knows before I say hi</h3>
         <div class="plain-lead">Before I even type a message, Claude already knows my current priorities, recent work, project preferences, and which clients/projects I'm active on. I never have to start a conversation with "by the way, here's what I'm working on."</div>
         <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
@@ -647,7 +647,7 @@ body{
         </div>
       </div>
       <!-- Panel 2 -->
-      <div class="step-panel" data-panel="2">
+      <div class="step-panel" data-panel="2" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" aria-hidden="true">
         <h3>It picks the right playbook</h3>
         <div class="plain-lead">If I say "draft a trade rationale" or "build an onboarding checklist," Claude automatically grabs the matching <strong>playbook</strong> — think of it as a recipe card that tells Claude exactly how I like that kind of work done.</div>
         <p>Skills are keyword-triggered instruction sets. When you say "trade rationale" or "onboarding checklist," the matching skill loads domain-specific best practices, templates, and workflows.</p>
@@ -659,7 +659,7 @@ body{
         </div>
       </div>
       <!-- Panel 3 -->
-      <div class="step-panel" data-panel="3">
+      <div class="step-panel" data-panel="3" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" aria-hidden="true">
         <h3>It uses live tools, not just text</h3>
         <div class="plain-lead">Claude doesn't just talk — it actually does things. It can read my email, check my calendar, pull documents from Google Drive, design in Canva, open web pages, run code, and create Word/Excel/PDF files. Each of these is a "live connection" it can use on my behalf.</div>
         <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
@@ -679,7 +679,7 @@ body{
         </div>
       </div>
       <!-- Panel 4 -->
-      <div class="step-panel" data-panel="4">
+      <div class="step-panel" data-panel="4" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" aria-hidden="true">
         <h3>It remembers what matters</h3>
         <div class="plain-lead">When I close a conversation with Claude, it doesn't all disappear. Important decisions, lessons, and client context get saved into <strong>notebooks</strong> (digital binders of notes). Next time I talk to Claude, it can look things up instead of asking me to re-explain.</div>
         <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
@@ -699,7 +699,7 @@ body{
         </div>
       </div>
       <!-- Panel 5 -->
-      <div class="step-panel" data-panel="5">
+      <div class="step-panel" data-panel="5" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" aria-hidden="true">
         <h3>Finished work gets published</h3>
         <div class="plain-lead">When Claude builds software for me, it doesn't just hand me files — it commits the work to GitHub (a code storage service), and the site or app goes live automatically on the internet. I can hand a link to anyone within minutes.</div>
         <p>Claude Code manages a portfolio of 55+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
@@ -711,7 +711,7 @@ body{
         </div>
       </div>
       <!-- Panel 6 -->
-      <div class="step-panel" data-panel="6">
+      <div class="step-panel" data-panel="6" id="step-panel-6" role="tabpanel" aria-labelledby="step-tab-6" aria-hidden="true">
         <h3>Some things run by themselves</h3>
         <div class="plain-lead">I don't kick off every task manually. Every weekday morning a briefing lands in my inbox. Every Sunday night my projects get a health check. Every Friday evening a scan looks for waste. These run on a schedule, unattended.</div>
         <p>Scheduled tasks run autonomously on cron schedules, handling routine operations without manual intervention.</p>
@@ -1181,10 +1181,12 @@ document.querySelectorAll('.step-tab').forEach(tab => {
   tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
   const activate = () => {
     document.querySelectorAll('.step-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.step-panel').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-hidden', 'true'); });
     tab.classList.add('active');
     tab.setAttribute('aria-selected', 'true');
-    document.querySelector(`.step-panel[data-panel="${tab.dataset.step}"]`).classList.add('active');
+    const panel = document.querySelector(`.step-panel[data-panel="${tab.dataset.step}"]`);
+    panel.classList.add('active');
+    panel.setAttribute('aria-hidden', 'false');
   };
   tab.addEventListener('click', activate);
   tab.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
