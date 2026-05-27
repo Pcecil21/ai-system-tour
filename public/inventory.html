@@ -623,7 +623,7 @@ body{
     </div>
     <div class="step-content" id="stepContent">
       <!-- Panel 0 -->
-      <div class="step-panel active" data-panel="0" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0">
+      <div class="step-panel active" data-panel="0" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0" tabindex="0">
         <h3>How I talk to Claude</h3>
         <div class="plain-lead">There are three ways I reach Claude depending on what I'm doing: <strong>chat in a browser</strong> for questions and writing, a <strong>coding terminal</strong> for building software, and a <strong>desktop app</strong> for everyday automation.</div>
         <p>Three entry points into the same underlying Claude system, each optimized for different workflows.</p>
@@ -1184,12 +1184,13 @@ document.querySelectorAll('.step-tab').forEach(tab => {
   tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
   const activate = () => {
     document.querySelectorAll('.step-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-    document.querySelectorAll('.step-panel').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-hidden', 'true'); });
+    document.querySelectorAll('.step-panel').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-hidden', 'true'); p.setAttribute('tabindex', '-1'); });
     tab.classList.add('active');
     tab.setAttribute('aria-selected', 'true');
     const panel = document.querySelector(`.step-panel[data-panel="${tab.dataset.step}"]`);
     panel.classList.add('active');
     panel.setAttribute('aria-hidden', 'false');
+    panel.setAttribute('tabindex', '0');
   };
   tab.addEventListener('click', activate);
   tab.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
