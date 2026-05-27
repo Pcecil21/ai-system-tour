@@ -1208,6 +1208,8 @@ function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
     data[active].forEach(item => {
       const card = document.createElement('div');
       card.className = 'skill-card';
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'button');
       const tagClass = TAG_COLORS[item.tag || defaultTag];
       const tagHtml = item.tag ? `<span class="skill-tag tag ${tagClass}">${item.id}</span>` : '';
       card.innerHTML = `
@@ -1215,7 +1217,9 @@ function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
         <h4>${item.name}</h4>
         <p>${item.desc}</p>
       `;
-      card.addEventListener('click', () => card.classList.toggle('open'));
+      const toggle = () => card.classList.toggle('open');
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
       gridEl.appendChild(card);
     });
   }
