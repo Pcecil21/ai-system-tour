@@ -555,10 +555,13 @@ footer .sep{color:var(--dim);margin:0 .5rem}
   .reveal,.stagger > *{opacity:1;transform:none;filter:none}
 }
 :focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:3px}
+.skip-link{position:absolute;top:-100%;left:1rem;padding:.5rem 1rem;background:var(--indigo);color:#fff;border-radius:0 0 6px 6px;font-size:.875rem;font-weight:500;text-decoration:none;z-index:9999}
+.skip-link:focus{top:0}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- Ambient orbs -->
 <div class="orb orb-1" aria-hidden="true"></div>
@@ -571,7 +574,7 @@ footer .sep{color:var(--dim);margin:0 .5rem}
   <a class="inv-link" href="inventory.html">The system <span class="ar" aria-hidden="true">&rarr;</span></a>
 </nav>
 
-<main>
+<main id="main-content">
 <!-- HERO -->
 <section class="hero wrap">
   <div class="reveal">
