@@ -1201,8 +1201,12 @@ function buildLibrary({data, pillsEl, gridEl, defaultTag}) {
     cats.forEach(cat => {
       const pill = document.createElement('div');
       pill.className = 'cat-pill' + (cat === active ? ' active' : '');
+      pill.setAttribute('tabindex', '0');
+      pill.setAttribute('role', 'button');
       pill.innerHTML = `${cat}<span class="pill-count">${data[cat].length}</span>`;
-      pill.addEventListener('click', () => { active = cat; renderPills(); renderGrid(); });
+      const select = () => { active = cat; renderPills(); renderGrid(); };
+      pill.addEventListener('click', select);
+      pill.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
       pillsEl.appendChild(pill);
     });
   }
