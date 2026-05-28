@@ -1106,6 +1106,10 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
         const url = URL.createObjectURL(f);
         this._mountVideo(url);
       });
+
+      // Auto-mount permanent video if src attribute is present
+      const permanentSrc = this.getAttribute('src');
+      if (permanentSrc) this._mountVideo(permanentSrc);
     }
 
     _mountVideo(url){
