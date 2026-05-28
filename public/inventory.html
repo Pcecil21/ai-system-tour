@@ -3,655 +3,678 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Pete's AI System &middot; Technical Inventory</title>
-<meta name="description" content="The full inventory of playbooks, specialists, live connections, and infrastructure behind Pete Cecil's AI-augmented wealth management practice.">
+<title>Under the hood &middot; Blue Line Advisors</title>
+<meta name="description" content="The full inventory of playbooks, specialists, live connections, and infrastructure behind Pete Cecil's AI-augmented practice at Blue Line Advisors.">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/inventory">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pete Cecil &middot; AI in wealth management">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/inventory">
-<meta property="og:title" content="Pete's AI System &middot; Technical Inventory">
+<meta property="og:title" content="Under the hood &middot; Blue Line Advisors">
 <meta property="og:description" content="Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pete's AI System &middot; Technical Inventory">
+<meta name="twitter:title" content="Under the hood &middot; Blue Line Advisors">
 <meta name="twitter:description" content="Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.">
-<meta name="theme-color" content="#050506">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Pete's AI System · Technical Inventory","url":"https://ai-system-tour.vercel.app/inventory","description":"Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.","isPartOf":{"@type":"WebSite","url":"https://ai-system-tour.vercel.app/"}}</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%236366f1'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='system-ui' font-size='16' font-weight='600' fill='%23fff'%3EP%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#efeee8">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Under the hood · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/inventory","description":"Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.","isPartOf":{"@type":"WebSite","url":"https://ai-system-tour.vercel.app/"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231a1c14'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='18' font-weight='700' fill='%23efeee8'%3EP%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  color-scheme:dark;
-  --bg:#050506;
-  --surface:rgba(255,255,255,.025);
-  --card:#0c0c10;
-  --card-lift:#111116;
-  --hairline:rgba(255,255,255,.06);
-  --hairline-strong:rgba(255,255,255,.11);
-  --inset-hi:rgba(255,255,255,.08);
-  --indigo:#6366f1;
-  --purple:#8b5cf6;
-  --lavender:#b8a7f2;
-  --text:#eeeef2;
-  --muted:#8a8a94;
-  --dim:#4a4a54;
-  --green:#22c55e;--amber:#f59e0b;--rose:#f43f5e;--cyan:#06b6d4;--pink:#ec4899;
-  /* legacy aliases — preserved so inline styles continue to work */
-  --border:var(--hairline);
-  --glass:var(--surface);
-  --glass2:rgba(255,255,255,.05);
-  --accent:var(--indigo);
-  --accent2:var(--purple);
-  --accent3:var(--lavender);
-  --radius:22px;
-  --radius-sm:14px;
-  --sans:'Geist',-apple-system,system-ui,sans-serif;
+  /* Palette — same as homepage (cream / ink / olive) */
+  --paper:#efeee8;
+  --paper-2:#e6e4d8;
+  --ink:#1a1c14;
+  --ink-2:#3d3a34;
+  --muted:#7a7568;
+  --dim:#a8a395;
+  --hairline:rgba(26,28,20,.14);
+  --hairline-soft:rgba(26,28,20,.07);
+  --hairline-strong:rgba(26,28,20,.28);
+  --accent:#5e6b2f;
+  --accent-ink:#fffaf2;
+
+  --sans:'Inter Tight',-apple-system,system-ui,'Helvetica Neue',sans-serif;
   --serif:'Instrument Serif','Times New Roman',serif;
-  --mono:'Geist Mono','JetBrains Mono','Fira Code',monospace;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+
   --ease-out:cubic-bezier(.32,.72,0,1);
   --ease-expo:cubic-bezier(.16,1,.3,1);
-  --ease-spring:cubic-bezier(.34,1.56,.64,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:var(--paper);
+  color:var(--ink);
   font-family:var(--sans);
   font-weight:400;
-  font-size:16px;
-  line-height:1.55;
-  letter-spacing:-.011em;
+  font-size:17px;
+  line-height:1.5;
+  letter-spacing:-.006em;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   overflow-x:hidden;
   min-height:100dvh;
 }
-::selection{background:var(--indigo);color:#fff}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--hairline);border-radius:10px;border:2px solid var(--bg)}
-::-webkit-scrollbar-thumb:hover{background:var(--hairline-strong)}
+::selection{background:var(--ink);color:var(--paper)}
 
-/* Ambient orbs */
-.orb{position:fixed;pointer-events:none;z-index:-1;border-radius:999px}
-.orb-1{top:-15%;left:-10%;width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,.12),transparent 60%)}
-.orb-2{bottom:-20%;right:-15%;width:900px;height:900px;background:radial-gradient(circle,rgba(139,92,246,.08),transparent 65%)}
-
-/* Floating pill nav */
+/* ─────────────────────────── NAV ─────────────────────────── */
 .nav{
-  position:fixed;
-  top:1.5rem;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:60;
-  display:flex;
-  align-items:center;
-  gap:1.25rem;
-  padding:.4rem .5rem .4rem 1.25rem;
-  background:rgba(10,10,13,.65);
-  -webkit-backdrop-filter:blur(20px) saturate(1.4);
-  backdrop-filter:blur(20px) saturate(1.4);
-  border:1px solid var(--hairline);
-  border-radius:999px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 12px 40px rgba(0,0,0,.4);
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.75rem;
+  font-size:.82rem;font-weight:500;
+  letter-spacing:-.005em;
+  mix-blend-mode:difference;
+  color:#f1ece2;
 }
-.nav .mark{font-size:.78rem;font-weight:500;letter-spacing:-.01em;color:var(--text);white-space:nowrap}
-.nav .mark .dim-t{color:var(--muted);font-weight:400}
-.nav .back-link{
-  display:inline-flex;
-  align-items:center;
-  gap:.55rem;
-  padding:.4rem .95rem .4rem .45rem;
-  font-size:.78rem;
-  font-weight:500;
-  color:var(--text);
-  text-decoration:none;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:999px;
-  transition:all 500ms var(--ease-out);
+.nav a{color:inherit;text-decoration:none}
+.nav .mark{display:flex;align-items:baseline;gap:.55rem}
+.nav .mark .frac{color:#a8a395;font-weight:400}
+.nav .right{display:flex;align-items:center;gap:1.5rem}
+.nav .right .back{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.35rem .75rem;
+  border:1px solid rgba(241,236,226,.5);border-radius:999px;
+  transition:all .4s var(--ease-out);
 }
-.nav .back-link:hover{border-color:var(--hairline-strong);background:rgba(255,255,255,.04)}
-.nav .back-link .ar{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:1.25rem;height:1.25rem;border-radius:999px;
-  background:linear-gradient(135deg,var(--indigo),var(--purple));
-  color:#fff;font-size:.65rem;
-  transition:transform 500ms var(--ease-spring);
-}
-.nav .back-link:hover .ar{transform:translate(-1px,-1px) scale(1.08)}
+.nav .right .back:hover{background:#f1ece2;color:#161513;border-color:#f1ece2}
 
-/* Section nav dots */
-.section-nav{position:fixed;right:1.75rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.9rem;z-index:55}
-.section-nav a{width:8px;height:8px;border-radius:999px;background:var(--hairline);transition:all 500ms var(--ease-out);display:block}
-.section-nav a:hover,.section-nav a.active{background:var(--lavender);transform:scale(1.5);box-shadow:0 0 12px rgba(184,167,242,.5)}
+/* ─────────────────────────── LAYOUT ─────────────────────────── */
+.wrap{max-width:1480px;margin:0 auto;padding:0 1.75rem}
 
-/* Hero */
+/* ─────────────────────────── HERO ─────────────────────────── */
 .hero{
-  min-height:78vh;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  text-align:left;
-  padding:10rem 2rem 5rem;
-  max-width:1100px;
-  margin:0 auto;
   position:relative;
+  min-height:100dvh;
+  padding:7rem 0 3rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
 }
-.hero-badge{
-  display:inline-flex;align-items:center;gap:.5rem;
-  padding:.35rem .8rem;
-  font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--muted);
-  background:var(--surface);border:1px solid var(--hairline);border-radius:999px;
-  margin-bottom:1.75rem;
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('/images/hero-bg.jpg');
+  background-size:cover;
+  background-position:center;
+  will-change:transform;
+  transform:translate3d(0,0,0);
 }
-.hero-badge span{width:5px;height:5px;border-radius:999px;background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6)}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(239,238,232,.35) 0%,rgba(239,238,232,.55) 45%,rgba(239,238,232,.92) 100%);
+}
+.hero .wrap{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:calc(100dvh - 10rem)}
+.hero .hello{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.2rem,2vw,1.8rem);
+  color:var(--ink-2);
+  letter-spacing:-.01em;
+  margin-top:1.5rem;
+}
 .hero h1{
   font-family:var(--sans);
-  font-size:clamp(2.5rem,7vw,5.25rem);
-  font-weight:500;
-  letter-spacing:-.045em;
-  line-height:.98;
-  margin-bottom:1.5rem;
-  max-width:18ch;
-  background:linear-gradient(135deg,#fff 0%,var(--lavender) 75%);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+  font-weight:700;
+  font-size:clamp(5rem,16vw,20rem);
+  line-height:.82;
+  letter-spacing:-.055em;
+  margin-top:1rem;
+  text-wrap:balance;
+  color:var(--ink);
 }
 .hero h1 em{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  letter-spacing:-.025em;color:var(--accent);
+}
+.hero-foot{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:2.5rem;align-items:end;
+  padding-top:4rem;
+  border-top:1px solid var(--hairline);
+}
+.hero-foot .lede{
   font-family:var(--serif);
-  font-style:italic;
-  font-weight:400;
-  letter-spacing:-.025em;
+  font-size:clamp(1.25rem,1.75vw,1.55rem);
+  line-height:1.35;color:var(--ink);
+  max-width:48ch;
 }
-.hero p{max-width:58ch;color:var(--muted);font-size:1.1rem;line-height:1.65}
+.hero-foot .lede em{font-style:italic;color:var(--ink-2)}
+.hero-foot .meta{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2);line-height:1.7}
+.hero-foot .meta b{color:var(--ink);font-weight:500;display:block;margin-bottom:.4rem}
+.hero-foot .scroll-cue{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-2);display:flex;align-items:center;gap:.6rem;justify-self:end;
+}
+.hero-foot .scroll-cue .down{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:999px;
+  border:1px solid var(--hairline-strong);
+  font-size:.85rem;color:var(--ink);
+  animation:bob 2.4s var(--ease-out) infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
-/* Sections */
-.section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
-.section-label{
-  display:inline-flex;
-  font-family:var(--mono);
-  font-size:10px;
-  font-weight:normal;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--lavender);
-  margin-bottom:1rem;
-  padding:.3rem .7rem;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:999px;
+/* ─────────────────────────── SECTION SYSTEM ─────────────────────────── */
+.section{padding:8rem 0;border-top:1px solid var(--hairline)}
+.section.no-rule{border-top:none}
+.section-head{
+  display:grid;
+  grid-template-columns:1fr 3fr;
+  gap:3rem;
+  align-items:start;
+  margin-bottom:5rem;
 }
+.section-num{
+  font-family:var(--mono);
+  font-size:.75rem;font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink);
+  display:inline-flex;align-items:baseline;gap:.6rem;
+}
+.section-num::before{content:"";display:inline-block;width:42px;height:1px;background:var(--ink);align-self:center}
 .section-title{
   font-family:var(--sans);
-  font-size:clamp(1.85rem,4vw,2.75rem);
-  font-weight:500;
-  letter-spacing:-.035em;
-  line-height:1.1;
-  margin-bottom:.85rem;
-  max-width:22ch;
+  font-weight:600;
+  font-size:clamp(2.8rem,6vw,5.5rem);
+  line-height:.92;
+  letter-spacing:-.045em;
+  text-wrap:balance;
+  max-width:24ch;
+  color:var(--ink);
+  margin-bottom:1.25rem;
 }
-.section-sub{color:var(--muted);max-width:640px;margin-bottom:2.75rem;font-size:1.02rem;line-height:1.65}
-
-/* Double-bezel helpers */
-.bezel{
-  padding:6px;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:28px;
-  transition:all 700ms var(--ease-out);
+.section-title em{
+  font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent);
 }
-.bezel:hover{border-color:var(--hairline-strong)}
-.bezel-inner{
-  background:var(--card);
-  border-radius:22px;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
-  padding:1.75rem;
+.section-sub{
+  font-family:var(--serif);
+  font-size:clamp(1.15rem,1.6vw,1.5rem);
+  line-height:1.4;color:var(--ink-2);
+  max-width:48ch;
 }
 
-/* Intro box */
-.intro-box{
-  max-width:860px;
-  margin:0 auto;
-  padding:6px;
-  background:linear-gradient(135deg,rgba(99,102,241,.09),rgba(139,92,246,.04));
-  border:1px solid rgba(139,92,246,.2);
-  border-radius:28px;
+/* ─────────────────────────── INTRO BLOCK ─────────────────────────── */
+.intro-block{
+  padding:7rem 0 5rem;
 }
-.intro-box > *:first-child{
-  background:var(--card);
-  border-radius:22px;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
-  padding:2rem 2.25rem;
+.intro-grid{display:grid;grid-template-columns:1fr 4fr;gap:3rem;align-items:start}
+.intro-eyebrow{
+  font-family:var(--mono);
+  font-size:.7rem;font-weight:500;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-2);
+  display:inline-flex;align-items:center;gap:.55rem;
 }
-.intro-h{font-size:1.1rem;font-weight:500;margin-bottom:.75rem;color:var(--text);letter-spacing:-.01em}
-.intro-p{color:var(--muted);font-size:.95rem;line-height:1.7;margin-bottom:.9rem}
-.intro-p strong{color:var(--lavender);font-weight:500}
-.intro-p em{color:var(--text);font-style:normal;font-weight:500}
-.intro-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1.5rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--hairline)}
-.intro-stat{text-align:center}
+.intro-eyebrow .num{color:var(--ink)}
+.intro-eyebrow::before{content:"";display:inline-block;width:24px;height:1px;background:var(--ink);opacity:.4}
+.intro-block h2{
+  font-family:var(--sans);font-weight:500;
+  font-size:clamp(1.8rem,3.7vw,3.4rem);
+  line-height:1.08;letter-spacing:-.028em;
+  text-wrap:balance;
+  color:var(--ink);
+}
+.intro-block h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.intro-block h2 strong{color:var(--accent);font-weight:500}
+.intro-stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:0;margin-top:3.5rem;padding-top:2.5rem;
+  border-top:1px solid var(--hairline);
+}
+.intro-stat{padding:0 1rem}
+.intro-stat + .intro-stat{border-left:1px solid var(--hairline)}
 .intro-stat strong{
   display:block;
-  font-size:2.2rem;font-weight:500;letter-spacing:-.035em;line-height:1;
-  background:linear-gradient(180deg,#fff,var(--muted));
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent;
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(2.5rem,5vw,4rem);
+  line-height:.9;letter-spacing:-.04em;
+  color:var(--ink);
 }
-.intro-stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-top:.5rem;display:block}
+.intro-stat span{
+  display:block;
+  font-family:var(--mono);font-size:.7rem;
+  color:var(--ink-2);text-transform:uppercase;letter-spacing:.1em;
+  margin-top:.85rem;
+}
 
-/* Stepper */
-.stepper-wrap{display:flex;gap:2rem;flex-wrap:wrap}
-.stepper-tabs{display:flex;flex-direction:column;gap:.35rem;min-width:260px}
+/* ─────────────────────────── STEPPER ─────────────────────────── */
+.stepper-wrap{display:grid;grid-template-columns:280px 1fr;gap:3rem}
+.stepper-tabs{display:flex;flex-direction:column;gap:.1rem;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
 .step-tab{
-  padding:.85rem 1rem;
-  border-radius:14px;
+  padding:1.1rem .25rem;
   cursor:pointer;
-  transition:all 500ms var(--ease-out);
-  border:1px solid transparent;
-  display:flex;align-items:center;gap:.85rem;
-  color:var(--muted);
+  display:flex;align-items:flex-start;gap:.9rem;
+  color:var(--ink-2);
   background:transparent;
+  border-top:1px solid var(--hairline);
+  transition:background .35s var(--ease-out),color .35s var(--ease-out);
 }
-.step-tab:hover{background:var(--surface);color:var(--text)}
-.step-tab.active{
-  background:linear-gradient(135deg,rgba(99,102,241,.14),rgba(139,92,246,.08));
-  border-color:rgba(139,92,246,.35);
-  color:#fff;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
-}
+.step-tab:first-child{border-top:none}
+.step-tab:hover{color:var(--ink)}
+.step-tab.active{color:var(--ink)}
 .step-tab .step-num{
-  width:32px;height:32px;border-radius:999px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-style:italic;font-size:1rem;font-weight:400;
-  background:var(--card);border:1px solid var(--hairline);
-  color:var(--muted);
-  flex-shrink:0;
-  transition:all 500ms var(--ease-spring);
+  font-family:var(--mono);font-size:.7rem;font-weight:500;
+  letter-spacing:.08em;color:var(--ink-2);
+  width:32px;flex-shrink:0;padding-top:.15rem;
 }
-.step-tab.active .step-num{
-  background:linear-gradient(135deg,var(--indigo),var(--purple));
-  border-color:transparent;color:#fff;
-  box-shadow:0 6px 20px rgba(99,102,241,.4);
-}
-.step-tab .step-plain{font-weight:500;font-size:.92rem;display:block;line-height:1.3;letter-spacing:-.01em}
-.step-tab .step-tech{font-family:var(--mono);font-size:.68rem;color:var(--dim);font-weight:400;margin-top:.2rem;display:block;text-transform:uppercase;letter-spacing:.12em}
-.step-tab.active .step-tech{color:var(--lavender)}
-.step-content{flex:1;min-width:300px}
+.step-tab.active .step-num{color:var(--accent)}
+.step-tab .step-plain{font-weight:500;font-size:.98rem;display:block;line-height:1.3;letter-spacing:-.012em;color:inherit}
+.step-tab .step-tech{font-family:var(--mono);font-size:.62rem;color:var(--dim);font-weight:400;margin-top:.35rem;display:block;text-transform:uppercase;letter-spacing:.1em}
+.step-tab.active .step-tech{color:var(--accent)}
 .step-panel{
   display:none;
-  padding:2.5rem;
-  border-radius:22px;
-  background:var(--card);
-  border:1px solid var(--hairline);
-  box-shadow:inset 0 1px 0 var(--inset-hi);
+  padding:0 0 2rem 0;
   animation:fadeUp 500ms var(--ease-out);
-  position:relative;
-  overflow:hidden;
 }
-.step-panel::after{
-  content:'';position:absolute;top:-20%;right:-10%;
-  width:400px;height:400px;
-  background:radial-gradient(circle,rgba(139,92,246,.04),transparent 70%);
-  pointer-events:none;
-}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 .step-panel.active{display:block}
-.step-panel > *{position:relative;z-index:1}
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .step-panel h3{
-  font-family:var(--sans);
-  font-size:1.35rem;font-weight:500;letter-spacing:-.025em;
-  margin-bottom:.75rem;color:var(--text);
+  font-family:var(--sans);font-weight:500;
+  font-size:clamp(1.6rem,2.4vw,2.4rem);
+  letter-spacing:-.028em;line-height:1.05;
+  margin-bottom:1.25rem;color:var(--ink);
 }
-.step-panel > p,
-.step-panel-inner > p{color:var(--muted);font-size:.95rem;margin-bottom:1.25rem;line-height:1.65}
-.step-panel .detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.85rem;margin-top:.5rem}
-.detail-card{
-  padding:1rem 1.1rem;
-  border-radius:14px;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  font-size:.85rem;
-  transition:all 500ms var(--ease-out);
-}
-.detail-card:hover{border-color:var(--hairline-strong);background:rgba(255,255,255,.035)}
-.detail-card strong{display:block;color:var(--text);margin-bottom:.35rem;font-size:.88rem;font-weight:500;letter-spacing:-.01em}
-.detail-card span{color:var(--muted);font-size:.82rem;line-height:1.55}
-.tag{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.7rem;font-weight:500;margin-right:.25rem;font-family:var(--mono)}
-.tag-purple{background:rgba(139,92,246,.15);color:var(--lavender)}
-.tag-green{background:rgba(34,197,94,.12);color:var(--green)}
-.tag-amber{background:rgba(245,158,11,.12);color:var(--amber)}
-.tag-cyan{background:rgba(6,182,212,.12);color:var(--cyan)}
-.tag-rose{background:rgba(244,63,94,.12);color:var(--rose)}
-.tag-pink{background:rgba(236,72,153,.12);color:var(--pink)}
-
-/* Plain-English lead */
+.step-panel > p{color:var(--ink-2);font-size:1.05rem;margin-bottom:1.5rem;line-height:1.6;max-width:64ch}
 .plain-lead{
-  padding:1rem 1.25rem;
-  margin-bottom:1.25rem;
-  border-left:2px solid var(--lavender);
-  background:rgba(184,167,242,.05);
-  border-radius:6px;
-  color:var(--text);
-  font-size:.95rem;
-  line-height:1.65;
-  letter-spacing:-.005em;
+  padding:1.1rem 1.35rem;
+  margin-bottom:1.5rem;
+  border-left:2px solid var(--accent);
+  background:rgba(94,107,47,.04);
+  color:var(--ink);font-size:1rem;line-height:1.65;letter-spacing:-.005em;
+  max-width:64ch;
 }
-.plain-lead strong{color:var(--lavender);font-weight:500}
+.plain-lead strong{color:var(--accent);font-weight:500}
+.detail-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0;margin-top:1.5rem;border-top:1px solid var(--hairline)}
+.detail-card{
+  padding:1.4rem 1.5rem 1.4rem 0;
+  border-bottom:1px solid var(--hairline);
+  font-size:.92rem;
+}
+.detail-card:not(:nth-child(-n+1)){border-left:1px solid var(--hairline);padding-left:1.5rem}
+.detail-card strong{display:block;color:var(--ink);margin-bottom:.45rem;font-size:.95rem;font-weight:600;letter-spacing:-.01em}
+.detail-card span,.detail-card p{color:var(--ink-2);font-size:.88rem;line-height:1.6}
+.detail-card.callout{
+  grid-column:1/-1;
+  background:rgba(94,107,47,.05);
+  border-left:2px solid var(--accent);
+  padding:1.5rem 1.75rem;
+  margin-bottom:0;
+}
+.detail-card code{
+  background:rgba(26,28,20,.06);padding:.1rem .35rem;border-radius:3px;
+  font-family:var(--mono);font-size:.82rem;color:var(--ink);
+}
 
-/* Category pills */
-.cat-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+/* ─────────────────────────── LIBRARY (skills + agents) ─────────────────────────── */
+.lib-intro{
+  margin-bottom:2.5rem;padding:1.5rem 1.75rem;
+  background:rgba(94,107,47,.04);
+  border-left:2px solid var(--accent);
+}
+.lib-intro summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.95rem;letter-spacing:-.005em}
+.lib-intro details[open] summary{margin-bottom:.85rem}
+.lib-intro p{font-size:.9rem;color:var(--ink-2);line-height:1.7;margin-bottom:.4rem}
+.lib-intro p strong{color:var(--ink);font-weight:500}
+
+.cat-pills{
+  display:flex;flex-wrap:wrap;gap:0;margin-bottom:2.5rem;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+}
 .cat-pill{
-  padding:.5rem 1rem;
-  border-radius:999px;
+  padding:.85rem 1.25rem;
   cursor:pointer;
-  font-size:.82rem;
-  font-weight:500;
-  border:1px solid var(--hairline);
-  background:var(--surface);
-  color:var(--muted);
-  transition:all 500ms var(--ease-out);
+  font-size:.82rem;font-weight:500;
+  border-right:1px solid var(--hairline);
+  background:transparent;color:var(--ink-2);
+  transition:background .3s var(--ease-out),color .3s var(--ease-out);
   white-space:nowrap;
   letter-spacing:-.005em;
+  display:inline-flex;align-items:center;gap:.55rem;
 }
-.cat-pill:hover{border-color:var(--hairline-strong);color:var(--text);background:rgba(255,255,255,.04)}
-.cat-pill.active{
-  background:linear-gradient(135deg,var(--indigo),var(--purple));
-  border-color:transparent;
-  color:#fff;
-  box-shadow:0 6px 20px rgba(99,102,241,.3);
-}
+.cat-pill:hover{color:var(--ink);background:rgba(26,28,20,.03)}
+.cat-pill.active{color:var(--accent-ink);background:var(--ink)}
 .cat-pill .pill-count{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:20px;height:20px;
-  border-radius:999px;
-  font-size:.65rem;font-weight:500;
-  margin-left:.5rem;
-  background:rgba(0,0,0,.3);
-  font-family:var(--mono);
+  font-family:var(--mono);font-size:.7rem;font-weight:400;
+  color:inherit;opacity:.65;
 }
-.cat-pill:not(.active) .pill-count{background:rgba(255,255,255,.06);color:var(--muted)}
+.cat-pill.active .pill-count{opacity:.85}
 
-/* Skills / Agents grid */
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.85rem}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0;border-top:1px solid var(--hairline)}
 .skill-card{
-  padding:1.25rem 1.35rem;
-  border-radius:16px;
-  background:var(--card);
-  border:1px solid var(--hairline);
-  cursor:pointer;
-  transition:all 600ms var(--ease-out);
-  position:relative;
-  overflow:hidden;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
-}
-.skill-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--lavender),transparent);
-  opacity:0;transition:opacity 500ms var(--ease-out);
-}
-.skill-card:hover{border-color:var(--hairline-strong);transform:translateY(-2px);background:var(--card-lift)}
-.skill-card:hover::before{opacity:1}
-.skill-card h4{font-size:.95rem;font-weight:500;margin-bottom:.4rem;letter-spacing:-.01em;color:var(--text)}
-.skill-card p{font-size:.82rem;color:var(--muted);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.skill-card .skill-tag{display:none}
-.skill-card.open p{-webkit-line-clamp:unset}
-
-/* Vault cards */
-.vaults-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.25rem;margin-bottom:3rem}
-.vault-card{
-  padding:6px;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:28px;
-  overflow:hidden;
-  transition:all 600ms var(--ease-out);
-}
-.vault-card:hover{border-color:var(--hairline-strong)}
-.vault-card > .vault-header,
-.vault-card > .vault-tree{background:var(--card)}
-.vault-card > .vault-header{
-  padding:1.1rem 1.5rem;
-  display:flex;align-items:center;gap:.85rem;
-  border-top-left-radius:22px;border-top-right-radius:22px;
+  padding:1.5rem 1.75rem 1.5rem 0;
   border-bottom:1px solid var(--hairline);
-  box-shadow:inset 0 1px 0 var(--inset-hi);
+  cursor:pointer;
+  transition:background .35s var(--ease-out);
+  position:relative;
 }
-.vault-card > .vault-tree{
-  padding:1.25rem 1.5rem;
-  border-bottom-left-radius:22px;border-bottom-right-radius:22px;
+.skill-card:not(:first-child){border-left:1px solid var(--hairline);padding-left:1.75rem}
+@media(min-width:980px){
+  .skills-grid{grid-template-columns:repeat(3,1fr)}
+  .skill-card{padding-left:1.75rem;border-left:1px solid var(--hairline)}
+  .skill-card:nth-child(3n+1){border-left:none;padding-left:0}
 }
-.vault-header .vault-icon{
-  width:40px;height:40px;border-radius:12px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;
-}
-.vault-header h3{font-size:1.05rem;font-weight:500;letter-spacing:-.015em}
-.vault-tree{font-family:var(--mono);font-size:.78rem;line-height:1.85;color:var(--muted)}
-.vault-tree .folder{color:var(--amber);font-weight:500}
-.vault-tree .file{color:var(--dim)}
-.vault-tree .note{color:var(--lavender);font-style:italic;font-family:var(--serif);font-size:.85rem}
+.skill-card:hover{background:rgba(26,28,20,.03)}
+.skill-card h4{font-size:1.02rem;font-weight:600;margin-bottom:.5rem;letter-spacing:-.015em;color:var(--ink)}
+.skill-card p{font-size:.88rem;color:var(--ink-2);line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.skill-card.open p{-webkit-line-clamp:unset}
+.skill-card .skill-tag{display:none}
 
-/* Pipeline */
-.pipeline-wrap{
-  padding:6px;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:28px;
-  overflow:hidden;
+/* ─────────────────────────── VAULTS + PIPELINE ─────────────────────────── */
+.vaults-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:0;border-top:1px solid var(--hairline);margin-bottom:5rem}
+.vault-card{padding:2rem 2.25rem;border-bottom:1px solid var(--hairline)}
+.vault-card + .vault-card{border-left:1px solid var(--hairline)}
+.vault-header{display:flex;align-items:center;gap:.85rem;margin-bottom:1.25rem}
+.vault-icon{
+  width:38px;height:38px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;
+  background:rgba(94,107,47,.1);color:var(--accent);
 }
-.pipeline-wrap > div{
-  background:var(--card);
-  border-radius:22px;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
-  padding:2rem;
-  overflow-x:auto;
+.vault-header h3{font-family:var(--sans);font-size:1.05rem;font-weight:600;letter-spacing:-.015em;color:var(--ink)}
+.vault-tree{font-family:var(--mono);font-size:.78rem;line-height:1.9;color:var(--ink-2)}
+.vault-tree .folder{color:var(--accent);font-weight:500}
+.vault-tree .file{color:var(--ink-2)}
+.vault-tree .note{color:var(--ink);font-family:var(--serif);font-style:italic;font-size:.85rem}
+
+.pipeline-section h3{
+  font-family:var(--sans);font-weight:500;
+  font-size:1.5rem;letter-spacing:-.025em;
+  margin-bottom:1.5rem;color:var(--ink);
+}
+.pipeline-wrap{
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+  overflow-x:auto;padding:2rem 0;
 }
 .pipeline{display:flex;align-items:center;gap:.75rem;min-width:max-content;padding:.5rem 0}
 .pipe-node{
-  padding:.85rem 1.25rem;
-  border-radius:14px;
-  font-size:.78rem;font-weight:500;white-space:nowrap;
-  border:1px solid var(--hairline);
-  text-align:center;
-  transition:all 400ms var(--ease-spring);
+  padding:1rem 1.4rem;
+  font-family:var(--mono);
+  font-size:.78rem;font-weight:500;
+  white-space:nowrap;text-align:center;
+  border:1px solid var(--hairline-strong);
+  background:var(--paper);
+  color:var(--ink);
   letter-spacing:-.005em;
+  transition:transform .3s var(--ease-out);
 }
-.pipe-node:hover{transform:scale(1.05) translateY(-2px)}
-.pipe-node small{display:block;font-size:.68rem;font-weight:400;opacity:.75;margin-top:.2rem}
+.pipe-node:hover{transform:translateY(-2px)}
+.pipe-node small{display:block;font-family:var(--sans);font-size:.7rem;font-weight:400;color:var(--ink-2);margin-top:.35rem;letter-spacing:-.005em}
 .pipe-arrow{color:var(--dim);font-size:1.2rem;flex-shrink:0}
-.pipe-raw{background:rgba(244,63,94,.08);border-color:rgba(244,63,94,.25);color:var(--rose)}
-.pipe-proc{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.25);color:var(--amber)}
-.pipe-wiki{background:rgba(6,182,212,.08);border-color:rgba(6,182,212,.25);color:var(--cyan)}
-.pipe-strat{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.25);color:var(--lavender)}
-.pipe-dec{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:var(--green)}
-.pipe-claude{background:rgba(99,102,241,.12);border-color:rgba(99,102,241,.4);color:var(--indigo)}
 
-/* Infrastructure */
-.infra-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem}
-.infra-block{
-  padding:6px;
-  background:var(--surface);
-  border:1px solid var(--hairline);
-  border-radius:28px;
-  overflow:hidden;
-  transition:all 600ms var(--ease-out);
+/* ─────────────────────────── INFRASTRUCTURE ─────────────────────────── */
+.infra-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0;border-top:1px solid var(--hairline)}
+.infra-block{padding:1.75rem 2rem 1.75rem 0;border-bottom:1px solid var(--hairline)}
+.infra-block:not(:nth-child(-n+1)){border-left:1px solid var(--hairline);padding-left:2rem}
+@media(min-width:1200px){
+  .infra-section{grid-template-columns:repeat(4,1fr)}
+  .infra-block{padding-left:2rem;border-left:1px solid var(--hairline)}
+  .infra-block:nth-child(4n+1){border-left:none;padding-left:0}
 }
-.infra-block:hover{border-color:var(--hairline-strong)}
-.infra-block > .infra-block-header,
-.infra-block > .infra-list{background:var(--card)}
-.infra-block > .infra-block-header{
-  padding:1.1rem 1.5rem;
-  font-weight:500;font-size:.95rem;letter-spacing:-.01em;
-  border-bottom:1px solid var(--hairline);
-  display:flex;align-items:center;gap:.7rem;
-  border-top-left-radius:22px;border-top-right-radius:22px;
-  box-shadow:inset 0 1px 0 var(--inset-hi);
+.infra-block-header{
+  font-family:var(--sans);font-weight:600;font-size:1.05rem;letter-spacing:-.015em;color:var(--ink);
+  margin-bottom:1.25rem;display:flex;align-items:center;gap:.6rem;
+  padding-bottom:1rem;border-bottom:1px solid var(--hairline);
 }
-.infra-block > .infra-list{
-  padding:.5rem 1.5rem 1rem;
-  border-bottom-left-radius:22px;border-bottom-right-radius:22px;
-}
-.infra-block-header .icon{font-size:1.2rem}
+.infra-block-header .icon{font-size:1.05rem;opacity:.7}
 .infra-item{
   display:flex;align-items:center;gap:.85rem;
   padding:.7rem 0;
-  border-bottom:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline-soft);
   font-size:.88rem;
-  transition:padding 300ms var(--ease-out);
 }
 .infra-item:last-child{border-bottom:none}
-.infra-item:hover{padding-left:.3rem}
-.infra-dot{width:7px;height:7px;border-radius:999px;flex-shrink:0;box-shadow:0 0 8px currentColor}
-.infra-item span.infra-label{flex:1;color:var(--text);letter-spacing:-.005em}
-.infra-item span.infra-meta{color:var(--muted);font-size:.75rem;font-family:var(--mono);letter-spacing:-.02em}
+.infra-dot{width:7px;height:7px;border-radius:999px;flex-shrink:0;background:var(--accent)}
+.infra-dot.dim{background:var(--dim)}
+.infra-dot.muted{background:var(--ink-2);opacity:.5}
+.infra-item .infra-label{flex:1;color:var(--ink);letter-spacing:-.005em;font-weight:500}
+.infra-item .infra-meta{color:var(--ink-2);font-size:.74rem;font-family:var(--mono);letter-spacing:-.01em}
 
-/* Footer */
-.footer{
-  text-align:center;
-  padding:4rem 2rem 3rem;
-  color:var(--dim);
-  font-size:.78rem;
-  letter-spacing:.02em;
+/* ─────────────────────────── IMAGE BANDS (full-bleed between sections) ─────────────────────────── */
+.image-band{
+  position:relative;width:100%;
+  aspect-ratio:21/9;
+  background-size:cover;background-position:center;
+  overflow:hidden;margin:0;
+}
+.image-band::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(239,238,232,0) 0%,rgba(239,238,232,.12) 70%,rgba(239,238,232,.4) 100%);
+  pointer-events:none;
+}
+.image-band.compliance{background-image:url('/images/band-compliance.jpg')}
+.image-band.paper{background-image:url('/images/band-paper.jpg')}
+
+/* ─────────────────────────── PHILOSOPHY MOMENT (full-bleed photo) ─────────────────────────── */
+.pull-quote{
+  position:relative;
+  padding:14rem 0;
+  overflow:hidden;
   border-top:1px solid var(--hairline);
-  margin-top:5rem;
+}
+.pull-quote .photo-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('/images/band-trust.jpg');
+  background-size:cover;background-position:center;
+}
+.pull-quote .photo-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(239,238,232,.6) 0%,rgba(239,238,232,.4) 45%,rgba(239,238,232,.85) 100%);
+}
+.pull-quote .wrap{position:relative;z-index:1}
+.pull-quote blockquote{
+  font-family:var(--sans);font-weight:500;
+  font-size:clamp(2.4rem,5.5vw,5rem);
+  line-height:1;letter-spacing:-.04em;
+  text-wrap:balance;
+  max-width:22ch;
+  color:var(--ink);position:relative;
+}
+.pull-quote blockquote em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.pull-quote blockquote::before{
+  content:"\201C";
+  font-family:var(--serif);font-size:1.4em;line-height:.5;
+  color:var(--accent);position:absolute;top:.18em;left:-.5em;
+}
+.pull-quote .by{
+  margin-top:2.5rem;
+  font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--ink-2);
 }
 
-/* Reveal animations */
-.reveal{
-  opacity:0;transform:translateY(40px);filter:blur(6px);
-  transition:opacity 900ms var(--ease-expo),transform 900ms var(--ease-expo),filter 900ms var(--ease-expo);
-  will-change:transform,opacity,filter;
+/* ─────────────────────────── FOOTER ─────────────────────────── */
+footer{
+  background:var(--ink);color:var(--paper);
+  padding:5rem 0 2.5rem;margin-top:0;
 }
-.reveal.in{opacity:1;transform:translateY(0);filter:blur(0)}
+footer .wrap{padding:0 1.75rem}
+footer h5{
+  font-family:var(--sans);font-weight:500;
+  font-size:clamp(2.5rem,5vw,4rem);
+  line-height:.95;letter-spacing:-.04em;
+  max-width:22ch;margin-bottom:3rem;
+}
+footer h5 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+footer .cols{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;
+  padding-top:3rem;border-top:1px solid rgba(241,236,226,.15);
+}
+footer .col h6{
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+  color:#a8a395;margin-bottom:1.25rem;font-weight:500;
+}
+footer .col a,footer .col p{
+  display:block;color:var(--paper);text-decoration:none;font-size:.95rem;
+  line-height:1.7;letter-spacing:-.005em;
+}
+footer .col a:hover{color:var(--accent)}
+footer .colophon{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:3rem;margin-top:3rem;border-top:1px solid rgba(241,236,226,.15);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:#a8a395;
+}
+footer .colophon b{color:var(--paper);font-weight:500}
 
-/* Responsive */
-@media(max-width:900px){
-  .hero{padding:8rem 1.5rem 3rem;min-height:70vh}
-  .section{padding:3.5rem 1.5rem}
-  .stepper-wrap{flex-direction:column}
-  .stepper-tabs{flex-direction:row;overflow-x:auto;min-width:unset;padding-bottom:.5rem;gap:.35rem}
-  .step-tab{min-width:max-content;padding:.6rem .85rem}
-  .step-tab .step-plain{font-size:.82rem}
-  .step-tab .step-tech{font-size:.62rem}
-  .section-nav{display:none}
+/* ─────────────────────────── REVEAL ─────────────────────────── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 900ms var(--ease-expo),transform 900ms var(--ease-expo)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ─────────────────────────── ACCESSIBILITY ─────────────────────────── */
+.skip-link{position:absolute;top:-100%;left:1rem;padding:.55rem 1rem;background:var(--accent);color:#fff;border-radius:0 0 6px 6px;font-size:.875rem;font-weight:500;text-decoration:none;z-index:9999}
+.skip-link:focus{top:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+
+/* ─────────────────────────── RESPONSIVE ─────────────────────────── */
+@media(max-width:980px){
+  body{font-size:16px}
+  .nav{padding:1rem 1.25rem;font-size:.75rem}
+  .nav .right{gap:1rem}
+  .wrap{padding:0 1.25rem}
+  .hero{padding:5rem 0 2.5rem;min-height:auto}
+  .hero h1{font-size:clamp(3.5rem,17vw,7rem)}
+  .hero-foot{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}
+  .hero-foot .scroll-cue{justify-self:start}
+  .section{padding:4rem 0}
+  .section-head{grid-template-columns:1fr;gap:1rem;margin-bottom:2.5rem}
+  .intro-block{padding:3.5rem 0 2.5rem}
+  .intro-grid{grid-template-columns:1fr;gap:1.5rem}
+  .intro-stats{grid-template-columns:repeat(2,1fr);gap:1.5rem}
+  .intro-stat + .intro-stat{border-left:none}
+  .intro-stat{padding:1rem 0;border-top:1px solid var(--hairline-soft)}
+  .stepper-wrap{grid-template-columns:1fr;gap:1.5rem}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-card{padding:1.25rem 0 1.25rem 0 !important;border-left:none !important}
   .vaults-grid{grid-template-columns:1fr}
+  .vault-card + .vault-card{border-left:none}
   .infra-section{grid-template-columns:1fr}
-  .nav{top:.75rem;padding:.35rem .45rem .35rem 1rem;gap:.75rem}
-  .nav .mark{font-size:.72rem}
-  .nav .back-link{font-size:.72rem;padding:.35rem .7rem .35rem .35rem}
-  .intro-box > *:first-child{padding:1.5rem 1.25rem}
-  .step-panel.active{padding:6px}
-  .step-panel-inner{padding:1.5rem}
-  .pipeline-wrap > div{padding:1.5rem 1.25rem}
+  .infra-block{padding-left:0 !important;border-left:none !important;padding-bottom:1.5rem}
+  .image-band{aspect-ratio:16/10}
+  .pull-quote{padding:6rem 0}
+  footer .cols{grid-template-columns:1fr 1fr;gap:2rem}
+  footer .colophon{flex-direction:column;align-items:flex-start;gap:.75rem}
 }
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-  .reveal{opacity:1;transform:none;filter:none}
+  .reveal{opacity:1;transform:none}
+  .hero-bg{transform:none !important}
 }
-:focus-visible{outline:2px solid var(--indigo);outline-offset:3px;border-radius:3px}
-.skip-link{position:absolute;top:-100%;left:1rem;padding:.5rem 1rem;background:var(--indigo);color:#fff;border-radius:0 0 6px 6px;font-size:.875rem;font-weight:500;text-decoration:none;z-index:9999}
-.skip-link:focus{top:0}
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
 
-<!-- Ambient orbs -->
-<div class="orb orb-1" aria-hidden="true"></div>
-<div class="orb orb-2" aria-hidden="true"></div>
-
-<!-- Floating pill nav -->
-<nav class="nav" aria-label="Site">
-  <span class="mark">Pete Cecil <span class="dim-t">/ inventory</span></span>
-  <a class="back-link" href="./"><span class="ar" aria-hidden="true">&larr;</span> Back to landing</a>
-</nav>
-
-<!-- Section Nav Dots -->
-<nav class="section-nav" id="secNav" aria-label="Page sections">
-  <a href="#hero" aria-label="Top"></a>
-  <a href="#overview" aria-label="Overview"></a>
-  <a href="#skills" aria-label="Skills"></a>
-  <a href="#agents" aria-label="Agents"></a>
-  <a href="#memory" aria-label="Memory"></a>
-  <a href="#infra" aria-label="Infrastructure"></a>
+<!-- ─────────────────────────── NAV ─────────────────────────── -->
+<nav class="nav" aria-label="Primary">
+  <a class="mark" href="./">
+    <span>Pete Cecil <span class="frac">/ Blue Line Advisors</span></span>
+  </a>
+  <div class="right">
+    <a class="back" href="./">&larr;&nbsp;Back to landing</a>
+  </div>
 </nav>
 
 <main id="main-content" tabindex="-1">
-<!-- Hero -->
-<section class="hero" id="hero">
-  <div class="reveal">
-    <div class="hero-badge"><span></span> System Online</div>
-    <h1>The system <em>behind the practice</em>.</h1>
-    <p>A guided tour of the playbooks, specialists, live connections, and memory layer that run the day-to-day of Blue Line Advisors.</p>
-  </div>
-</section>
 
-<!-- Plain-English Intro -->
-<section class="section" id="intro" style="padding-top:2rem;padding-bottom:2rem">
-  <div class="intro-box">
-    <h2 class="intro-h">What am I looking at?</h2>
-    <p class="intro-p">A practice-management system built on top of Claude. <strong>78 playbooks</strong> covering every repeatable task in the practice — compliance, trading, client correspondence, portfolio monitoring. <strong>34 specialist personas</strong> for focused work. A memory layer so it knows clients, projects, and priorities without re-explaining. The tour below walks through each piece.</p>
-    <div class="intro-stats">
-      <div class="intro-stat"><strong>78</strong><span>Playbooks</span></div>
-      <div class="intro-stat"><strong>34</strong><span>Specialists</span></div>
-      <div class="intro-stat"><strong>7AM</strong><span>Daily briefing</span></div>
-      <div class="intro-stat"><strong>30+</strong><span>Active projects</span></div>
+<!-- ─────────────────────────── HERO ─────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div>
+      <div class="hello">Welcome &mdash;</div>
+      <h1>
+        Under the&nbsp;<em>hood.</em>
+      </h1>
+    </div>
+    <div class="hero-foot">
+      <p class="lede">
+        A guided tour of the playbooks, specialists, live connections, and memory layer that run the day-to-day of <em>Blue Line Advisors</em>.
+      </p>
+      <div class="meta">
+        <b>Inventory</b>
+        78 playbooks &middot; 34 specialists<br>
+        13 live connections<br>
+        30+ active projects
+      </div>
+      <div class="scroll-cue">
+        Five parts below<span class="down">↓</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Part 1: Big Picture Overview -->
-<section class="section" id="overview">
-  <h2 class="section-label">Part 1</h2>
-  <h3 class="section-title">How it works, step by step</h3>
-  <p class="section-sub">Walk through what happens when I ask Claude to do something. Click any step to dig in.</p>
+<!-- ─────────────────────────── INTRO ─────────────────────────── -->
+<section class="intro-block wrap reveal" id="intro">
+  <div class="intro-grid">
+    <span class="intro-eyebrow"><span class="num">00 &mdash;</span> About</span>
+    <div>
+      <h2>
+        A practice-management system built on top of Claude. <strong>78 playbooks</strong> for the repeatable work. <strong>34 specialist personas</strong> for focused tasks. A <em>memory layer</em> so it knows clients, projects, and priorities without re-explaining.
+      </h2>
+      <div class="intro-stats">
+        <div class="intro-stat"><strong>78</strong><span>Playbooks</span></div>
+        <div class="intro-stat"><strong>34</strong><span>Specialists</span></div>
+        <div class="intro-stat"><strong>7AM</strong><span>Daily briefing</span></div>
+        <div class="intro-stat"><strong>30+</strong><span>Active projects</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── PART 01 — OVERVIEW / STEPPER ─────────────────────────── -->
+<section class="section wrap reveal" id="overview">
+  <div class="section-head">
+    <span class="section-num">01 &mdash; Overview</span>
+    <div>
+      <h2 class="section-title">How it works, <em>step by step.</em></h2>
+      <p class="section-sub">Seven moves that happen when I ask Claude to do something. Click any to dig in.</p>
+    </div>
+  </div>
 
   <div class="stepper-wrap">
     <div class="stepper-tabs" id="stepperTabs" role="tablist">
-      <div class="step-tab active" data-step="0" id="step-tab-0" aria-controls="step-panel-0"><span class="step-num">1</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
-      <div class="step-tab" data-step="1" id="step-tab-1" aria-controls="step-panel-1"><span class="step-num">2</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
-      <div class="step-tab" data-step="2" id="step-tab-2" aria-controls="step-panel-2"><span class="step-num">3</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
-      <div class="step-tab" data-step="3" id="step-tab-3" aria-controls="step-panel-3"><span class="step-num">4</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
-      <div class="step-tab" data-step="4" id="step-tab-4" aria-controls="step-panel-4"><span class="step-num">5</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
-      <div class="step-tab" data-step="5" id="step-tab-5" aria-controls="step-panel-5"><span class="step-num">6</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
-      <div class="step-tab" data-step="6" id="step-tab-6" aria-controls="step-panel-6"><span class="step-num">7</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
+      <div class="step-tab active" data-step="0" id="step-tab-0" aria-controls="step-panel-0"><span class="step-num">01</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
+      <div class="step-tab" data-step="1" id="step-tab-1" aria-controls="step-panel-1"><span class="step-num">02</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
+      <div class="step-tab" data-step="2" id="step-tab-2" aria-controls="step-panel-2"><span class="step-num">03</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
+      <div class="step-tab" data-step="3" id="step-tab-3" aria-controls="step-panel-3"><span class="step-num">04</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
+      <div class="step-tab" data-step="4" id="step-tab-4" aria-controls="step-panel-4"><span class="step-num">05</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
+      <div class="step-tab" data-step="5" id="step-tab-5" aria-controls="step-panel-5"><span class="step-num">06</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
+      <div class="step-tab" data-step="6" id="step-tab-6" aria-controls="step-panel-6"><span class="step-num">07</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
     </div>
     <div class="step-content" id="stepContent">
-      <!-- Panel 0 -->
+
       <div class="step-panel active" data-panel="0" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0" tabindex="0">
         <h3>How I talk to Claude</h3>
         <div class="plain-lead">There are three ways I reach Claude depending on what I'm doing: <strong>chat in a browser</strong> for questions and writing, a <strong>coding terminal</strong> for building software, and a <strong>desktop app</strong> for everyday automation.</div>
-        <p>Three entry points into the same underlying Claude system, each optimized for different workflows.</p>
+        <p>Three entry points into the same underlying Claude system, each optimized for a different workflow.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>Claude.ai</strong><span>Web and mobile chat. Long-form reasoning, research, brainstorming. Accessible anywhere.</span></div>
           <div class="detail-card"><strong>Claude Code CLI</strong><span>Terminal-native agent. Builds full-stack apps, manages GitHub repos, runs tests. Powers the 45+ repo portfolio.</span></div>
           <div class="detail-card"><strong>Cowork Desktop</strong><span>Non-developer automation hub. File management, MCP connectors, scheduled tasks, skill library. The daily cockpit.</span></div>
         </div>
       </div>
-      <!-- Panel 1 -->
+
       <div class="step-panel" data-panel="1" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" aria-hidden="true">
         <h3>What Claude knows before I say hi</h3>
         <div class="plain-lead">Before I even type a message, Claude already knows my current priorities, recent work, project preferences, and which clients/projects I'm active on. I never have to start a conversation with "by the way, here's what I'm working on."</div>
         <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
-        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
-          <strong style="font-size:.9rem;color:var(--accent3)">How Hooks Load Context Automatically</strong>
-          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong style="color:var(--green)">SessionStart hook</strong> runs before every session — a PowerShell script reads <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
-        </div>
         <div class="detail-grid">
+          <div class="detail-card callout">
+            <strong>How Hooks Load Context Automatically</strong>
+            <p>Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong>SessionStart hook</strong> runs before every session — a PowerShell script reads <code>North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
+          </div>
           <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior for that specific context.</span></div>
           <div class="detail-card"><strong>Skills Library</strong><span>60+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
           <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge injected via SessionStart hook.</span></div>
           <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services on every call.</span></div>
         </div>
       </div>
-      <!-- Panel 2 -->
+
       <div class="step-panel" data-panel="2" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" aria-hidden="true">
         <h3>It picks the right playbook</h3>
         <div class="plain-lead">If I say "draft a trade rationale" or "build an onboarding checklist," Claude automatically grabs the matching <strong>playbook</strong> — think of it as a recipe card that tells Claude exactly how I like that kind of work done.</div>
@@ -663,16 +686,16 @@ body{
           <div class="detail-card"><strong>Self-Improving</strong><span>The skill-creator skill builds and benchmarks new skills. Meta-skills route ambiguous requests to the right pack.</span></div>
         </div>
       </div>
-      <!-- Panel 3 -->
+
       <div class="step-panel" data-panel="3" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" aria-hidden="true">
         <h3>It uses live tools, not just text</h3>
         <div class="plain-lead">Claude doesn't just talk — it actually does things. It can read my email, check my calendar, pull documents from Google Drive, design in Canva, open web pages, run code, and create Word/Excel/PDF files. Each of these is a "live connection" it can use on my behalf.</div>
         <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
-        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
-          <strong style="font-size:.9rem;color:var(--accent3)">What is MCP?</strong>
-          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">MCP (Model Context Protocol) is a standard that lets Claude call external services through a unified interface. Each MCP server exposes "tools" — functions Claude can invoke. When you ask "what's on my calendar," Claude calls the Google Calendar MCP's <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">list_events</code> tool. The server handles auth, API calls, and returns structured data. This means Claude can read your email, check your calendar, search your files, and generate designs — all through the same protocol, without knowing the underlying APIs.</p>
-        </div>
         <div class="detail-grid">
+          <div class="detail-card callout">
+            <strong>What is MCP?</strong>
+            <p>MCP (Model Context Protocol) is a standard that lets Claude call external services through a unified interface. Each MCP server exposes "tools" — functions Claude can invoke. When you ask "what's on my calendar," Claude calls the Google Calendar MCP's <code>list_events</code> tool. The server handles auth, API calls, and returns structured data. This means Claude can read your email, check your calendar, search your files, and generate designs — all through the same protocol, without knowing the underlying APIs.</p>
+          </div>
           <div class="detail-card"><strong>Gmail MCP</strong><span>Search by sender/subject/date, read full threads, draft replies, apply labels, archive. Triage client emails and track outstanding threads without opening a browser.</span></div>
           <div class="detail-card"><strong>Google Calendar</strong><span>List upcoming events, create meetings, check free/busy across multiple calendars, set reminders. Used for morning briefing and scheduling automation.</span></div>
           <div class="detail-card"><strong>Google Drive</strong><span>Full-text search across all Drive files, fetch document content, list folder contents. Access shared client folders, internal docs, custodian exports.</span></div>
@@ -683,27 +706,23 @@ body{
           <div class="detail-card"><strong>Linux Sandbox</strong><span>Run Python, Node.js, and shell commands in an isolated environment. Data analysis, financial calculations, code builds, and script execution.</span></div>
         </div>
       </div>
-      <!-- Panel 4 -->
+
       <div class="step-panel" data-panel="4" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" aria-hidden="true">
         <h3>It remembers what matters</h3>
         <div class="plain-lead">When I close a conversation with Claude, it doesn't all disappear. Important decisions, lessons, and client context get saved into <strong>notebooks</strong> (digital binders of notes). Next time I talk to Claude, it can look things up instead of asking me to re-explain.</div>
         <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
-        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
-          <strong style="font-size:.9rem;color:var(--accent3)">How Obsidian Works</strong>
-          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Obsidian is a local-first markdown knowledge base. Notes use <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">[[wikilinks]]</code> to create a connected knowledge graph. The <strong style="color:var(--amber)">Knowledge-Base vault</strong> holds 13 client household profiles with financial data, custodian exports, and CRM records — structured so Claude can instantly pull up any household's full picture. The <strong style="color:var(--accent3)">second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
-        </div>
-        <div class="detail-card" style="margin-bottom:1rem;padding:1rem">
-          <strong style="font-size:.9rem;color:var(--accent3)">How Hooks Work</strong>
-          <p style="color:var(--muted);font-size:.82rem;margin-top:.4rem;line-height:1.6">Claude Code supports hooks — scripts that run automatically at session start/end. The <strong style="color:var(--green)">SessionStart hook</strong> fires before every Claude Code session: a PowerShell script reads <code style="background:var(--glass2);padding:.1rem .3rem;border-radius:3px;font-size:.78rem">North-Star.md</code> (current priorities), lists all vault files, and shows what changed in the last 3 days. Claude has your priorities and recent work loaded before you type a single word. A complementary <strong style="color:var(--green)">SessionEnd hook</strong> prompts capture of decisions and lessons into the vault's append-only logs.</p>
-        </div>
         <div class="detail-grid">
+          <div class="detail-card callout">
+            <strong>How Obsidian Works</strong>
+            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds 13 client household profiles with financial data, custodian exports, and CRM records — structured so Claude can instantly pull up any household's full picture. The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
+          </div>
           <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (13 client households, custodian exports, CRM data) and second-brain (projects, North Star, decisions, lessons).</span></div>
           <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals. Survives across Claude Code sessions.</span></div>
           <div class="detail-card"><strong>decisions.md</strong><span>Structured log of every architectural and business decision with context, alternatives considered, and rationale.</span></div>
           <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward into future sessions.</span></div>
         </div>
       </div>
-      <!-- Panel 5 -->
+
       <div class="step-panel" data-panel="5" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" aria-hidden="true">
         <h3>Finished work gets published</h3>
         <div class="plain-lead">When Claude builds software for me, it doesn't just hand me files — it commits the work to GitHub (a code storage service), and the site or app goes live automatically on the internet. I can hand a link to anyone within minutes.</div>
@@ -715,7 +734,7 @@ body{
           <div class="detail-card"><strong>Supabase</strong><span>Database layer. PostgreSQL, auth, real-time subscriptions, edge functions, storage.</span></div>
         </div>
       </div>
-      <!-- Panel 6 -->
+
       <div class="step-panel" data-panel="6" id="step-panel-6" role="tabpanel" aria-labelledby="step-tab-6" aria-hidden="true">
         <h3>Some things run by themselves</h3>
         <div class="plain-lead">I don't kick off every task manually. Every weekday morning a briefing lands in my inbox. Every Sunday night my projects get a health check. Every Friday evening a scan looks for waste. These run on a schedule, unattended.</div>
@@ -726,26 +745,32 @@ body{
           <div class="detail-card"><strong>Token Waste Scanner</strong><span>Fridays at 8:00 PM. Analyzes recent sessions for inefficient tool use, redundant reads, and cost optimization.</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Part 2: Playbooks -->
-<section class="section" id="skills">
-  <h2 class="section-label">Part 2 &middot; Skill Library</h2>
-  <h3 class="section-title">Playbooks</h3>
-  <p class="section-sub">70+ recipe cards that tell Claude exactly how I want specific kinds of work done — from drafting a trade rationale to setting up a Next.js site. Browse by category.</p>
+<!-- ─────────────────────────── IMAGE BAND — compliance ─────────────────────────── -->
+<div class="image-band compliance reveal" aria-hidden="true"></div>
 
-  <div class="intro-box" style="padding:1rem 1.25rem;margin-bottom:1.5rem">
+<!-- ─────────────────────────── PART 02 — PLAYBOOKS ─────────────────────────── -->
+<section class="section wrap reveal" id="skills">
+  <div class="section-head">
+    <span class="section-num">02 &mdash; Skill Library</span>
+    <div>
+      <h2 class="section-title">Playbooks <em>&mdash; 78 recipe cards.</em></h2>
+      <p class="section-sub">From drafting a trade rationale to setting up a Next.js site, each playbook tells Claude exactly how I want a specific kind of work done. Browse by category.</p>
+    </div>
+  </div>
+
+  <div class="lib-intro">
     <details>
-      <summary style="cursor:pointer;color:var(--accent3);font-weight:600;font-size:.9rem">What are these words? (click to expand)</summary>
-      <div style="margin-top:.75rem;font-size:.85rem;color:var(--muted);line-height:1.7">
-        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Playbook (a.k.a. Skill)</strong> — a saved set of instructions. When I say a trigger phrase, Claude loads the instructions and does the work my way.</p>
-        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Specialist (a.k.a. Agent)</strong> — a focused AI persona with a single area of expertise. Claude can hand off a subtask to a specialist when it needs deeper knowledge.</p>
-        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Live connection (a.k.a. MCP)</strong> — a plug-in that lets Claude actually reach out to Gmail, Calendar, Drive, custodian data, etc.</p>
-        <p style="margin-bottom:.4rem"><strong style="color:var(--text)">Notebook (a.k.a. Vault)</strong> — a folder of markdown notes Claude can read from and write to. Its long-term memory.</p>
-        <p><strong style="color:var(--text)">Trigger (a.k.a. Hook)</strong> — a little automation that fires on a specific event, like every time I start a new Claude session.</p>
-      </div>
+      <summary>What are these words? (click to expand)</summary>
+      <p><strong>Playbook (a.k.a. Skill)</strong> — a saved set of instructions. When I say a trigger phrase, Claude loads the instructions and does the work my way.</p>
+      <p><strong>Specialist (a.k.a. Agent)</strong> — a focused AI persona with a single area of expertise. Claude can hand off a subtask to a specialist when it needs deeper knowledge.</p>
+      <p><strong>Live connection (a.k.a. MCP)</strong> — a plug-in that lets Claude actually reach out to Gmail, Calendar, Drive, custodian data, etc.</p>
+      <p><strong>Notebook (a.k.a. Vault)</strong> — a folder of markdown notes Claude can read from and write to. Its long-term memory.</p>
+      <p><strong>Trigger (a.k.a. Hook)</strong> — a little automation that fires on a specific event, like every time I start a new Claude session.</p>
     </details>
   </div>
 
@@ -754,28 +779,38 @@ body{
   <span id="skillsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
 </section>
 
-<!-- Part 3: Specialists -->
-<section class="section" id="agents">
-  <h2 class="section-label">Part 3 &middot; Agent Library</h2>
-  <h3 class="section-title">Specialists</h3>
-  <p class="section-sub">100+ expert personas Claude can call on when a task needs deep focus — a backend engineer, a UX designer, a financial analyst, a QA tester, etc. Each has their own personality and approach.</p>
+<!-- ─────────────────────────── PART 03 — SPECIALISTS ─────────────────────────── -->
+<section class="section wrap reveal" id="agents">
+  <div class="section-head">
+    <span class="section-num">03 &mdash; Agent Library</span>
+    <div>
+      <h2 class="section-title">Specialists <em>&mdash; 34 expert personas.</em></h2>
+      <p class="section-sub">Backend engineers, UX designers, financial analysts, QA testers. Each has their own personality and approach. Claude calls on them when a task needs deep focus.</p>
+    </div>
+  </div>
 
   <div class="cat-pills" id="agentCatPills" role="group" aria-label="Filter agents by category"></div>
   <div class="skills-grid" id="agentsGrid"></div>
   <span id="agentsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
 </section>
 
-<!-- Part 4: Memory -->
-<section class="section" id="memory">
-  <h2 class="section-label">Part 4 &middot; Memory System</h2>
-  <h3 class="section-title">What Claude remembers</h3>
-  <p class="section-sub">Two digital notebooks hold everything Claude needs to keep straight across days and projects — one for client data, one for ideas and decisions. New information gets filtered through a pipeline before it lands.</p>
+<!-- ─────────────────────────── IMAGE BAND — paper ─────────────────────────── -->
+<div class="image-band paper reveal" aria-hidden="true"></div>
+
+<!-- ─────────────────────────── PART 04 — MEMORY ─────────────────────────── -->
+<section class="section wrap reveal" id="memory">
+  <div class="section-head">
+    <span class="section-num">04 &mdash; Memory System</span>
+    <div>
+      <h2 class="section-title">What Claude <em>remembers.</em></h2>
+      <p class="section-sub">Two digital notebooks hold everything Claude needs to keep straight across days and projects — one for client data, one for ideas and decisions. New information gets filtered through a pipeline before it lands.</p>
+    </div>
+  </div>
 
   <div class="vaults-grid">
-    <!-- Knowledge-Base Vault -->
     <div class="vault-card">
       <div class="vault-header">
-        <div class="vault-icon" style="background:rgba(245,158,11,.15);color:var(--amber)">&#128218;</div>
+        <div class="vault-icon">&#128218;</div>
         <h3>Knowledge-Base Vault</h3>
       </div>
       <div class="vault-tree">
@@ -793,10 +828,9 @@ body{
         <span class="folder">output/</span> <span class="note">— generated deliverables</span>
       </div>
     </div>
-    <!-- Second-Brain Vault -->
     <div class="vault-card">
       <div class="vault-header">
-        <div class="vault-icon" style="background:rgba(139,92,246,.15);color:var(--accent2)">&#129504;</div>
+        <div class="vault-icon">&#129504;</div>
         <h3>Second-Brain Vault</h3>
       </div>
       <div class="vault-tree">
@@ -816,123 +850,149 @@ body{
     </div>
   </div>
 
-  <!-- Karpathy Pipeline -->
-  <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--text)">The Karpathy Pipeline</h3>
-  <div class="pipeline-wrap">
-    <div class="pipeline">
-      <div class="pipe-node pipe-raw">Raw Inputs<br><small style="font-weight:400;opacity:.7">emails, calls, statements</small></div>
-      <div class="pipe-arrow">&#10132;</div>
-      <div class="pipe-node pipe-proc">Processed Notes<br><small style="font-weight:400;opacity:.7">cleaned, tagged, linked</small></div>
-      <div class="pipe-arrow">&#10132;</div>
-      <div class="pipe-node pipe-wiki">Wiki<br><small style="font-weight:400;opacity:.7">entities, concepts, clients</small></div>
-      <div class="pipe-arrow">&#10132;</div>
-      <div class="pipe-node pipe-strat">Project Strategy<br><small style="font-weight:400;opacity:.7">goals, plans, roadmaps</small></div>
-      <div class="pipe-arrow">&#10132;</div>
-      <div class="pipe-node pipe-dec">Decisions<br><small style="font-weight:400;opacity:.7">rationale, alternatives, outcomes</small></div>
-      <div class="pipe-arrow">&#10132;</div>
-      <div class="pipe-node pipe-claude">CLAUDE.md<br><small style="font-weight:400;opacity:.7">persona + instructions</small></div>
+  <div class="pipeline-section">
+    <h3>The Karpathy Pipeline</h3>
+    <div class="pipeline-wrap">
+      <div class="pipeline">
+        <div class="pipe-node">Raw Inputs<small>emails, calls, statements</small></div>
+        <div class="pipe-arrow">&#10132;</div>
+        <div class="pipe-node">Processed Notes<small>cleaned, tagged, linked</small></div>
+        <div class="pipe-arrow">&#10132;</div>
+        <div class="pipe-node">Wiki<small>entities, concepts, clients</small></div>
+        <div class="pipe-arrow">&#10132;</div>
+        <div class="pipe-node">Project Strategy<small>goals, plans, roadmaps</small></div>
+        <div class="pipe-arrow">&#10132;</div>
+        <div class="pipe-node">Decisions<small>rationale, alternatives, outcomes</small></div>
+        <div class="pipe-arrow">&#10132;</div>
+        <div class="pipe-node">CLAUDE.md<small>persona + instructions</small></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Part 5: What's Running -->
-<section class="section" id="infra">
-  <h2 class="section-label">Part 5 &middot; Live Infrastructure</h2>
-  <h3 class="section-title">What's running right now</h3>
-  <p class="section-sub">A live snapshot of the active projects, connected services, and background tasks that keep the practice — and a half-dozen side builds — moving without me touching them all day.</p>
+<!-- ─────────────────────────── PART 05 — INFRASTRUCTURE ─────────────────────────── -->
+<section class="section wrap reveal" id="infra">
+  <div class="section-head">
+    <span class="section-num">05 &mdash; Live Infrastructure</span>
+    <div>
+      <h2 class="section-title">What's <em>running right now.</em></h2>
+      <p class="section-sub">A live snapshot of the active projects, connected services, and background tasks that keep the practice — and a half-dozen side builds — moving without me touching them all day.</p>
+    </div>
+  </div>
 
   <div class="infra-section">
-    <!-- Projects -->
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--rose)"></span><span class="infra-label">Independent RIA / Peter Cecil FP</span><span class="infra-meta">breakaway in flight — ~$23M AUM</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Paperclip Platform</span><span class="infra-meta">ECC Phase 1 — 15-agent hyperagent</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools (WHA)</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — 12 clients, $10.2M</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">live :3009 — stress testing</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Tax Modeler</span><span class="infra-meta">:3010 — next activation</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">ShelfIQ</span><span class="infra-meta">Shopify content optimization</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">SMB Scout / Plumbing Acq</span><span class="infra-meta">BizBuySell #2168981</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">bond portfolio analytics</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Advisor Workstation</span><span class="infra-meta">unified advisor cockpit</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Bonvoy Workstation</span><span class="infra-meta">travel + loyalty ops</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Paperclip module</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">React Native + Expo</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">self-improving agent framework</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Meta Harness</span><span class="infra-meta">agent orchestration testbed</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">persistent knowledge server</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">equity research pipeline</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Trade Analyzer</span><span class="infra-meta">trade reconciliation + analytics</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Subscription Tracker</span><span class="infra-meta">recurring spend audit</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Vault Dashboard</span><span class="infra-meta">personal systems dashboard</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Port Dashboard</span><span class="infra-meta">dev port + service map</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Knowledge Monitor</span><span class="infra-meta">vault drift + health checks</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Gmail → Obsidian</span><span class="infra-meta">inbox-to-vault sync</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting notes ingestion</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">GDrive Renamer</span><span class="infra-meta">Drive normalization bot</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">token/tool-waste scanner</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">AI Portfolio</span><span class="infra-meta">portfolio site / case studies</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">AI System Tour</span><span class="infra-meta">this site</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Scoreboard Media</span><span class="infra-meta">advisor — Sale Forever AI</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Masters Calcutta / Draft</span><span class="infra-meta">tournament tooling</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Family Budget</span><span class="infra-meta">household cashflow tracker</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Production Readiness Analyzer</span><span class="infra-meta">pre-launch health checks</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Blue Line Advisors</span><span class="infra-meta">breakaway in flight</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Paperclip Platform</span><span class="infra-meta">ECC Phase 1 — 15-agent hyperagent</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools (WHA)</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — 12 clients</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">live :3009 — stress testing</span></div>
+        <div class="infra-item"><span class="infra-dot dim"></span><span class="infra-label">Tax Modeler</span><span class="infra-meta">:3010 — next activation</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">ShelfIQ</span><span class="infra-meta">Shopify content optimization</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">SMB Scout / Plumbing Acq</span><span class="infra-meta">BizBuySell #2168981</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">bond portfolio analytics</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Advisor Workstation</span><span class="infra-meta">unified advisor cockpit</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Bonvoy Workstation</span><span class="infra-meta">travel + loyalty ops</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Paperclip module</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">React Native + Expo</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">self-improving agent framework</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">persistent knowledge server</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">equity research pipeline</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Trade Analyzer</span><span class="infra-meta">trade reconciliation + analytics</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Subscription Tracker</span><span class="infra-meta">recurring spend audit</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AI System Tour</span><span class="infra-meta">this site</span></div>
       </div>
     </div>
 
-    <!-- MCP Servers -->
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#128268;</span> MCP Servers</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Gmail</span><span class="infra-meta">search, read, draft</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability, meetings</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Google Drive</span><span class="infra-meta">full Docs/Sheets/Slides API</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export, brand kit</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search + routing</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent2)"></span><span class="infra-label">Morningstar</span><span class="infra-meta">Advisor Assist + research</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">entity graph, search, timeline</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">read/write second-brain + KB</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Supabase</span><span class="infra-meta">project mgmt, SQL, migrations</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Context7</span><span class="infra-meta">live library documentation</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">DeepWiki</span><span class="infra-meta">GitHub repo knowledge index</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">GitNexus</span><span class="infra-meta">code graph, impact, route maps</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">IDE</span><span class="infra-meta">diagnostics, code execution</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Gmail</span><span class="infra-meta">search, read, draft</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability, meetings</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Drive</span><span class="infra-meta">full Docs/Sheets/Slides API</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export, brand kit</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search + routing</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morningstar</span><span class="infra-meta">Advisor Assist + research</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">entity graph, search, timeline</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">read/write second-brain + KB</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Supabase</span><span class="infra-meta">project mgmt, SQL, migrations</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Context7</span><span class="infra-meta">live library documentation</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">DeepWiki</span><span class="infra-meta">GitHub repo knowledge index</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">GitNexus</span><span class="infra-meta">code graph, impact, route maps</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">IDE</span><span class="infra-meta">diagnostics, code execution</span></div>
       </div>
     </div>
 
-    <!-- Scheduled Tasks -->
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#9200;</span> Scheduled Tasks</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--green)"></span><span class="infra-label">Morning Dashboard</span><span class="infra-meta">M-F 7:00 AM</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Sun 7:00 PM</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--amber)"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">Fri 8:00 PM</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">EOD Shutdown</span><span class="infra-meta">on demand — session end</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Gmail → Obsidian Sync</span><span class="infra-meta">hourly inbox pull</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--cyan)"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting note ingest</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morning Dashboard</span><span class="infra-meta">M-F 7:00 AM</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Sun 7:00 PM</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">Fri 8:00 PM</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">EOD Shutdown</span><span class="infra-meta">on demand — session end</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Gmail → Obsidian Sync</span><span class="infra-meta">hourly inbox pull</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting note ingest</span></div>
       </div>
     </div>
 
-    <!-- GitHub -->
     <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub & Infra</div>
+      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub &amp; Infra</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot" style="background:var(--accent)"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">55+ repositories</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Frontend Deploy</span><span class="infra-meta">Vercel (Next.js + edge)</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Backend Deploy</span><span class="infra-meta">Railway (services + cron)</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL + RLS)</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Machines</span><span class="infra-meta">2 dev environments</span></div>
-        <div class="infra-item"><span class="infra-dot" style="background:var(--dim)"></span><span class="infra-label">Workflows</span><span class="infra-meta">GitHub Actions + Claude Code CI</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">55+ repositories</span></div>
+        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Frontend Deploy</span><span class="infra-meta">Vercel (Next.js + edge)</span></div>
+        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Backend Deploy</span><span class="infra-meta">Railway (services + cron)</span></div>
+        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL + RLS)</span></div>
+        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Machines</span><span class="infra-meta">2 dev environments</span></div>
+        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Workflows</span><span class="infra-meta">GitHub Actions + Claude Code CI</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── PHILOSOPHY MOMENT (over photo) ─────────────────────────── -->
+<section class="pull-quote reveal">
+  <div class="photo-bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <blockquote>
+      The pattern work runs itself. <em>I do the judgment work.</em>
+    </blockquote>
+    <div class="by">Pete Cecil &middot; Blue Line Advisors</div>
   </div>
 </section>
 
 </main>
-<footer class="footer">
-  Pete's AI System Architecture &mdash; Built with Claude &mdash; Updated April 2026
+
+<!-- ─────────────────────────── FOOTER ─────────────────────────── -->
+<footer id="contact">
+  <div class="wrap">
+    <h5>Want to talk shop? <em>Let's.</em></h5>
+    <div class="cols">
+      <div class="col">
+        <h6>General</h6>
+        <a href="mailto:p.cecil@yahoo.com">p.cecil@yahoo.com</a>
+        <a href="tel:+18476249587">847-624-9587</a>
+      </div>
+      <div class="col">
+        <h6>Practice</h6>
+        <p>Blue Line Advisors</p>
+        <p>Kenilworth, IL</p>
+        <p>Est. 2025 &middot; Fee-only fiduciary</p>
+      </div>
+      <div class="col">
+        <h6>Elsewhere</h6>
+        <a href="https://www.linkedin.com/in/peter-cecil-20b5a415/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://cal.com/peter-cecil-ce0lud" target="_blank" rel="noopener">Book an intro call</a>
+        <a href="./">&larr; Back to landing</a>
+      </div>
+    </div>
+    <div class="colophon">
+      <span><b>Blue Line Advisors</b> &middot; Fiduciary RIA</span>
+      <span>©&nbsp;2026 &middot; Built with Claude</span>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -1092,9 +1152,7 @@ const AGENTS = {
   ]
 };
 
-const TAG_COLORS = {purple:"tag-purple",green:"tag-green",amber:"tag-amber",cyan:"tag-cyan",rose:"tag-rose",pink:"tag-pink"};
-
-// ── Stepper ──
+// ── Stepper (ARIA tab widget — preserved) ──
 document.querySelectorAll('.step-tab').forEach(tab => {
   tab.setAttribute('tabindex', '0');
   tab.setAttribute('role', 'tab');
@@ -1120,7 +1178,7 @@ document.querySelectorAll('.step-tab').forEach(tab => {
 });
 
 // ── Generic library renderer (works for skills + agents) ──
-function buildLibrary({data, pillsEl, gridEl, statusEl, defaultTag}) {
+function buildLibrary({data, pillsEl, gridEl, statusEl}) {
   const cats = Object.keys(data);
   let active = cats[0];
 
@@ -1148,10 +1206,7 @@ function buildLibrary({data, pillsEl, gridEl, statusEl, defaultTag}) {
       card.setAttribute('tabindex', '0');
       card.setAttribute('role', 'button');
       card.setAttribute('aria-expanded', 'false');
-      const tagClass = TAG_COLORS[item.tag || defaultTag];
-      const tagHtml = item.tag ? `<span class="skill-tag tag ${tagClass}">${item.id}</span>` : '';
       card.innerHTML = `
-        ${tagHtml}
         <h4>${item.name}</h4>
         <p>${item.desc}</p>
       `;
@@ -1170,44 +1225,38 @@ buildLibrary({
   data: SKILLS,
   pillsEl: document.getElementById('catPills'),
   gridEl: document.getElementById('skillsGrid'),
-  statusEl: document.getElementById('skillsStatus'),
-  defaultTag: 'purple'
+  statusEl: document.getElementById('skillsStatus')
 });
 
 buildLibrary({
   data: AGENTS,
   pillsEl: document.getElementById('agentCatPills'),
   gridEl: document.getElementById('agentsGrid'),
-  statusEl: document.getElementById('agentsStatus'),
-  defaultTag: 'cyan'
+  statusEl: document.getElementById('agentsStatus')
 });
 
-// ── Section Nav highlight ──
-const sections = ['hero','overview','skills','agents','memory','infra'];
-const navLinks = document.querySelectorAll('.section-nav a');
-function updateNav() {
-  const scrollY = window.scrollY + 200;
-  sections.forEach((id, i) => {
-    const el = document.getElementById(id);
-    if (el && scrollY >= el.offsetTop && scrollY < el.offsetTop + el.offsetHeight) {
-      navLinks.forEach(a => a.classList.remove('active'));
-      navLinks[i]?.classList.add('active');
-    }
-  });
-}
-window.addEventListener('scroll', updateNav);
-updateNav();
+// ── Subtle parallax on hero background (Huge-style) ──
+(function(){
+  const bg = document.querySelector('.hero-bg');
+  if (!bg) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  let ticking = false;
+  function update() {
+    const y = window.scrollY;
+    if (y > window.innerHeight) { ticking = false; return; }  // stop work once past hero
+    bg.style.transform = `translate3d(0, ${y * 0.35}px, 0)`;
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+})();
 
 // ── Scroll reveals ──
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-},{threshold:.1,rootMargin:'0px 0px -60px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-// Auto-wrap major sections as reveals for scroll-in polish
-document.querySelectorAll('.section > .section-label').forEach(label=>{
-  const sec=label.parentElement;
-  if(!sec.classList.contains('reveal')){sec.classList.add('reveal');io.observe(sec);}
-});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: .1, rootMargin: '0px 0px -80px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
