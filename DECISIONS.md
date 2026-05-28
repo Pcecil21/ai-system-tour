@@ -72,3 +72,24 @@
 - **Context**: Pre-launch compliance posture (no CTA on the page itself) but contact information is acceptable since it does not solicit. Pete chose to drop the fee schedule, CRD, and street-address fields rather than fill them.
 - **Rationale**: Real contact details make the site usable as a portfolio reference; placeholder text would undermine credibility. The CTA-vs-contact distinction is preserved (no scheduling CTA on the page itself; the cal.com link lives only in the footer).
 - **Open items**: None — shipped in commits `aa550c6`, `b09166b`, `113f097`.
+
+## 2026-05-28 — Veo 3.1 video generation via Gemini API (replaces manual Flow workflow)
+
+- **Decision**: Generate all 8 cinematic reels for the homepage `<flow-slot>` elements directly via the Gemini API (`veo-3.1-fast-generate-preview` model) instead of manual Google Flow generation. Store as static `.mp4` files in `public/videos/` and serve from Vercel's edge CDN. No Vercel Blob / Cloudinary / R2 hosting layer.
+- **Context**: The editorial redesign added 8 video placeholders meant to be filled via manual Flow generation (~30-45 min of Pete's time). Pete's existing `GEMINI_API_KEY` (in `~/Claude/Projects/Laxverse/.env`) turned out to have full Veo 3.1 access. Tested with one clip (`story-01.mp4`, ~60s wall time, 1.9 MB), then batched the remaining 7.
+- **Rationale**: Removed a 30-45 min manual blocker. All 8 reels (hero, story-01/02/03, deck-a/b/c/d) generated in ~8 min total. Cost: $0 net (Google free tier covered it). Static asset hosting from `public/videos/` keeps everything single-domain, single-deploy. Pattern preserved at `scripts/generate-reel.py` for future projects.
+- **Open items**: 4 stills extracted from generated reels for the inventory page image bands (`hero-bg.jpg`, `band-compliance.jpg`, `band-paper.jpg`, `band-trust.jpg`). Vercel Analytics dashboard activation still pending.
+
+## 2026-05-28 — Inventory page editorial redesign (Huge.com aesthetic in Blue Line palette)
+
+- **Decision**: Full rewrite of `public/inventory.html` porting Huge.com editorial moves while keeping the cream/olive/serif palette from the homepage. Key elements ported: aggressive display type (16vw "Under the hood." headline), numbered taxonomy (`01 — Overview` / `02 — Skill Library` / etc.), full-bleed sections with edge-aligned content (1480px max-width), hairline dividers replacing the indigo bezel card system, subtle parallax on hero background, three full-bleed image bands punctuating page rhythm, and a closing pull-quote-over-photo bookending the hero.
+- **Context**: Pete pointed at https://www.hugeinc.com/ as the aesthetic reference. The existing inventory was dark/indigo/purple with glow + ambient orbs — inconsistent with the homepage's editorial brand. The `/grill-with-docs` interview surfaced "both audiences equally" (peer advisors AND prospects) as a deliberate reversal of the 2026-04-13 single-audience scope reduction.
+- **Rationale**: Homepage was already cream/olive/serif. Inventory needed brand coherence. Huge.com is mostly a structural/typographic template (confident editorial), not a specific color recipe — so porting their structural moves while using Blue Line's palette gives the inventory editorial confidence without creating a second brand. Closes Editorial-redesign DoD in OUTCOME.md.
+- **Open items**: None — shipped in commit `659308e`.
+
+## 2026-05-28 — Audience precedence: both equally (reversal of 2026-04-13)
+
+- **Decision**: The homepage and inventory page serve **both peer advisors AND prospective clients equally** from a single page each. This deliberately reverses the 2026-04-13 SCOPE REDUCTION decision that explicitly rejected serving multiple audiences.
+- **Context**: Surfaced during the `/outcome-builder` Socratic interview (Question 1 of 3). Pete chose "both equally" when given four audience-precedence options.
+- **Rationale**: The pre-launch site can serve both audiences because the page-level CTA is intentionally absent (pre-launch compliance posture). When the RIA launches, the CTA-flip will likely re-orient the homepage toward prospects.
+- **Open items**: CTA-flip trigger condition still undefined — deferred to compliance counsel review per OUTCOME.md.
