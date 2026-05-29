@@ -617,8 +617,14 @@ a[data-placeholder]:hover{
 }
 
 /* ─────────────────────────── REVEAL ─────────────────────────── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 900ms var(--ease-expo),transform 900ms var(--ease-expo)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1000ms var(--ease-expo),transform 1000ms var(--ease-expo)}
 .reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── Hero entrance (Phase 3 motion): eyebrow + headline rise on load. Reduced-motion
+   is already neutralized by the prefers-reduced-motion block below. ── */
+@keyframes heroRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.hero .hello{animation:heroRise .85s var(--ease-expo) both}
+.hero h1{animation:heroRise 1s var(--ease-expo) .1s both}
 
 /* ─────────────────────────── RESPONSIVE ─────────────────────────── */
 @media(max-width:900px){
