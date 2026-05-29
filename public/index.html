@@ -427,6 +427,28 @@ body{
   text-transform:none;
   letter-spacing:-.02em;
 }
+/* ── Philosophy as a dramatic full-bleed DARK band over the study-window photo (B). ──
+   B is a dark, contemplative image, so this section flips to light type on a dark scrim
+   — a deliberate cinematic break from the cream. Overrides come after the base rules so
+   they win on source order. */
+.philosophy{overflow:hidden}
+.philosophy .photo-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('/images/hero-client-b.jpg');
+  background-size:cover;background-position:center 22%;
+}
+.philosophy .photo-bg::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(20,21,15,.74) 0%, rgba(20,21,15,.60) 50%, rgba(20,21,15,.80) 100%);
+}
+.philosophy-inner{position:relative;z-index:1}
+.philosophy .label{color:rgba(241,236,226,.72)}
+.philosophy .label::before{background:rgba(241,236,226,.55)}
+.philosophy blockquote{color:#f4efe4}
+.philosophy blockquote em{color:#b6c08c}        /* lighter sage-olive so the accent reads on dark */
+.philosophy blockquote::before{color:#b6c08c}
+.philosophy .by{color:rgba(241,236,226,.6)}
+.philosophy .by .sig{color:#f4efe4}
 
 /* ─────────────────────────── SYSTEM CARD ─────────────────────────── */
 .system{padding:5rem 0 5rem}
@@ -1025,14 +1047,17 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 </section>
 
 <!-- ─────────────────────────── PHILOSOPHY ─────────────────────────── -->
-<section class="philosophy wrap reveal">
-  <div class="label">Philosophy &mdash; in one breath</div>
-  <blockquote>
-    I rebuilt how I work once, when the trading pits went <em>electronic.</em> I&rsquo;m doing it again&hairsp;&mdash;&hairsp;so the hours go to <em>you,</em> not the paperwork.
-  </blockquote>
-  <div class="by">
-    <span class="sig">Pete Cecil</span>
-    <span>Kenilworth, IL &middot; 2026</span>
+<section class="philosophy reveal">
+  <div class="photo-bg" aria-hidden="true"></div>
+  <div class="wrap philosophy-inner">
+    <div class="label">Philosophy &mdash; in one breath</div>
+    <blockquote>
+      I rebuilt how I work once, when the trading pits went <em>electronic.</em> I&rsquo;m doing it again&hairsp;&mdash;&hairsp;so the hours go to <em>you,</em> not the paperwork.
+    </blockquote>
+    <div class="by">
+      <span class="sig">Pete Cecil</span>
+      <span>Kenilworth, IL &middot; 2026</span>
+    </div>
   </div>
 </section>
 
