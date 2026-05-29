@@ -7,7 +7,7 @@
 <meta name="description" content="The full inventory of playbooks, specialists, live connections, and infrastructure behind Pete Cecil's AI-augmented practice at Blue Line Advisors.">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/inventory">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Pete Cecil &middot; AI in wealth management">
+<meta property="og:site_name" content="Pete Cecil &middot; Blue Line Advisors">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/inventory">
 <meta property="og:title" content="Under the hood &middot; Blue Line Advisors">
 <meta property="og:description" content="Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.">
@@ -88,9 +88,9 @@ body{
 /* ─────────────────────────── HERO ─────────────────────────── */
 .hero{
   position:relative;
-  min-height:100dvh;
-  padding:7rem 0 3rem;
-  display:flex;flex-direction:column;justify-content:space-between;
+  /* Was min-height:100dvh + space-between — same dead-zone fix as the client hero. */
+  padding:7rem 0 3.5rem;
+  display:flex;flex-direction:column;
   overflow:hidden;
 }
 .hero-bg{
@@ -105,7 +105,7 @@ body{
   content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(239,238,232,.35) 0%,rgba(239,238,232,.55) 45%,rgba(239,238,232,.92) 100%);
 }
-.hero .wrap{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;flex:1;min-height:calc(100dvh - 10rem)}
+.hero .wrap{position:relative;z-index:1;display:flex;flex-direction:column;flex:1}
 .hero .hello{
   font-family:var(--serif);font-style:italic;
   font-size:clamp(1.2rem,2vw,1.8rem);
@@ -157,14 +157,14 @@ body{
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* ─────────────────────────── SECTION SYSTEM ─────────────────────────── */
-.section{padding:8rem 0;border-top:1px solid var(--hairline)}
+.section{padding:5rem 0;border-top:1px solid var(--hairline)}
 .section.no-rule{border-top:none}
 .section-head{
   display:grid;
   grid-template-columns:1fr 3fr;
   gap:3rem;
   align-items:start;
-  margin-bottom:5rem;
+  margin-bottom:3rem;
 }
 .section-num{
   font-family:var(--mono);
@@ -198,7 +198,7 @@ body{
 
 /* ─────────────────────────── INTRO BLOCK ─────────────────────────── */
 .intro-block{
-  padding:7rem 0 5rem;
+  padding:5rem 0 4rem;
 }
 .intro-grid{display:grid;grid-template-columns:1fr 4fr;gap:3rem;align-items:start}
 .intro-eyebrow{
@@ -411,9 +411,18 @@ body{
 .infra-block{padding:1.75rem 2rem 1.75rem 0;border-bottom:1px solid var(--hairline)}
 .infra-block:not(:nth-child(-n+1)){border-left:1px solid var(--hairline);padding-left:2rem}
 @media(min-width:1200px){
-  .infra-section{grid-template-columns:repeat(4,1fr)}
+  /* Active Projects grew to ~30 items and dwarfed MCP/Scheduled/GitHub, leaving a
+     lopsided empty L-shape on the right. Give it its own full-width row with a
+     3-column item list, then sit the other three in an even 3-column row beneath. */
+  .infra-section{grid-template-columns:repeat(3,1fr)}
   .infra-block{padding-left:2rem;border-left:1px solid var(--hairline)}
-  .infra-block:nth-child(4n+1){border-left:none;padding-left:0}
+  .infra-block:first-child{
+    grid-column:1/-1;border-left:none;padding-left:0;
+    border-bottom:1px solid var(--hairline);padding-bottom:1.75rem;margin-bottom:1.75rem;
+  }
+  .infra-block:first-child .infra-list{column-count:3;column-gap:2.5rem}
+  .infra-block:first-child .infra-item{break-inside:avoid}
+  .infra-block:nth-child(2){border-left:none;padding-left:0}
 }
 .infra-block-header{
   font-family:var(--sans);font-weight:600;font-size:1.05rem;letter-spacing:-.015em;color:var(--ink);
@@ -452,7 +461,7 @@ body{
 /* ─────────────────────────── PHILOSOPHY MOMENT (full-bleed photo) ─────────────────────────── */
 .pull-quote{
   position:relative;
-  padding:14rem 0;
+  padding:7rem 0;
   overflow:hidden;
   border-top:1px solid var(--hairline);
 }
@@ -565,6 +574,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
 }
 </style>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/config.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -575,7 +585,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <span>Pete Cecil <span class="frac">/ Blue Line Advisors</span></span>
   </a>
   <div class="right">
-    <a class="back" href="./">&larr;&nbsp;Back to landing</a>
+    <a class="back" href="./">&larr;&nbsp;For clients</a>
   </div>
 </nav>
 
@@ -597,7 +607,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
       </p>
       <div class="meta">
         <b>Inventory</b>
-        78 playbooks &middot; 34 specialists<br>
+        110+ playbooks &middot; 34 specialists<br>
         13 live connections<br>
         30+ active projects
       </div>
@@ -614,10 +624,10 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <span class="intro-eyebrow"><span class="num">00 &mdash;</span> About</span>
     <div>
       <h2>
-        A practice-management system built on top of Claude. <strong>78 playbooks</strong> for the repeatable work. <strong>34 specialist personas</strong> for focused tasks. A <em>memory layer</em> so it knows clients, projects, and priorities without re-explaining.
+        A practice-management system built on top of Claude. <strong>110+ playbooks</strong> for the repeatable work. <strong>34 specialist personas</strong> for focused tasks. A <em>memory layer</em> so it knows clients, projects, and priorities without re-explaining.
       </h2>
       <div class="intro-stats">
-        <div class="intro-stat"><strong>78</strong><span>Playbooks</span></div>
+        <div class="intro-stat"><strong>110+</strong><span>Playbooks</span></div>
         <div class="intro-stat"><strong>34</strong><span>Specialists</span></div>
         <div class="intro-stat"><strong>7AM</strong><span>Daily briefing</span></div>
         <div class="intro-stat"><strong>30+</strong><span>Active projects</span></div>
@@ -654,7 +664,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <p>Three entry points into the same underlying Claude system, each optimized for a different workflow.</p>
         <div class="detail-grid">
           <div class="detail-card"><strong>Claude.ai</strong><span>Web and mobile chat. Long-form reasoning, research, brainstorming. Accessible anywhere.</span></div>
-          <div class="detail-card"><strong>Claude Code CLI</strong><span>Terminal-native agent. Builds full-stack apps, manages GitHub repos, runs tests. Powers the 45+ repo portfolio.</span></div>
+          <div class="detail-card"><strong>Claude Code CLI</strong><span>Terminal-native agent. Builds full-stack apps, manages GitHub repos, runs tests. Powers the 85+ repo portfolio.</span></div>
           <div class="detail-card"><strong>Cowork Desktop</strong><span>Non-developer automation hub. File management, MCP connectors, scheduled tasks, skill library. The daily cockpit.</span></div>
         </div>
       </div>
@@ -669,7 +679,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
             <p>Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong>SessionStart hook</strong> runs before every session — a PowerShell script reads <code>North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
           </div>
           <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior for that specific context.</span></div>
-          <div class="detail-card"><strong>Skills Library</strong><span>60+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
+          <div class="detail-card"><strong>Skills Library</strong><span>110+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
           <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge injected via SessionStart hook.</span></div>
           <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services on every call.</span></div>
         </div>
@@ -726,9 +736,9 @@ footer .colophon b{color:var(--paper);font-weight:500}
       <div class="step-panel" data-panel="5" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" aria-hidden="true">
         <h3>Finished work gets published</h3>
         <div class="plain-lead">When Claude builds software for me, it doesn't just hand me files — it commits the work to GitHub (a code storage service), and the site or app goes live automatically on the internet. I can hand a link to anyone within minutes.</div>
-        <p>Claude Code manages a portfolio of 55+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
+        <p>Claude Code manages a portfolio of 85+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
         <div class="detail-grid">
-          <div class="detail-card"><strong>GitHub</strong><span>Pcecil21 account. 45+ repos spanning web apps, APIs, tools, and automation scripts across 2 machines.</span></div>
+          <div class="detail-card"><strong>GitHub</strong><span>Pcecil21 account. 85+ repos spanning web apps, APIs, tools, and automation scripts across 2 machines.</span></div>
           <div class="detail-card"><strong>Vercel</strong><span>Frontend deployments. Next.js apps with instant previews, edge functions, analytics.</span></div>
           <div class="detail-card"><strong>Railway</strong><span>Backend services. Persistent servers, cron jobs, databases, WebSocket endpoints.</span></div>
           <div class="detail-card"><strong>Supabase</strong><span>Database layer. PostgreSQL, auth, real-time subscriptions, edge functions, storage.</span></div>
@@ -758,8 +768,8 @@ footer .colophon b{color:var(--paper);font-weight:500}
   <div class="section-head">
     <span class="section-num">02 &mdash; Skill Library</span>
     <div>
-      <h2 class="section-title">Playbooks <em>&mdash; 78 recipe cards.</em></h2>
-      <p class="section-sub">From drafting a trade rationale to setting up a Next.js site, each playbook tells Claude exactly how I want a specific kind of work done. Browse by category.</p>
+      <h2 class="section-title">Playbooks <em>&mdash; the ones I reach for.</em></h2>
+      <p class="section-sub">110+ live in the library; these are the ones that do the most work. Each tells Claude exactly how I want a specific kind of task done — from a trade rationale to a Next.js site. Browse by category.</p>
     </div>
   </div>
 
@@ -815,15 +825,13 @@ footer .colophon b{color:var(--paper);font-weight:500}
       </div>
       <div class="vault-tree">
         <span class="folder">wiki/</span><br>
-        &nbsp;&nbsp;<span class="folder">clients/</span> <span class="note">— 13 household profiles</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-anderson.md</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-chen.md</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">... 11 more households</span><br>
+        &nbsp;&nbsp;<span class="folder">clients/</span> <span class="note">— one profile per household</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-*.md</span> <span class="note">— anonymized in this view</span><br>
         <span class="folder">raw/</span><br>
         &nbsp;&nbsp;<span class="folder">data/</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">adviceworks/</span> <span class="note">— planning exports</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— Fidelity statements</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">redtail/</span> <span class="note">— CRM data</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">planning/</span> <span class="note">— plan exports</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— <span data-custodian>Schwab</span> statements</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">crm/</span> <span class="note">— CRM records</span><br>
         <span class="folder">_templates/</span> <span class="note">— reusable output templates</span><br>
         <span class="folder">output/</span> <span class="note">— generated deliverables</span>
       </div>
@@ -885,24 +893,34 @@ footer .colophon b{color:var(--paper);font-weight:500}
       <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
       <div class="infra-list">
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Blue Line Advisors</span><span class="infra-meta">breakaway in flight</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Helm Hub</span><span class="infra-meta">core — RIA data + agent layer</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Helm Station</span><span class="infra-meta">core — solo-advisor OS</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Paperclip Platform</span><span class="infra-meta">ECC Phase 1 — 15-agent hyperagent</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Ice Scheduler / DirectorOps</span><span class="infra-meta">Next.js + Python OR-Tools (WHA)</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — 12 clients</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — drift monitor</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">live :3009 — stress testing</span></div>
         <div class="infra-item"><span class="infra-dot dim"></span><span class="infra-label">Tax Modeler</span><span class="infra-meta">:3010 — next activation</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">ShelfIQ</span><span class="infra-meta">Shopify content optimization</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">SMB Scout / Plumbing Acq</span><span class="infra-meta">BizBuySell #2168981</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">bond portfolio analytics</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Advisor Workstation</span><span class="infra-meta">unified advisor cockpit</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Bonvoy Workstation</span><span class="infra-meta">travel + loyalty ops</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Fora Travel</span><span class="infra-meta">Next.js + Paperclip module</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">LaxVerse</span><span class="infra-meta">React Native + Expo</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Homegrown Hockey</span><span class="infra-meta">Next.js + Supabase</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">SnapShooter</span><span class="infra-meta">sorts + packages player photos for parents</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Gill Media</span><span class="infra-meta">youth-sports photography page</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">self-improving agent framework</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">persistent knowledge server</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">equity research pipeline</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Trade Analyzer</span><span class="infra-meta">trade reconciliation + analytics</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Subscription Tracker</span><span class="infra-meta">recurring spend audit</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Tax Reg Watch</span><span class="infra-meta">IRS/SEC/FINRA reg + tax monitoring</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Research Hub</span><span class="infra-meta">single-stock research engine</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Research Companion</span><span class="infra-meta">grounded research → audio, reports, maps</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morning Edition</span><span class="infra-meta">daily AI-news briefing</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Cecil HQ</span><span class="infra-meta">command-center dashboard :3013</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Family Budget</span><span class="infra-meta">local household budget tracker</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Health-CEO</span><span class="infra-meta">personal fitness + health tracker</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Claim Builder</span><span class="infra-meta">automated proof-of-claim builder</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Debt Harness</span><span class="infra-meta">technical-debt cleanup engine</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AI System Tour</span><span class="infra-meta">this site</span></div>
       </div>
     </div>
@@ -914,15 +932,15 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability, meetings</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Drive</span><span class="infra-meta">full Docs/Sheets/Slides API</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export, brand kit</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Kiwi Flights</span><span class="infra-meta">flight search + routing</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morningstar</span><span class="infra-meta">Advisor Assist + research</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Polygon</span><span class="infra-meta">live market &amp; equity data</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">entity graph, search, timeline</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">read/write second-brain + KB</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Supabase</span><span class="infra-meta">project mgmt, SQL, migrations</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">NotebookLM</span><span class="infra-meta">research notebooks + synthesis</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">n8n</span><span class="infra-meta">workflow automation</span></div>
         <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Context7</span><span class="infra-meta">live library documentation</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">DeepWiki</span><span class="infra-meta">GitHub repo knowledge index</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">GitNexus</span><span class="infra-meta">code graph, impact, route maps</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">IDE</span><span class="infra-meta">diagnostics, code execution</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Playwright</span><span class="infra-meta">browser automation + QA</span></div>
       </div>
     </div>
 
@@ -941,7 +959,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div class="infra-block">
       <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub &amp; Infra</div>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">55+ repositories</span></div>
+        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">85+ repositories</span></div>
         <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Frontend Deploy</span><span class="infra-meta">Vercel (Next.js + edge)</span></div>
         <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Backend Deploy</span><span class="infra-meta">Railway (services + cron)</span></div>
         <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL + RLS)</span></div>
@@ -990,7 +1008,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     </div>
     <div class="colophon">
       <span><b>Blue Line Advisors</b> &middot; Fiduciary RIA</span>
-      <span>©&nbsp;2026 &middot; Built with Claude</span>
+      <span>©&nbsp;2026 &middot; Kenilworth, IL</span>
     </div>
   </div>
 </footer>

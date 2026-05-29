@@ -3,20 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pete Cecil &middot; AI-augmented financial planning</title>
-<meta name="description" content="Independent financial advisor in Kenilworth, IL. AI handles the pattern work, I handle the people.">
+<title>Pete Cecil &middot; A fiduciary who actually traded</title>
+<meta name="description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
 <meta name="theme-color" content="#f1ece2">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/">
-<meta property="og:title" content="Pete Cecil · AI-augmented financial planning">
-<meta property="og:description" content="Independent financial advisor in Kenilworth, IL. AI handles the pattern work, I handle the people.">
-<meta property="og:site_name" content="Pete Cecil · AI in wealth management">
+<meta property="og:title" content="Pete Cecil · A fiduciary who actually traded">
+<meta property="og:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
+<meta property="og:site_name" content="Pete Cecil · Blue Line Advisors">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pete Cecil · AI-augmented financial planning">
-<meta name="twitter:description" content="Independent financial advisor in Kenilworth, IL. AI handles the pattern work, I handle the people.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · AI in wealth management","url":"https://ai-system-tour.vercel.app/","description":"Independent financial advisor in Kenilworth, IL. AI handles the pattern work, I handle the people."}</script>
+<meta name="twitter:title" content="Pete Cecil · A fiduciary who actually traded">
+<meta name="twitter:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families."}</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/config.js"></script>
+
+<script>
+  // Defensive scroll guard. A reviewer reported the page opening scrolled down to
+  // the contact footer. We couldn't reproduce it on a clean desktop load, so this
+  // is a guard, not a confirmed fix — it neutralizes the two likely causes without
+  // hiding anything:
+  //   1) the browser restoring a prior scroll position on back-nav / bfcache, and
+  //   2) a shared link that landed mid-page.
+  // It ONLY forces the top when there is no in-page #hash target, so real deep
+  // links like #contact (the "Let's talk" button and footer links) still work.
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  function snapTopIfNoHash(){ if (!location.hash) window.scrollTo(0, 0); }
+  window.addEventListener('load', snapTopIfNoHash);
+  // bfcache restores (back/forward) don't fire 'load' — catch them here.
+  window.addEventListener('pageshow', function(e){ if (e.persisted) snapTopIfNoHash(); });
+</script>
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23161513'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='18' font-weight='700' fill='%23f1ece2'%3EP%3C/text%3E%3C/svg%3E">
 
@@ -88,7 +105,9 @@ body{
 }
 .nav .right .talk:hover{background:#f1ece2;color:#161513;border-color:#f1ece2}
 .nav .right .menu{font-feature-settings:"ss01"}
-.nav .right .menu .dot{display:inline-block;width:5px;height:5px;border-radius:999px;background:#22c55e;margin-right:.4em;vertical-align:.12em;box-shadow:0 0 8px rgba(34,197,94,.6)}
+/* Dot inherits the nav's blended text color (currentColor) so it stays consistent with
+   the links and can never invert to magenta over the cream hero the way a fixed green did. */
+.nav .right .menu .dot{display:inline-block;width:5px;height:5px;border-radius:999px;background:currentColor;margin-right:.4em;vertical-align:.12em;opacity:.85}
 
 /* ─────────────────────────── LAYOUT ─────────────────────────── */
 .wrap{max-width:1480px;margin:0 auto;padding:0 1.75rem}
@@ -108,9 +127,11 @@ body{
 
 /* ─────────────────────────── HERO ─────────────────────────── */
 .hero{
-  padding:7rem 0 3rem;
-  min-height:100dvh;
-  display:flex;flex-direction:column;justify-content:space-between;
+  padding:7rem 0 3.5rem;
+  /* Was min-height:100dvh + justify-content:space-between. With the smaller headline
+     that pinned the intro row to the bottom of the viewport and left a big empty gap
+     in the middle. Content-height now, so the intro sits right under the headline. */
+  display:flex;flex-direction:column;
   position:relative;
 }
 .hero .hello{
@@ -125,14 +146,16 @@ body{
 .hero h1{
   font-family:var(--sans);
   font-weight:700;
-  font-size:clamp(4.5rem,13.5vw,17rem);
-  line-height:.82;
-  letter-spacing:-.05em;
+  /* Was clamp(4.5rem,13.5vw,17rem) — that rendered ~270px and read as "accidentally
+     large" (reviewer feedback). This 4-line headline needs a deliberate, smaller size. */
+  font-size:clamp(2.6rem,6.4vw,6.25rem);
+  line-height:.96;
+  letter-spacing:-.04em;
   margin-top:1.25rem;
   text-wrap:balance;
 }
 .hero h1 .row{display:block;position:relative}
-.hero h1 .row.indent{padding-left:9vw}
+.hero h1 .row.indent{padding-left:6vw}
 .hero h1 em{
   font-family:var(--serif);
   font-style:italic;
@@ -220,7 +243,7 @@ body{
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ─────────────────────────── INTRO BIG TEXT ─────────────────────────── */
-.intro{padding:9rem 0 6rem;position:relative}
+.intro{padding:5rem 0 4rem;position:relative}
 .intro-grid{display:grid;grid-template-columns:1fr 4fr;gap:3rem;align-items:start}
 .intro h2{
   font-family:var(--sans);
@@ -241,7 +264,7 @@ body{
 .intro .arrowdown{font-size:1.1em;color:var(--accent);margin:0 .12em}
 
 /* ─────────────────────────── STATS ─────────────────────────── */
-.stats{padding:5rem 0 8rem;border-top:1px solid var(--hairline)}
+.stats{padding:5rem 0 5rem;border-top:1px solid var(--hairline)}
 .stats-row{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -281,7 +304,7 @@ body{
 }
 
 /* ─────────────────────────── MANIFESTO / STORIES ─────────────────────────── */
-.three{padding:7rem 0 5rem;border-top:1px solid var(--ink)}
+.three{padding:5rem 0 4rem;border-top:1px solid var(--ink)}
 .three-head{
   display:grid;
   grid-template-columns:1fr 2fr 1fr;
@@ -345,7 +368,7 @@ body{
 
 /* ─────────────────────────── PHILOSOPHY ─────────────────────────── */
 .philosophy{
-  padding:10rem 0;
+  padding:6rem 0;
   text-align:left;
   position:relative;
 }
@@ -389,7 +412,7 @@ body{
 }
 
 /* ─────────────────────────── SYSTEM CARD ─────────────────────────── */
-.system{padding:5rem 0 8rem}
+.system{padding:5rem 0 5rem}
 .system .head{
   display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:2rem;
   padding-bottom:2.5rem;border-bottom:1px solid var(--ink);
@@ -492,6 +515,54 @@ footer .colophon{
 }
 footer .colophon b{color:var(--paper);font-weight:500}
 
+/* ─────────────────────────── ABOUT YOU ─────────────────────────── */
+.about-you{padding:5rem 0 4rem;border-top:1px solid var(--hairline)}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:center;
+}
+.about-photo{position:relative;margin:0}
+.about-photo img{
+  display:block;width:100%;height:auto;
+  aspect-ratio:3/2;object-fit:cover;
+  border:1px solid var(--ink);
+  filter:saturate(.92);
+}
+.about-photo figcaption{display:none}
+/* When the image file is missing, show a quiet flagged placeholder panel instead. */
+.about-photo.img-missing{
+  aspect-ratio:3/2;
+  border:1px dashed var(--accent);
+  background:
+    radial-gradient(70% 90% at 75% 75%, color-mix(in oklab, var(--accent) 16%, transparent), transparent 65%),
+    linear-gradient(170deg, #14140f 0%, #0a0a0a 75%);
+  display:flex;align-items:center;justify-content:center;
+}
+.about-photo.img-missing figcaption{
+  display:block;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  color:color-mix(in oklab, var(--accent) 70%, #f1ece2);
+  text-align:center;padding:1rem;
+}
+.about-copy .eyebrow{margin-bottom:1.5rem}
+.about-copy h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(1.9rem,3.4vw,3rem);
+  line-height:1.04;letter-spacing:-.03em;text-wrap:balance;
+  margin-bottom:1.75rem;
+}
+.about-copy h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+.about-copy p{font-size:1.02rem;color:var(--ink-2);line-height:1.65;max-width:50ch}
+.about-copy p + p{margin-top:1rem}
+.about-copy p strong{color:var(--ink);font-weight:600}
+.about-copy p em{font-style:italic;color:var(--ink)}
+@media(max-width:900px){
+  .about-you{padding:4rem 0 3rem}
+  .about-grid{grid-template-columns:1fr;gap:2rem}
+}
+
 /* hallucinated-content placeholders — visually distinct so they don't ship by accident */
 [data-placeholder]{
   color:color-mix(in oklab, currentColor 45%, transparent) !important;
@@ -517,8 +588,8 @@ a[data-placeholder]:hover{
   .nav .right{gap:1rem}
   .wrap{padding:0 1.25rem}
   .hero{padding:5rem 0 2.5rem;min-height:auto}
-  .hero h1{font-size:clamp(3.5rem,15vw,7rem)}
-  .hero h1 .row.indent{padding-left:6vw}
+  .hero h1{font-size:clamp(2.3rem,8.5vw,3.4rem)}
+  .hero h1 .row.indent{padding-left:4vw}
   .hero-foot{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}
   .hero-foot .scroll-cue{justify-self:start}
   .intro{padding:5rem 0 3rem}
@@ -740,6 +811,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <span>Pete Cecil <span class="frac">/ Independent advisor &mdash; Kenilworth, IL</span></span>
   </a>
   <div class="right">
+    <a href="inventory">Under the hood&nbsp;&rarr;</a>
     <span class="menu"><span class="dot"></span>Taking new clients</span>
     <a class="talk" href="#contact">Let&rsquo;s talk&nbsp;<em style="font-family:var(--serif);font-style:italic">?</em></a>
   </div>
@@ -752,15 +824,16 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   <div>
     <div class="hello">Hello&hairsp;&mdash;</div>
     <h1>
-      <span class="row">I&rsquo;m Pete.</span>
-      <span class="row indent">A <em>force&nbsp;multiplier</em>,</span>
-      <span class="row">not a <span class="strike">robo&#x2011;advisor</span><span class="arrow">&nbsp;↳</span> <em>an advisor</em>.</span>
+      <span class="row">A fiduciary who</span>
+      <span class="row indent"><em>actually&nbsp;traded.</em></span>
+      <span class="row">And actually picks</span>
+      <span class="row indent">up the <em>phone</em>.</span>
     </h1>
   </div>
 
   <div class="hero-foot">
     <p class="lede">
-      I&rsquo;m an independent financial advisor in Kenilworth building a practice where <em>AI handles the pattern work</em>&hairsp;&mdash;&hairsp;not the client relationships. What follows are three places it&rsquo;s already doing real work. Not demo work.
+      Most advisors are relationship managers who&rsquo;ve <em>never managed risk</em>. I spent 22&nbsp;years doing exactly that&hairsp;&mdash;&hairsp;then built a practice where you get <em>me</em>, not a call center.
     </p>
     <div class="meta">
       <b>Practice</b>
@@ -769,18 +842,15 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       Est. 2025 &middot; Fee-only fiduciary
     </div>
     <div class="scroll-cue">
-      Three things below<span class="down">↓</span>
+      Here&rsquo;s the difference<span class="down">↓</span>
     </div>
   </div>
 </section>
 
-<!-- ─────────────────────────── HERO REEL (Flow) ─────────────────────────── -->
+<!-- ─────────────────────────── HERO REEL ───────────────────────────
+     Silent cinematic ambiance only. The "Generated with Google Flow / Veo / Imagen"
+     meta strip was removed per the reframe — visitors don't need the production credits. -->
 <section class="reel-wrap" aria-label="Practice reel">
-  <div class="reel-strip">
-    <span class="left"><span class="rec"></span><b>Reel 01</b>&nbsp;&middot;&nbsp;Pete Cecil &mdash; the practice, in motion</span>
-    <span>Generated with <b>Google&nbsp;Flow</b> &middot; Veo&nbsp;3.1 &middot; Imagen&nbsp;4</span>
-    <span class="right">21:9 &middot; 00:24 &middot; awaiting&nbsp;upload</span>
-  </div>
   <div class="reel wrap">
     <flow-slot
       aspect="21:9"
@@ -796,18 +866,42 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── MARQUEE ─────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Compliance manual&nbsp;<i class="star">✷</i>&nbsp;Trade rationales&nbsp;<i class="star">✷</i>&nbsp;Portfolio drift monitor&nbsp;<i class="star">✷</i>&nbsp;Client briefings 7am&nbsp;<i class="star">✷</i>&nbsp;</span>
-    <span aria-hidden="true">Compliance manual&nbsp;<i class="star">✷</i>&nbsp;Trade rationales&nbsp;<i class="star">✷</i>&nbsp;Portfolio drift monitor&nbsp;<i class="star">✷</i>&nbsp;Client briefings 7am&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span>Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span aria-hidden="true">Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;</span>
   </div>
 </div>
 
 <!-- ─────────────────────────── INTRO ─────────────────────────── -->
 <section class="intro wrap reveal">
   <div class="intro-grid">
-    <span class="eyebrow"><span class="num">00 &mdash;</span> About</span>
+    <span class="eyebrow"><span class="num">01 &mdash;</span> The difference</span>
     <h2>
-      I run a small book of households with one fiduciary &mdash; me &mdash; zero junior staff, and roughly thirty&#8209;four AI specialists on call. <span class="arrowdown">↳</span> A <em>force&nbsp;multiplier</em>, not a replacement.
+      Your current advisor manages a <em>relationship</em>. I managed <em>risk</em>&hairsp;&mdash;&hairsp;for 22&nbsp;years&hairsp;&mdash;&hairsp;before I ever managed a portfolio. <span class="arrowdown">↳</span> That changes what you get.
     </h2>
+  </div>
+</section>
+
+<!-- ─────────────────────────── ABOUT YOU ───────────────────────────
+     Reviewer's explicit ask: the trading background, woven in as credibility, with
+     a multi-monitor trading-desk photo. Bio framing per Pete: "risk manager who
+     managed multiple traders" — NO firm named, no headcount, no performance claims. -->
+<section class="about-you wrap reveal">
+  <div class="about-grid">
+    <figure class="about-photo">
+      <!-- Image asset pending generation. Falls back to a flagged placeholder panel
+           if the file is missing so it never ships looking broken. -->
+      <img src="/images/about-trading-desk.jpg" alt="At the trading desk — a wall of rates and Treasury-options screens"
+           loading="lazy" decoding="async"
+           onerror="this.closest('.about-photo').classList.add('img-missing'); this.remove();">
+      <figcaption data-placeholder>Photo pending &mdash; 17-monitor trading desk</figcaption>
+    </figure>
+    <div class="about-copy">
+      <span class="eyebrow"><span class="num">02 &mdash;</span> About me</span>
+      <h3>I spent 22 years with <em>real money on the line.</em></h3>
+      <p>Before I ever managed a portfolio, I traded U.S.&nbsp;Treasury options&hairsp;&mdash;&hairsp;starting in the open-outcry pit and moving upstairs as the markets went electronic. For most of those years I worked as a <strong>risk manager</strong>, responsible for the desk and the traders on it.</p>
+      <p>That&rsquo;s not a line on a r&eacute;sum&eacute;. It&rsquo;s the reason I read a portfolio differently than most advisors do. I&rsquo;ve watched what markets do under real stress&hairsp;&mdash;&hairsp;not in a textbook, in real time, with capital on the line. I know the difference between a number on a screen and a position you have to live with.</p>
+      <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what you&rsquo;re hiring.</em></p>
+    </div>
   </div>
 </section>
 
@@ -815,19 +909,19 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <section class="stats wrap reveal">
   <div class="stats-row">
     <div class="stat">
-      <div class="label">No. playbooks running</div>
-      <div class="num">75<span class="plus">+</span></div>
-      <div class="caption">Distilled workflows&nbsp;&mdash; trade rationales, client onboarding, quarterly notes&nbsp;&mdash; Claude can run in my voice.</div>
+      <div class="label">Managing real risk</div>
+      <div class="num">22<span class="suffix">YRS</span></div>
+      <div class="caption">U.S. Treasury options&nbsp;&mdash; pit to screen&nbsp;&mdash; before I ever managed a portfolio.</div>
     </div>
     <div class="stat">
-      <div class="label">Specialists on call</div>
-      <div class="num">34</div>
-      <div class="caption">Focused agents for compliance, tax, portfolio analysis, drafting and research.</div>
+      <div class="label">Junior reps between us</div>
+      <div class="num">0</div>
+      <div class="caption">You get the person who actually traded. Not a rotating team, not a call center.</div>
     </div>
     <div class="stat">
-      <div class="label">Daily briefing lands</div>
+      <div class="label">Your accounts, reviewed</div>
       <div class="num">7<span class="suffix">AM&nbsp;CT</span></div>
-      <div class="caption">Every weekday, before coffee, every household scanned and flagged.</div>
+      <div class="caption">Every weekday morning&nbsp;&mdash; every household scanned and flagged before the open.</div>
     </div>
   </div>
 </section>
@@ -835,17 +929,17 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── THREE STORIES ─────────────────────────── -->
 <section class="three wrap reveal">
   <div class="three-head">
-    <h3>Three&nbsp;things it&rsquo;s already doing for me <em>&mdash; not</em> demo&nbsp;work.</h3>
+    <h3>Three things you get that your <em>current&nbsp;broker</em> probably&nbsp;doesn&rsquo;t.</h3>
     <div class="ribbon">
-      Section 01 / 03<br>
-      Real workflows<br>
-      Updated weekly
+      What working<br>
+      with me actually<br>
+      looks like
     </div>
   </div>
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">01 &mdash;&nbsp;Compliance</div>
+      <div class="label">01 &mdash;&nbsp;Your trades</div>
       <flow-slot
         aspect="4:5"
         scene="Story 01"
@@ -856,18 +950,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">A compliance manual that <em>didn&rsquo;t&nbsp;eat</em> my weekends.</h4>
-      <span class="badge"><span class="dot"></span>Saved ≈ 80 hours</span>
+      <h4 class="title">Every trade in your account, <em>explained.</em> Same&nbsp;day.</h4>
+      <span class="badge"><span class="dot"></span>In plain English</span>
     </div>
     <div class="body">
-      <p>The compliance manual was the thing I kept not starting. Every advisor going independent faces it&nbsp;&mdash; 80+ hours of work, or <strong>$15,000</strong> for a boilerplate template you spend weeks reshaping to fit your practice.</p>
-      <p>I wrote mine section by section over six weeks of evenings. Claude researched the regs specific to my custodian structure, drafted each section, and flagged the judgment calls that had to be mine. It got done. My family barely noticed.</p>
+      <p>When I make a move in your portfolio, you don&rsquo;t get a vague line item you notice three weeks later. You get a clear, written reason the <strong>same day</strong>&nbsp;&mdash; what changed, why I acted, and what it means for you.</p>
+      <p>Most advisors mean to document their thinking and run out of week. Mine never stacks up, so the reasoning behind your money is always there when you want to see it.</p>
     </div>
   </article>
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">02 &mdash;&nbsp;Trading</div>
+      <div class="label">02 &mdash;&nbsp;Your portfolio</div>
       <flow-slot
         aspect="4:5"
         scene="Story 02"
@@ -878,18 +972,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">Trade rationales that <em>don&rsquo;t&nbsp;sit</em> in drafts.</h4>
-      <span class="badge"><span class="dot"></span>Under 60 seconds</span>
+      <h4 class="title">Your portfolio, watched <em>every morning.</em> Not every quarter.</h4>
+      <span class="badge"><span class="dot"></span>Drift caught in days</span>
     </div>
     <div class="body">
-      <p>Compliant trade documentation requires focused writing&nbsp;&mdash; the kind that slides to Friday when the week fills up. Mine were stacking. Compliance was slipping.</p>
-      <p>Now the rationale drafts itself from the trade details in <strong>under a minute</strong>. I review it, edit it, sign it. Nothing stacks. I&rsquo;m not starting every week already behind.</p>
+      <p>At most firms, drift hides until the quarterly review&nbsp;&mdash; two or three months of slow misalignment before anyone looks. By then the conversation is reactive instead of ahead of it.</p>
+      <p>Here, every account is scanned before the market opens and anything off-target is flagged <strong>that day</strong>. Problems surface in days, not quarters&nbsp;&mdash; while they&rsquo;re still small.</p>
     </div>
   </article>
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">03 &mdash;&nbsp;Monitoring</div>
+      <div class="label">03 &mdash;&nbsp;You &amp; me</div>
       <flow-slot
         aspect="4:5"
         scene="Story 03"
@@ -900,12 +994,12 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">Portfolio drift I catch in <em>days,</em> not quarters.</h4>
-      <span class="badge"><span class="dot"></span>12 households · daily</span>
+      <h4 class="title">When you call, you reach <em>the trader.</em> Not a queue.</h4>
+      <span class="badge"><span class="dot"></span>Fee-only fiduciary</span>
     </div>
     <div class="body">
-      <p>Drift used to be invisible until the quarterly review&nbsp;&mdash; two or three months of misalignment before it surfaced. By then the client conversation is reactive instead of proactive.</p>
-      <p>Every morning a scan runs across all twelve households, flags anything above threshold, and hands me a ranked list by 7am. Issues surface in <strong>days, not quarters</strong>.</p>
+      <p>No call center. No junior rep reading from a script. No product quota behind the advice. You reach the person who spent two decades managing risk on a trading desk.</p>
+      <p>And because I&rsquo;m <strong>fee-only</strong>&nbsp;&mdash; paid by you, not by what I sell you&nbsp;&mdash; my only incentive is your outcome. As a fiduciary, that&rsquo;s not a slogan. It&rsquo;s the standard I&rsquo;m held to.</p>
     </div>
   </article>
 </section>
@@ -914,7 +1008,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <section class="philosophy wrap reveal">
   <div class="label">Philosophy &mdash; in one breath</div>
   <blockquote>
-    I used to spend <em>half my week</em> on work that didn&rsquo;t require an advisor. So I built a system that does it for me.
+    I rebuilt how I work once, when the trading pits went <em>electronic.</em> I&rsquo;m doing it again&hairsp;&mdash;&hairsp;so the hours go to <em>you,</em> not the paperwork.
   </blockquote>
   <div class="by">
     <span class="sig">Pete Cecil</span>
@@ -922,91 +1016,29 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   </div>
 </section>
 
-<!-- ─────────────────────────── FLOW DECK ─────────────────────────── -->
-<section class="flow-deck reveal">
-  <div class="wrap">
-    <div class="head">
-      <h3>Made in <em>Flow</em>. Drop your renders into any slot — they&rsquo;ll <em>live</em> there.</h3>
-      <div class="ribbon">
-        Made for Veo&nbsp;3.1<br>
-        4 reels &middot; ~32&nbsp;sec total<br>
-        <b>Drag &amp; drop .mp4</b>
-      </div>
-    </div>
-
-    <div class="strip">
-      <div class="item">
-        <flow-slot
-          aspect="4:5"
-          scene="Reel A"
-          model="VEO 3.1"
-          runtime="00:06"
-          src="/videos/deck-a.mp4"
-          prompt="Wide tracking shot down a quiet Kenilworth side street at dawn, autumn leaves on the sidewalk, mature elms arching overhead, historic homes set back from the road, soft fog; one second-floor window glowing warm; cinematic, melancholy but hopeful; 35mm."
-        ></flow-slot>
-        <div class="meta"><b>A &middot; Place</b>The town the practice serves.</div>
-      </div>
-      <div class="item">
-        <flow-slot
-          aspect="4:5"
-          scene="Reel B"
-          model="VEO 3.1"
-          runtime="00:06"
-          src="/videos/deck-b.mp4"
-          prompt="Hands shuffling printed quarterly statements on a walnut desk; sunlight in slats from venetian blinds; the rhythm of paper, no UI; warm and analog; macro, 50mm, very shallow DOF."
-        ></flow-slot>
-        <div class="meta"><b>B &middot; Paper</b>The work that didn&rsquo;t go away.</div>
-      </div>
-      <div class="item">
-        <flow-slot
-          aspect="4:5"
-          scene="Reel C"
-          model="VEO 3.1"
-          runtime="00:06"
-          src="/videos/deck-c.mp4"
-          prompt="A laptop screen reflected in a coffee shop window, abstracted into bokeh; a single line of text fades in: &lsquo;monitor 12 households&rsquo;; pulled focus reveals the snow falling outside; cinematic, contemplative; 35mm anamorphic."
-        ></flow-slot>
-        <div class="meta"><b>C &middot; Signal</b>What the system catches before I do.</div>
-      </div>
-      <div class="item">
-        <flow-slot
-          aspect="4:5"
-          scene="Reel D"
-          model="VEO 3.1"
-          runtime="00:06"
-          src="/videos/deck-d.mp4"
-          prompt="A handshake across a kitchen table, two coffee cups, soft afternoon light through linen curtains; only the hands are visible; warm, fiduciary, human; documentary feel; 35mm, 24fps."
-        ></flow-slot>
-        <div class="meta"><b>D &middot; Trust</b>The conversation the AI can&rsquo;t have.</div>
-      </div>
-    </div>
-
-    <div class="foot">
-      <span>Workflow · generate in <b>Flow</b> &rarr; download .mp4 &rarr; drop onto any slot. <b>Copy prompt</b> hover-button copies the scene brief.</span>
-      <a href="https://labs.google/flow" target="_blank" rel="noopener">Open Google Flow &nearr;</a>
-    </div>
-  </div>
-</section>
+<!-- FLOW DECK section removed — the "Made in Flow / drop your renders / Open Google
+     Flow" showcase was the clearest "look what I built" content. Per the reframe
+     (and the reviewer's "nobody cares what you do with your nights"), it's cut. The
+     cinematic reels that remain (hero + the three story slots) stay as silent ambiance. -->
 
 <!-- ─────────────────────────── SYSTEM CTA ─────────────────────────── -->
 <section class="system wrap reveal">
   <div class="head">
-    <h4>Want the <em>full tour</em>? The system, opened up.</h4>
-    <div class="counter">For the curious<br><b>75 playbooks &middot; 34 specialists &middot; ∞ connections</b></div>
+    <h4>How does one advisor watch <em>everything?</em> Desk-grade discipline.</h4>
+    <div class="counter">For the curious<br><b>The process behind the practice</b></div>
   </div>
 
   <a class="system-cta" href="inventory">
     <span class="ix">01</span>
     <div class="main">
-      <div class="t">The full <em>technical&nbsp;inventory</em> &mdash; an interactive tour&nbsp;<span style="color:var(--accent)">↳</span></div>
-      <div class="desc">Every playbook, every specialist, every live connection. Walk under the hood without the marketing.</div>
+      <div class="t">The full <em>process</em>, opened up &mdash; an interactive tour&nbsp;<span style="color:var(--accent)">↳</span></div>
+      <div class="desc">A trading desk runs on systems and discipline. So does this practice. If you want to see exactly how I keep a full book of households from slipping, it&rsquo;s all here &mdash; no marketing.</div>
     </div>
     <span class="arr">→</span>
   </a>
 
   <div class="tags">
-    <span><b>Stack&nbsp;</b>· Schwab &middot; RightCapital &middot; Redtail</span>
-    <span><b>Built with&nbsp;</b>· Claude Code</span>
+    <span><b>Custody &amp; tools&nbsp;</b>· <span data-custodian>Schwab</span> &middot; RightCapital &middot; Redtail</span>
     <span><b>Reading time&nbsp;</b>· ~6 min</span>
   </div>
 </section>
@@ -1016,7 +1048,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
 <footer id="contact">
   <div class="wrap">
-    <h5>Say no <em>more</em>. <br>It&rsquo;s a&nbsp;match <span class="arr">↓</span></h5>
+    <h5>Let&rsquo;s talk about <em>your</em> money. <span class="arr">↓</span></h5>
 
     <div class="cols">
       <div class="col">
@@ -1042,7 +1074,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
     <div class="colophon">
       <span><b>Blue Line Advisors</b> &middot; Fiduciary RIA</span>
-      <span>©&nbsp;2026 &middot; Built with Claude</span>
+      <span>©&nbsp;2026 &middot; Kenilworth, IL</span>
     </div>
   </div>
 </footer>
@@ -1062,42 +1094,13 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     connectedCallback(){
       if (this._init) return;
       this._init = true;
-      const prompt  = this.getAttribute('prompt')  || '';
-      const model   = this.getAttribute('model')   || 'VEO 3.1';
-      const runtime = this.getAttribute('runtime') || '00:08';
-      const scene   = this.getAttribute('scene')   || 'Scene';
-
-      // Truncate prompt nicely for placeholder display
-      const promptShort = prompt.length > 220 ? prompt.slice(0, 218).trim() + '\u2026' : prompt;
-
+      // Reels are silent ambiance now. The visitor-facing production meta (the Veo
+      // prompt text, REC/model badge, and the "Copy prompt / Open Flow" buttons) was
+      // removed in the reframe \u2014 nobody buying an advisor cares how the reel was made.
+      // Until a video is present, render a quiet, text-free cinematic panel.
       this.innerHTML =
-        '<div class="placeholder">' +
-          '<div class="top">' +
-            '<span class="ix"><span class="rec"></span>REC \u00b7 ' + model + '</span>' +
-            '<span>' + runtime + '</span>' +
-          '</div>' +
-          '<div class="prompt">\u201C' + promptShort + '\u201D</div>' +
-          '<div class="bottom">' +
-            '<span class="badge"><span class="dot"></span>' + scene + ' \u00b7 awaiting reel</span>' +
-            '<span>Drop&nbsp;.mp4&nbsp;&#x21B3;</span>' +
-          '</div>' +
-        '</div>' +
-        '<div class="grain"></div>' +
-        '<div class="toast">\u2713 Prompt copied</div>' +
-        '<div class="controls">' +
-          '<button type="button" data-act="copy">Copy prompt</button>' +
-          '<a data-act="open" href="https://labs.google/flow" target="_blank" rel="noopener">Open Flow &#x2197;</a>' +
-        '</div>';
-
-      const copyBtn = this.querySelector('[data-act="copy"]');
-      copyBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        try { navigator.clipboard?.writeText(prompt); } catch(_) {}
-        this.classList.add('toast-on');
-        clearTimeout(this._toastTimer);
-        this._toastTimer = setTimeout(() => this.classList.remove('toast-on'), 1500);
-      });
+        '<div class="placeholder"></div>' +
+        '<div class="grain"></div>';
 
       // Drag-and-drop video
       this.addEventListener('dragenter', (e) => { e.preventDefault(); this.classList.add('dragover'); });
