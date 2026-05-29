@@ -792,9 +792,9 @@ footer .colophon b{color:var(--paper);font-weight:500}
             <strong>What is MCP?</strong>
             <p>MCP (Model Context Protocol) is a standard that lets Claude call external services through a unified interface. Each MCP server exposes "tools" — functions Claude can invoke. When you ask "what's on my calendar," Claude calls the Google Calendar MCP's <code>list_events</code> tool. The server handles auth, API calls, and returns structured data. This means Claude can read your email, check your calendar, search your files, and generate designs — all through the same protocol, without knowing the underlying APIs.</p>
           </div>
-          <div class="detail-card"><strong>Gmail MCP</strong><span>Search by sender/subject/date, read full threads, draft replies, apply labels, archive. Triage client emails and track outstanding threads without opening a browser.</span></div>
+          <div class="detail-card"><strong>Gmail MCP</strong><span>Search by sender/subject/date, read threads, draft replies, apply labels, archive. Used to keep my own inbox triaged and to draft from notes I&rsquo;ve already stripped of client identifiers.</span></div>
           <div class="detail-card"><strong>Google Calendar</strong><span>List upcoming events, create meetings, check free/busy across multiple calendars, set reminders. Used for morning briefing and scheduling automation.</span></div>
-          <div class="detail-card"><strong>Google Drive</strong><span>Full-text search across all Drive files, fetch document content, list folder contents. Access shared client folders, internal docs, custodian exports.</span></div>
+          <div class="detail-card"><strong>Google Drive</strong><span>Full-text search across Drive files, fetch document content, list folder contents. Used for internal docs and templates&nbsp;&mdash; client data is de-identified before it ever reaches the model.</span></div>
           <div class="detail-card"><strong>Canva MCP</strong><span>Generate new designs from templates, edit existing presentations, swap images, update text, export to PDF/PNG. Brand kit ensures consistent visual identity.</span></div>
           <div class="detail-card"><strong>Kiwi Flights</strong><span>Search flights by route/date/price, compare itineraries, find optimal layovers. Integrated into the Costa Rica and Fora Travel planning workflows.</span></div>
           <div class="detail-card"><strong>File System</strong><span>Read, write, edit any local file. Create Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and PDF deliverables directly from Claude without external apps.</span></div>
@@ -810,7 +810,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <div class="detail-grid">
           <div class="detail-card callout">
             <strong>How Obsidian Works</strong>
-            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds the household profiles behind the practice&nbsp;&mdash; stored locally and access-controlled, and anonymized in any shared view like this one&nbsp;&mdash; so Claude can pull up a household&rsquo;s full picture without that data being exposed externally (see Part&nbsp;06). The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
+            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds the household profiles behind the practice&nbsp;&mdash; stored locally on encrypted, access-controlled machines, with identifying details stripped before anything is sent to the model (see Part&nbsp;06). The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
           </div>
           <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (household profiles, custodian exports, CRM data — local + access-controlled) and second-brain (projects, North Star, decisions, lessons).</span></div>
           <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals. Survives across Claude Code sessions.</span></div>
@@ -1075,10 +1075,10 @@ footer .colophon b{color:var(--paper);font-weight:500}
     </div>
   </div>
   <div class="detail-grid">
-    <div class="detail-card"><strong>No training, no retention</strong><span>Runs on Anthropic commercial terms&nbsp;&mdash; inputs are never used to train a model and aren&rsquo;t retained beyond the session. The system does the task and forgets it.</span></div>
-    <div class="detail-card"><strong>Anonymized + human-in-the-loop</strong><span>Client documents are scrubbed of identifying detail and reviewed by the advisor before any outbound API call. The <code>extract-docs</code> workflow blocks an automated send of raw PII.</span></div>
-    <div class="detail-card"><strong>Local-first, access-controlled</strong><span>Knowledge lives in local Obsidian vaults and Supabase with Row-Level Security on owned machines&nbsp;&mdash; not scattered across consumer cloud apps and inboxes.</span></div>
-    <div class="detail-card"><strong>Outbound deny-list</strong><span>A <code>validateQuery()</code> filter enforces a deny-list of sensitive terms before any web search or model call leaves the machine.</span></div>
+    <div class="detail-card"><strong>No training on your data</strong><span>Runs on Anthropic commercial terms&nbsp;&mdash; inputs are never used to train a model. The system does the task; it doesn&rsquo;t learn from your data or feed it into a product.</span></div>
+    <div class="detail-card"><strong>Anonymized + human-in-the-loop</strong><span>Client identifiers are stripped and advisor-reviewed before anything reaches the model&nbsp;&mdash; raw PII isn&rsquo;t sent. The <code>extract-docs</code> workflow enforces this with a human-in-the-loop gate.</span></div>
+    <div class="detail-card"><strong>Local-first, encrypted, access-controlled</strong><span>Knowledge lives in local Obsidian vaults and Supabase with Row-Level Security, on BitLocker-encrypted machines&nbsp;&mdash; not scattered across consumer cloud apps and inboxes.</span></div>
+    <div class="detail-card"><strong>Outbound deny-list</strong><span>Every tool I build enforces a <code>validateQuery()</code> deny-list&nbsp;&mdash; sensitive terms are blocked before a web search or model call leaves the machine.</span></div>
   </div>
 </section>
 
