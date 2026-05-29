@@ -128,11 +128,28 @@ body{
 /* ─────────────────────────── HERO ─────────────────────────── */
 .hero{
   padding:7rem 0 3.5rem;
-  /* Was min-height:100dvh + justify-content:space-between. With the smaller headline
-     that pinned the intro row to the bottom of the viewport and left a big empty gap
-     in the middle. Content-height now, so the intro sits right under the headline. */
-  display:flex;flex-direction:column;
   position:relative;
+  overflow:hidden;
+}
+/* Full-bleed hero photograph (North Shore shoreline) with a subtle scroll parallax. */
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('/images/hero-client-a.jpg');
+  background-size:cover;background-position:center 38%;
+  will-change:transform;transform:translate3d(0,0,0);
+}
+/* Cream wash: lightens the LEFT (where the dark headline sits) and the BOTTOM (the intro
+   row) while leaving the right side of the photo visible and dramatic. Keeps the dark
+   editorial type legible over the image without flattening it. */
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(90deg, rgba(239,238,232,.62) 0%, rgba(239,238,232,.20) 52%, rgba(239,238,232,0) 100%),
+    linear-gradient(180deg, rgba(239,238,232,.28) 0%, rgba(239,238,232,.42) 48%, rgba(239,238,232,.92) 100%);
+}
+.hero-inner{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;
 }
 .hero .hello{
   font-family:var(--serif);
@@ -820,7 +837,9 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <main id="top">
 
 <!-- ─────────────────────────── HERO ─────────────────────────── -->
-<section class="hero wrap">
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
   <div>
     <div class="hello">Hello&hairsp;&mdash;</div>
     <h1>
@@ -844,6 +863,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <div class="scroll-cue">
       Here&rsquo;s the difference<span class="down">↓</span>
     </div>
+  </div>
   </div>
 </section>
 
@@ -929,7 +949,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── THREE STORIES ─────────────────────────── -->
 <section class="three wrap reveal">
   <div class="three-head">
-    <h3>Three things you get that your <em>current&nbsp;broker</em> probably&nbsp;doesn&rsquo;t.</h3>
+    <h3>Three things you get that your <em>current&nbsp;advisor</em> probably&nbsp;doesn&rsquo;t.</h3>
     <div class="ribbon">
       What working<br>
       with me actually<br>
@@ -1085,6 +1105,25 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.12, rootMargin:'0px 0px -80px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<!-- ─────────────────────────── HERO PARALLAX ─────────────────────────── -->
+<script>
+  // Subtle parallax drift on the hero photograph as the page scrolls. Stops doing work
+  // once the hero is out of view, and respects reduced-motion.
+  (function(){
+    const bg = document.querySelector('.hero-bg');
+    if (!bg) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let ticking = false;
+    function update(){
+      const y = window.scrollY;
+      if (y > window.innerHeight) { ticking = false; return; }
+      bg.style.transform = 'translate3d(0,' + (y * 0.30) + 'px,0)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }, { passive:true });
+  })();
 </script>
 
 <!-- ─────────────────────────── <flow-slot> custom element ─────────────────────────── -->

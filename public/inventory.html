@@ -240,6 +240,47 @@ body{
   margin-top:.85rem;
 }
 
+/* ─────────────────────────── WHY THIS IS DIFFERENT ─────────────────────────── */
+/* Speed / accuracy / thoroughness pillars — the framing lens above the technical proof. */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--hairline)}
+.pillar{padding:2rem 2rem 0 0}
+.pillar + .pillar{border-left:1px solid var(--hairline);padding-left:2.25rem}
+.pillar-k{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.7rem,2.8vw,2.4rem);
+  color:var(--accent);letter-spacing:-.01em;margin-bottom:.9rem;
+}
+.pillar p{font-size:.95rem;color:var(--ink-2);line-height:1.62;max-width:42ch}
+.pillar p strong{color:var(--ink);font-weight:600}
+
+/* Head-to-head contrast: most advisors vs. this practice. */
+.versus{margin-top:4rem;border-top:1px solid var(--ink)}
+.versus-head,.versus-row{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.versus-head{
+  padding:1rem 0;border-bottom:1px solid var(--hairline);
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.versus-head span:first-child{color:var(--muted)}
+.versus-head span:last-child{color:var(--accent)}
+.versus-row{padding:1.1rem 0;border-bottom:1px solid var(--hairline);font-size:1rem;line-height:1.45}
+.versus-row span:first-child{color:var(--muted)}
+.versus-row span:last-child{color:var(--ink);font-weight:500}
+.versus-row span em{font-style:italic}
+
+/* One-line "what this means for you" payoff under each technical section's subtitle. */
+.section-payoff{
+  display:inline-block;margin-top:1.1rem;
+  font-family:var(--mono);font-size:.74rem;letter-spacing:.03em;color:var(--accent);
+}
+.section-payoff::before{content:"\2192\00a0"}
+
+@media(max-width:980px){
+  .pillars{grid-template-columns:1fr}
+  .pillar{padding:1.5rem 0 0 0 !important}
+  .pillar + .pillar{border-left:none;border-top:1px solid var(--hairline);padding-left:0 !important}
+  .versus-head,.versus-row{gap:1.25rem}
+}
+
 /* ─────────────────────────── STEPPER ─────────────────────────── */
 .stepper-wrap{display:grid;grid-template-columns:280px 1fr;gap:3rem}
 .stepper-tabs{display:flex;flex-direction:column;gap:.1rem;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
@@ -624,7 +665,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <span class="intro-eyebrow"><span class="num">00 &mdash;</span> About</span>
     <div>
       <h2>
-        A practice-management system built on top of Claude. <strong>110+ playbooks</strong> for the repeatable work. <strong>34 specialist personas</strong> for focused tasks. A <em>memory layer</em> so it knows clients, projects, and priorities without re-explaining.
+        The output of a <strong>10&ndash;20 person firm</strong>, run by <em>one fiduciary</em>. The system carries the volume &mdash; <strong>110+ playbooks</strong>, <strong>34 specialists</strong>, a memory layer that never forgets a client &mdash; so the judgment stays <em>mine</em>, and your account never waits in a queue.
       </h2>
       <div class="intro-stats">
         <div class="intro-stat"><strong>110+</strong><span>Playbooks</span></div>
@@ -636,6 +677,44 @@ footer .colophon b{color:var(--paper);font-weight:500}
   </div>
 </section>
 
+<!-- ─────────────────────────── WHY THIS IS DIFFERENT ───────────────────────────
+     The framing lens: what the system does for the client and why it beats a typical
+     advisor. Sits above the numbered technical parts, which read as the proof. -->
+<section class="section wrap reveal" id="difference">
+  <div class="section-head">
+    <span class="section-num">Why this is different</span>
+    <div>
+      <h2 class="section-title">The speed, accuracy, and <em>thoroughness</em> of a back office &mdash; without the back office.</h2>
+      <p class="section-sub">At most firms your account passes through an analyst, a trader, compliance, ops, a paraplanner, a CSA, and a tax specialist. Every handoff is a delay; every seam is a place something slips. Here, the system collapses those functions into one person who actually traded &mdash; so nothing waits, and nothing falls between desks.</p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-k">Speed</div>
+      <p>Your portfolio is scanned <strong>every morning</strong>, not every quarter. Trade rationales are written the <strong>same day</strong>, not whenever someone gets to them. Problems surface in days&nbsp;&mdash; while they&rsquo;re still small.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-k">Accuracy</div>
+      <p>Every move runs through a documented process built from <strong>two decades on a trading desk</strong>&nbsp;&mdash; nothing improvised, nothing reconstructed from memory later. The reasoning behind your money is always on the record.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-k">Thoroughness</div>
+      <p>The 34 specialists are the functions a firm staffs with salaries&nbsp;&mdash; analyst, compliance, tax, research&nbsp;&mdash; <strong>collapsed into one practice</strong> and pointed at your accounts. Every angle gets covered; nothing falls through.</p>
+    </div>
+  </div>
+
+  <div class="versus">
+    <div class="versus-head"><span>Most advisors</span><span>This practice</span></div>
+    <div class="versus-row"><span>A relationship manager who&rsquo;s never traded</span><span>22 years running a trading desk</span></div>
+    <div class="versus-row"><span>Reviews your portfolio quarterly</span><span>Every account scanned every morning</span></div>
+    <div class="versus-row"><span>Documents trades when there&rsquo;s time</span><span>Written rationale, same day, every trade</span></div>
+    <div class="versus-row"><span>You reach a rotating rep or call center</span><span>You reach the principal &mdash; I answer</span></div>
+    <div class="versus-row"><span>Capped by one person&rsquo;s hours</span><span>One fiduciary <em>+</em> a system that never sleeps</span></div>
+    <div class="versus-row"><span>Paid by fees <em>and</em> product commissions</span><span>Fee-only &mdash; no product shelf</span></div>
+  </div>
+</section>
+
 <!-- ─────────────────────────── PART 01 — OVERVIEW / STEPPER ─────────────────────────── -->
 <section class="section wrap reveal" id="overview">
   <div class="section-head">
@@ -643,6 +722,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div>
       <h2 class="section-title">How it works, <em>step by step.</em></h2>
       <p class="section-sub">Seven moves that happen when I ask Claude to do something. Click any to dig in.</p>
+      <span class="section-payoff">So nothing about your money waits in a queue.</span>
     </div>
   </div>
 
@@ -770,6 +850,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div>
       <h2 class="section-title">Playbooks <em>&mdash; the ones I reach for.</em></h2>
       <p class="section-sub">110+ live in the library; these are the ones that do the most work. Each tells Claude exactly how I want a specific kind of task done — from a trade rationale to a Next.js site. Browse by category.</p>
+      <span class="section-payoff">Why your accounts run the same way, every time.</span>
     </div>
   </div>
 
@@ -796,6 +877,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div>
       <h2 class="section-title">Specialists <em>&mdash; 34 expert personas.</em></h2>
       <p class="section-sub">Backend engineers, UX designers, financial analysts, QA testers. Each has their own personality and approach. Claude calls on them when a task needs deep focus.</p>
+      <span class="section-payoff">The team a firm staffs with salaries — pointed at you.</span>
     </div>
   </div>
 
@@ -814,6 +896,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div>
       <h2 class="section-title">What Claude <em>remembers.</em></h2>
       <p class="section-sub">Two digital notebooks hold everything Claude needs to keep straight across days and projects — one for client data, one for ideas and decisions. New information gets filtered through a pipeline before it lands.</p>
+      <span class="section-payoff">Why I never ask you to re-explain your situation.</span>
     </div>
   </div>
 
@@ -885,6 +968,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <div>
       <h2 class="section-title">What's <em>running right now.</em></h2>
       <p class="section-sub">A live snapshot of the active projects, connected services, and background tasks that keep the practice — and a half-dozen side builds — moving without me touching them all day.</p>
+      <span class="section-payoff">What&rsquo;s watching your money while you sleep.</span>
     </div>
   </div>
 
