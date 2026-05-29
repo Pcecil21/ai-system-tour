@@ -450,6 +450,47 @@ body{
 .philosophy .by{color:rgba(241,236,226,.6)}
 .philosophy .by .sig{color:#f4efe4}
 
+/* ─────────────────────────── SECURITY (dark band) ───────────────────────────
+   The "loud, early" data-security answer (reviewer ask). Solid-ink band so it reads
+   as a deliberate, confident statement rather than a buried disclaimer. Light type +
+   sage-olive accent, matching the philosophy band's dark treatment. */
+.security{background:var(--ink);color:#f4efe4;padding:6rem 0;border-top:1px solid var(--ink)}
+.security .label{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(241,236,226,.6);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
+}
+.security .label::before{content:"";display:inline-block;width:32px;height:1px;background:rgba(241,236,226,.5)}
+.security h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:clamp(2rem,4.4vw,3.6rem);
+  line-height:1;letter-spacing:-.035em;text-wrap:balance;
+  max-width:20ch;color:#f4efe4;margin-bottom:1.5rem;
+}
+.security h3 em{font-family:var(--serif);font-style:italic;font-weight:400;color:#b6c08c}
+.security .lead{
+  font-family:var(--serif);font-size:clamp(1.25rem,1.9vw,1.7rem);
+  line-height:1.4;color:rgba(244,239,228,.85);max-width:60ch;margin-bottom:3.5rem;
+}
+.security .lead em{font-style:italic;color:#b6c08c}
+.security-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid rgba(241,236,226,.16)}
+.sec-item{padding:2rem 2rem 2rem 0;border-bottom:1px solid rgba(241,236,226,.16)}
+.sec-item:nth-child(odd){border-right:1px solid rgba(241,236,226,.16)}
+.sec-item:nth-child(even){padding-left:2.25rem}
+.sec-item h4{font-family:var(--sans);font-weight:600;font-size:1.05rem;letter-spacing:-.015em;color:#f4efe4;margin-bottom:.6rem}
+.sec-item p{font-size:.95rem;line-height:1.6;color:rgba(244,239,228,.72);max-width:46ch}
+.security .closer{
+  margin-top:3.5rem;
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.3;letter-spacing:-.01em;
+  color:#f4efe4;max-width:34ch;
+}
+.security .closer em{color:#b6c08c;font-style:italic}
+@media(max-width:900px){
+  .security{padding:4rem 0}
+  .security-grid{grid-template-columns:1fr}
+  .sec-item{padding:1.5rem 0 !important;border-right:none !important}
+}
+
 /* ─────────────────────────── SYSTEM CARD ─────────────────────────── */
 .system{padding:5rem 0 5rem}
 .system .head{
@@ -914,8 +955,8 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── MARQUEE ─────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;</span>
-    <span aria-hidden="true">Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span>Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;Your data, handled like a trading desk&rsquo;s risk&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span aria-hidden="true">Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;Your data, handled like a trading desk&rsquo;s risk&nbsp;<i class="star">✷</i>&nbsp;</span>
   </div>
 </div>
 
@@ -948,6 +989,11 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       <h3>I spent 22 years with <em>real money on the line.</em></h3>
       <p>Before I ever managed a portfolio, I traded U.S.&nbsp;Treasury options&hairsp;&mdash;&hairsp;starting in the open-outcry pit and moving upstairs as the markets went electronic. For most of those years I worked as a <strong>risk manager</strong>, responsible for the desk and the traders on it.</p>
       <p>That&rsquo;s not a line on a r&eacute;sum&eacute;. It&rsquo;s the reason I read a portfolio differently than most advisors do. I&rsquo;ve watched what markets do under real stress&hairsp;&mdash;&hairsp;not in a textbook, in real time, with capital on the line. I know the difference between a number on a screen and a position you have to live with.</p>
+      <!-- ORIGIN "WHY" — option B (built on the on-page electronic-pit reinvention). This is the
+           one place the page should carry PETE'S REAL REASON for leaving the desk. Swap this
+           paragraph for the true story when you have the words; the scaffold below is honest but
+           generic. -->
+      <p>I rebuilt my craft once already&hairsp;&mdash;&hairsp;when the pits went electronic and the floor I&rsquo;d worked emptied out. I could have followed the screens. Instead I pointed everything I&rsquo;d learned about protecting capital at the people who almost never get a real risk manager in their corner: <em>families.</em> That was the whole reason to start over.</p>
       <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what you&rsquo;re hiring.</em></p>
     </div>
   </div>
@@ -1050,6 +1096,38 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       <p>And because I&rsquo;m <strong>fee-only</strong>&nbsp;&mdash; paid by you, not by what I sell you&nbsp;&mdash; my only incentive is your outcome. As a fiduciary, that&rsquo;s not a slogan. It&rsquo;s the standard I&rsquo;m held to.</p>
     </div>
   </article>
+</section>
+
+<!-- ─────────────────────────── SECURITY ───────────────────────────
+     Reviewer ask: call out data security "early and loudly." Confident, offense-not-defense
+     framing that flips the reflexive "AI + my data = scary" objection. All four claims below
+     were confirmed true by Pete (commercial/no-train terms, pre-send anonymization, local +
+     access-controlled storage, outbound deny-list). The closing line ties it to the trader spine. -->
+<section class="security reveal" id="security">
+  <div class="wrap">
+    <div class="label">03 &mdash; Your data</div>
+    <h3>The honest answer on AI and your <em>private information.</em></h3>
+    <p class="lead">Most advisors dodge this with <em>&ldquo;privacy rules won&rsquo;t let us.&rdquo;</em> Here&rsquo;s the real answer: your financial data is handled with more discipline here than at a firm where it rides along in email attachments and on a laptop open at the coffee shop.</p>
+    <div class="security-grid">
+      <div class="sec-item">
+        <h4>Anthropic never trains on your data</h4>
+        <p>I run on commercial terms&hairsp;&mdash;&hairsp;your information is never used to train a model and isn&rsquo;t kept after the work is done. A tool that does the job and forgets, not a system that learns from your money.</p>
+      </div>
+      <div class="sec-item">
+        <h4>Your name comes off before anything leaves</h4>
+        <p>Sensitive details are stripped and reviewed by me before any outside service sees them. The AI works on the math, not your identity.</p>
+      </div>
+      <div class="sec-item">
+        <h4>Your records live locked down, not scattered</h4>
+        <p>Encrypted files on my own machines, with access controls&hairsp;&mdash;&hairsp;not spread across a dozen consumer apps and inboxes the way it usually is.</p>
+      </div>
+      <div class="sec-item">
+        <h4>A hard block-list guards every request</h4>
+        <p>A filter I built stops sensitive terms from ever leaving in a search or a call. A seatbelt that&rsquo;s always on.</p>
+      </div>
+    </div>
+    <p class="closer">For 22 years my job was protecting a desk from the risk nobody else saw coming. <em>I treat your data the same way.</em></p>
+  </div>
 </section>
 
 <!-- ─────────────────────────── PHILOSOPHY ─────────────────────────── -->

@@ -810,9 +810,9 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <div class="detail-grid">
           <div class="detail-card callout">
             <strong>How Obsidian Works</strong>
-            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds 13 client household profiles with financial data, custodian exports, and CRM records — structured so Claude can instantly pull up any household's full picture. The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
+            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds the household profiles behind the practice&nbsp;&mdash; stored locally and access-controlled, and anonymized in any shared view like this one&nbsp;&mdash; so Claude can pull up a household&rsquo;s full picture without that data being exposed externally (see Part&nbsp;06). The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
           </div>
-          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (13 client households, custodian exports, CRM data) and second-brain (projects, North Star, decisions, lessons).</span></div>
+          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (household profiles, custodian exports, CRM data — local + access-controlled) and second-brain (projects, North Star, decisions, lessons).</span></div>
           <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals. Survives across Claude Code sessions.</span></div>
           <div class="detail-card"><strong>decisions.md</strong><span>Structured log of every architectural and business decision with context, alternatives considered, and rationale.</span></div>
           <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward into future sessions.</span></div>
@@ -1057,6 +1057,28 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Workflows</span><span class="infra-meta">GitHub Actions + Claude Code CI</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── PART 06 — SECURITY ───────────────────────────
+     The technical counterpart to the landing page's security band. Reviewer ask: address the
+     AI-and-client-data worry head-on. Architecture, not reassurance. All four controls confirmed
+     true by Pete. Placed last so it reads as the closing "and here's how it's safe" beat after
+     the memory + infrastructure parts that show client data in the system. -->
+<section class="section wrap reveal" id="security">
+  <div class="section-head">
+    <span class="section-num">06 &mdash; Security &amp; Privacy</span>
+    <div>
+      <h2 class="section-title">Built to be <em>more secure</em> than how data usually moves.</h2>
+      <p class="section-sub">The reflexive worry about AI and client data is fair&nbsp;&mdash; so here&rsquo;s the architecture, not a reassurance. The real risk in this industry isn&rsquo;t a model; it&rsquo;s a financial file riding along in an email attachment, on a laptop open at a coffee shop. This pipeline is the opposite of that.</p>
+      <span class="section-payoff">Your information is handled the way a desk handles risk.</span>
+    </div>
+  </div>
+  <div class="detail-grid">
+    <div class="detail-card"><strong>No training, no retention</strong><span>Runs on Anthropic commercial terms&nbsp;&mdash; inputs are never used to train a model and aren&rsquo;t retained beyond the session. The system does the task and forgets it.</span></div>
+    <div class="detail-card"><strong>Anonymized + human-in-the-loop</strong><span>Client documents are scrubbed of identifying detail and reviewed by the advisor before any outbound API call. The <code>extract-docs</code> workflow blocks an automated send of raw PII.</span></div>
+    <div class="detail-card"><strong>Local-first, access-controlled</strong><span>Knowledge lives in local Obsidian vaults and Supabase with Row-Level Security on owned machines&nbsp;&mdash; not scattered across consumer cloud apps and inboxes.</span></div>
+    <div class="detail-card"><strong>Outbound deny-list</strong><span>A <code>validateQuery()</code> filter enforces a deny-list of sensitive terms before any web search or model call leaves the machine.</span></div>
   </div>
 </section>
 
