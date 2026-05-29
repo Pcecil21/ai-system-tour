@@ -93,3 +93,12 @@
 - **Context**: Surfaced during the `/outcome-builder` Socratic interview (Question 1 of 3). Pete chose "both equally" when given four audience-precedence options.
 - **Rationale**: The pre-launch site can serve both audiences because the page-level CTA is intentionally absent (pre-launch compliance posture). When the RIA launches, the CTA-flip will likely re-orient the homepage toward prospects.
 - **Open items**: CTA-flip trigger condition still undefined — deferred to compliance counsel review per OUTCOME.md.
+
+## 2026-05-29 — Blue Line site overhaul + public launch
+- **Decision**: Reposition the client landing client-first ("a fiduciary who actually traded / picks up the phone"); demote the AI-system content. **Context**: a reviewer said the page was all builder/AI and didn't answer "how does this help me / beat my broker." **Rationale**: speak to the customer; the 22-yr trading credential is the differentiator. **Open items**: none.
+- **Decision**: Build the site to the post-breakaway destination state with **Schwab as a swappable custodian placeholder** (config.js + data-custodian spans). **Context**: still at Cetera; Fidelity-vs-Schwab undecided. **Rationale**: ship-ready now; one-line swap when the custodian is chosen. **Open items**: pick real custodian, change config.js.
+- **Decision**: Do NOT gate this site on John's compliance review. **Context**: Pete's explicit call. **Rationale**: his decision. **Open items**: none.
+- **Decision**: Two pages, not three — client landing (/) + existing "Under the hood" (/inventory) with a reciprocal nav switch. **Rationale**: inventory already IS the technical version; connect them rather than build new.
+- **Decision**: Reframe Under-the-Hood around speed/accuracy/thoroughness + the "10–20-person firm, one fiduciary" capacity thesis + a most-advisors-vs-this-practice contrast (ce-brainstorm Direction B + grafts). **Rationale**: page showed *what* the system is, not *why* it differentiates. Spec: docs/brainstorms/under-the-hood-differentiation-requirements.md.
+- **Decision**: Privacy-strip client data (household count, example names, custodian-data folders) from the public inventory page. **Rationale**: a public RIA page shouldn't expose client structure.
+- **Decision**: Added Gemini-generated cinematic photography + parallax + motion; **launched live to Vercel** (ai-system-tour.vercel.app) while still at Cetera. **Open items**: optional image-weight optimization (~38MB deploy).
