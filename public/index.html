@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pete Cecil &middot; A fiduciary who actually traded</title>
-<meta name="description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
+<meta name="description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
 <meta name="theme-color" content="#efeee8">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/">
 <meta property="og:title" content="Pete Cecil · A fiduciary who actually traded">
-<meta property="og:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
+<meta property="og:description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
 <meta property="og:site_name" content="Pete Cecil · Blue Line Advisors">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pete Cecil · A fiduciary who actually traded">
-<meta name="twitter:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families."}</script>
+<meta name="twitter:description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026."}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/config.js"></script>
 
@@ -247,6 +247,21 @@ body{
 .marquee-track span{display:inline-flex;align-items:center;gap:3rem}
 .marquee-track .star{color:var(--accent);font-family:var(--sans);font-size:1rem;transform:translateY(.05em)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─────────────────────────── FOUNDING BAND ───────────────────────────
+   Scarcity + launch urgency. A quiet darker-cream band (not a third loud
+   dark band) carrying the "15 founding families, Fall 2026" message + CTA. */
+.founding{border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-2)}
+.founding .wrap{display:flex;align-items:center;justify-content:space-between;gap:2rem;padding:1.75rem;flex-wrap:wrap}
+.founding p{font-family:var(--serif);font-size:clamp(1.2rem,1.8vw,1.6rem);line-height:1.35;letter-spacing:-.01em;color:var(--ink);max-width:62ch}
+.founding p b{font-family:var(--sans);font-weight:600;color:var(--accent)}
+.founding a{
+  flex-shrink:0;font-family:var(--mono);font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;border:1px solid var(--ink);border-radius:999px;padding:.6rem 1.1rem;
+  transition:all .35s var(--ease-out);
+}
+.founding a:hover{background:var(--ink);color:var(--paper)}
+@media(max-width:900px){.founding .wrap{flex-direction:column;align-items:flex-start;gap:1rem}}
 
 /* ─────────────────────────── INTRO BIG TEXT ─────────────────────────── */
 .intro{padding:5rem 0 4rem;position:relative}
@@ -627,6 +642,9 @@ footer .colophon b{color:var(--paper);font-weight:500}
 .about-copy p + p{margin-top:1rem}
 .about-copy p strong{color:var(--ink);font-weight:600}
 .about-copy p em{font-style:italic;color:var(--ink)}
+/* Credential + fee-transparency line — smaller, set off by a hairline. */
+.about-copy .credential{font-size:.92rem;color:var(--muted);border-top:1px solid var(--hairline);padding-top:1.25rem;margin-top:1.5rem;line-height:1.6}
+.about-copy .credential strong{color:var(--ink-2);font-weight:600}
 @media(max-width:900px){
   .about-you{padding:4rem 0 3rem}
   .about-grid{grid-template-columns:1fr;gap:2rem}
@@ -890,7 +908,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   </a>
   <div class="right">
     <a href="inventory">Under the hood&nbsp;&rarr;</a>
-    <span class="menu"><span class="dot"></span>Taking new clients</span>
+    <span class="menu"><span class="dot"></span>Founding families &middot; Fall 2026</span>
     <a class="talk" href="#contact">Let&rsquo;s talk&nbsp;<em style="font-family:var(--serif);font-style:italic">?</em></a>
   </div>
 </nav>
@@ -913,13 +931,13 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
   <div class="hero-foot">
     <p class="lede">
-      Most advisors are relationship managers who&rsquo;ve <em>never managed risk</em>. I spent 22&nbsp;years doing exactly that&hairsp;&mdash;&hairsp;now I&rsquo;m building a practice where you get <em>me</em>, not a call center.
+      Most advisors are relationship managers who&rsquo;ve <em>never managed risk</em>. For 22&nbsp;years, protecting capital under real pressure was my whole job. Now I&rsquo;m opening a practice for <em>15&nbsp;families</em> who want that same discipline looking after what they&rsquo;ve built&hairsp;&mdash;&hairsp;and what they&rsquo;ll pass on. You get <em>me</em>, not a call center.
     </p>
     <div class="meta">
       <b>Practice</b>
       Blue Line Advisors<br>
       Kenilworth, IL<br>
-      Est. 2025 &middot; Fee-only fiduciary
+      Launching Fall 2026 &middot; Independent fiduciary
     </div>
     <div class="scroll-cue">
       Here&rsquo;s the difference<span class="down">↓</span>
@@ -947,10 +965,19 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── MARQUEE ─────────────────────────── -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span>Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;Your data, handled like a trading desk&rsquo;s risk&nbsp;<i class="star">✷</i>&nbsp;</span>
-    <span aria-hidden="true">Fee-only fiduciary&nbsp;<i class="star">✷</i>&nbsp;A trader&rsquo;s judgment, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;Your portfolio, checked every morning&nbsp;<i class="star">✷</i>&nbsp;Your data, handled like a trading desk&rsquo;s risk&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span>Independent fiduciary advice&nbsp;<i class="star">✷</i>&nbsp;A risk manager&rsquo;s discipline, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;15 founding families &middot; Fall 2026&nbsp;<i class="star">✷</i>&nbsp;A plan your whole family can see&nbsp;<i class="star">✷</i>&nbsp;</span>
+    <span aria-hidden="true">Independent fiduciary advice&nbsp;<i class="star">✷</i>&nbsp;A risk manager&rsquo;s discipline, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;15 founding families &middot; Fall 2026&nbsp;<i class="star">✷</i>&nbsp;A plan your whole family can see&nbsp;<i class="star">✷</i>&nbsp;</span>
   </div>
 </div>
+
+<!-- ─────────────────────────── FOUNDING CLIENTS BAND ───────────────────────────
+     Owns the pre-launch status as early-access scarcity rather than hiding it. -->
+<section class="founding" aria-label="Founding clients">
+  <div class="wrap">
+    <p>Blue Line Advisors opens <b>Fall 2026</b>. I&rsquo;m taking <b>15 founding families &mdash; and no more.</b> If that&rsquo;s you, the conversation starts now.</p>
+    <a href="#contact">Start the conversation&nbsp;&rarr;</a>
+  </div>
+</section>
 
 <!-- ─────────────────────────── INTRO ─────────────────────────── -->
 <section class="intro wrap reveal">
@@ -985,7 +1012,9 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
            utility, and he genuinely liked helping people off the desk. Honest, humble, and
            differentiated — the opposite of a heroic origin story, which is why it reads true. -->
       <p>After two decades, I had to be honest with myself: I was good at the work, but it didn&rsquo;t help anyone. Trading Treasury options is a closed loop&hairsp;&mdash;&hairsp;capital moves from one screen to the next, and no one&rsquo;s life is better for it. The part I genuinely liked was the part away from the desk: helping <em>real people make real decisions</em> about their money. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
-      <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what you&rsquo;re hiring.</em></p>
+      <p>Here&rsquo;s what &ldquo;trader&rdquo; actually means. I was a <strong>risk manager</strong>&hairsp;&mdash;&hairsp;my job wasn&rsquo;t making bets, it was protecting the desk from the loss nobody else saw coming. That instinct is exactly what a family&rsquo;s money needs: someone whose first question is always <em>what could go wrong here, and how do we cover it?</em></p>
+      <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what your family is hiring.</em></p>
+      <p class="credential">Licensed as an investment adviser representative (Series&nbsp;65) and held to a <strong>fiduciary standard</strong> on the advice I give. I charge a transparent advisory fee; where insurance or an annuity genuinely fits your plan, I&rsquo;m licensed to handle that too&hairsp;&mdash;&hairsp;and you&rsquo;ll always see exactly what it costs and why. No surprises, no buried incentives.</p>
     </div>
   </div>
 </section>
@@ -999,14 +1028,14 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       <div class="caption">U.S. Treasury options&nbsp;&mdash; pit to screen&nbsp;&mdash; before I ever managed a portfolio.</div>
     </div>
     <div class="stat">
-      <div class="label">Junior reps between us</div>
-      <div class="num">0</div>
-      <div class="caption">You get the person who actually traded. Not a rotating team, not a call center.</div>
+      <div class="label">Founding families</div>
+      <div class="num">15</div>
+      <div class="caption">The book I&rsquo;m opening at launch&nbsp;&mdash; then it closes. Small on purpose.</div>
     </div>
     <div class="stat">
-      <div class="label">Your accounts, reviewed</div>
-      <div class="num">7<span class="suffix">AM&nbsp;CT</span></div>
-      <div class="caption">Every weekday morning&nbsp;&mdash; every household scanned and flagged before the open.</div>
+      <div class="label">Junior reps between us</div>
+      <div class="num">0</div>
+      <div class="caption">You get the person who actually managed the risk. Not a rotating team, not a call center.</div>
     </div>
   </div>
 </section>
@@ -1024,7 +1053,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">01 &mdash;&nbsp;Your trades</div>
+      <div class="label">01 &mdash;&nbsp;Your plan</div>
       <flow-slot
         aspect="4:5"
         scene="Story 01"
@@ -1035,18 +1064,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">Every trade in your account, <em>explained.</em> Same&nbsp;day.</h4>
-      <span class="badge"><span class="dot"></span>In plain English</span>
+      <h4 class="title">A plan your whole family <em>can see.</em></h4>
+      <span class="badge"><span class="dot"></span>Planning, not a mystery</span>
     </div>
     <div class="body">
-      <p>When I make a move in your portfolio, you don&rsquo;t get a vague line item you notice three weeks later. You get a clear, written reason the <strong>same day</strong>&nbsp;&mdash; what changed, why I acted, and what it means for you.</p>
-      <p>Most advisors mean to document their thinking and run out of week. Mine never stacks up, so the reasoning behind your money is always there when you want to see it.</p>
+      <p>Not a mystery portfolio you check once a quarter. A clear plan&nbsp;&mdash; what you&rsquo;re <strong>protecting</strong>, what you&rsquo;re growing, and what you&rsquo;re leaving&nbsp;&mdash; written so your spouse and your kids can actually follow it.</p>
+      <p>When I make a move, you get the reason the same day, in plain English. The thinking behind your family&rsquo;s money is always on the record.</p>
     </div>
   </article>
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">02 &mdash;&nbsp;Your portfolio</div>
+      <div class="label">02 &mdash;&nbsp;Your downside</div>
       <flow-slot
         aspect="4:5"
         scene="Story 02"
@@ -1057,18 +1086,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">Your portfolio, watched <em>every morning.</em> Not every quarter.</h4>
-      <span class="badge"><span class="dot"></span>Drift caught in days</span>
+      <h4 class="title">A risk manager&rsquo;s first question: <em>what could go wrong?</em></h4>
+      <span class="badge"><span class="dot"></span>Downside, caught early</span>
     </div>
     <div class="body">
-      <p>At most firms, drift hides until the quarterly review&nbsp;&mdash; two or three months of slow misalignment before anyone looks. By then the conversation is reactive instead of ahead of it.</p>
-      <p>Here, every account is scanned before the market opens and anything off-target is flagged <strong>that day</strong>. Problems surface in days, not quarters&nbsp;&mdash; while they&rsquo;re still small.</p>
+      <p>Most advisors sell you the upside. I spent two decades getting paid to find the <strong>downside</strong> before it found the desk&nbsp;&mdash; and that&rsquo;s the discipline your family&rsquo;s money gets.</p>
+      <p>Every position gets watched, not filed away until the quarterly review. Drift and risk surface in days, while they&rsquo;re still small&nbsp;&mdash; not months later when they&rsquo;re not.</p>
     </div>
   </article>
 
   <article class="story">
     <div class="idx-col">
-      <div class="label">03 &mdash;&nbsp;You &amp; me</div>
+      <div class="label">03 &mdash;&nbsp;The next generation</div>
       <flow-slot
         aspect="4:5"
         scene="Story 03"
@@ -1079,12 +1108,12 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       ></flow-slot>
     </div>
     <div>
-      <h4 class="title">When you call, you reach <em>the trader.</em> Not a queue.</h4>
-      <span class="badge"><span class="dot"></span>Fee-only fiduciary</span>
+      <h4 class="title">The next generation, <em>brought in early.</em></h4>
+      <span class="badge"><span class="dot"></span>Built to last</span>
     </div>
     <div class="body">
-      <p>No call center. No junior rep reading from a script. No product quota behind the advice. You reach the person who spent two decades managing risk on a trading desk.</p>
-      <p>And because I&rsquo;m <strong>fee-only</strong>&nbsp;&mdash; paid by you, not by what I sell you&nbsp;&mdash; my only incentive is your outcome. As a fiduciary, that&rsquo;s not a slogan. It&rsquo;s the standard I&rsquo;m held to.</p>
+      <p>Your kids will inherit decisions, not just dollars. I bring them into the conversation <strong>before</strong> they have to make those calls alone&nbsp;&mdash; so the plan survives the handoff and nobody&rsquo;s starting from scratch.</p>
+      <p>And when you call, you reach <strong>me</strong>&nbsp;&mdash; the person who built the plan&nbsp;&mdash; not a call center or a junior rep reading from a script.</p>
     </div>
   </article>
 </section>
@@ -1144,15 +1173,15 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── SYSTEM CTA ─────────────────────────── -->
 <section class="system wrap reveal">
   <div class="head">
-    <h4>How does one advisor watch <em>everything?</em> Desk-grade discipline.</h4>
-    <div class="counter">For the curious<br><b>The process behind the practice</b></div>
+    <h4>Curious how one advisor covers this much <em>ground?</em></h4>
+    <div class="counter">Optional<br><b>You don&rsquo;t need this to work with me</b></div>
   </div>
 
   <a class="system-cta" href="inventory">
     <span class="ix">01</span>
     <div class="main">
       <div class="t">The full <em>process</em>, opened up &mdash; an interactive tour&nbsp;<span style="color:var(--accent)">↳</span></div>
-      <div class="desc">A trading desk runs on systems and discipline. So does this practice. If you want to see exactly how I keep a full book of households from slipping, it&rsquo;s all here &mdash; no marketing.</div>
+      <div class="desc">Most clients never read it&hairsp;&mdash;&hairsp;and don&rsquo;t need to. But if you want to see exactly how one person stays this organized and on time, the whole system is laid open here. No marketing.</div>
     </div>
     <span class="arr">→</span>
   </a>
@@ -1168,7 +1197,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
 <footer id="contact">
   <div class="wrap">
-    <h5>Let&rsquo;s talk about <em>your</em> money. <span class="arr">↓</span></h5>
+    <h5>Let&rsquo;s talk about <em>your family&rsquo;s</em> money. <span class="arr">↓</span></h5>
 
     <div class="cols">
       <div class="col">
@@ -1177,7 +1206,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
         <a href="tel:+18476249587">847-624-9587</a>
       </div>
       <div class="col">
-        <h6>New clients</h6>
+        <h6>Founding families</h6>
         <a href="https://cal.com/peter-cecil-ce0lud" target="_blank" rel="noopener">Book an intro call</a>
       </div>
       <div class="col">
@@ -1193,7 +1222,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     </div>
 
     <div class="colophon">
-      <span><b>Blue Line Advisors</b> &middot; Fiduciary RIA</span>
+      <span><b>Blue Line Advisors</b> &middot; Launching Fall 2026</span>
       <span>©&nbsp;2026 &middot; Kenilworth, IL</span>
     </div>
   </div>
