@@ -799,7 +799,6 @@ flow-slot .controls button, flow-slot .controls a{
 flow-slot .controls button:hover, flow-slot .controls a:hover{
   background:var(--accent);border-color:var(--accent);color:#fff;
 }
-flow-slot.dragover{outline:2px dashed var(--accent);outline-offset:-3px}
 flow-slot .toast{
   position:absolute;top:.7rem;left:.7rem;z-index:11;
   font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;
@@ -896,7 +895,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   </div>
 </nav>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
 <!-- ─────────────────────────── HERO ─────────────────────────── -->
 <section class="hero">
