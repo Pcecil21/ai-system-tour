@@ -1,0 +1,34 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   site.css — shared brand tokens (single source of truth).
+
+   Extracted from the per-page <style> blocks so the palette, type stack, and
+   easing curves can NEVER drift between index.html and inventory.html. This is
+   the ONLY shared stylesheet — everything page-specific stays inline in each
+   page. Linked in <head> BEFORE each page's inline <style> so the tokens are
+   defined first.
+
+   If you change a brand color, change it here once and both pages follow.
+   ───────────────────────────────────────────────────────────────────────── */
+:root{
+  /* Palette — cream / ink / olive */
+  --paper:#efeee8;          /* warm cream */
+  --paper-2:#e6e4d8;
+  --ink:#1a1c14;
+  --ink-2:#3d3a34;
+  --muted:#7a7568;
+  --dim:#a8a395;
+  --hairline:rgba(26,28,20,.14);
+  --hairline-soft:rgba(26,28,20,.07);
+  --hairline-strong:rgba(26,28,20,.28);  /* originally inventory-only; harmless on landing */
+  --accent:#5e6b2f;         /* olive */
+  --accent-ink:#fffaf2;
+
+  /* Type stack */
+  --sans:'Inter Tight',-apple-system,system-ui,'Helvetica Neue',sans-serif;
+  --serif:'Instrument Serif','Times New Roman',serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+
+  /* Easing */
+  --ease-out:cubic-bezier(.32,.72,0,1);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+}
