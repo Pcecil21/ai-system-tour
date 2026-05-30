@@ -15,7 +15,8 @@ window.SITE_CONFIG = {
 
 (function () {
   function applyConfig() {
-    var c = window.SITE_CONFIG.custodian;
+    // Guard against a missing/empty key so the spans never render "undefined" or blank.
+    var c = (window.SITE_CONFIG && window.SITE_CONFIG.custodian) || 'Schwab';
     document.querySelectorAll('[data-custodian]').forEach(function (el) {
       el.textContent = c;
     });

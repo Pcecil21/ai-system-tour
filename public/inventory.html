@@ -21,6 +21,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- No-JS / blocked-JS failsafe: scroll-reveal sections start at opacity:0 and are only
+     un-hidden by JavaScript. If JS never runs, force them visible so the page is never blank. -->
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+
 <style>
 :root{
   /* Palette — same as homepage (cream / ink / olive) */
@@ -654,7 +658,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
       </p>
       <div class="meta">
         <b>Inventory</b>
-        110+ playbooks &middot; 34 specialists<br>
+        75+ playbooks &middot; 34 specialists<br>
         13 live connections<br>
         30+ active projects
       </div>
@@ -671,10 +675,10 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <span class="intro-eyebrow"><span class="num">00 &mdash;</span> About</span>
     <div>
       <h2>
-        The output of a <strong>10&ndash;20 person firm</strong>, run by <em>one fiduciary</em>. The system carries the volume &mdash; <strong>110+ playbooks</strong>, <strong>34 specialists</strong>, a memory layer that never forgets a client &mdash; so the judgment stays <em>mine</em>, and your account never waits in a queue.
+        The output of a <strong>10&ndash;20 person firm</strong>, run by <em>one fiduciary</em>. The system carries the volume &mdash; <strong>75+ playbooks</strong>, <strong>34 specialists</strong>, a memory layer that keeps every client&rsquo;s situation straight &mdash; so the judgment stays <em>mine</em>, and your account never waits in a queue.
       </h2>
       <div class="intro-stats">
-        <div class="intro-stat"><strong>110+</strong><span>Playbooks</span></div>
+        <div class="intro-stat"><strong>75+</strong><span>Playbooks</span></div>
         <div class="intro-stat"><strong>34</strong><span>Specialists</span></div>
         <div class="intro-stat"><strong>7AM</strong><span>Daily briefing</span></div>
         <div class="intro-stat"><strong>30+</strong><span>Active projects</span></div>
@@ -765,9 +769,9 @@ footer .colophon b{color:var(--paper);font-weight:500}
             <p>Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong>SessionStart hook</strong> runs before every session — a PowerShell script reads <code>North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
           </div>
           <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior for that specific context.</span></div>
-          <div class="detail-card"><strong>Skills Library</strong><span>110+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
+          <div class="detail-card"><strong>Skills Library</strong><span>75+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
           <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge injected via SessionStart hook.</span></div>
-          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, Kiwi. Real-time context injection from external services on every call.</span></div>
+          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, and more. Context pulled from external services on demand, when a task needs it.</span></div>
         </div>
       </div>
 
@@ -855,7 +859,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
     <span class="section-num">02 &mdash; Skill Library</span>
     <div>
       <h2 class="section-title">Playbooks <em>&mdash; the ones I reach for.</em></h2>
-      <p class="section-sub">110+ live in the library; these are the ones that do the most work. Each tells Claude exactly how I want a specific kind of task done — from a trade rationale to a Next.js site. Browse by category.</p>
+      <p class="section-sub">75+ live in the library; these are the ones that do the most work. Each tells Claude exactly how I want a specific kind of task done — from a trade rationale to a Next.js site. Browse by category.</p>
       <span class="section-payoff">Why your accounts run the same way, every time.</span>
     </div>
   </div>
@@ -919,7 +923,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
         <span class="folder">raw/</span><br>
         &nbsp;&nbsp;<span class="folder">data/</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">planning/</span> <span class="note">— plan exports</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— <span data-custodian>Schwab</span> statements</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— custodian statements</span><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">crm/</span> <span class="note">— CRM records</span><br>
         <span class="folder">_templates/</span> <span class="note">— reusable output templates</span><br>
         <span class="folder">output/</span> <span class="note">— generated deliverables</span>
@@ -948,7 +952,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
   </div>
 
   <div class="pipeline-section">
-    <h3>The Karpathy Pipeline</h3>
+    <h3>How information flows into memory</h3>
     <div class="pipeline-wrap">
       <div class="pipeline">
         <div class="pipe-node">Raw Inputs<small>emails, calls, statements</small></div>
@@ -1069,7 +1073,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
   <div class="section-head">
     <span class="section-num">06 &mdash; Security &amp; Privacy</span>
     <div>
-      <h2 class="section-title">Built to be <em>more secure</em> than how data usually moves.</h2>
+      <h2 class="section-title">Security you can <em>read</em>, not just trust.</h2>
       <p class="section-sub">The reflexive worry about AI and client data is fair&nbsp;&mdash; so here&rsquo;s the architecture, not a reassurance. The real risk in this industry isn&rsquo;t a model; it&rsquo;s a financial file riding along in an email attachment, on a laptop open at a coffee shop. This pipeline is the opposite of that.</p>
       <span class="section-payoff">Your information is handled the way a desk handles risk.</span>
     </div>
@@ -1142,13 +1146,13 @@ const SKILLS = {
   ],
   "Operations": [
     {id:"ops-billing-qa",name:"Billing QA",desc:"Reviews billing exports for exceptions — tiers, householding, missing accounts. Catches fee errors before they reach clients.",tag:"rose"},
-    {id:"ops-client-question-triage",name:"Client Question Triage",desc:"Classifies and drafts responses to client emails/questions, flags compliance/tax/ops items for routing.",tag:"cyan"},
+    {id:"ops-client-question-triage",name:"Client Question Triage",desc:"Classifies and drafts responses to client questions — identifiers stripped first — and flags compliance/tax/ops items for routing.",tag:"cyan"},
     {id:"ops-export-normalizer",name:"Export Normalizer",desc:"Normalizes exports from different custodians into consistent columns for cross-platform analysis.",tag:"cyan"},
     {id:"ops-onboarding-checklist",name:"Onboarding Checklist",desc:"Generates a client onboarding checklist by household type with all required forms and steps.",tag:"amber"},
     {id:"ops-payables-queue",name:"Payables Queue",desc:"Turns vendor bills, invoices, and emails into a prioritized payables queue with due dates.",tag:"amber"},
     {id:"ops-receipts-from-emails",name:"Receipts from Emails",desc:"Extracts receipt info from email text or exports into a structured ledger table.",tag:"cyan"},
     {id:"ops-statement-extract",name:"Statement Extract",desc:"Extracts key data from custodian statements — values, activity, fees — for review and analysis.",tag:"cyan"},
-    {id:"redtail-email-triage",name:"Redtail Email Triage",desc:"Triages a client email: classifies request type (ops/tax/planning/investments), drafts response, creates Redtail tasks.",tag:"purple"},
+    {id:"redtail-email-triage",name:"Redtail Email Triage",desc:"Triages a de-identified client email: classifies request type (ops/tax/planning/investments), drafts a response for review, creates Redtail tasks.",tag:"purple"},
     {id:"redtail-meeting-notes",name:"Redtail Meeting Notes",desc:"Converts meeting notes into Redtail-ready artifacts: a Note summary, a Task list, and a client recap email.",tag:"purple"},
     {id:"redtail-onboarding-checklist",name:"Redtail Onboarding Checklist",desc:"Creates a phased onboarding plan and Redtail task checklist for new client intake.",tag:"purple"},
     {id:"meeting-notes-to-crm-followup",name:"Meeting Notes → CRM",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
@@ -1162,7 +1166,7 @@ const SKILLS = {
     {id:"planning-discovery-plan",name:"Discovery Plan",desc:"Turns discovery call notes/intake into a prioritized plan of attack with action items.",tag:"cyan"},
     {id:"planning-equity-comp",name:"Equity Comp",desc:"Explains RSUs/stock options in plain English and outlines tax timing with an action checklist.",tag:"green"},
     {id:"planning-rmd-qcd",name:"RMD / QCD",desc:"Builds an RMD/QCD action plan and instructions from DOB, IRA balances, and charitable intent.",tag:"green"},
-    {id:"year-end-tax-checklist",name:"Year-End Tax Checklist",desc:"Creates a year-end tax planning checklist and client email from household snapshot data.",tag:"amber"},
+    {id:"year-end-tax-checklist",name:"Year-End Tax Checklist",desc:"Creates a year-end tax planning checklist and client email from a de-identified household snapshot.",tag:"amber"},
     {id:"model-to-household-mapping",name:"Model-to-Household Mapping",desc:"Maps model targets to household accounts with tax-aware placement notes for optimal asset location.",tag:"purple"}
   ],
   "Investments": [
@@ -1387,6 +1391,9 @@ const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
 }, { threshold: .1, rootMargin: '0px 0px -80px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+// Failsafe: if the observer never fires (JS slow / stalled / element never crosses
+// threshold), reveal everything after 2.5s so content can't be stranded at opacity:0.
+setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2500);
 </script>
 </body>
 </html>

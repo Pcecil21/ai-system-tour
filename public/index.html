@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Pete Cecil &middot; A fiduciary who actually traded</title>
-<meta name="description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
-<meta name="theme-color" content="#f1ece2">
+<meta name="description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
+<meta name="theme-color" content="#efeee8">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/">
 <meta property="og:title" content="Pete Cecil · A fiduciary who actually traded">
-<meta property="og:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
+<meta property="og:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
 <meta property="og:site_name" content="Pete Cecil · Blue Line Advisors">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pete Cecil · A fiduciary who actually traded">
-<meta name="twitter:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now managing a small book of families."}</script>
+<meta name="twitter:description" content="Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent, fee-only fiduciary in Kenilworth, IL. 22 years trading U.S. Treasury options — now building an independent practice for a small book of families."}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/config.js"></script>
 
@@ -40,6 +40,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- No-JS / blocked-JS failsafe: the scroll-reveal sections start at opacity:0 and are only
+     un-hidden by JavaScript. If JS never runs, force them visible so the page is never blank. -->
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
 <style>
 :root{
@@ -707,6 +711,9 @@ a[data-placeholder]:hover{
   .reveal{opacity:1;transform:none}
 }
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+/* Skip-to-content link — keyboard/AT parity with the inventory page. */
+.skip-link{position:absolute;top:-100%;left:1rem;padding:.55rem 1rem;background:var(--accent);color:#fff;border-radius:0 0 6px 6px;font-size:.875rem;font-weight:500;text-decoration:none;z-index:9999}
+.skip-link:focus{top:0}
 
 /* ──────────────────────────── HERO REEL ──────────────────────────── */
 .reel-wrap{padding:1.5rem 0 0;background:var(--paper)}
@@ -889,6 +896,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body data-screen-label="Pete Cecil — AI-augmented practice">
+<a class="skip-link" href="#top">Skip to content</a>
 
 <!-- ─────────────────────────── NAV ─────────────────────────── -->
 <nav class="nav" aria-label="Primary">
@@ -921,7 +929,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
   <div class="hero-foot">
     <p class="lede">
-      Most advisors are relationship managers who&rsquo;ve <em>never managed risk</em>. I spent 22&nbsp;years doing exactly that&hairsp;&mdash;&hairsp;then built a practice where you get <em>me</em>, not a call center.
+      Most advisors are relationship managers who&rsquo;ve <em>never managed risk</em>. I spent 22&nbsp;years doing exactly that&hairsp;&mdash;&hairsp;now I&rsquo;m building a practice where you get <em>me</em>, not a call center.
     </p>
     <div class="meta">
       <b>Practice</b>
@@ -1104,17 +1112,17 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
      access-controlled storage, outbound deny-list). The closing line ties it to the trader spine. -->
 <section class="security reveal" id="security">
   <div class="wrap">
-    <div class="label">03 &mdash; Your data</div>
+    <div class="label">Your data</div>
     <h3>The honest answer on AI and your <em>private information.</em></h3>
-    <p class="lead">Most advisors dodge this with <em>&ldquo;privacy rules won&rsquo;t let us.&rdquo;</em> Here&rsquo;s the real answer: your financial data is handled with more discipline here than at a firm where it rides along in email attachments and on a laptop open at the coffee shop.</p>
+    <p class="lead">Most advisors dodge this with <em>&ldquo;privacy rules won&rsquo;t let us.&rdquo;</em> Here&rsquo;s the real answer: in this business, client data usually gets exposed the boring way&hairsp;&mdash;&hairsp;an email attachment, a laptop open at the coffee shop. I built the opposite of that.</p>
     <div class="security-grid">
       <div class="sec-item">
         <h4>Anthropic never trains on your data</h4>
-        <p>I work under Anthropic&rsquo;s commercial terms&hairsp;&mdash;&hairsp;your information is never used to train an AI model, full stop. It does the task in the moment; it doesn&rsquo;t learn from your money or feed it into anyone&rsquo;s product.</p>
+        <p>I work under Anthropic&rsquo;s commercial terms&hairsp;&mdash;&hairsp;your information is never used to train an AI model. That&rsquo;s the contract in writing, not just my word for it. It does the task in the moment; it doesn&rsquo;t learn from your money.</p>
       </div>
       <div class="sec-item">
-        <h4>Your name comes off before anything leaves</h4>
-        <p>Sensitive details are stripped and reviewed by me before any outside service sees them. The AI works on the math, not your identity.</p>
+        <h4>Your name comes off before your data does</h4>
+        <p>Identifying details are stripped and reviewed by me before your financial data goes to the model. It works on the numbers, not your identity.</p>
       </div>
       <div class="sec-item">
         <h4>Your records live locked down, not scattered</h4>
@@ -1213,6 +1221,9 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }});
   },{threshold:.12, rootMargin:'0px 0px -80px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // Failsafe: if the observer never fires (JS slow / stalled / element never crosses
+  // threshold), reveal everything after 2.5s so content can't be stranded at opacity:0.
+  setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2500);
 </script>
 
 <!-- ─────────────────────────── HERO PARALLAX ─────────────────────────── -->
@@ -1249,23 +1260,9 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
         '<div class="placeholder"></div>' +
         '<div class="grain"></div>';
 
-      // Drag-and-drop video
-      this.addEventListener('dragenter', (e) => { e.preventDefault(); this.classList.add('dragover'); });
-      this.addEventListener('dragover',  (e) => { e.preventDefault(); this.classList.add('dragover'); });
-      this.addEventListener('dragleave', (e) => {
-        if (e.relatedTarget && this.contains(e.relatedTarget)) return;
-        this.classList.remove('dragover');
-      });
-      this.addEventListener('drop', (e) => {
-        e.preventDefault();
-        this.classList.remove('dragover');
-        const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
-        if (!f || !/^video\//.test(f.type)) return;
-        const url = URL.createObjectURL(f);
-        this._mountVideo(url);
-      });
-
       // Auto-mount permanent video if src attribute is present
+      // (The drag-and-drop "drop your own render" affordance from the Flow-deck era was
+      //  removed — it was a dev tool that had no business on a client-facing page.)
       const permanentSrc = this.getAttribute('src');
       if (permanentSrc) this._mountVideo(permanentSrc);
     }
