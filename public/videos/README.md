@@ -1,6 +1,8 @@
 # Video reels for the homepage
 
-Drop the 8 Google Flow `.mp4` files into this directory using the exact filenames below. Once they're here, the `<flow-slot>` elements in `public/index.html` get a `src="/videos/<filename>"` attribute and the placeholders are replaced by the video.
+Drop the 4 Google Flow `.mp4` files into this directory using the exact filenames below. Once they're here, the `<flow-slot>` elements in `public/index.html` get a `src="/videos/<filename>"` attribute and the placeholders are replaced by the video.
+
+> Note: the original brief had 8 reels (a 4-clip "deck"). The deck section was cut from the homepage, so only the **4 reels below** are used. The deck prompts were removed to keep this file honest about what ships.
 
 ---
 
@@ -12,7 +14,7 @@ Recommended Flow settings: **Veo 3.1**, no audio, 21:9 for the hero, 4:5 portrai
 
 ---
 
-## Filename map — 8 reels
+## Filename map — 4 reels
 
 ### `hero.mp4` — 21:9 · 00:24 · hero reel
 > Cinematic slow push-in on a fountain pen drafting on cream paper at golden hour; warm North Shore window light; a soft dissolve to a candid hand sliding a printed trade rationale into a leather folio; finish on the back of an advisor walking down a tree-lined Kenilworth sidewalk past Tudor and Prairie-style homes; shallow depth of field, Kodak Portra, anamorphic, 24fps.
@@ -26,21 +28,9 @@ Recommended Flow settings: **Veo 3.1**, no audio, 21:9 for the hero, 4:5 portrai
 ### `story-03.mp4` — 4:5 · 00:08 · Story 03 (Monitoring)
 > 6:55am, Kenilworth kitchen window, pale winter light through frost; a phone face-up on a marble counter; subtle motion as a notification list scrolls in; steam rising from a coffee mug; calm, observational, no people; shallow depth of field, 50mm.
 
-### `deck-a.mp4` — 4:5 · 00:06 · Deck A (Place)
-> Wide tracking shot down a quiet Kenilworth side street at dawn, autumn leaves on the sidewalk, mature elms arching overhead, historic homes set back from the road, soft fog; one second-floor window glowing warm; cinematic, melancholy but hopeful; 35mm.
-
-### `deck-b.mp4` — 4:5 · 00:06 · Deck B (Paper)
-> Hands shuffling printed quarterly statements on a walnut desk; sunlight in slats from venetian blinds; the rhythm of paper, no UI; warm and analog; macro, 50mm, very shallow DOF.
-
-### `deck-c.mp4` — 4:5 · 00:06 · Deck C (Signal)
-> A laptop screen reflected in a coffee shop window, abstracted into bokeh; a pulled focus reveals snow falling outside; no readable text on screen, only the reflection of falling snow; cinematic, contemplative; 35mm anamorphic.
-
-### `deck-d.mp4` — 4:5 · 00:06 · Deck D (Trust)
-> A handshake across a kitchen table, two coffee cups, soft afternoon light through linen curtains; only the hands are visible; warm, fiduciary, human; documentary feel; 35mm, 24fps.
-
 ---
 
-## After all 8 files are in this directory
+## After all 4 files are in this directory
 
 Tell Claude "wire the reels" and the `<flow-slot>` elements in `public/index.html` will get their `src="/videos/<filename>"` attributes. Then commit and push.
 
