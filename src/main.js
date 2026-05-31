@@ -6,6 +6,7 @@
 import { createGuards } from './motion/guards.js'
 import { initScrollEngine } from './motion/scrollEngine.js'
 import { initLightArc } from './motion/lightArc.js'
+import { initScenes } from './motion/scenes.js'
 
 // One capability/accessibility snapshot, read by every layer.
 const guards = createGuards()
@@ -24,5 +25,8 @@ const lenis = initScrollEngine(guards)
 // The day→night light arc — tints the brand tokens across scroll (snaps to dawn under
 // reduced motion). Must init after the scroll engine so ScrollTrigger reads Lenis.
 initLightArc(guards)
+
+// Scrubbed cinematic scenes (hero parallax + departure). No-op under reduced motion.
+initScenes(guards)
 
 window.__blueline = { guards, lenis }
