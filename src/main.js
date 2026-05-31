@@ -8,6 +8,7 @@ import { initScrollEngine } from './motion/scrollEngine.js'
 import { initLightArc } from './motion/lightArc.js'
 import { initScenes } from './motion/scenes.js'
 import { initIntro } from './motion/intro.js'
+import { initKineticType } from './motion/kineticType.js'
 
 // One capability/accessibility snapshot, read by every layer.
 const guards = createGuards()
@@ -33,5 +34,8 @@ initLightArc(guards)
 
 // Scrubbed cinematic scenes (hero parallax + departure). No-op under reduced motion.
 initScenes(guards)
+
+// Headline reveals — hero lines on load, section headlines on scroll-enter.
+initKineticType(guards)
 
 window.__blueline = { guards, lenis }
