@@ -452,8 +452,11 @@ body{
 .philosophy{overflow:hidden}
 .philosophy .photo-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('/images/hero-client-b.jpg');
-  background-size:cover;background-position:center 22%;
+  /* Kenilworth blue-hour beach — agrees with the "Kenilworth, IL" sign-off below.
+     Crop favors the lower-middle (warm horizon band + breakwater + sand) since the
+     band is wider than it is tall and the deep sky up top is just atmosphere. */
+  background-image:url('/images/philosophy-beach.jpg');
+  background-size:cover;background-position:center 58%;
 }
 .philosophy .photo-bg::after{
   content:"";position:absolute;inset:0;
@@ -766,12 +769,17 @@ a[data-placeholder]:hover{
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .reel-strip .right{justify-self:end}
 
-.reel{
-  position:relative;
-  width:100%;
-  margin-top:.5rem;
+/* Opening reel row — two scenes as one set: Pete's real Kenilworth Beach moonrise (a
+   portrait phone photo, animated) and the landscape practice reel. The column ratio
+   .42fr : 1fr makes a 3:4 portrait and a 16:9 landscape land at the SAME height, so both
+   play full-frame with no cropping. Stacks to one column on narrow screens. */
+.reel-row{
+  display:grid;grid-template-columns:.42fr 1fr;gap:1rem;
+  width:100%;margin-top:.5rem;align-items:start;
 }
-.reel flow-slot{display:block;width:100%;aspect-ratio:21/9}
+.reel-row flow-slot{display:block;width:100%}
+.reel-row flow-slot[scene="Kenilworth Beach"]{aspect-ratio:3/4}
+.reel-row flow-slot[scene="Hero reel"]{aspect-ratio:16/9}
 
 /* ───────────────────────────── FLOW-SLOT ──────────────────────────── */
 flow-slot{
@@ -919,7 +927,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 @media(max-width:900px){
   .reel-strip{padding:0 1.25rem 1rem;grid-template-columns:1fr;gap:.5rem}
   .reel-strip .right{justify-self:start}
-  .reel flow-slot{aspect-ratio:16/9}
+  .reel-row{grid-template-columns:1fr}
   flow-slot .placeholder{padding:.85rem}
   flow-slot .placeholder .prompt{font-size:.95rem}
   .flow-deck{padding:4rem 0 3rem}
@@ -984,10 +992,21 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── HERO REEL ───────────────────────────
      Silent cinematic ambiance only. The "Generated with Google Flow / Veo / Imagen"
      meta strip was removed per the reframe — visitors don't need the production credits. -->
-<section class="reel-wrap" aria-label="Practice reel">
-  <div class="reel wrap">
+<section class="reel-wrap" aria-label="Practice reels">
+  <!-- Two cinematic scenes shown as one set: the Kenilworth beach (where you live) and the
+       practice reel (how the work feels), side by side. Beach is one of the reels here,
+       not a separate full-width bar. -->
+  <div class="reel-row wrap">
     <flow-slot
-      aspect="21:9"
+      aspect="3:4"
+      scene="Kenilworth Beach"
+      model="VEO 3.1"
+      runtime="00:08"
+      src="/videos/kenilworth-beach-portrait.mp4"
+      prompt="Pete's own moonrise over Lake Michigan from the Kenilworth Beach terrace — a real phone photo, gently animated (the moonglade shimmers, waves roll in, two people stroll the shoreline)."
+    ></flow-slot>
+    <flow-slot
+      aspect="16:9"
       scene="Hero reel"
       model="VEO 3.1"
       runtime="00:24"

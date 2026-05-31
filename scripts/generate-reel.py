@@ -34,6 +34,10 @@ SLOTS = {
         "prompt": "Cinematic slow push-in on a fountain pen drafting on cream paper at golden hour; warm North Shore window light; a soft dissolve to a candid hand sliding a printed trade rationale into a leather folio; finish on the back of an advisor walking down a tree-lined Kenilworth sidewalk past Tudor and Prairie-style homes; shallow depth of field, Kodak Portra, anamorphic, 24fps.",
         "aspect": "16:9",  # Veo doesn't support 21:9; container will crop
     },
+    "beach": {
+        "prompt": "A patient, almost-still cinematic wide shot looking straight out over the Lake Michigan beach at Kenilworth, Illinois at blue hour just after sunset; a broad sandy foreground in the lower third, gentle waves lapping the shore, calm open water stretching to a low horizon, the last warm band of light glowing on the water, a few bare winter trees small in the far distance; only the water and the light moving, everything else still; no people, no boats, no buildings. ABSOLUTELY NO lettering, words, signage, captions, subtitles, watermarks, or text of any kind anywhere in the frame. Kodak Portra, 35mm anamorphic, shallow depth of field, 24fps.",
+        "aspect": "16:9",  # Veo doesn't support 21:9; container will crop
+    },
     "story-01": {
         "prompt": "Macro on a hand-typed compliance manual at 11pm; warm desk lamp, cup of black coffee, a fountain pen in the foreground; pages turning by themselves; calm, focused, unhurried; Kodak Vision3, 35mm, no people.",
         "aspect": "9:16",  # Container crops to 4:5

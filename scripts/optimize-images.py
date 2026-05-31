@@ -24,6 +24,7 @@ TARGETS = [
     ("about-trading-desk.jpg", 2000),
     ("hero-client-a.jpg", 2400),
     ("hero-client-b.jpg", 2400),
+    ("philosophy-beach.jpg", 2400),
     ("inv-hero-b.jpg", 2400),
 ]
 
