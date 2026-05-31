@@ -46,7 +46,7 @@
 
 <!-- No-JS / blocked-JS failsafe: the scroll-reveal sections start at opacity:0 and are only
      un-hidden by JavaScript. If JS never runs, force them visible so the page is never blank. -->
-<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.stagger > *{opacity:1 !important;transform:none !important}</style></noscript>
 
 <style>
 /* Brand tokens (:root) now live in /site.css — shared across both pages so the
@@ -120,12 +120,26 @@ body{
   position:relative;
   overflow:hidden;
 }
-/* Full-bleed hero photograph (North Shore shoreline) with a subtle scroll parallax. */
+/* Full-bleed hero photograph (North Shore shoreline). Two layers so two motions can
+   compose without fighting over the same `transform`:
+   - .hero-bg     → the parallax container (JS writes translate3d here on scroll) + the wash.
+   - .hero-bg-img → the actual photo, running a slow Ken-Burns zoom/drift on its own. */
 .hero-bg{
   position:absolute;inset:0;z-index:0;
+  will-change:transform;transform:translate3d(0,0,0);
+}
+/* The photo layer. Slowly scales + drifts (Ken-Burns) so the hero feels alive even
+   when the page isn't scrolling. Sits behind the parent's ::after cream wash. */
+.hero-bg-img{
+  position:absolute;inset:0;
   background-image:url('/images/hero-client-a.jpg');
   background-size:cover;background-position:center 38%;
-  will-change:transform;transform:translate3d(0,0,0);
+  will-change:transform;
+  animation:kenburns 26s var(--ease-out) infinite alternate;
+}
+@keyframes kenburns{
+  from{transform:scale(1.001) translate3d(0,0,0)}
+  to{transform:scale(1.07) translate3d(-1.4%,-1%,0)}
 }
 /* Cream wash: lightens the LEFT (where the dark headline sits) and the BOTTOM (the intro
    row) while leaving the right side of the photo visible and dramatic. Keeps the dark
@@ -675,6 +689,19 @@ a[data-placeholder]:hover{
 .reveal{opacity:0;transform:translateY(40px);transition:opacity 1000ms var(--ease-expo),transform 1000ms var(--ease-expo)}
 .reveal.in{opacity:1;transform:translateY(0)}
 
+/* ── Staggered child reveals. Put `.stagger` on a container that is inside (or is itself)
+   a `.reveal` element; its direct children fade + rise in sequence when the section enters
+   view. Two paired selectors cover both cases: `.stagger` as a descendant of `.reveal`
+   (e.g. .stats-row) and `.stagger` ON the `.reveal` element itself (e.g. section.three). ── */
+.reveal .stagger > *, .reveal.stagger > *{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo);
+}
+.reveal.in .stagger > *, .reveal.stagger.in > *{opacity:1;transform:none}
+.reveal.in .stagger > *:nth-child(2), .reveal.stagger.in > *:nth-child(2){transition-delay:.1s}
+.reveal.in .stagger > *:nth-child(3), .reveal.stagger.in > *:nth-child(3){transition-delay:.2s}
+.reveal.in .stagger > *:nth-child(4), .reveal.stagger.in > *:nth-child(4){transition-delay:.3s}
+
 /* ── Hero entrance (Phase 3 motion): eyebrow + headline rise on load. Reduced-motion
    is already neutralized by the prefers-reduced-motion block below. ── */
 @keyframes heroRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
@@ -719,6 +746,7 @@ a[data-placeholder]:hover{
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
   .reveal{opacity:1;transform:none}
+  .stagger > *{opacity:1;transform:none}
 }
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
 /* Skip-to-content link — keyboard/AT parity with the inventory page. */
@@ -924,7 +952,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
 <!-- ─────────────────────────── HERO ─────────────────────────── -->
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true"><div class="hero-bg-img"></div></div>
   <div class="wrap hero-inner">
   <div>
     <div class="hello">Hello&hairsp;&mdash;</div>
@@ -1036,7 +1064,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 
 <!-- ─────────────────────────── STATS ─────────────────────────── -->
 <section class="stats wrap reveal">
-  <div class="stats-row">
+  <div class="stats-row stagger">
     <div class="stat">
       <div class="label">Managing real risk</div>
       <div class="num">22<span class="suffix">YRS</span></div>
@@ -1056,7 +1084,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 </section>
 
 <!-- ─────────────────────────── THREE STORIES ─────────────────────────── -->
-<section class="three wrap reveal">
+<section class="three wrap reveal stagger">
   <div class="three-head">
     <h3>Three things you get that your <em>current&nbsp;advisor</em> probably&nbsp;doesn&rsquo;t.</h3>
     <div class="ribbon">
