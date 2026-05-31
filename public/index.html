@@ -645,6 +645,13 @@ footer .colophon b{color:var(--paper);font-weight:500}
 /* Credential + fee-transparency line — smaller, set off by a hairline. */
 .about-copy .credential{font-size:.92rem;color:var(--muted);border-top:1px solid var(--hairline);padding-top:1.25rem;margin-top:1.5rem;line-height:1.6}
 .about-copy .credential strong{color:var(--ink-2);font-weight:600}
+/* Small portrait by the credential line. Hidden until /images/pete-headshot.jpg exists
+   (onerror removes the whole byline), so it never ships as a broken image. */
+.about-copy .byline{display:flex;align-items:center;gap:.9rem;margin-top:1.75rem}
+.about-copy .byline-photo{width:64px;height:64px;border-radius:999px;object-fit:cover;border:1px solid var(--ink);filter:saturate(.95);flex-shrink:0}
+.about-copy .byline-text{display:flex;flex-direction:column;line-height:1.3}
+.about-copy .byline-text b{font-weight:600;color:var(--ink);font-size:1rem}
+.about-copy .byline-text span{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
 @media(max-width:900px){
   .about-you{padding:4rem 0 3rem}
   .about-grid{grid-template-columns:1fr;gap:2rem}
@@ -1014,6 +1021,14 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       <p>After two decades, I had to be honest with myself: I was good at the work, but it didn&rsquo;t help anyone. Trading Treasury options is a closed loop&hairsp;&mdash;&hairsp;capital moves from one screen to the next, and no one&rsquo;s life is better for it. The part I genuinely liked was the part away from the desk: helping <em>real people make real decisions</em> about their money. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
       <p>Here&rsquo;s what &ldquo;trader&rdquo; actually means. I was a <strong>risk manager</strong>&hairsp;&mdash;&hairsp;my job wasn&rsquo;t making bets, it was protecting the desk from the loss nobody else saw coming. That instinct is exactly what a family&rsquo;s money needs: someone whose first question is always <em>what could go wrong here, and how do we cover it?</em></p>
       <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what your family is hiring.</em></p>
+      <!-- Headshot wired in. Drop /images/pete-headshot.jpg and it appears; until then the
+           whole byline hides itself via onerror so nothing ships broken. -->
+      <div class="byline">
+        <img class="byline-photo" src="/images/pete-headshot.jpg" alt="Pete Cecil"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.byline').style.display='none'">
+        <div class="byline-text"><b>Pete Cecil</b><span>Founder &middot; Blue Line Advisors</span></div>
+      </div>
       <p class="credential">Licensed as an investment adviser representative (Series&nbsp;65) and held to a <strong>fiduciary standard</strong> on the advice I give. I charge a transparent advisory fee; where insurance or an annuity genuinely fits your plan, I&rsquo;m licensed to handle that too&hairsp;&mdash;&hairsp;and you&rsquo;ll always see exactly what it costs and why. No surprises, no buried incentives.</p>
     </div>
   </div>
