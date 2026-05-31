@@ -1,5 +1,6 @@
 {
-  "outputDirectory": "public",
+  "buildCommand": "vite build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "headers": [
     {
