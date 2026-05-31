@@ -7,6 +7,7 @@ import { createGuards } from './motion/guards.js'
 import { initScrollEngine } from './motion/scrollEngine.js'
 import { initLightArc } from './motion/lightArc.js'
 import { initScenes } from './motion/scenes.js'
+import { initIntro } from './motion/intro.js'
 
 // One capability/accessibility snapshot, read by every layer.
 const guards = createGuards()
@@ -20,6 +21,10 @@ root.dataset.tier = guards.deviceTier
 
 // Smooth scroll + the GSAP bridge (no-op under reduced motion). Kept on the global so later
 // units and debugging can reach it.
+// Opening curtain first — lift it away to reveal the page (or remove it immediately under
+// reduced motion / repeat visit). Runs before the engine so the reveal feels intentional.
+initIntro(guards)
+
 const lenis = initScrollEngine(guards)
 
 // The day→night light arc — tints the brand tokens across scroll (snaps to dawn under

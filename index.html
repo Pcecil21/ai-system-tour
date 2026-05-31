@@ -46,7 +46,7 @@
 
 <!-- No-JS / blocked-JS failsafe: the scroll-reveal sections start at opacity:0 and are only
      un-hidden by JavaScript. If JS never runs, force them visible so the page is never blank. -->
-<noscript><style>.reveal{opacity:1 !important;transform:none !important}.stagger > *{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.stagger > *{opacity:1 !important;transform:none !important}#intro-curtain{display:none !important}</style></noscript>
 
 <style>
 /* Brand tokens (:root) now live in /site.css — shared across both pages so the
@@ -938,9 +938,27 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   .flow-deck .foot{flex-direction:column;align-items:flex-start;gap:1rem}
   .idx-col flow-slot{aspect-ratio:16/9;max-width:60%}
 }
+
+/* ─── Opening curtain (U5). A dawn-cream panel covering the hero at first paint, lifted
+   away by GSAP (src/motion/intro.js) to reveal the page. Dawn cream is continuous with the
+   light-arc dawn stop, so the curtain *is* first light. Hidden entirely when JS is off
+   (see <noscript>) so it can never trap content. ─── */
+#intro-curtain{position:fixed;inset:0;z-index:9500;background:var(--paper);display:flex;align-items:center;justify-content:center;will-change:transform}
+#intro-curtain .ic-inner{text-align:center}
+#intro-curtain .ic-mark{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--ink);letter-spacing:-.01em;opacity:0}
+#intro-curtain .ic-rule{display:block;height:1px;width:0;background:var(--accent);margin:1rem auto 0}
+@media(prefers-reduced-motion:reduce){#intro-curtain{display:none}}
 </style>
 </head>
 <body data-screen-label="Pete Cecil — AI-augmented practice">
+<!-- Opening curtain (U5) — covers the hero at first paint; GSAP lifts it. Hidden via
+     <noscript> when JS is off, and force-removed by a failsafe timer if anything errors. -->
+<div id="intro-curtain" aria-hidden="true">
+  <div class="ic-inner">
+    <span class="ic-mark">Blue Line Advisors</span>
+    <span class="ic-rule"></span>
+  </div>
+</div>
 <a class="skip-link" href="#top">Skip to content</a>
 
 <!-- ─────────────────────────── NAV ─────────────────────────── -->
