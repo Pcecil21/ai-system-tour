@@ -5,6 +5,7 @@
 // grows into the conductor for the whole cinematic system.
 import { createGuards } from './motion/guards.js'
 import { initScrollEngine } from './motion/scrollEngine.js'
+import { initLightArc } from './motion/lightArc.js'
 
 // One capability/accessibility snapshot, read by every layer.
 const guards = createGuards()
@@ -19,4 +20,9 @@ root.dataset.tier = guards.deviceTier
 // Smooth scroll + the GSAP bridge (no-op under reduced motion). Kept on the global so later
 // units and debugging can reach it.
 const lenis = initScrollEngine(guards)
+
+// The day→night light arc — tints the brand tokens across scroll (snaps to dawn under
+// reduced motion). Must init after the scroll engine so ScrollTrigger reads Lenis.
+initLightArc(guards)
+
 window.__blueline = { guards, lenis }
