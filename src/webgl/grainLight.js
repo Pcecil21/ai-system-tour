@@ -43,9 +43,13 @@ export const fragmentShader = /* glsl */ `
     vec3 cool = vec3(0.52, 0.60, 0.86);
     vec3 lightCol = mix(warm, cool, uProgress);
 
-    // assemble around neutral 0.5 so soft-light only adds texture + graded light
+    // cinematic vignette — gently darkens the far corners (0 at center, ~-0.08 at corners)
+    float vigEdge = smoothstep(0.30, 0.72, distance(vUv, vec2(0.5)));
+    float vignette = -0.08 * vigEdge;
+
+    // assemble around neutral 0.5 so soft-light only adds texture + graded light + vignette
     float grain = (g - 0.5) * uGrain;
-    vec3 col = vec3(0.5) + grain + (lightCol - 0.5) * bloom * 0.16;
+    vec3 col = vec3(0.5) + grain + (lightCol - 0.5) * bloom * 0.26 + vignette;
 
     gl_FragColor = vec4(col, 1.0);
   }

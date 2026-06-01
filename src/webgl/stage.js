@@ -35,7 +35,7 @@ export function initWebGLStage(guards) {
     uTime: { value: 0 },
     uProgress: { value: 0 },
     uResolution: { value: new THREE.Vector2() },
-    uGrain: { value: 0.10 }, // ~±5% grain; dialed for "felt, not seen"
+    uGrain: { value: 0.18 }, // ~±9% grain — present film texture, still not noisy
   }
   const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms })
   scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material))
