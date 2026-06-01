@@ -586,6 +586,15 @@ body{
 }
 .tags span b{color:var(--ink);font-weight:500}
 
+/* ─────────────────────────── MOONRISE FINALE (U9) ───────────────────────────
+   The night-climax signature. Pete's own animated moonrise, shown CONTAINED at its native
+   portrait size (sharp — no full-bleed upscaling) on near-black, as the day→night arc
+   reaches full night. The last image before contact. */
+.finale{background:#0e0f0a;padding:6rem 1.5rem 7rem;display:flex;flex-direction:column;align-items:center;gap:1.6rem;text-align:center}
+.finale-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,236,226,.55)}
+.finale-video{width:min(440px,82vw);aspect-ratio:3/4;object-fit:cover;border-radius:3px;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.finale-line{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.2vw,2rem);line-height:1.3;color:#ece7da;max-width:26ch;letter-spacing:-.01em}
+
 /* ─────────────────────────── FOOTER ─────────────────────────── */
 footer{
   background:var(--ink);
@@ -1302,6 +1311,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <span><b>Custody &amp; tools&nbsp;</b>· <span data-custodian>Schwab</span> &middot; RightCapital &middot; Redtail</span>
     <span><b>Reading time&nbsp;</b>· ~6 min</span>
   </div>
+</section>
+
+<!-- ─────────────────────────── MOONRISE FINALE (U9) ───────────────────────────
+     Night-climax signature: Pete's real animated moonrise from the Kenilworth Beach
+     terrace, contained at native portrait size on near-black. The last image before
+     contact. Poster falls back to the source still if the video can't play. -->
+<section class="finale" aria-label="Kenilworth Beach at moonrise">
+  <span class="finale-eyebrow">Kenilworth &middot; Lake Michigan</span>
+  <video class="finale-video" src="/videos/kenilworth-beach-portrait.mp4"
+         poster="/images/kenilworth-beach-src.jpg"
+         autoplay loop muted playsinline aria-hidden="true"></video>
+  <p class="finale-line">The long view&hairsp;&mdash;&hairsp;the only kind worth taking with what you&rsquo;ll pass on.</p>
 </section>
 
 </main>
