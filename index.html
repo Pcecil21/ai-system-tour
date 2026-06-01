@@ -1392,10 +1392,14 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       if (old) old.remove();
       const v = document.createElement('video');
       v.src = url;
-      v.autoplay = true;
-      v.loop = true;
+      // Respect reduced-motion: no autoplaying loop — load just enough to show the first
+      // frame as a still (WCAG 2.2.2). Otherwise autoplay the silent loop as before.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      v.autoplay = !reduce;
+      v.loop = !reduce;
       v.muted = true;
       v.playsInline = true;
+      v.preload = reduce ? 'metadata' : 'auto';
       v.setAttribute('playsinline', '');
       this.insertBefore(v, this.firstChild);
       this.classList.add('has-video');

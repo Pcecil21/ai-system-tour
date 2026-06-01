@@ -42,6 +42,16 @@ initKineticType(guards)
 // Custom cursor + magnetic CTAs (fine pointer + motion only; native cursor otherwise).
 initCursor(guards)
 
+// Reduced-motion: stop any autoplaying markup videos (the moonrise finale, etc.) so they
+// hold on a still frame. (The reel <flow-slot> videos gate themselves at mount time.)
+if (!guards.motionEnabled) {
+  document.querySelectorAll('video[autoplay]').forEach((v) => {
+    v.autoplay = false
+    v.loop = false
+    v.pause()
+  })
+}
+
 window.__blueline = { guards, lenis }
 
 // WebGL grain/light overlay — capable devices only, and LAZY: the dynamic import means
