@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Pete Cecil &middot; A fiduciary who actually traded</title>
+<title>Pete Cecil &middot; A fiduciary who actually managed risk</title>
 <meta name="description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
 <meta name="theme-color" content="#efeee8">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/">
-<meta property="og:title" content="Pete Cecil · A fiduciary who actually traded">
+<meta property="og:title" content="Pete Cecil · A fiduciary who actually managed risk">
 <meta property="og:description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
 <meta property="og:site_name" content="Pete Cecil · Blue Line Advisors">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Pete Cecil · A fiduciary who actually traded">
+<meta name="twitter:title" content="Pete Cecil · A fiduciary who actually managed risk">
 <meta name="twitter:description" content="Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent fiduciary advisor in Kenilworth, IL. 22 years managing risk in the markets — now opening a practice for 15 founding families. Launching Fall 2026."}</script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -46,7 +46,7 @@
 
 <!-- No-JS / blocked-JS failsafe: the scroll-reveal sections start at opacity:0 and are only
      un-hidden by JavaScript. If JS never runs, force them visible so the page is never blank. -->
-<noscript><style>.reveal{opacity:1 !important;transform:none !important}.stagger > *{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}.stagger > *{opacity:1 !important;transform:none !important}#intro-curtain{display:none !important}</style></noscript>
 
 <style>
 /* Brand tokens (:root) now live in /site.css — shared across both pages so the
@@ -276,6 +276,16 @@ body{
 }
 .founding a:hover{background:var(--ink);color:var(--paper)}
 @media(max-width:900px){.founding .wrap{flex-direction:column;align-items:flex-start;gap:1rem}}
+
+/* Trust strip — surfaces the three things a first-time stranger most needs to trust an
+   unknown advisor (fiduciary standard, transparent fees, direct access), consolidated from
+   copy that used to be buried at the bottom of the About section. Sits BEFORE the founding
+   scarcity band so trust is established before the ask. */
+.trust{border-top:1px solid var(--hairline);background:var(--paper)}
+.trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;padding:2.75rem 1.75rem}
+.trust-item .t-label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem}
+.trust-item p{font-size:.98rem;line-height:1.55;color:var(--ink-2);max-width:36ch;margin:0}
+@media(max-width:900px){.trust .wrap{grid-template-columns:1fr;gap:1.6rem;padding:2rem 1.25rem}}
 
 /* ─────────────────────────── INTRO BIG TEXT ─────────────────────────── */
 .intro{padding:5rem 0 4rem;position:relative}
@@ -576,6 +586,15 @@ body{
 }
 .tags span b{color:var(--ink);font-weight:500}
 
+/* ─────────────────────────── MOONRISE FINALE (U9) ───────────────────────────
+   The night-climax signature. Pete's own animated moonrise, shown CONTAINED at its native
+   portrait size (sharp — no full-bleed upscaling) on near-black, as the day→night arc
+   reaches full night. The last image before contact. */
+.finale{background:#0e0f0a;padding:6rem 1.5rem 7rem;display:flex;flex-direction:column;align-items:center;gap:1.6rem;text-align:center}
+.finale-eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,236,226,.55)}
+.finale-video{width:min(440px,82vw);aspect-ratio:3/4;object-fit:cover;border-radius:3px;box-shadow:0 40px 90px rgba(0,0,0,.55)}
+.finale-line{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.2vw,2rem);line-height:1.3;color:#ece7da;max-width:26ch;letter-spacing:-.01em}
+
 /* ─────────────────────────── FOOTER ─────────────────────────── */
 footer{
   background:var(--ink);
@@ -769,17 +788,14 @@ a[data-placeholder]:hover{
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .reel-strip .right{justify-self:end}
 
-/* Opening reel row — two scenes as one set: Pete's real Kenilworth Beach moonrise (a
-   portrait phone photo, animated) and the landscape practice reel. The column ratio
-   .42fr : 1fr makes a 3:4 portrait and a 16:9 landscape land at the SAME height, so both
-   play full-frame with no cropping. Stacks to one column on narrow screens. */
-.reel-row{
-  display:grid;grid-template-columns:.42fr 1fr;gap:1rem;
-  width:100%;margin-top:.5rem;align-items:start;
+/* Opening reel — a single full-width practice reel (the advisor walking a tree-lined
+   Kenilworth street toward the homes), in a cinematic 21:9 letterbox. The beach reel that
+   used to sit beside it was removed from the opening; that asset is reserved for the night
+   finale. Drops to a less-letterboxed 16:9 on phones (see the mobile block). */
+.reel-single{
+  width:100%;margin-top:.5rem;
 }
-.reel-row flow-slot{display:block;width:100%}
-.reel-row flow-slot[scene="Kenilworth Beach"]{aspect-ratio:3/4}
-.reel-row flow-slot[scene="Hero reel"]{aspect-ratio:16/9}
+.reel-single flow-slot{display:block;width:100%;aspect-ratio:21/9}
 
 /* ───────────────────────────── FLOW-SLOT ──────────────────────────── */
 flow-slot{
@@ -927,7 +943,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 @media(max-width:900px){
   .reel-strip{padding:0 1.25rem 1rem;grid-template-columns:1fr;gap:.5rem}
   .reel-strip .right{justify-self:start}
-  .reel-row{grid-template-columns:1fr}
+  .reel-single flow-slot{aspect-ratio:16/9}
   flow-slot .placeholder{padding:.85rem}
   flow-slot .placeholder .prompt{font-size:.95rem}
   .flow-deck{padding:4rem 0 3rem}
@@ -938,9 +954,28 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   .flow-deck .foot{flex-direction:column;align-items:flex-start;gap:1rem}
   .idx-col flow-slot{aspect-ratio:16/9;max-width:60%}
 }
+
+/* ─── Opening curtain (U5). A dawn-cream panel covering the hero at first paint, lifted
+   away by GSAP (src/motion/intro.js) to reveal the page. Dawn cream is continuous with the
+   light-arc dawn stop, so the curtain *is* first light. Hidden entirely when JS is off
+   (see <noscript>) so it can never trap content. ─── */
+#intro-curtain{position:fixed;inset:0;z-index:9500;background:var(--paper);display:flex;align-items:center;justify-content:center;will-change:transform}
+#intro-curtain .ic-inner{text-align:center}
+#intro-curtain .ic-mark{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--ink);letter-spacing:-.01em;opacity:0}
+#intro-curtain .ic-rule{display:block;height:1px;width:0;background:var(--accent);margin:1rem auto 0}
+@media(prefers-reduced-motion:reduce){#intro-curtain{display:none}}
+/* The WebGL-grain + custom-cursor overlay CSS moved to /site.css so both pages share it. */
 </style>
 </head>
 <body data-screen-label="Pete Cecil — AI-augmented practice">
+<!-- Opening curtain (U5) — covers the hero at first paint; GSAP lifts it. Hidden via
+     <noscript> when JS is off, and force-removed by a failsafe timer if anything errors. -->
+<div id="intro-curtain" aria-hidden="true">
+  <div class="ic-inner">
+    <span class="ic-mark">Blue Line Advisors</span>
+    <span class="ic-rule"></span>
+  </div>
+</div>
 <a class="skip-link" href="#top">Skip to content</a>
 
 <!-- ─────────────────────────── NAV ─────────────────────────── -->
@@ -966,7 +1001,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <div class="hello">Hello&hairsp;&mdash;</div>
     <h1>
       <span class="row">A fiduciary who</span>
-      <span class="row indent"><em>actually&nbsp;traded.</em></span>
+      <span class="row indent"><em>actually managed&nbsp;risk.</em></span>
       <span class="row">And actually picks</span>
       <span class="row indent">up the <em>phone</em>.</span>
     </h1>
@@ -992,21 +1027,13 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <!-- ─────────────────────────── HERO REEL ───────────────────────────
      Silent cinematic ambiance only. The "Generated with Google Flow / Veo / Imagen"
      meta strip was removed per the reframe — visitors don't need the production credits. -->
-<section class="reel-wrap" aria-label="Practice reels">
-  <!-- Two cinematic scenes shown as one set: the Kenilworth beach (where you live) and the
-       practice reel (how the work feels), side by side. Beach is one of the reels here,
-       not a separate full-width bar. -->
-  <div class="reel-row wrap">
+<section class="reel-wrap" aria-label="Practice reel">
+  <!-- Single full-width practice reel: the advisor walking a tree-lined Kenilworth street
+       toward the homes. The beach reel was removed from the opening per Pete; that asset
+       (kenilworth-beach-portrait.mp4) is reserved for the night finale. -->
+  <div class="reel-single wrap">
     <flow-slot
-      aspect="3:4"
-      scene="Kenilworth Beach"
-      model="VEO 3.1"
-      runtime="00:08"
-      src="/videos/kenilworth-beach-portrait.mp4"
-      prompt="Pete's own moonrise over Lake Michigan from the Kenilworth Beach terrace — a real phone photo, gently animated (the moonglade shimmers, waves roll in, two people stroll the shoreline)."
-    ></flow-slot>
-    <flow-slot
-      aspect="16:9"
+      aspect="21:9"
       scene="Hero reel"
       model="VEO 3.1"
       runtime="00:24"
@@ -1023,6 +1050,27 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <span aria-hidden="true">Independent fiduciary advice&nbsp;<i class="star">✷</i>&nbsp;A risk manager&rsquo;s discipline, not a sales script&nbsp;<i class="star">✷</i>&nbsp;You call, I answer&nbsp;<i class="star">✷</i>&nbsp;15 founding families &middot; Fall 2026&nbsp;<i class="star">✷</i>&nbsp;A plan your whole family can see&nbsp;<i class="star">✷</i>&nbsp;</span>
   </div>
 </div>
+
+<!-- ─────────────────────────── TRUST STRIP ───────────────────────────
+     Answers a cold stranger's first question — "why trust an advisor I've never heard of?"
+     — before the scarcity ask below. Copy mirrors the compliance-accurate language used in
+     the About section (fiduciary on the advice given; fee-based, not fee-only). -->
+<section class="trust" aria-label="What you can count on">
+  <div class="wrap">
+    <div class="trust-item">
+      <span class="t-label">Fiduciary, by law</span>
+      <p>Held to a fiduciary standard on the advice I give. Your interest first isn&rsquo;t a slogan here&hairsp;&mdash;&hairsp;it&rsquo;s the legal standard I work under.</p>
+    </div>
+    <div class="trust-item">
+      <span class="t-label">Fees you can see</span>
+      <p>A clear advisory fee. Where insurance genuinely fits your plan, you&rsquo;ll see exactly what it costs and why. No buried incentives.</p>
+    </div>
+    <div class="trust-item">
+      <span class="t-label">The principal, not a desk</span>
+      <p>You work directly with the person who managed the risk&hairsp;&mdash;&hairsp;not a rotating team, not a junior rep, not a call center.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ─────────────────────────── FOUNDING CLIENTS BAND ───────────────────────────
      Owns the pre-launch status as early-access scarcity rather than hiding it. -->
@@ -1060,14 +1108,12 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <div class="about-copy">
       <span class="eyebrow"><span class="num">02 &mdash;</span> About me</span>
       <h3>I spent 22 years with <em>real money on the line.</em></h3>
-      <p>Before I ever managed a portfolio, I traded U.S.&nbsp;Treasury options&hairsp;&mdash;&hairsp;starting in the open-outcry pit and moving upstairs as the markets went electronic. For most of those years I worked as a <strong>risk manager</strong>, responsible for the desk and the traders on it.</p>
-      <p>That&rsquo;s not a line on a r&eacute;sum&eacute;. It&rsquo;s the reason I read a portfolio differently than most advisors do. I&rsquo;ve watched what markets do under real stress&hairsp;&mdash;&hairsp;not in a textbook, in real time, with capital on the line. I know the difference between a number on a screen and a position you have to live with.</p>
+      <p>Before I ever managed a portfolio, I traded U.S.&nbsp;Treasury options&hairsp;&mdash;&hairsp;from the open-outcry pit to the screen. For most of those years I was a <strong>risk manager</strong>, responsible for the desk and the traders on it. I&rsquo;ve watched what markets do under real stress&hairsp;&mdash;&hairsp;in real time, with capital on the line.</p>
       <!-- ORIGIN "WHY" — Pete's real reason (given 2026-05-29): the work had little real-world
            utility, and he genuinely liked helping people off the desk. Honest, humble, and
            differentiated — the opposite of a heroic origin story, which is why it reads true. -->
-      <p>After two decades, I had to be honest with myself: I was good at the work, but it didn&rsquo;t help anyone. Trading Treasury options is a closed loop&hairsp;&mdash;&hairsp;capital moves from one screen to the next, and no one&rsquo;s life is better for it. The part I genuinely liked was the part away from the desk: helping <em>real people make real decisions</em> about their money. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
-      <p>Here&rsquo;s what &ldquo;trader&rdquo; actually means. I was a <strong>risk manager</strong>&hairsp;&mdash;&hairsp;my job wasn&rsquo;t making bets, it was protecting the desk from the loss nobody else saw coming. That instinct is exactly what a family&rsquo;s money needs: someone whose first question is always <em>what could go wrong here, and how do we cover it?</em></p>
-      <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what your family is hiring.</em></p>
+      <p>After two decades, I knew what I wanted next. Trading sharpened me, but it&rsquo;s a closed loop&hairsp;&mdash;&hairsp;capital moving from one screen to the next. The work that pulled at me was the other kind: sitting across from real people, helping them make <em>real decisions</em> about their money and what they&rsquo;ll leave behind. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
+      <p>Here&rsquo;s what that means for your family. A risk manager&rsquo;s job isn&rsquo;t making bets&hairsp;&mdash;&hairsp;it&rsquo;s spotting the loss nobody else saw coming and covering it before it lands. So my first question about your money is always the same: <em>what could go wrong here, and how do we protect against it?</em> Most advisors have never had a dollar of real risk on. I did, for two decades&hairsp;&mdash;&hairsp;and <em>that judgment is what you&rsquo;re hiring.</em></p>
       <!-- Headshot wired in. Drop /images/pete-headshot.jpg and it appears; until then the
            whole byline hides itself via onerror so nothing ships broken. -->
       <div class="byline">
@@ -1076,7 +1122,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
              onerror="this.closest('.byline').style.display='none'">
         <div class="byline-text"><b>Pete Cecil</b><span>Founder &middot; Blue Line Advisors</span></div>
       </div>
-      <p class="credential">Licensed as an investment adviser representative (Series&nbsp;65) and held to a <strong>fiduciary standard</strong> on the advice I give. I charge a transparent advisory fee; where insurance or an annuity genuinely fits your plan, I&rsquo;m licensed to handle that too&hairsp;&mdash;&hairsp;and you&rsquo;ll always see exactly what it costs and why. No surprises, no buried incentives.</p>
+      <p class="credential">A licensed investment adviser representative (Series&nbsp;65), held to a <strong>fiduciary standard</strong> on the advice I give&hairsp;&mdash;&hairsp;at a transparent fee, with no buried incentives.</p>
     </div>
   </div>
 </section>
@@ -1188,20 +1234,20 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 <section class="security reveal" id="security">
   <div class="wrap">
     <div class="label">Your data</div>
-    <h3>The honest answer on AI and your <em>private information.</em></h3>
-    <p class="lead">Most advisors dodge this with <em>&ldquo;privacy rules won&rsquo;t let us.&rdquo;</em> Here&rsquo;s the real answer: in this business, client data usually gets exposed the boring way&hairsp;&mdash;&hairsp;an email attachment, a laptop open at the coffee shop. I built the opposite of that.</p>
+    <h3>How I protect <em>what you share with me.</em></h3>
+    <p class="lead">Every advisor handles your most sensitive information&hairsp;&mdash;&hairsp;and most expose it the boring way: an email attachment, a laptop open at a coffee shop. I built the opposite of that. Where I use modern tools to do more for a handful of families, the same discipline applies&hairsp;&mdash;&hairsp;here&rsquo;s exactly how your information stays protected.</p>
     <div class="security-grid">
-      <div class="sec-item">
-        <h4>Anthropic never trains on your data</h4>
-        <p>I work under Anthropic&rsquo;s commercial terms&hairsp;&mdash;&hairsp;your information is never used to train an AI model. That&rsquo;s the contract in writing, not just my word for it. It does the task in the moment; it doesn&rsquo;t learn from your money.</p>
-      </div>
-      <div class="sec-item">
-        <h4>Your name comes off before your data does</h4>
-        <p>Identifying details are stripped and reviewed by me before your financial data goes to the model. It works on the numbers, not your identity.</p>
-      </div>
       <div class="sec-item">
         <h4>Your records live locked down, not scattered</h4>
         <p>Encrypted files on my own machines, with access controls&hairsp;&mdash;&hairsp;not spread across a dozen consumer apps and inboxes the way it usually is.</p>
+      </div>
+      <div class="sec-item">
+        <h4>Your name comes off before your data does</h4>
+        <p>Identifying details are stripped and reviewed by me before any financial data goes to a tool. It works on the numbers, not your identity.</p>
+      </div>
+      <div class="sec-item">
+        <h4>The AI never trains on your data</h4>
+        <p>I work under Anthropic&rsquo;s commercial terms&hairsp;&mdash;&hairsp;your information is never used to train a model. That&rsquo;s the contract in writing, not just my word for it. It does the task in the moment; it doesn&rsquo;t learn from your money.</p>
       </div>
       <div class="sec-item">
         <h4>A hard block-list in the tools I build</h4>
@@ -1254,6 +1300,18 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   </div>
 </section>
 
+<!-- ─────────────────────────── MOONRISE FINALE (U9) ───────────────────────────
+     Night-climax signature: Pete's real animated moonrise from the Kenilworth Beach
+     terrace, contained at native portrait size on near-black. The last image before
+     contact. Poster falls back to the source still if the video can't play. -->
+<section class="finale" aria-label="Kenilworth Beach at moonrise">
+  <span class="finale-eyebrow">Kenilworth &middot; Lake Michigan</span>
+  <video class="finale-video" src="/videos/kenilworth-beach-portrait.mp4"
+         poster="/images/kenilworth-beach-src.jpg"
+         autoplay loop muted playsinline aria-hidden="true"></video>
+  <p class="finale-line">The long view&hairsp;&mdash;&hairsp;the only kind worth taking with what you&rsquo;ll pass on.</p>
+</section>
+
 </main>
 
 <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
@@ -1301,24 +1359,9 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2500);
 </script>
 
-<!-- ─────────────────────────── HERO PARALLAX ─────────────────────────── -->
-<script>
-  // Subtle parallax drift on the hero photograph as the page scrolls. Stops doing work
-  // once the hero is out of view, and respects reduced-motion.
-  (function(){
-    const bg = document.querySelector('.hero-bg');
-    if (!bg) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let ticking = false;
-    function update(){
-      const y = window.scrollY;
-      if (y > window.innerHeight) { ticking = false; return; }
-      bg.style.transform = 'translate3d(0,' + (y * 0.30) + 'px,0)';
-      ticking = false;
-    }
-    window.addEventListener('scroll', function(){ if(!ticking){ requestAnimationFrame(update); ticking = true; } }, { passive:true });
-  })();
-</script>
+<!-- Hero parallax moved to the single scroll authority (src/motion/scenes.js, GSAP
+     ScrollTrigger). The old standalone scroll listener was removed so there is one
+     scroll clock, not two competing ones. -->
 
 <!-- ─────────────────────────── <flow-slot> custom element ─────────────────────────── -->
 <script>
@@ -1349,10 +1392,14 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       if (old) old.remove();
       const v = document.createElement('video');
       v.src = url;
-      v.autoplay = true;
-      v.loop = true;
+      // Respect reduced-motion: no autoplaying loop — load just enough to show the first
+      // frame as a still (WCAG 2.2.2). Otherwise autoplay the silent loop as before.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      v.autoplay = !reduce;
+      v.loop = !reduce;
       v.muted = true;
       v.playsInline = true;
+      v.preload = reduce ? 'metadata' : 'auto';
       v.setAttribute('playsinline', '');
       this.insertBefore(v, this.firstChild);
       this.classList.add('has-video');
