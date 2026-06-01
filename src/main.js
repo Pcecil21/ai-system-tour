@@ -9,6 +9,7 @@ import { initLightArc } from './motion/lightArc.js'
 import { initScenes } from './motion/scenes.js'
 import { initIntro } from './motion/intro.js'
 import { initKineticType } from './motion/kineticType.js'
+import { initCursor } from './motion/cursor.js'
 
 // One capability/accessibility snapshot, read by every layer.
 const guards = createGuards()
@@ -37,6 +38,9 @@ initScenes(guards)
 
 // Headline reveals — hero lines on load, section headlines on scroll-enter.
 initKineticType(guards)
+
+// Custom cursor + magnetic CTAs (fine pointer + motion only; native cursor otherwise).
+initCursor(guards)
 
 window.__blueline = { guards, lenis }
 
