@@ -1368,5 +1368,9 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // threshold), reveal everything after 2.5s so content can't be stranded at opacity:0.
 setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2500);
 </script>
+
+<!-- Cinematic ambient layer (Vite-bundled): smooth scroll + custom cursor + WebGL grain,
+     for art-direction parity with the homepage. -->
+<script type="module" src="/src/inventory.js"></script>
 </body>
 </html>

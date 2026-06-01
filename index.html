@@ -964,20 +964,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 #intro-curtain .ic-mark{display:block;font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,3vw,2.6rem);color:var(--ink);letter-spacing:-.01em;opacity:0}
 #intro-curtain .ic-rule{display:block;height:1px;width:0;background:var(--accent);margin:1rem auto 0}
 @media(prefers-reduced-motion:reduce){#intro-curtain{display:none}}
-
-/* WebGL cinematic overlay (U7). A fixed full-viewport canvas (created by src/webgl/stage.js
-   only on capable devices) that soft-lights animated film grain + a graded light over the
-   page. Sits above content, below the nav (z 60); never blocks clicks. */
-.webgl-grain{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;mix-blend-mode:soft-light}
-@media(prefers-reduced-motion:reduce){.webgl-grain{display:none}}
-
-/* Custom cursor (U8) — only present when src/motion/cursor.js runs (fine pointer + motion).
-   The native cursor is hidden via .has-custom-cursor; if the script never runs, it stays. */
-.has-custom-cursor, .has-custom-cursor *{cursor:none}
-.cursor-ring,.cursor-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:9998;border-radius:999px;will-change:transform}
-.cursor-ring{width:34px;height:34px;border:1px solid var(--accent);transition:width .3s var(--ease-out),height .3s var(--ease-out),background-color .3s var(--ease-out)}
-.cursor-dot{width:6px;height:6px;background:var(--accent)}
-.cursor-hover .cursor-ring{width:56px;height:56px;background-color:color-mix(in oklab, var(--accent) 12%, transparent)}
+/* The WebGL-grain + custom-cursor overlay CSS moved to /site.css so both pages share it. */
 </style>
 </head>
 <body data-screen-label="Pete Cecil — AI-augmented practice">

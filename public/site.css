@@ -32,3 +32,28 @@
   --ease-out:cubic-bezier(.32,.72,0,1);
   --ease-expo:cubic-bezier(.16,1,.3,1);
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Cinematic overlays + cross-page transition — SHARED by both pages (added with
+   the cinematic redesign). The canvas/cursor elements are created by the JS
+   modules in src/; these are only their styles, kept here so index.html and
+   inventory.html render them identically.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* WebGL grain/light overlay — fixed canvas (src/webgl/stage.js) on capable devices. */
+.webgl-grain{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;mix-blend-mode:soft-light}
+
+/* Custom cursor (src/motion/cursor.js) on a fine pointer; native cursor hidden via the class. */
+.has-custom-cursor, .has-custom-cursor *{cursor:none}
+.cursor-ring,.cursor-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:9998;border-radius:999px;will-change:transform}
+.cursor-ring{width:34px;height:34px;border:1px solid var(--accent);transition:width .3s var(--ease-out),height .3s var(--ease-out),background-color .3s var(--ease-out)}
+.cursor-dot{width:6px;height:6px;background:var(--accent)}
+.cursor-hover .cursor-ring{width:56px;height:56px;background-color:color-mix(in oklab, var(--accent) 12%, transparent)}
+
+@media(prefers-reduced-motion:reduce){.webgl-grain{display:none}}
+
+/* Cross-document page transition — a cinematic crossfade between home and "Under the hood"
+   so they feel like one world (Chrome+; elsewhere it just navigates). Off under reduced motion. */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.5s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+@media(prefers-reduced-motion:reduce){@view-transition{navigation:none}}
