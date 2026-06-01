@@ -39,3 +39,13 @@ initScenes(guards)
 initKineticType(guards)
 
 window.__blueline = { guards, lenis }
+
+// WebGL grain/light overlay — capable devices only, and LAZY: the dynamic import means
+// Three.js (~130KB gzipped) is a separate chunk that's only downloaded when webglEnabled
+// is true. Reduced-motion / low-tier / no-WebGL visitors never pay for it; the CSS arc
+// carries the look for them.
+if (guards.webglEnabled) {
+  import('./webgl/stage.js').then(({ initWebGLStage }) => {
+    window.__blueline.webgl = initWebGLStage(guards)
+  })
+}
