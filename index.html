@@ -277,6 +277,16 @@ body{
 .founding a:hover{background:var(--ink);color:var(--paper)}
 @media(max-width:900px){.founding .wrap{flex-direction:column;align-items:flex-start;gap:1rem}}
 
+/* Trust strip — surfaces the three things a first-time stranger most needs to trust an
+   unknown advisor (fiduciary standard, transparent fees, direct access), consolidated from
+   copy that used to be buried at the bottom of the About section. Sits BEFORE the founding
+   scarcity band so trust is established before the ask. */
+.trust{border-top:1px solid var(--hairline);background:var(--paper)}
+.trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;padding:2.75rem 1.75rem}
+.trust-item .t-label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:.65rem}
+.trust-item p{font-size:.98rem;line-height:1.55;color:var(--ink-2);max-width:36ch;margin:0}
+@media(max-width:900px){.trust .wrap{grid-template-columns:1fr;gap:1.6rem;padding:2rem 1.25rem}}
+
 /* ─────────────────────────── INTRO BIG TEXT ─────────────────────────── */
 .intro{padding:5rem 0 4rem;position:relative}
 .intro-grid{display:grid;grid-template-columns:1fr 4fr;gap:3rem;align-items:start}
@@ -1031,6 +1041,27 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   </div>
 </div>
 
+<!-- ─────────────────────────── TRUST STRIP ───────────────────────────
+     Answers a cold stranger's first question — "why trust an advisor I've never heard of?"
+     — before the scarcity ask below. Copy mirrors the compliance-accurate language used in
+     the About section (fiduciary on the advice given; fee-based, not fee-only). -->
+<section class="trust" aria-label="What you can count on">
+  <div class="wrap">
+    <div class="trust-item">
+      <span class="t-label">Fiduciary, by law</span>
+      <p>Held to a fiduciary standard on the advice I give. Your interest first isn&rsquo;t a slogan here&hairsp;&mdash;&hairsp;it&rsquo;s the legal standard I work under.</p>
+    </div>
+    <div class="trust-item">
+      <span class="t-label">Fees you can see</span>
+      <p>A clear advisory fee. Where insurance genuinely fits your plan, you&rsquo;ll see exactly what it costs and why. No buried incentives.</p>
+    </div>
+    <div class="trust-item">
+      <span class="t-label">The principal, not a desk</span>
+      <p>You work directly with the person who managed the risk&hairsp;&mdash;&hairsp;not a rotating team, not a junior rep, not a call center.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ─────────────────────────── FOUNDING CLIENTS BAND ───────────────────────────
      Owns the pre-launch status as early-access scarcity rather than hiding it. -->
 <section class="founding" aria-label="Founding clients">
@@ -1072,7 +1103,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
       <!-- ORIGIN "WHY" — Pete's real reason (given 2026-05-29): the work had little real-world
            utility, and he genuinely liked helping people off the desk. Honest, humble, and
            differentiated — the opposite of a heroic origin story, which is why it reads true. -->
-      <p>After two decades, I had to be honest with myself: I was good at the work, but it didn&rsquo;t help anyone. Trading Treasury options is a closed loop&hairsp;&mdash;&hairsp;capital moves from one screen to the next, and no one&rsquo;s life is better for it. The part I genuinely liked was the part away from the desk: helping <em>real people make real decisions</em> about their money. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
+      <p>After two decades, I knew what I wanted next. Trading sharpened me, but it&rsquo;s a closed loop&hairsp;&mdash;&hairsp;capital moving from one screen to the next. The work that pulled at me was the other kind: sitting across from real people, helping them make <em>real decisions</em> about their money and what they&rsquo;ll leave behind. So I left to do that full-time&hairsp;&mdash;&hairsp;and brought the risk discipline with me.</p>
       <p>Here&rsquo;s what &ldquo;trader&rdquo; actually means. I was a <strong>risk manager</strong>&hairsp;&mdash;&hairsp;my job wasn&rsquo;t making bets, it was protecting the desk from the loss nobody else saw coming. That instinct is exactly what a family&rsquo;s money needs: someone whose first question is always <em>what could go wrong here, and how do we cover it?</em></p>
       <p>Most advisors have never had a dollar of risk on. I did it for two decades. <em>That judgment is what your family is hiring.</em></p>
       <!-- Headshot wired in. Drop /images/pete-headshot.jpg and it appears; until then the
