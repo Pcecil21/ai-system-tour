@@ -137,7 +137,8 @@ body{
    when the page isn't scrolling. Sits behind the parent's ::after cream wash. */
 .hero-bg-img{
   position:absolute;inset:0;
-  background-image:url('/images/hero-client-a.jpg');
+  background-image:url('/images/hero-client-a.jpg'); /* fallback for no image-set() */
+  background-image:image-set(url('/images/hero-client-a.avif') type('image/avif'),url('/images/hero-client-a.jpg') type('image/jpeg'));
   background-size:cover;background-position:center 38%;
   will-change:transform;
   animation:kenburns 26s var(--ease-out) infinite alternate;
@@ -470,7 +471,8 @@ body{
   /* Kenilworth blue-hour beach — agrees with the "Kenilworth, IL" sign-off below.
      Crop favors the lower-middle (warm horizon band + breakwater + sand) since the
      band is wider than it is tall and the deep sky up top is just atmosphere. */
-  background-image:url('/images/philosophy-beach.jpg');
+  background-image:url('/images/philosophy-beach.jpg'); /* fallback for no image-set() */
+  background-image:image-set(url('/images/philosophy-beach.avif') type('image/avif'),url('/images/philosophy-beach.jpg') type('image/jpeg'));
   background-size:cover;background-position:center 58%;
 }
 .philosophy .photo-bg::after{
@@ -1148,9 +1150,12 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
     <figure class="about-photo">
       <!-- Image asset pending generation. Falls back to a flagged placeholder panel
            if the file is missing so it never ships looking broken. -->
-      <img src="/images/about-trading-desk.jpg" alt="At the trading desk — a wall of rates and Treasury-options screens"
-           loading="lazy" decoding="async"
-           onerror="this.closest('.about-photo').classList.add('img-missing'); this.remove();">
+      <picture>
+        <source srcset="/images/about-trading-desk.avif" type="image/avif">
+        <img src="/images/about-trading-desk.jpg" alt="At the trading desk — a wall of rates and Treasury-options screens"
+             loading="lazy" decoding="async"
+             onerror="this.closest('.about-photo').classList.add('img-missing'); this.remove();">
+      </picture>
       <figcaption data-placeholder>Photo pending &mdash; 17-monitor trading desk</figcaption>
     </figure>
     <div class="about-copy">
@@ -1363,9 +1368,12 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
      contact. Poster falls back to the source still if the video can't play. -->
 <section class="finale" aria-label="Pete's sons at the water">
   <div class="finale-media">
-    <img class="finale-img" src="/images/boys-beach.jpg"
-         alt="My two sons at the water&rsquo;s edge, looking out at the lake"
-         loading="lazy" decoding="async">
+    <picture>
+      <source srcset="/images/boys-beach.avif" type="image/avif">
+      <img class="finale-img" src="/images/boys-beach.jpg"
+           alt="My two sons at the water&rsquo;s edge, looking out at the lake"
+           loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="finale-content">
     <span class="finale-eyebrow">My two reasons</span>

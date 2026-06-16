@@ -88,7 +88,8 @@ body{
 }
 .hero-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('/images/inv-hero-b.jpg');
+  background-image:url('/images/inv-hero-b.jpg'); /* fallback for no image-set() */
+  background-image:image-set(url('/images/inv-hero-b.avif') type('image/avif'),url('/images/inv-hero-b.jpg') type('image/jpeg'));
   background-size:cover;
   background-position:center 42%;
   will-change:transform;
@@ -489,8 +490,8 @@ body{
   background:linear-gradient(180deg,rgba(239,238,232,0) 0%,rgba(239,238,232,.12) 70%,rgba(239,238,232,.4) 100%);
   pointer-events:none;
 }
-.image-band.compliance{background-image:url('/images/band-compliance.jpg')}
-.image-band.paper{background-image:url('/images/band-paper.jpg')}
+.image-band.compliance{background-image:url('/images/band-compliance.jpg');background-image:image-set(url('/images/band-compliance.avif') type('image/avif'),url('/images/band-compliance.jpg') type('image/jpeg'))}
+.image-band.paper{background-image:url('/images/band-paper.jpg');background-image:image-set(url('/images/band-paper.avif') type('image/avif'),url('/images/band-paper.jpg') type('image/jpeg'))}
 
 /* ─────────────────────────── PHILOSOPHY MOMENT (full-bleed photo) ─────────────────────────── */
 .pull-quote{
@@ -501,7 +502,8 @@ body{
 }
 .pull-quote .photo-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('/images/band-trust.jpg');
+  background-image:url('/images/band-trust.jpg'); /* fallback for no image-set() */
+  background-image:image-set(url('/images/band-trust.avif') type('image/avif'),url('/images/band-trust.jpg') type('image/jpeg'));
   background-size:cover;background-position:center;
 }
 .pull-quote .photo-bg::after{

@@ -67,6 +67,12 @@
   --ease-expo:cubic-bezier(.16,1,.3,1);
 }
 
+/* <picture> wrappers added for AVIF delivery should have no layout box of their own — the
+   inner <img> must lay out exactly as it did before being wrapped. display:contents makes the
+   wrapper vanish from the box tree so existing img rules (.finale-img, .about-photo img) apply
+   unchanged. */
+picture{display:contents}
+
 /* ─────────────────────────────────────────────────────────────────────────
    Cinematic overlays + cross-page transition — SHARED by both pages (added with
    the cinematic redesign). The canvas/cursor elements are created by the JS
