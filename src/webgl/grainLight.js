@@ -7,11 +7,15 @@
 // Output is centered on ~0.5 gray so soft-light leaves the page's brightness alone and only
 // adds texture + a gentle graded light. Deliberately subtle — felt more than seen.
 
+// Raw WebGL1 (GLSL ES 1.00) — declares its own attribute (Three used to inject `position`/`uv`
+// automatically; without Three we supply them). The fullscreen quad is given in clip space and
+// the uv (0..1) is derived from it, exactly matching the old PlaneGeometry mapping.
 export const vertexShader = /* glsl */ `
+  attribute vec2 aPosition;
   varying vec2 vUv;
   void main() {
-    vUv = uv;
-    gl_Position = vec4(position.xy, 0.0, 1.0);
+    vUv = aPosition * 0.5 + 0.5;
+    gl_Position = vec4(aPosition, 0.0, 1.0);
   }
 `
 
