@@ -9,6 +9,40 @@
 
    If you change a brand color, change it here once and both pages follow.
    ───────────────────────────────────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Self-hosted Instrument Serif — the brand display face. It used to load from
+   Google Fonts, which meant the serif (the brand's whole voice — every headline)
+   only began downloading AFTER the render-blocking Google CSS resolved, so the
+   hero flashed Times on first paint. Now it ships from our own /fonts and is
+   <link rel="preload">ed in each page <head>, so it arrives in the first request
+   batch and paints with the page. font-display:swap keeps text visible if it is
+   ever slow. The four faces + unicode-ranges mirror Google's output exactly so no
+   glyph (em dash, curly quotes, accents) is ever lost. Inter Tight + JetBrains
+   Mono still come from Google — a sans/mono fallback flash is nearly invisible,
+   so only the serif was worth self-hosting.
+   ───────────────────────────────────────────────────────────────────────── */
+@font-face{
+  font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;
+  src:url('/fonts/instrument-serif-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;
+  src:url('/fonts/instrument-serif-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url('/fonts/instrument-serif-italic-latin.woff2') format('woff2');
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url('/fonts/instrument-serif-italic-latin-ext.woff2') format('woff2');
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
 :root{
   /* Palette — cream / ink / olive */
   --paper:#efeee8;          /* warm cream */
@@ -49,6 +83,15 @@
 .cursor-ring{width:34px;height:34px;border:1px solid var(--accent);transition:width .3s var(--ease-out),height .3s var(--ease-out),background-color .3s var(--ease-out)}
 .cursor-dot{width:6px;height:6px;background:var(--accent)}
 .cursor-hover .cursor-ring{width:56px;height:56px;background-color:color-mix(in oklab, var(--accent) 12%, transparent)}
+
+/* Cursor restraint (per the design audit's "trends to avoid"): over the trust-critical zones the
+   native cursor returns and the custom ring/dot hide, so a deliberate, high-trust action — book a
+   call, read a disclosure, weigh the fiduciary copy — is never chased by a trailing ring. The
+   custom cursor stays everywhere else as the opening flourish. Toggled by .cursor-native, which
+   cursor.js adds while the pointer is inside those zones. */
+.has-custom-cursor.cursor-native, .has-custom-cursor.cursor-native *{cursor:auto}
+.has-custom-cursor.cursor-native a, .has-custom-cursor.cursor-native button, .has-custom-cursor.cursor-native [role="button"], .has-custom-cursor.cursor-native summary{cursor:pointer}
+.cursor-native .cursor-ring, .cursor-native .cursor-dot{opacity:0;transition:opacity .2s var(--ease-out)}
 
 @media(prefers-reduced-motion:reduce){.webgl-grain{display:none}}
 

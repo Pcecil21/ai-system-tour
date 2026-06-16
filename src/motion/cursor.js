@@ -46,6 +46,16 @@ export function initCursor(guards) {
     el.addEventListener('pointerleave', () => document.documentElement.classList.remove('cursor-hover'))
   })
 
+  // Restraint over the trust-critical zones (per the design audit). The custom cursor is an
+  // opening flourish — but on the contact footer, the founding-clients CTA band, the trust strip,
+  // and the credibility block, it hands the native cursor back and hides its ring/dot. A precise,
+  // high-trust click should never fight a trailing ring; the flourish stays everywhere else.
+  const nativeZones = document.querySelectorAll('#contact, .founding, .trust, .cred-block')
+  nativeZones.forEach((el) => {
+    el.addEventListener('pointerenter', () => document.documentElement.classList.add('cursor-native'))
+    el.addEventListener('pointerleave', () => document.documentElement.classList.remove('cursor-native'))
+  })
+
   // Magnetic primary CTAs — the element leans ~25% toward the pointer, then springs back.
   const magnets = document.querySelectorAll('.nav .talk, .system-cta, .founding a')
   magnets.forEach((el) => {
