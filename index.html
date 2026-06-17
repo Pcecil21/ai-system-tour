@@ -269,7 +269,7 @@ body{
   color:var(--ink);
 }
 .marquee-track span{display:inline-flex;align-items:center;gap:3rem}
-.marquee-track .star{color:var(--accent);font-family:var(--sans);font-size:1rem;transform:translateY(.05em)}
+.marquee-track .star{color:var(--dim);font-family:var(--sans);font-size:1rem;transform:translateY(.05em)}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ─────────────────────────── FOUNDING BAND ───────────────────────────
@@ -298,7 +298,7 @@ body{
 @media(max-width:900px){.trust .wrap{grid-template-columns:1fr;gap:1.6rem;padding:2rem 1.25rem}}
 
 /* ─────────────────────────── INTRO BIG TEXT ─────────────────────────── */
-.intro{padding:5rem 0 4rem;position:relative}
+.intro{padding:var(--space-6xl) 0 var(--space-5xl);position:relative}
 .intro-grid{display:grid;grid-template-columns:1fr 4fr;gap:3rem;align-items:start}
 .intro h2{
   font-family:var(--sans);
@@ -319,7 +319,7 @@ body{
 .intro .arrowdown{font-size:1.1em;color:var(--accent);margin:0 .12em}
 
 /* ─────────────────────────── STATS ─────────────────────────── */
-.stats{padding:5rem 0 5rem;border-top:1px solid var(--hairline)}
+.stats{padding:var(--space-6xl) 0 var(--space-5xl);border-top:1px solid var(--hairline)}
 .stats-row{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -359,7 +359,7 @@ body{
 }
 
 /* ─────────────────────────── MANIFESTO / STORIES ─────────────────────────── */
-.three{padding:5rem 0 4rem;border-top:1px solid var(--ink)}
+.three{padding:var(--space-6xl) 0 var(--space-5xl);border-top:1px solid var(--ink)}
 .three-head{
   display:grid;
   grid-template-columns:1fr 2fr 1fr;
@@ -419,7 +419,7 @@ body{
   display:inline-block;margin-top:1.2rem;padding:.3rem .65rem;
   border:1px solid var(--hairline);border-radius:999px;color:var(--muted);
 }
-.story .badge .dot{display:inline-block;width:5px;height:5px;border-radius:999px;background:var(--accent);margin-right:.5em;vertical-align:.12em}
+.story .badge .dot{display:inline-block;width:5px;height:5px;border-radius:999px;background:var(--muted);margin-right:.5em;vertical-align:.12em}
 
 /* ─────────────────────────── PHILOSOPHY ─────────────────────────── */
 .philosophy{
@@ -496,7 +496,7 @@ body{
    The "loud, early" data-security answer (reviewer ask). Solid-ink band so it reads
    as a deliberate, confident statement rather than a buried disclaimer. Light type +
    sage-olive accent, matching the philosophy band's dark treatment. */
-.security{background:var(--ink);color:#f4efe4;padding:6rem 0;border-top:1px solid var(--ink)}
+.security{background:var(--register-dark);color:var(--on-dark);padding:var(--space-7xl) 0;border-top:1px solid var(--register-dark)}
 .security .label{
   font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
   color:rgba(241,236,226,.6);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;
@@ -528,7 +528,7 @@ body{
 }
 .security .closer em{color:#b6c08c;font-style:italic}
 @media(max-width:900px){
-  .security{padding:4rem 0}
+  .security{padding:var(--space-4xl) 0}
   .security-grid{grid-template-columns:1fr}
   .sec-item{padding:1.5rem 0 !important;border-right:none !important}
 }
@@ -601,12 +601,12 @@ body{
    The night-climax signature. Pete's own animated moonrise, shown CONTAINED at its native
    portrait size (sharp — no full-bleed upscaling) on near-black, as the day→night arc
    reaches full night. The last image before contact. */
-.finale{min-height:100vh;background:#0e0f0a;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(2.5rem,5vw,6rem);padding:clamp(3rem,5vw,5rem) clamp(2rem,6vw,7rem)}
+.finale{min-height:100vh;background:var(--register-dark-deep);display:grid;grid-template-columns:auto 1fr;align-items:center;gap:clamp(2.5rem,5vw,6rem);padding:clamp(3rem,5vw,5rem) clamp(2rem,6vw,7rem)}
 .finale-media{display:flex;justify-content:center}
 .finale-img{display:block;height:min(84vh,940px);width:auto;max-width:55vw;aspect-ratio:3/4;object-fit:cover;border-radius:4px;box-shadow:0 60px 130px rgba(0,0,0,.65)}
 .finale-content{display:flex;flex-direction:column;align-items:flex-start;gap:1.8rem;max-width:30ch}
 .finale-eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(241,236,226,.55)}
-.finale-line{font-family:var(--serif);font-style:italic;font-size:clamp(2.2rem,3.8vw,3.6rem);line-height:1.1;color:#ece7da;letter-spacing:-.015em;margin:0}
+.finale-line{font-family:var(--serif);font-style:italic;font-size:clamp(2.2rem,3.8vw,3.6rem);line-height:1.1;color:#ece7da;letter-spacing:-.022em;margin:0}
 .finale-cta{display:inline-flex;align-items:center;gap:.5em;font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);background:var(--accent);padding:.9rem 1.6rem;border-radius:999px;text-decoration:none;transition:background .35s var(--ease-out),color .35s var(--ease-out),transform .35s var(--ease-out)}
 .finale-cta:hover{background:#f1ece2;color:#161513;transform:translateY(-2px)}
 @media(max-width:900px){
@@ -657,7 +657,7 @@ footer .colophon{
 footer .colophon b{color:var(--paper);font-weight:500}
 
 /* ─────────────────────────── ABOUT YOU ─────────────────────────── */
-.about-you{padding:5rem 0 4rem;border-top:1px solid var(--hairline)}
+.about-you{padding:var(--space-6xl) 0 var(--space-5xl);border-top:1px solid var(--hairline)}
 .about-grid{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -743,7 +743,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
   .about-copy .cred-portrait img{width:100px;height:124px}
 }
 @media(max-width:900px){
-  .about-you{padding:4rem 0 3rem}
+  .about-you{padding:var(--space-4xl) 0 var(--space-2xl)}
   .about-grid{grid-template-columns:1fr;gap:2rem}
 }
 
@@ -790,18 +790,18 @@ a[data-placeholder]:hover{
   .nav{padding:1rem 1.25rem;font-size:.75rem}
   .nav .right{gap:1rem}
   .wrap{padding:0 1.25rem}
-  .hero{padding:5rem 0 2.5rem;min-height:auto}
+  .hero{padding:var(--space-5xl) 0 var(--space-xl);min-height:auto}
   .hero h1{font-size:clamp(2.3rem,8.5vw,3.4rem)}
   .hero h1 .row.indent{padding-left:4vw}
   .hero-foot{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}
   .hero-foot .scroll-cue{justify-self:start}
-  .intro{padding:5rem 0 3rem}
+  .intro{padding:var(--space-5xl) 0 var(--space-2xl)}
   .intro-grid{grid-template-columns:1fr;gap:1.5rem}
-  .stats{padding:3rem 0 4rem}
+  .stats{padding:var(--space-2xl) 0 var(--space-4xl)}
   .stats-row{grid-template-columns:1fr;gap:1.5rem}
   .stat{padding:2rem 0 0 0 !important;border-left:none !important}
   .stat + .stat{border-top:1px solid var(--hairline);padding-top:2rem !important}
-  .three{padding:4rem 0 3rem}
+  .three{padding:var(--space-4xl) 0 var(--space-2xl)}
   .three-head{grid-template-columns:1fr;gap:1.25rem;padding-bottom:2.5rem}
   .three-head h3{grid-column:1}
   .three-head .ribbon{justify-self:start;text-align:left}
@@ -950,7 +950,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
 .idx-col flow-slot{max-width:100%}
 
 /* ──────────────────────────── FLOW DECK ─────────────────────────── */
-.flow-deck{padding:8rem 0 6rem;border-top:1px solid var(--ink);background:var(--paper)}
+.flow-deck{padding:var(--space-7xl) 0 var(--space-6xl);border-top:1px solid var(--ink);background:var(--paper)}
 .flow-deck .head{
   display:grid;grid-template-columns:1fr 1.5fr 1fr;gap:2rem;align-items:end;
   padding-bottom:4rem;
@@ -1000,7 +1000,7 @@ flow-slot.toast-on .toast{opacity:1;transform:translateY(0)}
   .reel-single flow-slot{aspect-ratio:16/9}
   flow-slot .placeholder{padding:.85rem}
   flow-slot .placeholder .prompt{font-size:.95rem}
-  .flow-deck{padding:4rem 0 3rem}
+  .flow-deck{padding:var(--space-4xl) 0 var(--space-2xl)}
   .flow-deck .head{grid-template-columns:1fr;padding-bottom:2rem}
   .flow-deck .head h3{grid-column:1}
   .flow-deck .head .ribbon{justify-self:start;text-align:left}

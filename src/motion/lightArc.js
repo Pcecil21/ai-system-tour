@@ -28,8 +28,8 @@ export const STOPS = [
   { at: 0.22, paper: '#f4f2ea', paper2: '#eae7dc', ink: '#1a1c14', ink2: '#3d3a34', muted: '#7a7568', accent: '#5e6b2f' }, // morning — brightest
   { at: 0.42, paper: '#f1ece1', paper2: '#e7e1d2', ink: '#1d190f', ink2: '#403829', muted: '#837962', accent: '#646f2c' }, // midday
   { at: 0.60, paper: '#f3e7d2', paper2: '#e8d9be', ink: '#221d12', ink2: '#473f2c', muted: '#8a7f62', accent: '#74702c' }, // golden hour — warm
-  { at: 0.78, paper: '#d8d4c8', paper2: '#cbc7ba', ink: '#1a1c14', ink2: '#3d3a34', muted: '#6f6b5f', accent: '#5e6b2f' }, // dusk — cooling
-  { at: 1.0,  paper: '#cfccc3', paper2: '#c2bfb5', ink: '#1a1c14', ink2: '#3d3a34', muted: '#6a665b', accent: '#5e6b2f' }, // night (mostly behind dark sections)
+  { at: 0.78, paper: '#dad2c1', paper2: '#cdc4b0', ink: '#1a1c14', ink2: '#3d3a34', muted: '#6f6a5c', accent: '#5e6b2f' }, // dusk — warm-deep (M1: was cool-grey; warmed to match the espresso register)
+  { at: 1.0,  paper: '#d0c6b2', paper2: '#c2b8a2', ink: '#1a1c14', ink2: '#3d3a34', muted: '#6a655a', accent: '#5e6b2f' }, // night — warm taupe deep (M1: was cool-grey #cfccc3)
 ]
 
 const TOKENS = ['paper', 'paper2', 'ink', 'ink2', 'muted', 'accent']

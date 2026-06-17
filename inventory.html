@@ -151,7 +151,7 @@ body{
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 
 /* ─────────────────────────── SECTION SYSTEM ─────────────────────────── */
-.section{padding:5rem 0;border-top:1px solid var(--hairline)}
+.section{padding:var(--space-5xl) 0;border-top:1px solid var(--hairline)}
 .section.no-rule{border-top:none}
 .section-head{
   display:grid;
@@ -472,7 +472,7 @@ body{
   font-size:.88rem;
 }
 .infra-item:last-child{border-bottom:none}
-.infra-dot{width:7px;height:7px;border-radius:999px;flex-shrink:0;background:var(--accent)}
+.infra-dot{width:7px;height:7px;border-radius:999px;flex-shrink:0;background:var(--muted)}
 .infra-dot.dim{background:var(--dim)}
 .infra-dot.muted{background:var(--ink-2);opacity:.5}
 .infra-item .infra-label{flex:1;color:var(--ink);letter-spacing:-.005em;font-weight:500}
@@ -533,8 +533,8 @@ body{
 
 /* ─────────────────────────── FOOTER ─────────────────────────── */
 footer{
-  background:var(--ink);color:var(--paper);
-  padding:5rem 0 2.5rem;margin-top:0;
+  background:var(--register-dark);color:var(--on-dark);   /* M1: warm espresso register, matching the landing's .security/.finale */
+  padding:var(--space-6xl) 0 var(--space-xl);margin-top:0; /* H1: more air on the page's one dark gravitas moment */
 }
 footer .wrap{padding:0 1.75rem}
 footer h5{
@@ -585,11 +585,11 @@ footer .colophon b{color:var(--paper);font-weight:500}
   .nav{padding:1rem 1.25rem;font-size:.75rem}
   .nav .right{gap:1rem}
   .wrap{padding:0 1.25rem}
-  .hero{padding:5rem 0 2.5rem;min-height:auto}
+  .hero{padding:var(--space-5xl) 0 var(--space-xl);min-height:auto}
   .hero h1{font-size:clamp(3.5rem,17vw,7rem)}
   .hero-foot{grid-template-columns:1fr;gap:2rem;padding-top:2.5rem}
   .hero-foot .scroll-cue{justify-self:start}
-  .section{padding:4rem 0}
+  .section{padding:var(--space-4xl) 0}
   .section-head{grid-template-columns:1fr;gap:1rem;margin-bottom:2.5rem}
   .intro-block{padding:3.5rem 0 2.5rem}
   .intro-grid{grid-template-columns:1fr;gap:1.5rem}
