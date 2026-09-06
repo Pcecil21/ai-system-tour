@@ -22,6 +22,18 @@ The final refinement centers a narrower letter beside the portrait, uses the rea
 
 ## Verification
 
+### Subsequent exploration
+
+After checkpoint `965d1e7`, the user requested further improvement. Three implemented alternatives were tested: a broad founder statement with a centered invitation (6.5/10), unified serif display type and a cream footer (7/10), and a continuous letter with contact aligned to the photograph (7/10). All used fresh Astra contexts and the unchanged screenshot-only prompt. Several recommendations reversed earlier critiques, particularly around contact alignment and portrait scale. None established an improvement over the saved 7.4 version, which remains the selected main page.
+
+The alternatives were preserved in the parent recovery workspace as `elevate-editorial-65.*`, `elevate-editorial-70.*`, and `elevate-continuous-70.*`, with rendered views and detailed notes in `../design-exploration-followup.md`. The last experimental view is `../elevate-continuous-final-desktop.png` and its mobile counterpart. The user was asked to choose between the saved sans-serif direction and the new serif direction; no preference had arrived when the stronger reviewed checkpoint was selected. The 9/10 target remains unmet.
+
+An independent asset audit verified that the headshot was user-supplied, as documented in `docs/world-class-audit-2026-06-16.md`. No verified alternative portrait or higher-resolution source exists in this workspace. Generated illustrations and trader scenes were not substituted for authentic photography.
+
+All three alternatives passed the production build and responsive/navigation checks. The final experiment also passed the additional font, keyboard, booking-popup, reduced-motion, and breakpoint checks below. These experiments are preserved work, not published replacements.
+
+### Selected page checks
+
 - `npm run build`: passed. Existing Vercel analytics script bundling warnings remain.
 - Production browser checks: passed at 320, 390, 768, 1024, 1440, and 1920px; no horizontal overflow, broken images, missing anchor targets, or page errors. Contact navigation and the inventory route passed.
 - Additional checks: passed at 560, 760, 820, and 1280px; actual local font loading, keyboard skip-link focus, contact scrolling, booking popup destination, phone and email links, and reduced-motion behavior passed. The external booking request was intercepted locally; no appointment was booked.
