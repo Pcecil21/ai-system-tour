@@ -1,0 +1,60 @@
+/* Explain the relationship within the existing Blue Line design. */
+.home .history-disclosure { min-width:0; width:100%; }
+.home .history-disclosure > summary { display:flex; align-items:center; justify-content:space-between; gap:24px; min-height:58px; padding:16px 0; border-block:1px solid #546a7c; font-size:13px; color:#dce5ed; list-style:none; cursor:pointer; }
+.home .history-disclosure > summary::-webkit-details-marker { display:none; }
+.home .history-disclosure > summary span { font-size:24px; }
+.home .history-disclosure[open] > summary { margin-bottom:28px; }
+.home .history-disclosure[open] > summary span { transform:rotate(45deg); }
+.home .history-disclosure > summary:focus-visible { outline:2px solid #b2c7ff; outline-offset:5px; }
+.home .is-pinned .history-disclosure > summary { display:none; }
+.home .client-work,.home .client-start { padding-block:92px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px clamp(40px,6vw,100px); }
+.home .client-work-heading { align-self:start; }
+.home .client-work .letter-label,.home .client-start .letter-label { margin-bottom:34px; }
+.home .client-work h2,.home .client-start h2 { font:400 clamp(48px,4.8vw,76px)/1.07 'Newsreader',Georgia,serif; letter-spacing:-.035em; }
+.home .client-work h2 em,.home .client-start h2 em { color:var(--accent); }
+.home .client-fit { font-size:19px; line-height:1.6; max-width:34ch; margin-top:30px; }
+.home .client-fit-note { font-size:14px; line-height:1.7; color:var(--muted-home); max-width:42ch; margin-top:18px; }
+.home .client-focus-list { border-top:1px solid var(--accent); }
+.home .client-focus-list article { display:grid; grid-template-columns:24px minmax(0,1fr); gap:24px; padding:27px 0 30px; border-bottom:1px solid var(--rule); }
+.home .focus-number { font:400 11px/1.5 var(--mono); color:var(--accent); padding-top:7px; }
+.home .client-focus-list h3 { font:400 27px/1.2 'Newsreader',Georgia,serif; letter-spacing:-.015em; margin:0 0 14px; overflow-wrap:anywhere; }
+.home .client-focus-list p { color:var(--muted-home); font-size:15px; line-height:1.7; max-width:46ch; }
+.home .client-relationship { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:18px clamp(40px,6vw,100px); padding-top:34px; border-top:1px solid var(--rule); }
+.home .client-relationship > p:first-child { font:italic 400 30px/1.2 'Newsreader',Georgia,serif; color:var(--accent); max-width:24ch; }
+.home .client-relationship > p:nth-child(2) { color:var(--muted-home); font-size:15px; line-height:1.7; max-width:44ch; }
+.home .client-relationship .secondary-action { grid-column:2; justify-self:start; }
+.home .research-heading { grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:32px clamp(40px,6vw,100px); }
+.home .research-heading .letter-label { grid-column:1/-1; }
+.home .research-heading h2 { font-size:clamp(46px,4.4vw,70px); }
+.home .research-intro { grid-column:2; align-self:center; }
+.home .research-intro > p:first-child { max-width:40ch; font-size:17px; }
+.home .research-intro .secondary-action { margin-top:24px; }
+.home .client-start-intro { margin-top:28px; max-width:36ch; font-size:17px; line-height:1.7; color:var(--muted-home); }
+.home .client-questions { align-self:center; border-top:1px solid var(--rule); }
+.home .client-questions details { border-bottom:1px solid var(--rule); }
+.home .client-questions summary { display:flex; justify-content:space-between; align-items:center; gap:28px; padding:22px 0; min-height:56px; list-style:none; cursor:pointer; font-size:16px; }
+.home .client-questions summary::-webkit-details-marker { display:none; }
+.home .client-questions summary span { color:var(--accent); font-size:23px; }
+.home .client-questions details[open] summary span { transform:rotate(45deg); }
+.home .client-questions summary:focus-visible { outline:2px solid var(--accent); outline-offset:5px; }
+.home .client-questions details > p { margin:0 30px 24px 0; font-size:15px; line-height:1.7; color:var(--muted-home); max-width:48ch; }
+@media (max-width:760px) {
+ .home .journey-intro h1 { margin-bottom:48px; }
+ .home .journey-copy .history-explainer { display:none; }
+ .home .client-work,.home .client-start { grid-template-columns:minmax(0,1fr); gap:36px; padding-block:58px; }
+ .home .client-work h2,.home .client-start h2 { font-size:clamp(42px,11vw,66px); }
+ .home .client-work .letter-label,.home .client-start .letter-label { margin-bottom:25px; }
+ .home .client-fit { font-size:17px; margin-top:24px; }
+ .home .client-focus-list article { grid-template-columns:20px minmax(0,1fr); gap:16px; padding-block:24px; }
+ .home .client-focus-list h3 { font-size:25px; }
+ .home .client-focus-list p { font-size:14px; }
+ .home .client-relationship { grid-template-columns:minmax(0,1fr); gap:20px; padding-top:28px; }
+ .home .client-relationship > p:first-child { font-size:28px; }
+ .home .client-relationship .secondary-action { grid-column:1; }
+ .home .research-heading { grid-template-columns:minmax(0,1fr); gap:24px; }
+ .home .research-heading h2 { font-size:clamp(43px,11.6vw,68px); }
+ .home .research-intro { grid-column:1; }
+ .home .research-intro > p:first-child,.home .client-start-intro { font-size:16px; }
+ .home .client-questions summary { font-size:15px; }
+ .home .client-questions details > p { font-size:14px; }
+}

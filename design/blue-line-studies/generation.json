@@ -1,0 +1,27 @@
+{
+  "title": "The blue line through the work",
+  "date": "2026-09-06",
+  "method": "Built-in image_gen tool; model and generation cost not reported by tool.",
+  "purpose": "Conceptual editorial artwork for the two Under the hood image bands. These are authored renderings, not photographs of Pete's actual work or data.",
+  "assets": [
+    {
+      "original": "research-original.png",
+      "output": "../../public/images/blue-line-research.webp",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: bespoke panoramic editorial artwork for Blue Line Advisors' cream-and-cobalt 'Under the hood' website. Create one extraordinary photorealistic architectural studio rendering, not a webpage. Concept: THE BLUE LINE THROUGH THE WORK — research becoming an organized playbook. On a pale warm limestone plinth, thick ivory cotton-paper leaves transition from a few loosely staggered layers into a precise open folio; a single substantial cobalt-blue enamel ribbon threads through clean slots and follows one graceful continuous sweep, aligning the pages. A central folded-paper arch provides a confident sculptural silhouette and visual tension, with physically credible folds, visible paper grain, beautifully cut edges, subtle bevels, crisp contact shadows. Sparse and deliberate, no chaotic mass or impossible tangled geometry. Camera: close low oblique three-quarter view, near product-photography realism. Composition: very wide panoramic 3:1, ideally 3072x1024; sculpture spreads laterally, with the entire meaningful folded arch and blue ribbon gesture contained within the central 50 percent so it survives a narrower phone crop. Background is seamless warm ivory #f7f5ef, off-white paper, saturated cobalt #2446ff as the only chromatic accent, charcoal shaded details. Raking afternoon studio light from the upper left, deep sculptural shadows but clear dimensional detail, polished architectural magazine art direction. Fill the frame with a designed object, avoid tiny object marooned in empty space. The top and bottom 10 percent can crop without losing the gesture. It should feel beautifully made, purposeful, and commissioned for this specific brand. No writing, no letters, no printed marks, no charts, no numbers, no UI, no logos, no watermarks, no computers, no coffee, no people, no glass spheres, no neon, no floating holograms. Output only this one finished landscape artwork."
+    },
+    {
+      "original": "memory-original.png",
+      "output": "../../public/images/blue-line-memory.webp",
+      "dimensions": [
+        1881,
+        836
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: second bespoke panoramic editorial artwork for a cream-and-cobalt Blue Line Advisors website, introducing knowledge and memory. Create one extraordinary photorealistic architectural macro studio rendering, not a webpage. Concept: KNOWLEDGE WITH STRUCTURE. A meticulously built sculptural archive made from thick ivory cotton-paper strata, forming a sparse terraced architectural landscape. Three precise vertical cobalt-blue indexing fins rise through the layered paper at deliberate intervals, with one continuous cobalt edge linking their bases. The fins have a thin substantial material thickness and satin enamel finish; paper grain and clean-cut layered edges are tangible. The central fin and a crisply recessed channel create an unforgettable compositional focal point. This is abstract conceptual paper architecture, not a literal office, folder rack, skyscraper city, or software. Camera: very close oblique top/side view, macro product photography with enough depth of field to read construction; strong perspective gives a sense of substantial depth. Very wide panoramic 3:1, ideally 3072x1024; center the important blue fin and ivory stepped form in the central 50 percent for a narrow mobile crop. Dramatic raking light from upper left illuminates warm ivory #f7f5ef paper, saturated cobalt #2446ff accent, and rich charcoal-blue shadows. A deep muted ink-blue studio backdrop provides quiet contrasting darkness, with no background objects. Beautiful chiaroscuro, physical shadows and reflected blue light, restrained precise geometry, premium architectural editorial art. Compose with paper edges extending beyond the lateral edges, not a tiny object in huge negative space. Top and bottom 10 percent may crop. Keep construction plausible and the number of elements sparse. No writing, no letters, no numbers, no charts, no UI, no labels, no logos, no watermark, no screens, no glowing network nodes, no neon, no holograms, no glass spheres, no people or office props. Output only this one finished landscape artwork."
+    }
+  ],
+  "delivery": "Originals retained unchanged. FFmpeg libwebp encoding and proportional responsive-size exports only; no creative edits. Desktop 3:1, phone 1.8:1 with centered crops; lazy loading and intrinsic dimensions. No new motion or UI behavior."
+}

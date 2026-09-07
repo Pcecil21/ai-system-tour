@@ -39,12 +39,14 @@ export function initCursor(guards) {
     dotX(e.clientX); dotY(e.clientY)
   }, { passive: true })
 
-  // Grow the ring over anything interactive.
-  const interactive = document.querySelectorAll('a, button, [role="button"], summary, input')
-  interactive.forEach((el) => {
-    el.addEventListener('pointerenter', () => document.documentElement.classList.add('cursor-hover'))
-    el.addEventListener('pointerleave', () => document.documentElement.classList.remove('cursor-hover'))
-  })
+  // Delegate hover so controls created by catalog filtering receive the same cue.
+  const interactiveSelector = 'a, button, [role="button"], summary, input'
+  function updateHover(target) {
+    document.documentElement.classList.toggle('cursor-hover',
+      target instanceof Element && !!target.closest(interactiveSelector))
+  }
+  document.addEventListener('pointerover', event => updateHover(event.target))
+  document.addEventListener('pointerout', event => updateHover(event.relatedTarget))
 
   // Restraint over the trust-critical zones (per the design audit). The custom cursor is an
   // opening flourish — but on the contact footer, the founding-clients CTA band, the trust strip,

@@ -12,51 +12,134 @@
 <meta property="og:title" content="Pete Cecil · Blue Line Advisors">
 <meta property="og:description" content="Your life’s work. My full attention. Independent fiduciary advice, built on 22 years of managing risk.">
 <meta property="og:site_name" content="Blue Line Advisors">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://ai-system-tour.vercel.app/images/social-home.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Blue Line Advisors. A longer view. Independent financial advice from Pete Cecil.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pete Cecil · Blue Line Advisors">
 <meta name="twitter:description" content="Independent fiduciary advice, built on 22 years of managing risk. Kenilworth, Illinois.">
+<meta name="twitter:image" content="https://ai-system-tour.vercel.app/images/social-home.png">
+<meta name="twitter:image:alt" content="Blue Line Advisors. A longer view. Independent financial advice from Pete Cecil.">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Pete Cecil · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/","description":"Independent fiduciary advisor in Kenilworth, IL. Launching Fall 2026."}</script>
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script defer src="/config.js"></script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231947f5'/%3E%3Cpath d='M7 16h18' stroke='%23faf9f6' stroke-width='2'/%3E%3C/svg%3E">
-<link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-optical-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/newsreader-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <link rel="stylesheet" href="/home.css">
+<link rel="stylesheet" href="/market-demo.css">
+<link rel="stylesheet" href="/market-feeds.css">
+<link rel="stylesheet" href="/horizon.css">
+<link rel="stylesheet" href="/client-clarity.css">
+<script type="module" src="/src/horizonJourney.js"></script>
+<script type="module" src="/src/marketDemoEntry.js"></script>
 </head>
 <body class="home">
 <a class="skip-link" href="#top">Skip to content</a>
 <header class="masthead page-width">
-  <a class="wordmark" href="#top" aria-label="Blue Line Advisors, home"><span class="wordmark-copy"><strong>Blue Line</strong><small>Advisors</small></span></a>
+  <a class="wordmark" href="#top" aria-label="Blue Line Advisors, home"><span class="wordmark-copy"><strong>Blue <span class="wordmark-line"><span class="wordmark-letter-l">L<svg viewBox="0 0 16 20" aria-hidden="true" focusable="false"><path d="M1 0H4V14C4 16 5 17 7 17H16L13 20H1Z"/></svg></span>ine</span></strong> <small>Advisors</small></span></a>
   <p class="masthead-location">Kenilworth, Illinois</p>
-  <nav aria-label="Primary"><a href="#about">Meet Pete</a><a class="primary-action" href="#contact">Let’s talk</a></nav>
+  <nav aria-label="Primary"><a href="#working-together">Working together</a><a href="#about" class="nav-research">Meet Pete</a><a class="primary-action" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></nav>
 </header>
 <main id="top" tabindex="-1">
-  <section class="hero page-width" aria-labelledby="hero-title">
-    <div class="hero-intro">
-      <p class="hero-kicker">Independent financial advice</p>
-      <h1 id="hero-title"><span>A longer</span> <span>view.</span></h1>
-      <p class="hero-deck">Financial planning with your family at the center. Built on twenty-two years of managing risk.</p>
-      <a class="hero-action" href="#contact">Start a conversation</a>
-      <p class="hero-availability">Opening Fall 2026 <span aria-hidden="true">/</span> Fifteen founding families</p>
+  <section class="journey" aria-label="Follow the blue line">
+    <div class="journey-stage">
+      <div class="journey-lake" aria-hidden="true"><img src="/images/long-view-lake.webp" width="1672" height="941" alt="" fetchpriority="high"><canvas class="lake-canvas"></canvas></div>
+      <svg class="journey-thread" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path></svg>
+      <section class="journey-panel journey-intro hero" id="scene-horizon" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="hero-heading"><p class="hero-kicker">Independent financial advice <span>from Pete Cecil</span></p><h1 id="hero-title">A longer <em>view.</em></h1></div>
+          <div class="hero-intro"><p class="hero-deck"><span class="hero-promise">A clear retirement plan.<br>A direct relationship with your advisor.</span><span class="hero-experience">Financial advice with your family at the center.</span></p><a class="hero-action" href="#working-together">How we’d work together <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></div>
+          <p class="hero-availability"><span class="availability-mark" aria-hidden="true"></span><span>Opening Fall 2026</span><span>A practice for fifteen founding families</span></p>
+        </div>
+        <span class="horizon-still-line" aria-hidden="true"></span>
+        <div class="journey-intro-controls"><a class="journey-scroll" href="#scene-markets">Follow the blue line <span aria-hidden="true">↓</span></a><button class="water-toggle" type="button" aria-pressed="false" hidden>Pause water</button></div>
+      </section>
+      <section class="journey-panel journey-markets" id="scene-markets" aria-labelledby="history-title">
+        <div class="journey-copy"><p class="journey-eyebrow">01 / Perspective</p><h2 id="history-title">Your plan.<br><em>A longer view.</em></h2><p>Your family’s plans extend beyond the next market move. I bring twenty-two years of managing risk to that longer conversation.</p><p class="history-explainer">This Treasury history shows how much can change along the way. It is context for a conversation about risk, time, and what your money needs to support.</p><a class="journey-scroll" href="#scene-family">The people behind the plan <span aria-hidden="true">↓</span></a></div>
+        <details class="history-disclosure"><summary>Explore 22 years of Treasury history <span aria-hidden="true">+</span></summary>
+        <div class="history-interface">
+          <div class="history-toolbar"><span>10-year U.S. Treasury yield</span><div role="group" aria-label="Historical time horizon"><button type="button" data-history-years="1" aria-pressed="false" disabled="">1 year</button><button type="button" data-history-years="5" aria-pressed="false" disabled="">5 years</button><button type="button" data-history-years="22" aria-pressed="true" disabled="">22 years</button></div></div>
+          <div class="history-reading"><div><span data-history-date="">Dec 2025</span><strong data-history-value="">4.14%</strong></div><p data-history-insight="">Nearly the same yield. Twenty-two years of context.</p></div>
+          <div class="history-plot"><svg data-history-svg="" viewBox="0 0 390 260" role="img" aria-label="10-year Treasury yield, monthly averages, Jan 2004 to Dec 2025. Range 0.62 to 5.11 percent. Use Explore a month to inspect observations."><g data-history-grid=""><line x1="36" x2="374" y1="228" y2="228" stroke="#294252"></line><text x="26" y="232" text-anchor="end" fill="#a8bfce" font-size="12">0%</text><line x1="36" x2="374" y1="157.33333333333334" y2="157.33333333333334" stroke="#294252"></line><text x="26" y="161.33333333333334" text-anchor="end" fill="#a8bfce" font-size="12">2%</text><line x1="36" x2="374" y1="86.66666666666667" y2="86.66666666666667" stroke="#294252"></line><text x="26" y="90.66666666666667" text-anchor="end" fill="#a8bfce" font-size="12">4%</text><line x1="36" x2="374" y1="16" y2="16" stroke="#294252"></line><text x="26" y="20" text-anchor="end" fill="#a8bfce" font-size="12">6%</text><text x="36" y="254" text-anchor="start" fill="#a8bfce" font-size="12">Jan 2004</text><text x="374" y="254" text-anchor="end" fill="#a8bfce" font-size="12">Dec 2025</text></g><path data-history-line="" fill="none" stroke="currentColor" stroke-width="2.5" vector-effect="non-scaling-stroke" d="M36.00,81.37 L37.29,83.84 L38.57,92.67 L39.86,74.30 L41.14,61.23 L42.43,60.87 L43.71,69.00 L45.00,76.77 L46.28,82.07 L47.57,83.13 L48.85,79.95 L50.14,78.54 L51.42,78.89 L52.71,80.66 L53.99,69.00 L55.28,74.65 L56.56,81.72 L57.85,86.67 L59.13,80.31 L60.42,77.48 L61.70,79.60 L62.99,70.41 L64.27,67.59 L65.56,70.06 L66.84,71.83 L68.13,66.53 L69.41,61.23 L70.70,51.69 L71.98,47.45 L73.27,47.45 L74.56,48.15 L75.84,55.57 L77.13,61.23 L78.41,60.87 L79.70,65.47 L80.98,66.88 L82.27,59.81 L83.55,61.23 L84.84,66.88 L86.12,62.29 L87.41,60.17 L88.69,47.80 L89.98,51.33 L91.26,62.99 L92.55,68.29 L93.83,67.94 L95.12,81.37 L96.40,83.13 L97.69,95.85 L98.97,95.85 L100.26,103.98 L101.54,97.97 L102.83,90.91 L104.11,83.13 L105.40,86.31 L106.68,90.55 L107.97,97.62 L109.25,93.38 L110.54,103.27 L111.83,142.49 L113.11,138.96 L114.40,126.59 L115.68,128.36 L116.97,124.47 L118.25,111.75 L119.54,96.56 L120.82,102.21 L122.11,101.15 L123.39,107.87 L124.68,108.22 L125.96,107.87 L127.25,101.15 L128.53,96.21 L129.82,97.62 L131.10,96.21 L132.39,91.97 L133.67,107.16 L134.96,114.93 L136.24,121.65 L137.53,132.60 L138.81,134.37 L140.10,138.25 L141.38,130.48 L142.67,111.75 L143.95,108.22 L145.24,101.51 L146.52,107.51 L147.81,105.75 L149.10,115.99 L150.38,122.00 L151.67,122.00 L152.95,146.73 L154.24,158.04 L155.52,152.03 L156.81,156.98 L158.09,158.04 L159.38,158.39 L160.66,158.39 L161.95,151.33 L163.23,155.57 L164.52,164.40 L165.80,170.76 L167.09,173.94 L168.37,168.64 L169.66,167.23 L170.94,166.17 L172.23,169.70 L173.51,167.23 L174.80,160.51 L176.08,158.04 L177.37,158.75 L178.65,165.81 L179.94,159.81 L181.22,146.73 L182.51,136.84 L183.79,131.19 L185.08,128.71 L186.37,135.43 L187.65,131.89 L188.94,125.53 L190.22,126.95 L191.51,132.25 L192.79,131.89 L194.08,132.25 L195.36,137.55 L196.65,136.13 L197.93,138.25 L199.22,142.49 L200.50,138.61 L201.79,146.73 L203.07,145.67 L204.36,149.91 L205.64,161.57 L206.93,158.04 L208.21,155.92 L209.50,159.45 L210.78,150.27 L212.07,144.61 L213.35,146.03 L214.64,151.33 L215.92,151.33 L217.21,154.86 L218.49,148.15 L219.78,148.85 L221.06,154.15 L222.35,165.11 L223.63,161.22 L224.92,164.05 L226.21,164.05 L227.49,170.05 L228.78,175.00 L230.06,172.88 L231.35,170.41 L232.63,165.81 L233.92,152.39 L235.20,140.02 L236.49,142.14 L237.77,142.49 L239.06,140.37 L240.34,146.73 L241.63,146.73 L242.91,150.62 L244.20,146.03 L245.48,149.91 L246.77,150.27 L248.05,144.61 L249.34,144.97 L250.62,143.20 L251.91,136.84 L253.19,126.95 L254.48,127.65 L255.76,126.59 L257.05,122.71 L258.33,125.18 L259.62,125.89 L260.90,125.89 L262.19,122.00 L263.48,116.70 L264.76,117.76 L266.05,128.01 L267.33,132.25 L268.62,133.31 L269.90,137.19 L271.19,138.61 L272.47,143.20 L273.76,154.86 L275.04,155.21 L276.33,170.41 L277.61,167.93 L278.90,167.58 L280.18,164.05 L281.47,162.28 L282.75,165.81 L284.04,175.00 L285.32,197.26 L286.61,204.68 L287.89,204.33 L289.18,202.21 L290.46,206.09 L291.75,205.03 L293.03,203.97 L294.32,200.09 L295.60,197.26 L296.89,195.14 L298.17,189.84 L299.46,183.48 L300.75,171.11 L302.03,170.05 L303.32,170.76 L304.60,174.29 L305.89,181.36 L307.17,182.77 L308.46,179.59 L309.74,172.17 L311.03,172.88 L312.31,176.06 L313.60,165.81 L314.88,159.81 L316.17,152.74 L317.45,130.83 L318.74,125.53 L320.02,117.05 L321.31,125.53 L322.59,125.53 L323.88,103.63 L325.16,87.37 L326.45,90.55 L327.73,100.09 L329.02,103.27 L330.30,95.50 L331.59,98.68 L332.87,105.75 L334.16,101.86 L335.44,95.50 L336.73,90.20 L338.02,80.66 L339.30,73.24 L340.59,58.40 L341.87,69.00 L343.16,85.96 L344.44,84.55 L345.73,79.25 L347.01,79.25 L348.30,67.59 L349.58,69.71 L350.87,75.71 L352.15,77.83 L353.44,91.26 L354.72,96.56 L356.01,83.13 L357.29,73.95 L358.58,72.89 L359.86,64.41 L361.15,70.77 L362.43,76.77 L363.72,76.77 L365.00,71.83 L366.29,73.24 L367.57,72.89 L368.86,77.48 L370.14,82.43 L371.43,84.55 L372.71,83.49 L374.00,81.72"></path><g data-history-marker=""><line x1="374" x2="374" y1="16" y2="228" stroke="#698398" stroke-dasharray="3 4"></line><circle cx="374" cy="81.72000000000001" r="4" fill="#b4c9ff" stroke="#071827" stroke-width="2"></circle></g></svg></div>
+          <div class="history-scrub"><label for="history-month">Explore a month</label><input id="history-month" type="range" min="0" max="263" value="263" data-history-scrub="" disabled="" aria-valuetext="Dec 2025: 4.14 percent yield"></div>
+          <dl class="history-facts"><div><dt>Lowest monthly yield</dt><dd data-history-low="">0.62%</dd></div><div><dt>Highest monthly yield</dt><dd data-history-high="">5.11%</dd></div><div><dt>Start to end</dt><dd data-history-change="">−1 bp</dd></div></dl>
+          <p class="history-source"><a href="https://fred.stlouisfed.org/series/GS10" target="_blank" rel="noopener">Federal Reserve / FRED · GS10 ↗</a><span>Monthly averages · through Dec 2025 · yield, not investment return</span></p>
+          <noscript><p class="history-source">Static 22-year view. Enable JavaScript to change the horizon and inspect each month.</p></noscript>
+        </div>
+        </details>
+      </section>
+      <section class="journey-panel journey-family" id="scene-family" aria-labelledby="family-title">
+        <div class="journey-copy"><p class="journey-eyebrow">02 / What matters</p><h2 id="family-title">Your life’s work.<br><em>My full attention.</em></h2><span class="family-line-anchor" aria-hidden="true"></span><p>The decisions are financial.<br>The reasons are personal.</p><a class="secondary-action" href="#about">Meet Pete <span aria-hidden="true">↗</span></a></div>
+        <figure class="hero-figure"><div class="photo-frame"><picture><source srcset="/images/boys-beach.avif" type="image/avif"><img src="/images/boys-beach.jpg" alt="Pete’s two sons looking out over the lake from the water’s edge" width="1400" height="1867" loading="lazy"></picture></div><figcaption>My two reasons for taking the long view.</figcaption></figure>
+      </section>
+      <nav class="journey-chapters" aria-label="Blue Line story"><a href="#scene-horizon" data-chapter="0" aria-current="step"><span>01</span> A longer view</a><a href="#scene-markets" data-chapter="1"><span>02</span> A different perspective</a><a href="#scene-family" data-chapter="2"><span>03</span> What matters</a></nav>
     </div>
-    <figure class="hero-figure"><picture><source srcset="/images/boys-beach.avif" type="image/avif"><img src="/images/boys-beach.jpg" alt="Pete’s two sons looking out over the lake from the water’s edge" width="1367" height="1823" fetchpriority="high"></picture><figcaption>My two reasons for taking the long view.</figcaption></figure>
+  </section>
+  <section class="client-work page-width" id="working-together" aria-labelledby="working-title">
+    <div class="client-work-heading"><p class="letter-label"><span aria-hidden="true">01 /</span> Working together</p><h2 id="working-title">A plan for the life<br><em>you want to live.</em></h2><p class="client-fit">For families thinking about retirement, the purpose behind their investments, and the next generation.</p><p class="client-fit-note">If one of those decisions is coming into focus, that’s a good place for our first conversation to begin.</p></div>
+    <div class="client-focus-list">
+      <article><span class="focus-number" aria-hidden="true">01</span><div><h3>Make retirement clearer.</h3><p>Start with the life you want your plan to support. Bring your priorities, your questions, and the decisions that feel unresolved.</p></div></article>
+      <article><span class="focus-number" aria-hidden="true">02</span><div><h3>Put investment risk in context.</h3><p>Connect investment decisions to your family’s plans, with attention to what could go wrong and what your money needs to do.</p></div></article>
+      <article><span class="focus-number" aria-hidden="true">03</span><div><h3>Bring your family into the conversation.</h3><p>Include the people who matter to the plan, including your children when it is time to think together about the next generation.</p></div></article>
+    </div>
+    <div class="client-relationship"><p>Your advisor.<br>A familiar voice.</p><p>You work directly with me. I’m building a practice small enough to know your story and pick up the phone myself.</p><a class="secondary-action" href="#first-conversation">Start with a conversation <span aria-hidden="true">↗</span></a></div>
   </section>
   <section class="letter page-width" id="about" aria-labelledby="about-title">
-    <div class="letter-margin"><p class="letter-label">A note from Pete</p><figure class="founder"><img src="/images/pete-headshot.jpg" alt="Pete Cecil" width="400" height="400" loading="lazy"><figcaption><strong>Pete Cecil</strong><span>Founder, Blue Line Advisors</span></figcaption></figure></div>
+    <div class="letter-heading"><p class="letter-label"><span aria-hidden="true">02 /</span> A note from Pete</p>
+    <h2 id="about-title">Experience,<br><em>made personal.</em></h2></div>
+    <figure class="founder"><img src="/images/pete-headshot.jpg" alt="Pete Cecil" width="400" height="400" loading="lazy"><figcaption><strong>Pete Cecil</strong><span>Founder, Blue Line Advisors</span></figcaption></figure>
     <div class="letter-copy">
-      <h2 id="about-title">Your life’s work.<br>My full attention.</h2>
       <p>For twenty-two years in U.S. Treasury options, I focused on what could go wrong—and how to protect against it.</p>
       <p>Now I bring that care to your family: a clear retirement plan, a watchful eye on risk, and your children included in the conversation.</p>
       <p>I’m building a practice small enough to know your story—and to pick up the phone myself.</p>
-      <a class="secondary-action" id="approach" href="inventory">See how the practice works <span aria-hidden="true">→</span></a>
+    </div>
+      <a class="secondary-action" href="#contact">Start a conversation <span aria-hidden="true">↗</span></a>
+    <div class="experience-note"><span class="experience-number">22</span><p>years managing risk.<br>Now focused on your family’s next chapter.</p></div>
+  </section>
+  <section class="research" id="research" aria-labelledby="research-title">
+    <div class="research-heading page-width"><p class="letter-label"><span aria-hidden="true">03 /</span> Preparation &amp; judgment</p><h2 id="research-title">Prepared with care.<br><em>Accountable to you.</em></h2><div class="research-intro"><p>Research and software tools help me organize information, prepare, and carry work forward. I review what I use and remain responsible for what I share with you.</p><p class="research-context">You work directly with me. If you’d like to understand the tools behind my preparation, the detailed tour is here.</p><a class="secondary-action" id="approach" href="inventory">Explore my working tools <span aria-hidden="true">↗</span></a></div></div>
+    <details class="research-terminal"><summary class="page-width">Open the interactive research terminal <span aria-hidden="true">+</span></summary>
+    <!-- HOME_MARKET_STUDY_START -->
+<section class="market-demo market-live" id="market-study" data-market-feed="price" aria-labelledby="market-study-title">
+  <div class="market-shell">
+    <div class="market-appbar"><span class="market-brand">Blue Line / Market research</span><span class="market-demo-label">Real market data · exchange delays apply</span></div>
+    <div class="market-overview">
+      <div><p class="market-kicker" data-feed-instrument>SPY / SPDR S&P 500 ETF Trust · USD</p><h2 id="market-study-title" data-feed-name>U.S. equities</h2><p class="market-subtitle">Actual prices. A longer perspective.</p></div>
+    </div>
+    <div class="market-toolbar"><div class="market-button-group" role="group" aria-label="Choose a market instrument"><button type="button" data-market-asset="equities" aria-pressed="true" disabled>Equities <span>SPY</span></button><button type="button" data-market-asset="bonds" aria-pressed="false" disabled>Treasuries <span>IEF</span></button><button type="button" data-market-asset="gold" aria-pressed="false" disabled>Gold <span>GLD</span></button></div><p class="market-feed-hint">Explore dates, chart styles & indicators inside the chart.</p></div>
+    <div class="market-feed-host" data-feed-host><p class="market-feed-placeholder">Explore the price history of a real traded fund.</p></div>
+    <div class="market-feed-connection"><p data-feed-status role="status">The interactive view connects when you reach this section.</p><button type="button" data-feed-retry hidden>Reload chart</button></div>
+    <p class="market-source-link"><a data-feed-source href="https://www.tradingview.com/symbols/AMEX-SPY/" target="_blank" rel="noopener">Open SPY on TradingView ↗</a></p>
+    <details class="market-methodology"><summary>About this data</summary>
+      <p>SPY, IEF and GLD are traded funds representing U.S. large-cap equities, 7–10 year Treasury bonds and gold. The chart shows fund share prices in U.S. dollars, with the selected interval, volume and indicators supplied by TradingView. These are market observations, not Blue Line portfolio results.</p><p>Use the chart’s date controls and crosshair to inspect history. The chart identifies its feed, interval and adjustment settings. A price change is not a total return with distributions reinvested; IEF’s share price is not a Treasury yield.</p>
+      <p>Market data updates through TradingView. Exchange delays apply, and the latest available observation may be from the previous trading session. If a feed is unavailable, use the source link above. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener">Data availability and delays ↗</a></p>
+    </details>
+    <noscript><p class="market-feed-nojs">Enable JavaScript for the interactive market view, or use the TradingView link above to view its source.</p></noscript>
+  </div>
+</section>
+    <!-- HOME_MARKET_STUDY_END -->
+    </details>
+    <div class="research-footer page-width"><p>A closer look. A more considered view.</p><a href="inventory#breadth-study">Explore sector comparisons <span aria-hidden="true">↗</span></a></div>
+  </section>
+  <section class="client-start page-width" id="first-conversation" aria-labelledby="first-title">
+    <div><p class="letter-label"><span aria-hidden="true">04 /</span> Before we meet</p><h2 id="first-title">Start with<br><em>your questions.</em></h2><p class="client-start-intro">A 30-minute video conversation with Pete. A chance to talk about what matters to you and whether we would work well together.</p></div>
+    <div class="client-questions">
+      <details open><summary>What will we talk about?<span aria-hidden="true">+</span></summary><p>Your priorities, the decisions you’re facing, and what you want from an advisor. Bring your questions about my approach, the scope of advice, and what a next step could look like.</p></details>
+      <details><summary>How do fees work?<span aria-hidden="true">+</span></summary><p>Fees belong in the first conversation. Ask me about the services for your situation, how charges are calculated, and any minimums that would apply.</p></details>
+      <details><summary>Can we meet before the practice opens?<span aria-hidden="true">+</span></summary><p>Yes. Introductory conversations are available now. Blue Line Advisors is planned to open in Fall 2026, with a practice for fifteen founding families.</p></details>
+      <details><summary>What should I bring?<span aria-hidden="true">+</span></summary><p>Start with the questions on your mind and a broad picture of what you want to accomplish. We can discuss what further information would be useful if we decide to continue.</p></details>
     </div>
   </section>
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="contact-grid page-width">
-      <div class="contact-heading"><h2 id="contact-title">A conversation<br>is a good start.</h2></div>
-      <div class="contact-actions"><p class="contact-note">Let’s talk about what matters to your family,<br> and whether we’re a good fit.</p><a class="booking primary-action" href="https://cal.com/peter-cecil-ce0lud" target="_blank" rel="noopener">Book an introductory call <span aria-hidden="true">↗</span></a><div class="direct"><a href="tel:+18476249587">847 624 9587</a><a href="mailto:p.cecil@yahoo.com">Email Pete</a></div></div>
+      <div class="contact-heading"><p class="letter-label">Introductory conversations available now</p><h2 id="contact-title">Let’s talk about<br><em>your family.</em></h2><p class="contact-note">30 minutes · Video call with Pete<br>Bring your priorities. Ask your questions.<br>See whether we’re a good fit.</p></div>
+      <div class="contact-actions"><a class="booking primary-action" href="https://cal.com/peter-cecil-ce0lud/advisor-intro-call" target="_blank" rel="noopener">Book an introductory call <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><div class="direct"><a href="tel:+18476249587">847 624 9587</a><a href="mailto:p.cecil@yahoo.com">Email Pete</a></div></div>
     </div>
   </section>
 </main>

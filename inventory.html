@@ -4,29 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Under the hood &middot; Blue Line Advisors</title>
-<meta name="description" content="The full inventory of playbooks, specialists, live connections, and infrastructure behind Pete Cecil's AI-augmented practice at Blue Line Advisors.">
+<meta name="description" content="Inside Pete Cecil’s current AI workbench: Claude Code, Codex, selected playbooks and specialists, local knowledge, research tools, and scheduled workflows.">
 <link rel="canonical" href="https://ai-system-tour.vercel.app/inventory">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="Pete Cecil &middot; Blue Line Advisors">
+<meta property="og:site_name" content="Blue Line Advisors">
 <meta property="og:url" content="https://ai-system-tour.vercel.app/inventory">
 <meta property="og:title" content="Under the hood &middot; Blue Line Advisors">
-<meta property="og:description" content="Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.">
-<meta name="twitter:card" content="summary">
+<meta property="og:description" content="Inside Pete Cecil’s current AI workbench: Claude Code, Codex, selected playbooks and specialists, local knowledge, research tools, and scheduled workflows.">
+<meta property="og:image" content="https://ai-system-tour.vercel.app/images/social-inventory.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Blue Line Advisors. Under the hood. A guided tour of playbooks, AI specialists, connected services, and workflows.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Under the hood &middot; Blue Line Advisors">
-<meta name="twitter:description" content="Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.">
-<meta name="theme-color" content="#efeee8">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Under the hood · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/inventory","description":"Every playbook, every specialist, every live connection. A guided tour of the AI system behind an independent RIA.","isPartOf":{"@type":"WebSite","url":"https://ai-system-tour.vercel.app/"}}</script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%231a1c14'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='18' font-weight='700' fill='%23efeee8'%3EP%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Brand display serif is self-hosted now (see @font-face in site.css). Preload the two latin
-     cuts (roman + italic both appear above the fold) so they arrive in the first request batch
-     and headlines never flash Times. Inter Tight + JetBrains Mono stay on Google Fonts. -->
-<link rel="preload" href="/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/fonts/instrument-serif-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta name="twitter:description" content="Inside Pete Cecil’s current AI workbench: Claude Code, Codex, selected playbooks and specialists, local knowledge, research tools, and scheduled workflows.">
+<meta name="twitter:image" content="https://ai-system-tour.vercel.app/images/social-inventory.png">
+<meta name="twitter:image:alt" content="Blue Line Advisors. Under the hood. A guided tour of playbooks, AI specialists, connected services, and workflows.">
+<meta name="theme-color" content="#f7f5ef">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Under the hood · Blue Line Advisors","url":"https://ai-system-tour.vercel.app/inventory","description":"Inside Pete Cecil’s current AI workbench: Claude Code, Codex, selected playbooks and specialists, local knowledge, research tools, and scheduled workflows.","isPartOf":{"@type":"WebSite","url":"https://ai-system-tour.vercel.app/"}}</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231947f5'/%3E%3Cpath d='M7 16h18' stroke='%23faf9f6' stroke-width='2'/%3E%3C/svg%3E">
+<!-- The inventory uses the same local reading and display faces as the homepage. -->
+<link rel="preload" href="/fonts/dm-sans-optical-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 
-<!-- Shared brand tokens (palette/type/easing) — single source of truth, can't drift between pages. -->
+<!-- Shared primitives load first; inventory.css applies this page's reading system. -->
 <link rel="stylesheet" href="/site.css">
 
 <!-- No-JS / blocked-JS failsafe: scroll-reveal sections start at opacity:0 and are only
@@ -34,8 +36,8 @@
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
 <style>
-/* Brand tokens (:root) now live in /site.css — shared across both pages so the
-   palette can never drift. Page-specific CSS continues below. */
+/* Base layout and interaction states. The scoped visual refresh in
+   /inventory.css loads after this stylesheet. */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
@@ -490,8 +492,6 @@ body{
   background:linear-gradient(180deg,rgba(239,238,232,0) 0%,rgba(239,238,232,.12) 70%,rgba(239,238,232,.4) 100%);
   pointer-events:none;
 }
-.image-band.compliance{background-image:url('/images/band-compliance.jpg');background-image:image-set(url('/images/band-compliance.avif') type('image/avif'),url('/images/band-compliance.jpg') type('image/jpeg'))}
-.image-band.paper{background-image:url('/images/band-paper.jpg');background-image:image-set(url('/images/band-paper.avif') type('image/avif'),url('/images/band-paper.jpg') type('image/jpeg'))}
 
 /* ─────────────────────────── PHILOSOPHY MOMENT (full-bleed photo) ─────────────────────────── */
 .pull-quote{
@@ -502,8 +502,6 @@ body{
 }
 .pull-quote .photo-bg{
   position:absolute;inset:0;z-index:0;
-  background-image:url('/images/band-trust.jpg'); /* fallback for no image-set() */
-  background-image:image-set(url('/images/band-trust.avif') type('image/avif'),url('/images/band-trust.jpg') type('image/jpeg'));
   background-size:cover;background-position:center;
 }
 .pull-quote .photo-bg::after{
@@ -615,22 +613,37 @@ footer .colophon b{color:var(--paper);font-weight:500}
   .hero-bg{transform:none !important}
 }
 </style>
+<link rel="stylesheet" href="/inventory.css">
+<link rel="stylesheet" href="/market-demo.css">
+<link rel="stylesheet" href="/market-feeds.css">
 <!-- Web Analytics (traffic) activates on its project toggle; Speed Insights (real-user CWV) is
      already enabled, so its script is loaded too. -->
 <script defer src="/_vercel/insights/script.js"></script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
 <script defer src="/config.js"></script>
 </head>
-<body>
+<body class="inventory">
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <!-- ─────────────────────────── NAV ─────────────────────────── -->
 <nav class="nav" aria-label="Primary">
-  <a class="mark" href="./">
-    <span>Pete Cecil <span class="frac">/ Blue Line Advisors</span></span>
+  <a class="mark wordmark" href="./" aria-label="Blue Line Advisors, home">
+    <span class="wordmark-copy"><strong>Blue <span class="wordmark-line"><span class="wordmark-letter-l">L<svg viewBox="0 0 16 20" aria-hidden="true" focusable="false"><path d="M1 0H4V14C4 16 5 17 7 17H16L13 20H1Z"/></svg></span>ine</span></strong> <span class="wordmark-details"><small>Advisors</small> <span class="nav-attribution">Pete Cecil</span></span></span>
   </a>
   <div class="right">
-    <a class="back" href="./">&larr;&nbsp;For clients</a>
+    <details class="section-nav">
+      <summary>Explore <span aria-hidden="true">⌄</span></summary>
+      <ul class="section-nav-links" data-lenis-prevent>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#skills">Playbooks</a></li>
+        <li><a href="#agents">Specialists</a></li>
+        <li><a href="#memory">Memory</a></li>
+        <li><a href="#infra">Connections</a></li>
+        <li><a href="#security">Safeguards</a></li>
+        <li class="menu-home"><a href="./">&larr; Blue Line Advisors home</a></li>
+      </ul>
+    </details>
+    <a class="back contact-link" href="#contact">Contact Pete</a>
   </div>
 </nav>
 
@@ -638,7 +651,6 @@ footer .colophon b{color:var(--paper);font-weight:500}
 
 <!-- ─────────────────────────── HERO ─────────────────────────── -->
 <section class="hero" id="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div>
       <div class="hello">Welcome &mdash;</div>
@@ -646,18 +658,30 @@ footer .colophon b{color:var(--paper);font-weight:500}
         Under the&nbsp;<em>hood.</em>
       </h1>
     </div>
+    <nav class="system-guide" aria-label="Explore the system">
+      <p class="system-guide-label">Behind the practice</p>
+      <p class="system-guide-center">Pete&rsquo;s judgment.</p>
+      <div class="system-guide-links">
+        <a href="#overview"><span>Overview</span><span aria-hidden="true">01 &nearr;</span></a>
+        <a href="#skills"><span>Playbooks</span><span aria-hidden="true">02 &nearr;</span></a>
+        <a href="#agents"><span>Specialists</span><span aria-hidden="true">03 &nearr;</span></a>
+        <a href="#memory"><span>Memory</span><span aria-hidden="true">04 &nearr;</span></a>
+        <a href="#infra"><span>Connections</span><span aria-hidden="true">05 &nearr;</span></a>
+        <a href="#security"><span>Safeguards</span><span aria-hidden="true">06 &nearr;</span></a>
+      </div>
+    </nav>
     <div class="hero-foot">
       <p class="lede">
-        A guided tour of the playbooks, specialists, live connections, and memory layer that run the day-to-day of <em>Blue Line Advisors</em>. It&rsquo;s here for the curious&hairsp;&mdash;&hairsp;you don&rsquo;t need any of it to work with me.
+        Behind a useful conversation is preparation: research, organized information, and work I review. Technology helps me carry that work forward. You speak with me, and I remain responsible for what I use or share. This optional tour explains the tools behind that preparation.
       </p>
-      <div class="meta">
-        <b>Inventory</b>
-        75+ playbooks &middot; 34 specialists<br>
-        13 live connections<br>
-20 active projects
+            <div class="meta">
+        <b>Checked September 6, 2026</b>
+        <span class="meta-stat">Claude Code + Codex</span>
+        <span class="meta-stat">56 playbooks · 16 AI roles shown</span>
+        <span class="meta-stat">A selection from the current toolkit</span>
       </div>
       <div class="scroll-cue">
-        Five parts below<span class="down">↓</span>
+        Six sections to explore<span class="down">↓</span>
       </div>
     </div>
   </div>
@@ -668,415 +692,433 @@ footer .colophon b{color:var(--paper);font-weight:500}
   <div class="intro-grid">
     <span class="intro-eyebrow"><span class="num">00 &mdash;</span> About</span>
     <div>
-      <h2>
-        The output of a <strong>10&ndash;20 person firm</strong>, run by <em>one fiduciary</em>. The system carries the volume &mdash; <strong>75+ playbooks</strong>, <strong>34 specialists</strong>, a memory layer that keeps every client&rsquo;s situation straight &mdash; so the judgment stays <em>mine</em>, and your account never waits in a queue.
-      </h2>
+      <h2>The assistants help me research, prepare, build, and keep track of the work. <em>I decide what gets used or shared.</em></h2>
       <div class="intro-stats">
-        <div class="intro-stat"><strong>75+</strong><span>Playbooks</span></div>
-        <div class="intro-stat"><strong>34</strong><span>Specialists</span></div>
-        <div class="intro-stat"><strong>7AM</strong><span>Daily briefing</span></div>
-        <div class="intro-stat"><strong>20</strong><span>Active projects</span></div>
+        <div class="intro-stat"><strong>56</strong><span>Playbooks shown</span></div>
+        <div class="intro-stat"><strong>16</strong><span>AI roles shown</span></div>
+        <div class="intro-stat"><strong>2</strong><span>AI workspaces</span></div>
+        <div class="intro-stat"><strong>2</strong><span>Obsidian vaults</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─────────────────────────── WHY THIS IS DIFFERENT ───────────────────────────
-     The framing lens: what the system does for the client and why it beats a typical
-     advisor. Sits above the numbered technical parts, which read as the proof. -->
+<!-- ─────────────────────────── THE CLIENT EXPERIENCE ─────────────────────────── -->
 <section class="section wrap reveal" id="difference">
   <div class="section-head">
-    <span class="section-num">Why this is different</span>
+    <span class="section-num">What this means for you</span>
     <div>
-      <h2 class="section-title">The speed, accuracy, and <em>thoroughness</em> of a back office &mdash; without the back office.</h2>
-      <p class="section-sub">At most firms your account passes through an analyst, a trader, compliance, ops, a paraplanner, a CSA, and a tax specialist. Every handoff is a delay; every seam is a place something slips. Here, the system collapses those functions into one person who actually traded &mdash; so nothing waits, and nothing falls between desks.</p>
+      <h2 class="section-title">More attention to <em>your family’s decisions.</em></h2>
+      <p class="section-sub">The useful part is the connection between the work: source material, a clear brief, a draft or working tool, and the checks needed before I use it.</p>
     </div>
   </div>
-
   <div class="pillars">
-    <div class="pillar">
-      <div class="pillar-k">Speed</div>
-      <p>Your portfolio is scanned <strong>every morning</strong>, not every quarter. Trade rationales are written the <strong>same day</strong>, not whenever someone gets to them. Problems surface in days&nbsp;&mdash; while they&rsquo;re still small.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-k">Accuracy</div>
-      <p>Every move runs through a documented process built from <strong>two decades on a trading desk</strong>&nbsp;&mdash; nothing improvised, nothing reconstructed from memory later. The reasoning behind your money is always on the record.</p>
-    </div>
-    <div class="pillar">
-      <div class="pillar-k">Thoroughness</div>
-      <p>The 34 specialists are the functions a firm staffs with salaries&nbsp;&mdash; analyst, compliance, tax, research&nbsp;&mdash; <strong>collapsed into one practice</strong> and pointed at your accounts. Every angle gets covered; nothing falls through.</p>
-    </div>
+    <div class="pillar"><div class="pillar-k">Context that carries forward</div><p>Project instructions, handoffs, and saved notes give the next session a starting point. Relevant context is looked up and checked against its source.</p></div>
+    <div class="pillar"><div class="pillar-k">Work I can inspect</div><p>Research keeps its source material. Code can be tested. Drafts and deliverables can be reviewed before they become part of the work.</p></div>
+    <div class="pillar"><div class="pillar-k">A direct relationship</div><p>These tools support my preparation and follow-through. You still reach me to discuss your situation and make decisions together.</p></div>
   </div>
-
   <div class="versus">
-    <div class="versus-head"><span>Most advisors</span><span>This practice</span></div>
-    <div class="versus-row"><span>A relationship manager who&rsquo;s never traded</span><span>22 years running a trading desk</span></div>
-    <div class="versus-row"><span>Reviews your portfolio quarterly</span><span>Every account scanned every morning</span></div>
-    <div class="versus-row"><span>Documents trades when there&rsquo;s time</span><span>Written rationale, same day, every trade</span></div>
-    <div class="versus-row"><span>You reach a rotating rep or call center</span><span>You reach the principal &mdash; I answer</span></div>
-    <div class="versus-row"><span>Capped by one person&rsquo;s hours</span><span>One fiduciary <em>+</em> a system that never sleeps</span></div>
-    <div class="versus-row"><span>Commission incentives you can&rsquo;t see</span><span>A transparent advisory fee &mdash; every cost shown</span></div>
+    <div class="versus-head" aria-hidden="true"><span>The work</span><span>My approach</span></div>
+    <dl aria-label="How I approach the work">
+      <div class="versus-row"><dt>Assistants</dt><dd>Claude Code and Codex, with shared project files</dd></div>
+      <div class="versus-row"><dt>Outputs</dt><dd>Research, documents, spreadsheets, presentations, and software</dd></div>
+      <div class="versus-row"><dt>Responsibility</dt><dd>My review and authorization at consequential steps</dd></div>
+    </dl>
   </div>
 </section>
 
 <!-- ─────────────────────────── PART 01 — OVERVIEW / STEPPER ─────────────────────────── -->
-<section class="section wrap reveal" id="overview">
+<section class="section wrap reveal" id="overview" tabindex="-1">
   <div class="section-head">
-    <span class="section-num">01 &mdash; Overview</span>
+    <span class="section-num">01 — Overview</span>
     <div>
-      <h2 class="section-title">How it works, <em>step by step.</em></h2>
-      <p class="section-sub">Seven moves that happen when I ask Claude to do something. Click any to dig in.</p>
-      <span class="section-payoff">So nothing about your money waits in a queue.</span>
+      <h2 class="section-title">How the work <em>fits together.</em></h2>
+      <p class="section-sub">Seven parts of the workflow, from the first brief to the next handoff. Open any step to explore it.</p>
+      <span class="section-payoff">The path depends on the task; these are the building blocks.</span>
     </div>
   </div>
-
   <div class="stepper-wrap">
-    <div class="stepper-tabs" id="stepperTabs" role="tablist">
-      <div class="step-tab active" data-step="0" id="step-tab-0" aria-controls="step-panel-0"><span class="step-num">01</span><span><span class="step-plain">How I talk to Claude</span><span class="step-tech">Interface Layer</span></span></div>
-      <div class="step-tab" data-step="1" id="step-tab-1" aria-controls="step-panel-1"><span class="step-num">02</span><span><span class="step-plain">What Claude knows first</span><span class="step-tech">Context Assembly</span></span></div>
-      <div class="step-tab" data-step="2" id="step-tab-2" aria-controls="step-panel-2"><span class="step-num">03</span><span><span class="step-plain">It picks the right playbook</span><span class="step-tech">Skills Activate</span></span></div>
-      <div class="step-tab" data-step="3" id="step-tab-3" aria-controls="step-panel-3"><span class="step-num">04</span><span><span class="step-plain">It uses live tools</span><span class="step-tech">Tools Execute</span></span></div>
-      <div class="step-tab" data-step="4" id="step-tab-4" aria-controls="step-panel-4"><span class="step-num">05</span><span><span class="step-plain">It remembers what matters</span><span class="step-tech">Memory Persists</span></span></div>
-      <div class="step-tab" data-step="5" id="step-tab-5" aria-controls="step-panel-5"><span class="step-num">06</span><span><span class="step-plain">Finished work gets published</span><span class="step-tech">Code Ships</span></span></div>
-      <div class="step-tab" data-step="6" id="step-tab-6" aria-controls="step-panel-6"><span class="step-num">07</span><span><span class="step-plain">Some things run by themselves</span><span class="step-tech">Automation Runs</span></span></div>
+    <p class="stepper-cue">Seven steps <span>Swipe to explore <span aria-hidden="true">→</span></span></p>
+    <div class="stepper-tabs" id="stepperTabs" role="tablist" aria-label="How it works, step by step">
+      <div class="step-tab active" data-step="0" id="step-tab-0" aria-controls="step-panel-0"><span class="step-num">01</span><span><span class="step-plain">Choose a workspace</span><span class="step-tech">Claude Code + Codex</span></span></div>
+      <div class="step-tab" data-step="1" id="step-tab-1" aria-controls="step-panel-1"><span class="step-num">02</span><span><span class="step-plain">Read the current context</span><span class="step-tech">Files + retrieval</span></span></div>
+      <div class="step-tab" data-step="2" id="step-tab-2" aria-controls="step-panel-2"><span class="step-num">03</span><span><span class="step-plain">Choose a playbook</span><span class="step-tech">Skills + specialists</span></span></div>
+      <div class="step-tab" data-step="3" id="step-tab-3" aria-controls="step-panel-3"><span class="step-num">04</span><span><span class="step-plain">Use the right tools</span><span class="step-tech">Apps + local tools</span></span></div>
+      <div class="step-tab" data-step="4" id="step-tab-4" aria-controls="step-panel-4"><span class="step-num">05</span><span><span class="step-plain">Keep useful context</span><span class="step-tech">Notes + structured data</span></span></div>
+      <div class="step-tab" data-step="5" id="step-tab-5" aria-controls="step-panel-5"><span class="step-num">06</span><span><span class="step-plain">Review and deliver</span><span class="step-tech">Evidence + authorization</span></span></div>
+      <div class="step-tab" data-step="6" id="step-tab-6" aria-controls="step-panel-6"><span class="step-num">07</span><span><span class="step-plain">Schedule routine work</span><span class="step-tech">Jobs + manual workflows</span></span></div>
     </div>
     <div class="step-content" id="stepContent">
-
       <div class="step-panel active" data-panel="0" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0" tabindex="0">
-        <h3>How I talk to Claude</h3>
-        <div class="plain-lead">There are three ways I reach Claude depending on what I'm doing: <strong>chat in a browser</strong> for questions and writing, a <strong>coding terminal</strong> for building software, and a <strong>desktop app</strong> for everyday automation.</div>
-        <p>Three entry points into the same underlying Claude system, each optimized for a different workflow.</p>
+        <h3>Two assistants, shared project files</h3>
+        <div class="plain-lead">I use Claude Code and Codex for hands-on work with files, research, documents, and software. The workspace gives the assistant access to the project and the tools that task needs.</div>
+        <p>Their native conversations are separate. Shared instructions and handoffs make it possible to continue the work in either tool.</p>
         <div class="detail-grid">
-          <div class="detail-card"><strong>Claude.ai</strong><span>Web and mobile chat. Long-form reasoning, research, brainstorming. Accessible anywhere.</span></div>
-          <div class="detail-card"><strong>Claude Code CLI</strong><span>Terminal-native agent. Builds full-stack apps, manages GitHub repos, runs tests. Powers the 85+ repo portfolio.</span></div>
-          <div class="detail-card"><strong>Cowork Desktop</strong><span>Non-developer automation hub. File management, MCP connectors, scheduled tasks, skill library. The daily cockpit.</span></div>
+          <div class="detail-card"><strong>Claude Code</strong><span>Works in the terminal and editor with project instructions, local skills, hooks, and configured tool servers.</span></div>
+          <div class="detail-card"><strong>Codex</strong><span>Works with the same project files, with app and editor workflows, specialist reviews, connected tools, and document or design capabilities.</span></div>
+          <div class="detail-card"><strong>The project folder</strong><span>Holds the actual source, working documents, decisions, tests, and handoff. It is the continuity point when a chat ends or a workspace changes.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="1" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" aria-hidden="true">
-        <h3>What Claude knows before I say hi</h3>
-        <div class="plain-lead">Before I even type a message, Claude already knows my current priorities, recent work, project preferences, and which clients/projects I'm active on. I never have to start a conversation with "by the way, here's what I'm working on."</div>
-        <p>Before Claude responds, it assembles context from a layered hierarchy of instructions, skills, and memory.</p>
+        <h3>Start from the current state</h3>
+        <div class="plain-lead">The assistant reads the project instructions, recent handoff, and relevant files, then checks the current working state. Saved context helps orient the work; it still needs to be checked.</div>
+        <p>Claude Code has scoped startup and retrieval hooks. Codex follows the shared project instructions and can read the same handoff. Context and tool access vary by workspace.</p>
         <div class="detail-grid">
-          <div class="detail-card callout">
-            <strong>How Hooks Load Context Automatically</strong>
-            <p>Hooks are lifecycle scripts that fire at defined moments in a Claude Code session. The <strong>SessionStart hook</strong> runs before every session — a PowerShell script reads <code>North-Star.md</code> (current priorities), lists all vault files, and shows every file changed in the last 3 days. This means Claude has your priorities and recent work loaded before you type a single word. No manual copy-paste, no "here's what I'm working on" preamble — the system just knows.</p>
-          </div>
-          <div class="detail-card"><strong>CLAUDE.md Hierarchy</strong><span>Root-level persona + per-project instructions. Every repo and vault has its own CLAUDE.md that tunes behavior for that specific context.</span></div>
-          <div class="detail-card"><strong>Skills Library</strong><span>75+ keyword-triggered instruction sets. Each contains domain expertise distilled into repeatable workflows, loaded on demand.</span></div>
-          <div class="detail-card"><strong>Memory System</strong><span>Obsidian vaults, brain MCP, auto-captured decisions, lessons learned. Persistent knowledge injected via SessionStart hook.</span></div>
-          <div class="detail-card"><strong>MCP Connectors</strong><span>Live data from Gmail, Calendar, Drive, Canva, and more. Context pulled from external services on demand, when a task needs it.</span></div>
+          <div class="detail-card"><strong>Instructions</strong><span>CLAUDE.md and AGENTS.md describe the project, conventions, and boundaries that apply to the task.</span></div>
+          <div class="detail-card"><strong>Handoffs and decisions</strong><span>HANDOFF.md and decision logs record what changed, what remains, and why earlier choices were made.</span></div>
+          <div class="detail-card"><strong>Retrieved knowledge</strong><span>Obsidian notes and the configured Brain MCP search layer help locate relevant project or research context. Source files remain important when summaries are incomplete or out of date.</span></div>
+          <div class="detail-card"><strong>Current evidence</strong><span>Files, git changes, test results, and tool responses establish what is present now. An old plan or status note does not prove something is running.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="2" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" aria-hidden="true">
-        <h3>It picks the right playbook</h3>
-        <div class="plain-lead">If I say "draft a trade rationale" or "build an onboarding checklist," Claude automatically grabs the matching <strong>playbook</strong> — think of it as a recipe card that tells Claude exactly how I like that kind of work done.</div>
-        <p>Skills are keyword-triggered instruction sets. When you say "trade rationale" or "onboarding checklist," the matching skill loads domain-specific best practices, templates, and workflows.</p>
+        <h3>Use the right instructions for the job</h3>
+        <div class="plain-lead">Skills provide a repeatable way to handle particular work: planning, research, writing, document creation, design, or code review. Specialist agents can take a focused part of a larger task.</div>
+        <p>Selection follows the request and available capabilities. The skill router helps resolve overlaps; it is not a fixed keyword switchboard. Installed libraries are broader than the tools used in any one session.</p>
         <div class="detail-grid">
-          <div class="detail-card"><strong>Trigger Words</strong><span>Each skill defines exact phrases that activate it. "Backdoor Roth," "billing QA," "LinkedIn post" each load different instruction packs.</span></div>
-          <div class="detail-card"><strong>Domain Expertise</strong><span>Skills encode expert knowledge: compliance rules, tax logic, CRM field mappings, document formatting standards.</span></div>
-          <div class="detail-card"><strong>Composable</strong><span>Multiple skills can chain together. A client review might activate style-client-persona-pack + planning-annual-review-packet + docx.</span></div>
-          <div class="detail-card"><strong>Self-Improving</strong><span>The skill-creator skill builds and benchmarks new skills. Meta-skills route ambiguous requests to the right pack.</span></div>
+          <div class="detail-card"><strong>Personal playbooks</strong><span>Local instructions capture recurring work, project conventions, output formats, and review steps.</span></div>
+          <div class="detail-card"><strong>Plugin capabilities</strong><span>Enabled packages add tools and workflows for documents, presentations, spreadsheets, browsers, design, and development.</span></div>
+          <div class="detail-card"><strong>Specialist reviews</strong><span>Focused roles can inspect correctness, security, architecture, tests, or visual design. A role is an available capability, not a person or a permanently running worker.</span></div>
+          <div class="detail-card"><strong>Task-specific combinations</strong><span>A task may use several capabilities in sequence. Only the tools relevant to the current work need to be involved.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="3" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" aria-hidden="true">
-        <h3>It uses live tools, not just text</h3>
-        <div class="plain-lead">Claude doesn't just talk — it actually does things. It can read my email, check my calendar, pull documents from Google Drive, design in Canva, open web pages, run code, and create Word/Excel/PDF files. Each of these is a "live connection" it can use on my behalf.</div>
-        <p>MCP servers connect Claude to external services. File tools, browser automation, and code execution handle everything else.</p>
+        <h3>Work with sources and working files</h3>
+        <div class="plain-lead">The assistants can use connected apps and local tools to retrieve information, work on documents, inspect websites, and build software. Access depends on the app, project, and current connection.</div>
+        <p>The connection list below distinguishes capabilities available in the workspace from project-specific registrations. It is a dated inventory, not a live service-status dashboard.</p>
         <div class="detail-grid">
-          <div class="detail-card callout">
-            <strong>What is MCP?</strong>
-            <p>MCP (Model Context Protocol) is a standard that lets Claude call external services through a unified interface. Each MCP server exposes "tools" — functions Claude can invoke. When you ask "what's on my calendar," Claude calls the Google Calendar MCP's <code>list_events</code> tool. The server handles auth, API calls, and returns structured data. This means Claude can read your email, check your calendar, search your files, and generate designs — all through the same protocol, without knowing the underlying APIs.</p>
-          </div>
-          <div class="detail-card"><strong>Gmail MCP</strong><span>Search by sender/subject/date, read threads, draft replies, apply labels, archive. Used to keep my own inbox triaged and to draft from notes I&rsquo;ve already stripped of client identifiers.</span></div>
-          <div class="detail-card"><strong>Google Calendar</strong><span>List upcoming events, create meetings, check free/busy across multiple calendars, set reminders. Used for morning briefing and scheduling automation.</span></div>
-          <div class="detail-card"><strong>Google Drive</strong><span>Full-text search across Drive files, fetch document content, list folder contents. Used for internal docs and templates&nbsp;&mdash; client data is de-identified before it ever reaches the model.</span></div>
-          <div class="detail-card"><strong>Canva MCP</strong><span>Generate new designs from templates, edit existing presentations, swap images, update text, export to PDF/PNG. Brand kit ensures consistent visual identity.</span></div>
-          <div class="detail-card"><strong>Kiwi Flights</strong><span>Search flights by route/date/price, compare itineraries, find optimal layovers. Wired into travel-planning workflows.</span></div>
-          <div class="detail-card"><strong>File System</strong><span>Read, write, edit any local file. Create Word (.docx), Excel (.xlsx), PowerPoint (.pptx), and PDF deliverables directly from Claude without external apps.</span></div>
-          <div class="detail-card"><strong>Browser (Chrome)</strong><span>Full browser automation: navigate pages, click elements, fill forms, scrape content, take screenshots. Used for web research, form submission, and UI testing.</span></div>
-          <div class="detail-card"><strong>Linux Sandbox</strong><span>Run Python, Node.js, and shell commands in an isolated environment. Data analysis, financial calculations, code builds, and script execution.</span></div>
+          <div class="detail-card"><strong>Communication and files</strong><span>Gmail, Google Calendar, and Google Drive tools support work with messages, scheduling, and shared documents.</span></div>
+          <div class="detail-card"><strong>Research</strong><span>Configured tools include Polygon for market-data workflows, EdgarTools for SEC filings, and Readwise for saved reading.</span></div>
+          <div class="detail-card"><strong>Documents and design</strong><span>Document, spreadsheet, presentation, PDF, Canva, and visualization tools produce reviewable artifacts.</span></div>
+          <div class="detail-card"><strong>Code and browsers</strong><span>Repository tools, browser automation, local runtimes, and hosting integrations support implementation and verification.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="4" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" aria-hidden="true">
-        <h3>It remembers what matters</h3>
-        <div class="plain-lead">When I close a conversation with Claude, it doesn't all disappear. Important decisions, lessons, and client context get saved into <strong>notebooks</strong> (digital binders of notes). Next time I talk to Claude, it can look things up instead of asking me to re-explain.</div>
-        <p>Knowledge survives between sessions through Obsidian vaults, auto-memory capture, and structured decision logs.</p>
+        <h3>Save what the next session needs</h3>
+        <div class="plain-lead">Project files, two Obsidian vaults, a configured knowledge-search layer, and Helm’s structured practice data serve different purposes. They are not one shared chat memory.</div>
+        <p>Session closeout records useful changes and next steps. Retrieval helps find relevant material later; it does not mean every assistant automatically knows every file.</p>
         <div class="detail-grid">
-          <div class="detail-card callout">
-            <strong>How Obsidian Works</strong>
-            <p>Obsidian is a local-first markdown knowledge base. Notes use <code>[[wikilinks]]</code> to create a connected knowledge graph. The <strong>Knowledge-Base vault</strong> holds the household profiles behind the practice&nbsp;&mdash; stored locally on encrypted, access-controlled machines, with identifying details stripped before anything is sent to the model (see Part&nbsp;06). The <strong>second-brain vault</strong> holds project strategy, decision records, and a North Star priorities document that Claude reads at the start of every session via a SessionStart hook.</p>
-          </div>
-          <div class="detail-card"><strong>Obsidian Vaults</strong><span>Two vaults: Knowledge-Base (household profiles, custodian exports, CRM data — local + access-controlled) and second-brain (projects, North Star, decisions, lessons).</span></div>
-          <div class="detail-card"><strong>Brain MCP</strong><span>Persistent entity store. Search and write knowledge about people, companies, projects, deals. Survives across Claude Code sessions.</span></div>
-          <div class="detail-card"><strong>decisions.md</strong><span>Structured log of every architectural and business decision with context, alternatives considered, and rationale.</span></div>
-          <div class="detail-card"><strong>lessons.md</strong><span>Auto-captured learnings from failures and successes. "What went wrong" and "what to do differently" feed forward into future sessions.</span></div>
+          <div class="detail-card"><strong>Project records</strong><span>Instructions, handoffs, and decisions stay alongside the work they describe.</span></div>
+          <div class="detail-card"><strong>Obsidian</strong><span>Second-brain holds broader projects and research. Knowledge-Base holds practice knowledge and separately scoped client context.</span></div>
+          <div class="detail-card"><strong>Brain MCP</strong><span>A configured search and linking layer for selected project and research knowledge. It complements the source notes when the connection is available.</span></div>
+          <div class="detail-card"><strong>Helm data</strong><span>Helm Hub provides a local SQLite data layer. Helm Station reads that shared data for advisor workspaces and review flows.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="5" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" aria-hidden="true">
-        <h3>Finished work gets published</h3>
-        <div class="plain-lead">When Claude builds software for me, it doesn't just hand me files — it commits the work to GitHub (a code storage service), and the site or app goes live automatically on the internet. I can hand a link to anyone within minutes.</div>
-        <p>Claude Code manages a portfolio of 85+ GitHub repositories across full-stack applications, deployed to modern infrastructure.</p>
+        <h3>Make the result reviewable</h3>
+        <div class="plain-lead">A useful result is something I can inspect: a sourced research note, an editable document, a tested change, or a working preview. The checks depend on the kind of work.</div>
+        <p>Saving a file, committing code, publishing a site, and sending a message are different actions. Each follows the authorization and boundaries of the task.</p>
         <div class="detail-grid">
-          <div class="detail-card"><strong>GitHub</strong><span>Pcecil21 account. 85+ repos spanning web apps, APIs, tools, and automation scripts across 2 machines.</span></div>
-          <div class="detail-card"><strong>Vercel</strong><span>Frontend deployments. Next.js apps with instant previews, edge functions, analytics.</span></div>
-          <div class="detail-card"><strong>Railway</strong><span>Backend services. Persistent servers, cron jobs, databases, WebSocket endpoints.</span></div>
-          <div class="detail-card"><strong>Supabase</strong><span>Database layer. PostgreSQL, auth, real-time subscriptions, edge functions, storage.</span></div>
+          <div class="detail-card"><strong>Research checks</strong><span>Research workflows retain source material and can use separate challenge and citation-review steps.</span></div>
+          <div class="detail-card"><strong>Software checks</strong><span>Builds, tests, browser verification, and focused code reviews check the actual change.</span></div>
+          <div class="detail-card"><strong>Deliverables</strong><span>Documents, spreadsheets, presentations, PDFs, and previews give me something concrete to review or use.</span></div>
+          <div class="detail-card"><strong>Release decisions</strong><span>External messages, publication, and production changes follow the relevant approval and task instructions. A completed draft is not automatically sent.</span></div>
         </div>
       </div>
 
       <div class="step-panel" data-panel="6" id="step-panel-6" role="tabpanel" aria-labelledby="step-tab-6" aria-hidden="true">
-        <h3>Some things run by themselves</h3>
-        <div class="plain-lead">I don't kick off every task manually. Every weekday morning a briefing lands in my inbox. Every Sunday night my projects get a health check. Every Friday evening a scan looks for waste. These run on a schedule, unattended.</div>
-        <p>Scheduled tasks run autonomously on cron schedules, handling routine operations without manual intervention.</p>
+        <h3>Give recurring work a schedule</h3>
+        <div class="plain-lead">Some routines have registered schedules: Morning Edition, weekly project health, backups, and code indexing. Other workflows, including session closeout, run when requested.</div>
+        <p>The schedules below were checked against the current Windows task registrations. Enabled, successful, and paused are separate states; a schedule alone does not guarantee its result.</p>
         <div class="detail-grid">
-          <div class="detail-card"><strong>Morning Cockpit</strong><span>Weekdays at 7:00 AM. Scans calendar, email, tasks. Produces a daily briefing with priorities and flags.</span></div>
-          <div class="detail-card"><strong>Weekly Project Health</strong><span>Sundays at 7:00 PM. Audits all active projects for stale PRs, failing tests, dependency drift.</span></div>
-          <div class="detail-card"><strong>Token Waste Scanner</strong><span>Fridays at 8:00 PM. Analyzes recent sessions for inefficient tool use, redundant reads, and cost optimization.</span></div>
+          <div class="detail-card"><strong>Morning Edition</strong><span>Scheduled daily at 6:15 AM, with an additional logon trigger. Produces a curated reading edition.</span></div>
+          <div class="detail-card"><strong>Weekly Project Health</strong><span>Scheduled Monday at 6:30 AM. Reviews project state and proposes follow-up work.</span></div>
+          <div class="detail-card"><strong>Automation Supervisor</strong><span>Scheduled daily at 6:45 AM. Reviews task outcomes and records problems.</span></div>
+          <div class="detail-card"><strong>Session closeout</strong><span>An on-demand workflow that updates shared handoff and continuity records. It is not a nightly autonomous send or deployment.</span></div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- ─────────────────────────── IMAGE BAND — compliance ─────────────────────────── -->
-<div class="image-band compliance reveal" aria-hidden="true"></div>
+<section class="market-demo market-live" id="market-study" data-market-feed="price" aria-labelledby="market-study-title">
+  <div class="market-shell">
+    <div class="market-appbar"><span class="market-brand">Blue Line / Market research</span><span class="market-demo-label">Real market data · exchange delays apply</span></div>
+    <div class="market-overview">
+      <div><p class="market-kicker" data-feed-instrument>SPY / SPDR S&P 500 ETF Trust · USD</p><h2 id="market-study-title" data-feed-name>U.S. equities</h2><p class="market-subtitle">Actual prices. A longer perspective.</p></div>
+    </div>
+    <div class="market-toolbar"><div class="market-button-group" role="group" aria-label="Choose a market instrument"><button type="button" data-market-asset="equities" aria-pressed="true" disabled>Equities <span>SPY</span></button><button type="button" data-market-asset="bonds" aria-pressed="false" disabled>Treasuries <span>IEF</span></button><button type="button" data-market-asset="gold" aria-pressed="false" disabled>Gold <span>GLD</span></button></div><p class="market-feed-hint">Explore dates, chart styles & indicators inside the chart.</p></div>
+    <div class="market-feed-host" data-feed-host><p class="market-feed-placeholder">Explore the price history of a real traded fund.</p></div>
+    <div class="market-feed-connection"><p data-feed-status role="status">The interactive view connects when you reach this section.</p><button type="button" data-feed-retry hidden>Reload chart</button></div>
+    <p class="market-source-link"><a data-feed-source href="https://www.tradingview.com/symbols/AMEX-SPY/" target="_blank" rel="noopener">Open SPY on TradingView ↗</a></p>
+    <details class="market-methodology"><summary>About this data</summary>
+      <p>SPY, IEF and GLD are traded funds representing U.S. large-cap equities, 7–10 year Treasury bonds and gold. The chart shows fund share prices in U.S. dollars, with the selected interval, volume and indicators supplied by TradingView. These are market observations, not Blue Line portfolio results.</p><p>Use the chart’s date controls and crosshair to inspect history. The chart identifies its feed, interval and adjustment settings. A price change is not a total return with distributions reinvested; IEF’s share price is not a Treasury yield.</p>
+      <p>Market data updates through TradingView. Exchange delays apply, and the latest available observation may be from the previous trading session. If a feed is unavailable, use the source link above. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener">Data availability and delays ↗</a></p>
+    </details>
+    <noscript><p class="market-feed-nojs">Enable JavaScript for the interactive market view, or use the TradingView link above to view its source.</p></noscript>
+  </div>
+</section>
 
 <!-- ─────────────────────────── PART 02 — PLAYBOOKS ─────────────────────────── -->
-<section class="section wrap reveal" id="skills">
+<section class="section wrap reveal" id="skills" tabindex="-1">
   <div class="section-head">
     <span class="section-num">02 &mdash; Skill Library</span>
     <div>
-      <h2 class="section-title">Playbooks <em>&mdash; the ones I reach for.</em></h2>
-      <p class="section-sub">75+ live in the library; these are the ones that do the most work. Each tells Claude exactly how I want a specific kind of task done — from a trade rationale to a Next.js site. Browse by category.</p>
-      <span class="section-payoff">Why your accounts run the same way, every time.</span>
+      <h2 class="section-title">Playbooks <em>available for the work.</em></h2>
+      <p class="section-sub">56 selected capabilities from the current Claude Code and Codex setup. These are available instructions and tools, not a count of everything installed or a claim that every workflow runs automatically.</p>
+      <span class="section-payoff">The available tools vary by assistant and project.</span>
     </div>
   </div>
 
   <div class="lib-intro">
     <details>
-      <summary>What are these words? (click to expand)</summary>
-      <p><strong>Playbook (a.k.a. Skill)</strong> — a saved set of instructions. When I say a trigger phrase, Claude loads the instructions and does the work my way.</p>
-      <p><strong>Specialist (a.k.a. Agent)</strong> — a focused AI persona with a single area of expertise. Claude can hand off a subtask to a specialist when it needs deeper knowledge.</p>
-      <p><strong>Live connection (a.k.a. MCP)</strong> — a plug-in that lets Claude actually reach out to Gmail, Calendar, Drive, custodian data, etc.</p>
-      <p><strong>Notebook (a.k.a. Vault)</strong> — a folder of markdown notes Claude can read from and write to. Its long-term memory.</p>
-      <p><strong>Trigger (a.k.a. Hook)</strong> — a little automation that fires on a specific event, like every time I start a new Claude session.</p>
+      <summary>What do these terms mean?</summary>
+      <p><strong>Playbook / skill</strong> — Instructions, templates, or tools for a particular type of work. A skill is loaded when it fits the task.</p>
+      <p><strong>Specialist / agent</strong> — An AI role with a focused assignment, such as reviewing code or testing a plan.</p>
+      <p><strong>Connection / MCP</strong> — A tool interface to a service or local capability. Configuration, permission, and connection health are separate.</p>
+      <p><strong>Vault / notebook</strong> — A collection of linked local notes. Relevant notes can be read and updated as part of the work.</p>
+      <p><strong>Hook / scheduled task</strong> — A hook reacts to a session event. A scheduled task has a registered time or trigger. Neither means every action is automatic.</p>
     </details>
   </div>
 
-  <div class="cat-pills" id="catPills" role="group" aria-label="Filter skills by category"></div>
-  <div class="skills-grid" id="skillsGrid"></div>
-  <span id="skillsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
+  <div class="catalog-layout">
+    <div class="catalog-nav">
+      <p class="category-cue" id="skillsCategoryHint" tabindex="-1">Browse categories <span aria-hidden="true">Swipe &rarr;</span></p>
+      <div class="cat-pills" id="catPills" role="group" aria-label="Filter skills by category" aria-describedby="skillsCategoryHint"></div>
+    </div>
+    <div class="catalog-results">
+      <p class="catalog-status" id="skillsStatus" aria-live="polite" aria-atomic="true"></p>
+      <div class="skills-grid" id="skillsGrid"></div>
+      <a class="catalog-return" href="#skillsCategoryHint" aria-label="Back to playbook categories">Back to categories <span aria-hidden="true">&uarr;</span></a>
+    </div>
+  </div>
 </section>
 
 <!-- ─────────────────────────── PART 03 — SPECIALISTS ─────────────────────────── -->
-<section class="section wrap reveal" id="agents">
+<section class="section wrap reveal" id="agents" tabindex="-1">
   <div class="section-head">
     <span class="section-num">03 &mdash; Agent Library</span>
     <div>
-      <h2 class="section-title">Specialists <em>&mdash; 34 expert personas.</em></h2>
-      <p class="section-sub">Backend engineers, UX designers, financial analysts, QA testers. Each has their own personality and approach. Claude calls on them when a task needs deep focus.</p>
-      <span class="section-payoff">The team a firm staffs with salaries — pointed at you.</span>
+      <h2 class="section-title">Specialists, <em>with a focused brief.</em></h2>
+      <p class="section-sub">16 selected specialist roles available in the current setup, from local engineering roles to focused reviews of code, plans, research, and design. These are task-specific AI roles, not a standing staff or a roster of continuously running agents.</p>
+      <span class="section-payoff">A focused assignment, with its output available for review.</span>
     </div>
   </div>
 
-  <div class="cat-pills" id="agentCatPills" role="group" aria-label="Filter agents by category"></div>
-  <div class="skills-grid" id="agentsGrid"></div>
-  <span id="agentsStatus" aria-live="polite" aria-atomic="true" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap"></span>
+  <div class="catalog-layout">
+    <div class="catalog-nav">
+      <p class="category-cue" id="agentsCategoryHint" tabindex="-1">Browse categories <span aria-hidden="true">Swipe &rarr;</span></p>
+      <div class="cat-pills" id="agentCatPills" role="group" aria-label="Filter agents by category" aria-describedby="agentsCategoryHint"></div>
+    </div>
+    <div class="catalog-results">
+      <p class="catalog-status" id="agentsStatus" aria-live="polite" aria-atomic="true"></p>
+      <div class="skills-grid" id="agentsGrid"></div>
+      <a class="catalog-return" href="#agentsCategoryHint" aria-label="Back to specialist categories">Back to categories <span aria-hidden="true">&uarr;</span></a>
+    </div>
+  </div>
 </section>
 
 <!-- ─────────────────────────── IMAGE BAND — paper ─────────────────────────── -->
-<div class="image-band paper reveal" aria-hidden="true"></div>
+<section class="market-demo market-live" id="breadth-study" data-market-feed="heatmap" aria-labelledby="breadth-study-title">
+  <div class="market-shell">
+    <div class="market-appbar"><span class="market-brand">Blue Line / Market participation</span><span class="market-demo-label">Real market data · exchange delays apply</span></div>
+    <div class="market-overview">
+      <div><p class="market-kicker" >S&P 500 / Companies & sectors</p><h2 id="breadth-study-title" >Beneath the index.</h2><p class="market-subtitle">See where market moves are concentrated.</p></div>
+    </div>
+    <p class="market-feed-hint">Select a company or sector to explore. Use the toolbar to change the measure.</p>
+    <div class="market-feed-host" data-feed-host><p class="market-feed-placeholder">Explore real companies, grouped by sector.</p></div>
+    <div class="market-feed-connection"><p data-feed-status role="status">The interactive view connects when you reach this section.</p><button type="button" data-feed-retry hidden>Reload chart</button></div>
+    <p class="market-source-link"><a data-feed-source href="https://www.tradingview.com/heatmap/stock/" target="_blank" rel="noopener">Open the heatmap on TradingView ↗</a></p>
+    <details class="market-methodology"><summary>About this data</summary>
+      <p>This TradingView heatmap shows S&P 500 constituents grouped by sector. Initially, tile size represents company market capitalization and color represents the one-day percentage price change. The toolbar identifies the measure currently displayed; use it to explore other periods and metrics.</p><p>Market capitalization is not the same as an index weight. This is market context, not a Blue Line portfolio, a recommended allocation or a measure of client performance.</p>
+      <p>Market data updates through TradingView. Exchange delays apply, and the latest available observation may be from the previous trading session. If a feed is unavailable, use the source link above. <a href="https://www.tradingview.com/widget-docs/faq/data/" target="_blank" rel="noopener">Data availability and delays ↗</a></p>
+    </details>
+    <noscript><p class="market-feed-nojs">Enable JavaScript for the interactive market view, or use the TradingView link above to view its source.</p></noscript>
+  </div>
+</section>
 
 <!-- ─────────────────────────── PART 04 — MEMORY ─────────────────────────── -->
-<section class="section wrap reveal" id="memory">
+<section class="section wrap reveal" id="memory" tabindex="-1">
   <div class="section-head">
-    <span class="section-num">04 &mdash; Memory System</span>
+    <span class="section-num">04 — Memory and data</span>
     <div>
-      <h2 class="section-title">What Claude <em>remembers.</em></h2>
-      <p class="section-sub">Two digital notebooks hold everything Claude needs to keep straight across days and projects — one for client data, one for ideas and decisions. New information gets filtered through a pipeline before it lands.</p>
-      <span class="section-payoff">Why I never ask you to re-explain your situation.</span>
+      <h2 class="section-title">Where the <em>context lives.</em></h2>
+      <p class="section-sub">Project records, local notes, knowledge retrieval, and structured practice data have different jobs. Keeping those roles clear helps the assistants find the right source.</p>
+      <span class="section-payoff">Saved context is a starting point, not a guarantee of complete recall.</span>
     </div>
   </div>
-
   <div class="vaults-grid">
     <div class="vault-card">
-      <div class="vault-header">
-        <div class="vault-icon">&#128218;</div>
-        <h3>Knowledge-Base Vault</h3>
-      </div>
-      <div class="vault-tree">
-        <span class="folder">wiki/</span><br>
-        &nbsp;&nbsp;<span class="folder">clients/</span> <span class="note">— one profile per household</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="file">household-*.md</span> <span class="note">— anonymized in this view</span><br>
-        <span class="folder">raw/</span><br>
-        &nbsp;&nbsp;<span class="folder">data/</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">planning/</span> <span class="note">— plan exports</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">custodian/</span> <span class="note">— custodian statements</span><br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<span class="folder">crm/</span> <span class="note">— CRM records</span><br>
-        <span class="folder">_templates/</span> <span class="note">— reusable output templates</span><br>
-        <span class="folder">output/</span> <span class="note">— generated deliverables</span>
-      </div>
+      <div class="vault-header"><span class="vault-number" aria-hidden="true">01</span><h3>Project continuity</h3></div>
+      <p class="vault-description">Instructions, handoffs, decisions, and tests stay with the project they describe.</p>
+      <details class="technical-details">
+        <summary>The shared project record<span class="disclosure-mark" aria-hidden="true"></span></summary>
+        <div class="vault-tree">
+          <span class="folder">CLAUDE.md / AGENTS.md</span> <span class="note">— project context and boundaries</span><br>
+          <span class="folder">HANDOFF.md</span> <span class="note">— current state and next steps</span><br>
+          <span class="folder">DECISIONS.md</span> <span class="note">— choices and their reasons</span><br>
+          <span class="folder">Source and tests</span> <span class="note">— the implementation and its checks</span>
+        </div>
+      </details>
     </div>
     <div class="vault-card">
-      <div class="vault-header">
-        <div class="vault-icon">&#129504;</div>
-        <h3>Second-Brain Vault</h3>
-      </div>
-      <div class="vault-tree">
-        <span class="folder">projects/</span><br>
-        &nbsp;&nbsp;<span class="file">helm-hub/</span> <span class="note">— RIA data + agent layer</span><br>
-        &nbsp;&nbsp;<span class="file">portfolio-monitor/</span> <span class="note">— drift monitor</span><br>
-        &nbsp;&nbsp;<span class="file">tax-modeler/</span> <span class="note">— tax planning</span><br>
-        &nbsp;&nbsp;<span class="file">research-hub/</span> <span class="note">— equity research</span><br>
-        &nbsp;&nbsp;<span class="file">paperclip/</span> <span class="note">— AI automation</span><br>
-        <span class="folder">wiki/</span><br>
-        &nbsp;&nbsp;<span class="folder">concepts/</span> &nbsp;<span class="folder">decisions/</span><br>
-        &nbsp;&nbsp;<span class="folder">entities/</span> &nbsp;<span class="folder">processes/</span><br>
-        <span class="folder">brain/</span><br>
-        &nbsp;&nbsp;<span class="file">North-Star.md</span> <span class="note">— guiding principles</span><br>
-        <span class="folder">research/</span> &nbsp;<span class="folder">learning/</span>
-      </div>
+      <div class="vault-header"><span class="vault-number" aria-hidden="true">02</span><h3>Two Obsidian vaults</h3></div>
+      <p class="vault-description">Linked notes separate general research and projects from practice knowledge and scoped client context.</p>
+      <details class="technical-details">
+        <summary>Second-brain and Knowledge-Base<span class="disclosure-mark" aria-hidden="true"></span></summary>
+        <div class="vault-tree">
+          <span class="folder">Second-brain</span> <span class="note">— projects, research, concepts, session notes</span><br>
+          <span class="folder">Knowledge-Base</span> <span class="note">— practice knowledge and scoped records</span><br>
+          <span class="folder">Links and pointers</span> <span class="note">— locate the authoritative material</span><br>
+          <span class="folder">Session notes</span> <span class="note">— carry useful context forward</span>
+        </div>
+      </details>
+    </div>
+    <div class="vault-card">
+      <div class="vault-header"><span class="vault-number" aria-hidden="true">03</span><h3>Knowledge retrieval</h3></div>
+      <p class="vault-description">Brain MCP is the configured search layer for selected project and research knowledge, with summaries and links back to context.</p>
+      <details class="technical-details">
+        <summary>The configured Brain MCP layer<span class="disclosure-mark" aria-hidden="true"></span></summary>
+        <div class="vault-tree">
+          <span class="folder">Supabase / PostgreSQL</span> <span class="note">— persistent knowledge store</span><br>
+          <span class="folder">Keyword + semantic search</span> <span class="note">— find relevant context</span><br>
+          <span class="folder">Links and timelines</span> <span class="note">— connect related knowledge</span><br>
+          <span class="folder">Connection required</span> <span class="note">— availability varies by session</span>
+        </div>
+      </details>
+    </div>
+    <div class="vault-card">
+      <div class="vault-header"><span class="vault-number" aria-hidden="true">04</span><h3>Structured practice data</h3></div>
+      <p class="vault-description">Helm Hub and Helm Station share a local SQLite data layer for the advisor’s working tools.</p>
+      <details class="technical-details">
+        <summary>The Helm data layer<span class="disclosure-mark" aria-hidden="true"></span></summary>
+        <div class="vault-tree">
+          <span class="folder">Helm Hub</span> <span class="note">— intake, structured data, and supporting tools</span><br>
+          <span class="folder">Local SQLite</span> <span class="note">— shared practice data store</span><br>
+          <span class="folder">Helm Station</span> <span class="note">— advisor workspaces and review screens</span><br>
+          <span class="folder">Project-specific controls</span> <span class="note">— preparation and review before use</span>
+        </div>
+      </details>
     </div>
   </div>
-
   <div class="pipeline-section">
-    <h3>How information flows into memory</h3>
-    <div class="pipeline-wrap">
-      <div class="pipeline">
-        <div class="pipe-node">Raw Inputs<small>emails, calls, statements</small></div>
-        <div class="pipe-arrow">&#10132;</div>
-        <div class="pipe-node">Processed Notes<small>cleaned, tagged, linked</small></div>
-        <div class="pipe-arrow">&#10132;</div>
-        <div class="pipe-node">Wiki<small>entities, concepts, clients</small></div>
-        <div class="pipe-arrow">&#10132;</div>
-        <div class="pipe-node">Project Strategy<small>goals, plans, roadmaps</small></div>
-        <div class="pipe-arrow">&#10132;</div>
-        <div class="pipe-node">Decisions<small>rationale, alternatives, outcomes</small></div>
-        <div class="pipe-arrow">&#10132;</div>
-        <div class="pipe-node">CLAUDE.md<small>persona + instructions</small></div>
-      </div>
-    </div>
+    <h3>How completed work carries forward</h3>
+    <div class="pipeline-wrap"><div class="pipeline">
+      <div class="pipe-node">Current task<small>a question or concrete goal</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node">Relevant context<small>project files and source notes</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node">Working result<small>research, draft, or code</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node">Checks &amp; review<small>evidence appropriate to the task</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node">Saved decisions<small>what changed and why</small></div>
+      <div class="pipe-arrow">&#10132;</div>
+      <div class="pipe-node">Next handoff<small>where work should resume</small></div>
+    </div></div>
   </div>
 </section>
 
 <!-- ─────────────────────────── PART 05 — INFRASTRUCTURE ─────────────────────────── -->
-<section class="section wrap reveal" id="infra">
+<section class="section wrap reveal" id="infra" tabindex="-1">
   <div class="section-head">
-    <span class="section-num">05 &mdash; Live Infrastructure</span>
+    <span class="section-num">05 — Tools and workflows</span>
     <div>
-      <h2 class="section-title">What's <em>running right now.</em></h2>
-      <p class="section-sub">A live snapshot of the active projects, connected services, and background tasks that keep the practice — and a half-dozen side builds — moving without me touching them all day.</p>
-      <span class="section-payoff">What&rsquo;s watching your money while you sleep.</span>
+      <h2 class="section-title">The current <em>working setup.</em></h2>
+      <p class="section-sub">Selected implementations, available connections, and registered routines. Project presence does not establish deployment or integration; tool registration does not establish connection health.</p>
+      <span class="section-payoff">A dated inventory, checked September 6, 2026.</span>
     </div>
   </div>
-
   <div class="infra-section">
-    <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#128640;</span> Active Projects</div>
+    <details class="infra-block">
+      <summary class="infra-block-header"><span>Projects and tools<small>12 examples from the current source tree</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Blue Line Advisors</span><span class="infra-meta">breakaway in flight</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Helm Hub</span><span class="infra-meta">core — RIA data + agent layer</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Helm Station</span><span class="infra-meta">core — solo-advisor OS</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Paperclip Platform</span><span class="infra-meta">ECC Phase 1 — 15-agent hyperagent</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Monitor</span><span class="infra-meta">live :3003 — drift monitor</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Portfolio Risk Analyzer</span><span class="infra-meta">live :3009 — stress testing</span></div>
-        <div class="infra-item"><span class="infra-dot dim"></span><span class="infra-label">Tax Modeler</span><span class="infra-meta">:3010 — next activation</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">bond portfolio analytics</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Advisor Workstation</span><span class="infra-meta">unified advisor cockpit</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AutoEvolve</span><span class="infra-meta">self-improving agent framework</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">persistent knowledge server</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Stock Auto Researcher</span><span class="infra-meta">equity research pipeline</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Trade Analyzer</span><span class="infra-meta">trade reconciliation + analytics</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Tax Reg Watch</span><span class="infra-meta">IRS/SEC/FINRA reg + tax monitoring</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Research Hub</span><span class="infra-meta">single-stock research engine</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Research Companion</span><span class="infra-meta">grounded research → audio, reports, maps</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morning Edition</span><span class="infra-meta">daily AI-news briefing</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Cecil HQ</span><span class="infra-meta">command-center dashboard :3013</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">AI System Tour</span><span class="infra-meta">this site</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Helm Hub</span><span class="infra-meta">Central advisory infrastructure for document intake, data synchronization, portfolio tools, and deliverables prepared for review.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Helm Station</span><span class="infra-meta">An advisor workspace that brings household views, portfolio analysis, tax planning, meeting preparation, and deliverable review together.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Research Hub</span><span class="infra-meta">A research workspace with tools for investment theses, source gathering, watchlists, research monitoring, and evidence checks.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">A knowledge service that lets AI sessions search stored context, retrieve linked pages, and record new knowledge with an evidence history.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">GitHub Queue</span><span class="infra-meta">A repository evaluation workflow that turns captured tools into evaluation notes, an action queue, and a review dashboard.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Hermes Code Review</span><span class="infra-meta">A reusable package for AI-assisted pull request reviews that produces advisory findings for human review.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Cecil HQ</span><span class="infra-meta">In development · A personal command center being developed around briefings, project launch points, and a tools inventory.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">NSIA Bond Dashboard</span><span class="infra-meta">A board financial dashboard for arena budgets, debt obligations, covenant monitoring, and reporting.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Morning Edition</span><span class="infra-meta">A briefing generator that gathers technology stories and produces a curated HTML magazine with reading-feedback analytics.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Research Companion — in Research Hub</span><span class="infra-meta">A Research Hub tool that turns curated source bundles into NotebookLM audio briefs, written reports, and mind maps.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Tax Workspace — in Helm Station</span><span class="infra-meta">Tax projections and scenario comparisons for income, Roth conversions, and retirement contributions.</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Portfolio Monitor — in Helm Hub</span><span class="infra-meta">Portfolio analysis for allocation, drift, performance, and tax-loss harvesting review.</span></div>
       </div>
-    </div>
-
-    <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#128268;</span> MCP Servers</div>
+    </details>
+    <details class="infra-block">
+      <summary class="infra-block-header"><span>Tools and connections<small>Available app tools and project-specific registrations</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Gmail</span><span class="infra-meta">search, read, draft</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">events, availability, meetings</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Google Drive</span><span class="infra-meta">full Docs/Sheets/Slides API</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Canva</span><span class="infra-meta">design, edit, export, brand kit</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morningstar</span><span class="infra-meta">Advisor Assist + research</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Polygon</span><span class="infra-meta">live market &amp; equity data</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">entity graph, search, timeline</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">read/write second-brain + KB</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Supabase</span><span class="infra-meta">project mgmt, SQL, migrations</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">NotebookLM</span><span class="infra-meta">research notebooks + synthesis</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">n8n</span><span class="infra-meta">workflow automation</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Context7</span><span class="infra-meta">live library documentation</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Playwright</span><span class="infra-meta">browser automation + QA</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Gmail</span><span class="infra-meta">Available app tools · messages and drafts</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Google Calendar</span><span class="infra-meta">Available app tools · events and scheduling</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Google Drive, Docs, Sheets &amp; Slides</span><span class="infra-meta">Available app tools · files and editable documents</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Canva</span><span class="infra-meta">Available app tools · design and export</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">GitHub</span><span class="infra-meta">Available app tools · repositories, issues, and reviews</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Readwise &amp; Reader</span><span class="infra-meta">Available tools · saved reading and highlights</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Slack</span><span class="infra-meta">Available app tools · workspace search</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Vercel</span><span class="infra-meta">Available tools · previews and hosting</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Brain MCP</span><span class="infra-meta">Configured · connection unavailable in this audit</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Polygon</span><span class="infra-meta">Configured in Claude Code · market-data workflows</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">EdgarTools</span><span class="infra-meta">Configured in Claude Code · SEC filings</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Playwright</span><span class="infra-meta">Configured browser tools · navigation and QA</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Supabase</span><span class="infra-meta">Project-specific · database and backend tools</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Context7</span><span class="infra-meta">Project-specific · library documentation</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">GitNexus</span><span class="infra-meta">Project-specific · codebase indexes</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">MarkItDown</span><span class="infra-meta">Project-specific · document-to-text conversion</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">n8n</span><span class="infra-meta">Project-specific · workflow tools</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Obsidian Vaults</span><span class="infra-meta">Project-specific · local notes and linked knowledge</span></div>
       </div>
-    </div>
-
-    <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#9200;</span> Scheduled Tasks</div>
+    </details>
+    <details class="infra-block">
+      <summary class="infra-block-header"><span>Scheduled and on-demand work<small>Checked schedules · America/Chicago · September 6, 2026</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Morning Dashboard</span><span class="infra-meta">M-F 7:00 AM</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Sun 7:00 PM</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Work Hygiene Scan</span><span class="infra-meta">Fri 8:00 PM</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">EOD Shutdown</span><span class="infra-meta">on demand — session end</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Gmail → Obsidian Sync</span><span class="infra-meta">hourly inbox pull</span></div>
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Granola Sync</span><span class="infra-meta">meeting note ingest</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Morning Edition</span><span class="infra-meta">Enabled · daily 6:15 AM and at logon</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Weekly Project Health</span><span class="infra-meta">Enabled · Monday 6:30 AM</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Automation Supervisor</span><span class="infra-meta">Enabled · daily 6:45 AM</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Backup Mirror</span><span class="infra-meta">Enabled · daily 5:30 AM and at logon</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Codebase Indexing</span><span class="infra-meta">Enabled · daily 7:15 AM and at logon</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Usage Monitor</span><span class="infra-meta">Scheduled daily 11:00 PM · last run needs attention</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Gmail to Obsidian</span><span class="infra-meta">Paused · disabled in Task Scheduler</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Session closeout</span><span class="infra-meta">On demand · shared handoff and continuity records</span></div>
       </div>
-    </div>
-
-    <div class="infra-block">
-      <div class="infra-block-header"><span class="icon">&#128025;</span> GitHub &amp; Infra</div>
+    </details>
+    <details class="infra-block">
+      <summary class="infra-block-header"><span>Working foundations<small>Assistants, files, data, and execution tools</small></span><span class="disclosure-mark" aria-hidden="true"></span></summary>
       <div class="infra-list">
-        <div class="infra-item"><span class="infra-dot"></span><span class="infra-label">Pcecil21</span><span class="infra-meta">85+ repositories</span></div>
-        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Frontend Deploy</span><span class="infra-meta">Vercel (Next.js + edge)</span></div>
-        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Backend Deploy</span><span class="infra-meta">Railway (services + cron)</span></div>
-        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Database</span><span class="infra-meta">Supabase (PostgreSQL + RLS)</span></div>
-        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Machines</span><span class="infra-meta">2 dev environments</span></div>
-        <div class="infra-item"><span class="infra-dot muted"></span><span class="infra-label">Workflows</span><span class="infra-meta">GitHub Actions + Claude Code CI</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Claude Code + Codex</span><span class="infra-meta">Two assistant workspaces with separate chat histories</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Local project files + Git</span><span class="infra-meta">Source, documents, decisions, and change history</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Obsidian</span><span class="infra-meta">Two local vaults with distinct knowledge scopes</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Helm SQLite</span><span class="infra-meta">Structured practice data shared by Helm Hub and Station</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Brain on Supabase</span><span class="infra-meta">Configured research and project retrieval layer</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Local document tools</span><span class="infra-meta">Word, PDF, spreadsheets, presentations, and visualizations</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Windows Task Scheduler</span><span class="infra-meta">Registered recurring work and recorded outcomes</span></div>
+        <div class="infra-item"><span class="infra-dot muted" aria-hidden="true"></span><span class="infra-label">Vercel previews</span><span class="infra-meta">Reviewable website deployments, including this tour</span></div>
       </div>
-    </div>
+    </details>
   </div>
 </section>
 
-<!-- ─────────────────────────── PART 06 — SECURITY ───────────────────────────
-     The technical counterpart to the landing page's security band. Reviewer ask: address the
-     AI-and-client-data worry head-on. Architecture, not reassurance. All four controls confirmed
-     true by Pete. Placed last so it reads as the closing "and here's how it's safe" beat after
-     the memory + infrastructure parts that show client data in the system. -->
-<section class="section wrap reveal" id="security">
+<!-- ─────────────────────────── PART 06 — SAFEGUARDS ─────────────────────────── -->
+<section class="section wrap reveal" id="security" tabindex="-1">
   <div class="section-head">
-    <span class="section-num">06 &mdash; Security &amp; Privacy</span>
+    <span class="section-num">06 — Safeguards</span>
     <div>
-      <h2 class="section-title">Security you can <em>read</em>, not just trust.</h2>
-      <p class="section-sub">The reflexive worry about AI and client data is fair&nbsp;&mdash; so here&rsquo;s the architecture, not a reassurance. The real risk in this industry isn&rsquo;t a model; it&rsquo;s a financial file riding along in an email attachment, on a laptop open at a coffee shop. This pipeline is the opposite of that.</p>
-      <span class="section-payoff">Your information is handled the way a desk handles risk.</span>
+      <h2 class="section-title">The boundaries <em>around the work.</em></h2>
+      <p class="section-sub">The system uses scoped instructions, permissions, checks, and review steps. Their coverage depends on the tool and workflow; none replaces care with sensitive information.</p>
+      <span class="section-payoff">Specific controls, with their limits understood.</span>
     </div>
   </div>
   <div class="detail-grid">
-    <div class="detail-card"><strong>No training on your data</strong><span>Runs on Anthropic commercial terms&nbsp;&mdash; inputs are never used to train a model. The system does the task; it doesn&rsquo;t learn from your data or feed it into a product.</span></div>
-    <div class="detail-card"><strong>Anonymized + human-in-the-loop</strong><span>Client identifiers are stripped and advisor-reviewed before anything reaches the model&nbsp;&mdash; raw PII isn&rsquo;t sent. The <code>extract-docs</code> workflow enforces this with a human-in-the-loop gate.</span></div>
-    <div class="detail-card"><strong>Local-first, encrypted, access-controlled</strong><span>Knowledge lives in local Obsidian vaults and Supabase with Row-Level Security, on BitLocker-encrypted machines&nbsp;&mdash; not scattered across consumer cloud apps and inboxes.</span></div>
-    <div class="detail-card"><strong>Outbound deny-list</strong><span>Every tool I build enforces a <code>validateQuery()</code> deny-list&nbsp;&mdash; sensitive terms are blocked before a web search or model call leaves the machine.</span></div>
+          <div class="detail-card"><strong>Separate information scopes</strong><span>Project instructions define which information a workflow may use. General research context and sensitive practice work have different boundaries and retrieval rules.</span></div>
+          <div class="detail-card"><strong>Checks around file changes</strong><span>Configured hooks look for common sensitive identifier patterns and selected risky operations. Some checks warn or audit after a write, so they support review rather than replace it.</span></div>
+          <div class="detail-card"><strong>Bounded tool access</strong><span>Connections and permissions differ by project and assistant. A tool being installed does not make it authorized for every task or connected in every session.</span></div>
+          <div class="detail-card"><strong>Review before consequential use</strong><span>Sensitive inputs, client-facing work, messages, and production changes follow the review and authorization steps for that workflow. I remain responsible for what is used or shared.</span></div>
   </div>
 </section>
 
-<!-- ─────────────────────────── PHILOSOPHY MOMENT (over photo) ─────────────────────────── -->
+<!-- ─────────────────────────── PHILOSOPHY MOMENT ─────────────────────────── -->
 <section class="pull-quote reveal">
-  <div class="photo-bg" aria-hidden="true"></div>
   <div class="wrap">
     <blockquote>
-      The pattern work runs itself. <em>I do the judgment work.</em>
+      The tools help carry the work. <em>I do the judgment work.</em>
     </blockquote>
-    <div class="by">Pete Cecil &middot; Blue Line Advisors</div>
+    <div class="by"><img src="/images/pete-headshot.jpg" width="80" height="80" alt="" loading="lazy" decoding="async"><span>Pete Cecil<br>Blue Line Advisors</span></div>
   </div>
 </section>
 
@@ -1085,7 +1127,10 @@ footer .colophon b{color:var(--paper);font-weight:500}
 <!-- ─────────────────────────── FOOTER ─────────────────────────── -->
 <footer id="contact">
   <div class="wrap">
-    <h5>Want to talk shop? <em>Let's.</em></h5>
+    <div class="contact-heading">
+      <h5>Let&rsquo;s talk about <em>your family.</em></h5>
+      <a class="booking" href="https://cal.com/peter-cecil-ce0lud/advisor-intro-call" target="_blank" rel="noopener">Book an intro call <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a>
+    </div>
     <div class="cols">
       <div class="col">
         <h6>General</h6>
@@ -1101,8 +1146,7 @@ footer .colophon b{color:var(--paper);font-weight:500}
       <div class="col">
         <h6>Elsewhere</h6>
         <a href="https://www.linkedin.com/in/peter-cecil-20b5a415/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://cal.com/peter-cecil-ce0lud" target="_blank" rel="noopener">Book an intro call</a>
-        <a href="./">&larr; Back to landing</a>
+        <a href="./">&larr; Blue Line Advisors home</a>
       </div>
     </div>
     <div class="colophon">
@@ -1115,241 +1159,693 @@ footer .colophon b{color:var(--paper);font-weight:500}
 <script>
 // ── Skills Data ──
 const SKILLS = {
-  "RIA / Finance": [
-    {id:"the-helm",name:"The Helm",desc:"The advisor's always-on operating system. Default skill for all advisory work — client situations, planning questions, meeting prep, drafts, tax scenarios, portfolio analysis, compliance questions. If it touches a client's financial life, it routes through here.",tag:"purple"},
-    {id:"adviceworks-client-summary",name:"AdviceWorks Client Summary",desc:"Turns AdviceWorks exports into a client-ready summary with highlights, changes, allocation, and next actions.",tag:"purple"},
-    {id:"ria-client-packet",name:"RIA Client Packet",desc:"Generates a client-ready annual review packet from portfolio data, custodian statements, and advisor notes.",tag:"purple"},
-    {id:"compliance-sop-policy",name:"Compliance SOP Policy",desc:"Drafts an SOP/policy with steps, controls, evidence, and owner assignments for any workflow.",tag:"rose"},
-    {id:"compliance-trade-rationale",name:"Compliance Trade Rationale",desc:"Drafts a compliant trade rationale / investment committee note documenting the decision and supporting analysis.",tag:"rose"},
-    {id:"estate-alignment-check",name:"Estate Alignment Check",desc:"Compares account beneficiary designations against estate document provisions and produces a structured gap report.",tag:"rose"},
-    {id:"extract-docs",name:"Extract Docs",desc:"Advisor-initiated extraction of structured data from scrubbed client documents. Human-in-the-loop — advisor reviews scrubbed docs before any API call.",tag:"cyan"},
-    {id:"review-inbox",name:"Review Inbox",desc:"Review and approve pending data imports in the ria-hub pipeline. Approve, correct, or reject each item — corrections teach the system.",tag:"cyan"},
-    {id:"style-client-persona-pack",name:"Style & Persona Pack",desc:"Loads house voice and client-safe formatting rules for all client deliverables. Ensures brand consistency.",tag:"pink"},
-    {id:"board-memo-from-notes",name:"Board Memo from Notes",desc:"Converts meeting notes into a board-ready memo with narrative, decisions, motions, action items, and risks.",tag:"amber"}
+  "Planning and review": [
+    {
+      "id": "tax-alpha-audit",
+      "name": "Tax Alpha Audit",
+      "desc": "Builds a structured review of tax-planning opportunities for an advisor to evaluate.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "roth-conversion-tracker",
+      "name": "Roth Conversion Roadmap",
+      "desc": "Models a multi-year conversion roadmap and coordinates conversion timing with retirement distributions.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "planning-backdoor-roth",
+      "name": "Backdoor Roth Planning",
+      "desc": "Prepares the steps and considerations for a backdoor or mega backdoor Roth strategy.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "estate-alignment-check",
+      "name": "Estate Alignment",
+      "desc": "Compares beneficiary designations and account titling with estate documents, then identifies gaps for review.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "planning-benefits-optimizer",
+      "name": "Benefits Review",
+      "desc": "Coordinates employer benefits, retirement savings, and other contribution opportunities into a planning draft.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "planning-college-funding",
+      "name": "College Funding",
+      "desc": "Builds a college-funding plan using family goals, savings, and funding-gap calculations.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "planning-debt-paydown",
+      "name": "Debt Paydown",
+      "desc": "Compares repayment approaches and turns debt information into a planning draft.",
+      "host": "Claude Code",
+      "tag": "green"
+    }
   ],
-  "Operations": [
-    {id:"ops-billing-qa",name:"Billing QA",desc:"Reviews billing exports for exceptions — tiers, householding, missing accounts. Catches fee errors before they reach clients.",tag:"rose"},
-    {id:"ops-client-question-triage",name:"Client Question Triage",desc:"Classifies and drafts responses to client questions — identifiers stripped first — and flags compliance/tax/ops items for routing.",tag:"cyan"},
-    {id:"ops-export-normalizer",name:"Export Normalizer",desc:"Normalizes exports from different custodians into consistent columns for cross-platform analysis.",tag:"cyan"},
-    {id:"ops-onboarding-checklist",name:"Onboarding Checklist",desc:"Generates a client onboarding checklist by household type with all required forms and steps.",tag:"amber"},
-    {id:"ops-payables-queue",name:"Payables Queue",desc:"Turns vendor bills, invoices, and emails into a prioritized payables queue with due dates.",tag:"amber"},
-    {id:"ops-receipts-from-emails",name:"Receipts from Emails",desc:"Extracts receipt info from email text or exports into a structured ledger table.",tag:"cyan"},
-    {id:"ops-statement-extract",name:"Statement Extract",desc:"Extracts key data from custodian statements — values, activity, fees — for review and analysis.",tag:"cyan"},
-    {id:"redtail-email-triage",name:"Redtail Email Triage",desc:"Triages a de-identified client email: classifies request type (ops/tax/planning/investments), drafts a response for review, creates Redtail tasks.",tag:"purple"},
-    {id:"redtail-meeting-notes",name:"Redtail Meeting Notes",desc:"Converts meeting notes into Redtail-ready artifacts: a Note summary, a Task list, and a client recap email.",tag:"purple"},
-    {id:"redtail-onboarding-checklist",name:"Redtail Onboarding Checklist",desc:"Creates a phased onboarding plan and Redtail task checklist for new client intake.",tag:"purple"},
-    {id:"meeting-notes-to-crm-followup",name:"Meeting Notes → CRM",desc:"Converts meeting notes/transcripts into CRM-ready tasks and a client follow-up email.",tag:"green"}
+  "Investment research": [
+    {
+      "id": "invest-portfolio-review",
+      "name": "Portfolio Review",
+      "desc": "Analyzes performance, benchmarks, cash drag, and portfolio construction for advisor review.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "evaluate-ticker",
+      "name": "Security Research",
+      "desc": "Connects research on a stock with existing holdings and concentration across accounts.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "annuity-portfolio-review",
+      "name": "Annuity Review",
+      "desc": "Organizes an annuity review around contract features, costs, surrender terms, and planning considerations.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "invest-swap-recommender",
+      "name": "Portfolio Change Drafts",
+      "desc": "Drafts potential security swaps with rationale, tax impact, and cost considerations for Pete to review.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "fund-change-memo",
+      "name": "Fund Change Memo",
+      "desc": "Documents a proposed retirement-plan fund addition, removal, or replacement for committee review.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "research-synthesis-orchestrator",
+      "name": "Research Synthesis",
+      "desc": "Combines primary-source research into a structured investment or domain-research memo.",
+      "host": "Claude Code",
+      "tag": "purple"
+    },
+    {
+      "id": "compliance-trade-rationale",
+      "name": "Trade Rationale",
+      "desc": "Drafts the reasoning and supporting documentation for an investment decision.",
+      "host": "Claude Code",
+      "tag": "purple"
+    }
   ],
-  "Planning": [
-    {id:"tax-alpha-audit",name:"Tax Alpha Audit",desc:"Universal onboarding deliverable per RIA Hub lifecycle pipeline. Audits a household for tax-planning alpha opportunities across every tax-sensitive surface.",tag:"amber"},
-    {id:"roth-conversion-tracker",name:"Roth Conversion Tracker",desc:"Multi-year Roth conversion roadmap with fill-the-bracket modeling for any client with traditional IRA balances. Coordinates with RMD planning.",tag:"green"},
-    {id:"care-planning",name:"Care Planning",desc:"Comprehensive playbook for clients facing serious illness, cognitive decline, long-term care, or end-of-life planning. Ingests trusts, POAs, and financial statements.",tag:"rose"},
-    {id:"planning-annual-review-packet",name:"Annual Review Packet",desc:"Builds an annual client review packet from notes and exports with polished formatting.",tag:"green"},
-    {id:"planning-backdoor-roth",name:"Backdoor Roth",desc:"Creates step-by-step client instructions for backdoor or mega backdoor Roth conversions.",tag:"green"},
-    {id:"planning-discovery-plan",name:"Discovery Plan",desc:"Turns discovery call notes/intake into a prioritized plan of attack with action items.",tag:"cyan"},
-    {id:"planning-equity-comp",name:"Equity Comp",desc:"Explains RSUs/stock options in plain English and outlines tax timing with an action checklist.",tag:"green"},
-    {id:"planning-rmd-qcd",name:"RMD / QCD",desc:"Builds an RMD/QCD action plan and instructions from DOB, IRA balances, and charitable intent.",tag:"green"},
-    {id:"year-end-tax-checklist",name:"Year-End Tax Checklist",desc:"Creates a year-end tax planning checklist and client email from a de-identified household snapshot.",tag:"amber"},
-    {id:"model-to-household-mapping",name:"Model-to-Household Mapping",desc:"Maps model targets to household accounts with tax-aware placement notes for optimal asset location.",tag:"purple"}
+  "Meetings and follow-through": [
+    {
+      "id": "meeting-prep",
+      "name": "Meeting Preparation",
+      "desc": "Assembles background research, relevant context, and talking points before a meeting.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "meeting-notes-to-crm-followup",
+      "name": "Meeting Follow-up",
+      "desc": "Turns meeting notes into a task table and a follow-up email draft.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "client-needs-tracker",
+      "name": "Open Deliverables",
+      "desc": "Tracks outstanding deliverables and follow-ups so open work stays visible.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "client-capture",
+      "name": "Session Capture",
+      "desc": "Records new decisions and open actions from a client session in the knowledge base.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "onboard-client",
+      "name": "Client Workspace Setup",
+      "desc": "Creates the working folders and knowledge-base records used to organize a new household.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "render-client-report",
+      "name": "Client Report Formatting",
+      "desc": "Turns an advisory analysis into a print-ready HTML report for human review.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    },
+    {
+      "id": "compliance-sop-policy",
+      "name": "Procedure Drafts",
+      "desc": "Drafts operating procedures and policies with steps, controls, evidence, and named responsibilities.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    }
   ],
-  "Investments": [
-    {id:"invest-fund-one-pager",name:"Fund One-Pager",desc:"Turns a fund/manager factsheet into a client-safe one-pager with key metrics and narrative.",tag:"cyan"},
-    {id:"invest-holdings-delta",name:"Holdings Delta",desc:"Compares two holdings exports and produces a 'what changed' delta report with additions, removals, and weight shifts.",tag:"cyan"},
-    {id:"invest-risk-summary",name:"Risk Summary",desc:"Generates a plain-English risk summary from holdings/allocation covering drawdown, concentration, and stress scenarios.",tag:"rose"}
+  "Knowledge and research": [
+    {
+      "id": "brain-mcp",
+      "name": "Knowledge Retrieval",
+      "desc": "Searches, adds to, and enriches the shared knowledge system used across sessions.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "wiki-ingest",
+      "name": "Source Ingestion",
+      "desc": "Turns files and web sources into linked knowledge-base notes.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "wiki-query",
+      "name": "Knowledge-base Answers",
+      "desc": "Finds relevant notes and synthesizes answers with citations to the underlying knowledge base.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "wiki-lint",
+      "name": "Knowledge-base Health",
+      "desc": "Checks notes for broken links, missing context, stale claims, and disconnected pages.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "ai-research-clip-processor",
+      "name": "Research Clips",
+      "desc": "Converts saved research clips into structured notes with potential implementation ideas.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "podcast-transcript-ingest",
+      "name": "Podcast Notes",
+      "desc": "Turns a transcript into a structured summary, key ideas, and possible next actions.",
+      "host": "Claude Code",
+      "tag": "amber"
+    },
+    {
+      "id": "last30days",
+      "name": "Recent Signals",
+      "desc": "Researches recent discussion and activity across social platforms, technical communities, and the web.",
+      "host": "Codex",
+      "tag": "amber"
+    }
   ],
-  "Business Dev": [
-    {id:"linkedin-content-creator",name:"LinkedIn Content Creator",desc:"Creates LinkedIn posts and content in the advisor's voice for thought leadership and business development.",tag:"cyan"},
-    {id:"content-repurpose",name:"Content Repurpose",desc:"Turns one piece of content into multiple platform-specific versions using brand voice and tone guidelines.",tag:"pink"}
+  "Problem framing and decisions": [
+    {
+      "id": "outcome-builder",
+      "name": "Outcome Definition",
+      "desc": "Clarifies the intended outcome, success criteria, scope, and definition of done.",
+      "host": "Codex",
+      "tag": "rose"
+    },
+    {
+      "id": "grounded-graph",
+      "name": "Problem Diagnosis",
+      "desc": "Maps symptoms, causes, assumptions, and dependencies before choosing a next step.",
+      "host": "Codex",
+      "tag": "rose"
+    },
+    {
+      "id": "decision-council",
+      "name": "Decision Council",
+      "desc": "Challenges a decision or plan from several relevant perspectives and surfaces unresolved assumptions.",
+      "host": "Claude Code",
+      "tag": "rose"
+    },
+    {
+      "id": "make-requirements-great",
+      "name": "Requirements Review",
+      "desc": "Checks requirements for clarity, completeness, ownership, and testability, with concrete rewrites.",
+      "host": "Codex",
+      "tag": "rose"
+    },
+    {
+      "id": "blind-spot-scan",
+      "name": "Blind-spot Review",
+      "desc": "Looks for missing perspectives and overlooked risks in a product decision or plan.",
+      "host": "Codex",
+      "tag": "rose"
+    },
+    {
+      "id": "rulebook-for-arguments",
+      "name": "Argument Review",
+      "desc": "Constructs and critiques arguments by examining evidence, premises, and conclusions.",
+      "host": "Codex",
+      "tag": "rose"
+    },
+    {
+      "id": "ce-plan",
+      "name": "Execution Planning",
+      "desc": "Turns a concrete objective into a structured plan with dependencies and verification steps.",
+      "host": "Claude Code and Codex",
+      "tag": "rose"
+    }
   ],
-  "Websites & Apps": [
-    {id:"next-best-practices",name:"Next.js Best Practices",desc:"File conventions, RSC boundaries, data patterns, async APIs, metadata, error handling, route handlers, image/font optimization.",tag:"cyan"},
-    {id:"next-cache-components",name:"Next.js 16 Cache Components",desc:"PPR, use cache directive, cacheLife, cacheTag, updateTag — partial prerendering patterns.",tag:"cyan"},
-    {id:"next-upgrade",name:"Next.js Upgrade",desc:"Upgrade Next.js to the latest version following official migration guides and codemods.",tag:"cyan"},
-    {id:"tailwind-css-patterns",name:"Tailwind CSS Patterns",desc:"Utility-first styling: responsive design, flexbox, grid, spacing, typography, and modern CSS best practices.",tag:"cyan"},
-    {id:"vercel-react-best-practices",name:"Vercel React Best Practices",desc:"React and Next.js performance optimization guidelines from Vercel Engineering.",tag:"cyan"},
-    {id:"vercel-composition-patterns",name:"React Composition Patterns",desc:"Compound components, render props, context providers — flexible component APIs that scale.",tag:"cyan"},
-    {id:"frontend-design",name:"Frontend Design",desc:"Distinctive, production-grade frontend interfaces. Avoids generic AI aesthetics with polished, creative code.",tag:"pink"},
-    {id:"typescript-advanced-types",name:"TypeScript Advanced Types",desc:"Generics, conditional types, mapped types, template literals, utility types for type-safe applications.",tag:"cyan"}
+  "Build and verify": [
+    {
+      "id": "ce-work",
+      "name": "Implementation",
+      "desc": "Carries a concrete work prompt or plan through implementation and appropriate verification.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    },
+    {
+      "id": "ce-debug",
+      "name": "Debugging",
+      "desc": "Investigates failures, tests explanations, and verifies the resulting fix.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    },
+    {
+      "id": "ce-code-review",
+      "name": "Code Review",
+      "desc": "Reviews changes for bugs, regressions, test gaps, and project standards.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    },
+    {
+      "id": "ce-test-browser",
+      "name": "Browser Testing",
+      "desc": "Exercises the web pages affected by a change and checks their behavior in a browser.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    },
+    {
+      "id": "gh-security-scan",
+      "name": "Repository Security Scan",
+      "desc": "Inspects candidate repository code for security concerns without executing that code.",
+      "host": "Claude Code",
+      "tag": "green"
+    },
+    {
+      "id": "ce-optimize",
+      "name": "Measured Optimization",
+      "desc": "Improves a chosen outcome through repeated measurement, changes, and verification.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    },
+    {
+      "id": "ce-compound",
+      "name": "Reusable Learnings",
+      "desc": "Captures a solved problem as a durable project learning that later work can reuse.",
+      "host": "Claude Code and Codex",
+      "tag": "green"
+    }
   ],
-  "Data & Servers": [
-    {id:"supabase",name:"Supabase",desc:"Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues — plus supabase-js / @supabase/ssr integration.",tag:"green"},
-    {id:"supabase-postgres-best-practices",name:"Postgres Best Practices",desc:"Postgres performance optimization: query tuning, schema design, RLS patterns from Supabase.",tag:"green"},
-    {id:"vitest",name:"Vitest",desc:"Fast unit testing: mocking, coverage, test filtering, fixtures. Jest-compatible API powered by Vite.",tag:"green"},
-    {id:"mcp-server",name:"MCP Server",desc:"Build Model Context Protocol servers that expose tools Claude can invoke across external services.",tag:"green"},
-    {id:"claude-memory-server",name:"Claude Memory Server",desc:"Persistent memory layer for Claude agents with semantic retrieval and structured entity storage.",tag:"green"},
-    {id:"claude-api",name:"Claude API / SDK",desc:"Build, debug, and optimize Claude API apps with Anthropic SDK. Includes prompt caching patterns.",tag:"green"}
+  "Writing and design": [
+    {
+      "id": "humanizer",
+      "name": "Editorial Cleanup",
+      "desc": "Edits prose to remove formulaic phrasing and make the writing more natural.",
+      "host": "Codex",
+      "tag": "pink"
+    },
+    {
+      "id": "frontend-design",
+      "name": "Page Design",
+      "desc": "Builds a considered standalone HTML page, report, dashboard, or other visual artifact.",
+      "host": "Codex",
+      "tag": "pink"
+    },
+    {
+      "id": "elevate-web-design",
+      "name": "Design Refinement",
+      "desc": "Inspects an existing webpage, improves its design, and verifies the rendered result.",
+      "host": "Codex",
+      "tag": "pink"
+    },
+    {
+      "id": "content-repurpose",
+      "name": "Content Repurposing",
+      "desc": "Adapts an existing piece of content for different formats and platforms.",
+      "host": "Claude Code",
+      "tag": "pink"
+    },
+    {
+      "id": "board-memo-from-notes",
+      "name": "Board Memos",
+      "desc": "Converts meeting notes into a structured memo for governance and board review.",
+      "host": "Claude Code",
+      "tag": "pink"
+    },
+    {
+      "id": "canva-edit-design",
+      "name": "Canva Editing",
+      "desc": "Updates text, images, layout, and formatting in an existing Canva design.",
+      "host": "Codex",
+      "tag": "pink"
+    },
+    {
+      "id": "imagegen",
+      "name": "Image Creation",
+      "desc": "Generates images from a description or edits an existing image to match a brief.",
+      "host": "Codex",
+      "tag": "pink"
+    }
   ],
-  "Builder Tools": [
-    {id:"gstack",name:"Gstack",desc:"Headless browser for QA: navigate URLs, interact, verify state, diff before/after, annotated screenshots, responsive testing.",tag:"amber"},
-    {id:"autoresearch",name:"Autoresearch",desc:"Autonomous research loop: scope, metric, direction, verify. Iterates until goal is met.",tag:"amber"},
-    {id:"autoresearch-debug",name:"Autoresearch: Debug",desc:"Autonomous bug-hunting loop using scientific method. Finds ALL bugs, not just one.",tag:"amber"},
-    {id:"autoresearch-fix",name:"Autoresearch: Fix",desc:"Iteratively repairs errors until zero remain. One fix per iteration, atomic, auto-reverted on failure.",tag:"amber"},
-    {id:"autoresearch-security",name:"Autoresearch: Security",desc:"Autonomous security audit — STRIDE threat model + OWASP Top 10 + red-team adversarial personas.",tag:"amber"},
-    {id:"dep-audit",name:"Dependency Audit",desc:"Audit dependencies for security advisories, outdated versions, unused packages, license compliance.",tag:"amber"},
-    {id:"pr-prep",name:"PR Prep",desc:"Prepare a PR: review diff, write description with motivation, run checks, surface risks.",tag:"amber"},
-    {id:"eod-shutdown",name:"EOD Shutdown",desc:"End-of-day review: capture open loops, prep tomorrow, update project tracking, vault sync.",tag:"amber"},
-    {id:"full-output-enforcement",name:"Full Output Enforcement",desc:"Overrides default LLM truncation. Enforces complete code generation, bans placeholder patterns.",tag:"amber"},
-    {id:"loop",name:"Loop",desc:"Run a prompt or slash command on a recurring interval, or let the model self-pace iterations.",tag:"amber"},
-    {id:"schedule",name:"Schedule",desc:"Creates scheduled remote agents (triggers) that execute on cron. Powers the automation layer.",tag:"amber"},
-    {id:"skill-creator",name:"Skill Creator",desc:"Scaffold new skills with proper SKILL.md frontmatter, references, and assets folders.",tag:"purple"},
-    {id:"skill-router",name:"Skill Router",desc:"Meta-router that reads task context and loads only the matched skills. First call on every task.",tag:"purple"},
-    {id:"codex-rescue",name:"Codex Rescue",desc:"Delegate investigation, fix requests, or follow-up rescue work to the Codex rescue subagent.",tag:"purple"},
-    {id:"plan-ceo-review",name:"Plan CEO Review",desc:"Founder-mode plan review in 3 modes: SCOPE EXPANSION (dream big, 10x vision), HOLD SCOPE (rigorous bulletproofing), SCOPE REDUCTION (ruthless minimum viable). Stress-tests plans before implementation.",tag:"rose"}
-  ],
-  "Content & Comms": [
-    {id:"meeting-prep",name:"Meeting Prep",desc:"Pre-meeting research and briefing — person/company research, email history, talking points.",tag:"pink"},
-    {id:"morning-dashboard",name:"Morning Dashboard",desc:"Start-of-day briefing — calendar, email summary, priorities, and open client needs.",tag:"pink"},
-    {id:"decision-drop",name:"Decision Drop",desc:"Quick decision capture into the decisions log with context, alternatives, and rationale.",tag:"pink"}
-  ],
-  "Accessibility": [
-    {id:"accessibility",name:"Accessibility Audit",desc:"Audit and improve web accessibility following WCAG 2.2: screen reader support, keyboard nav, color contrast.",tag:"rose"}
-  ],
-  "Documents": [
-    {id:"docx",name:"Word Documents (.docx)",desc:"Comprehensive Word document creation, reading, editing, and manipulation with professional formatting.",tag:"cyan"},
-    {id:"xlsx",name:"Spreadsheets (.xlsx)",desc:"Excel spreadsheet handling with formulas, formatting, data analysis, charts, and visualization.",tag:"green"},
-    {id:"pptx",name:"Presentations (.pptx)",desc:"PowerPoint creation and editing — slide decks, pitch decks, speaker notes, layouts, and templates.",tag:"amber"},
-    {id:"pdf",name:"PDF Processing",desc:"PDF manipulation toolkit: extract text/tables, create new PDFs, merge, split, rotate, watermark, fill forms.",tag:"rose"}
-  ],
-  "System Setup": [
-    {id:"brain-mcp",name:"Brain MCP",desc:"Persistent knowledge brain for cross-session memory. Searches and writes knowledge about people, companies, projects, deals.",tag:"purple"},
-    {id:"update-config",name:"Update Config",desc:"Configure Claude Code harness via settings.json. Wires automated behaviors, hooks, and lifecycle events.",tag:"purple"},
-    {id:"keybindings-help",name:"Keybindings Help",desc:"Customize keyboard shortcuts, chord bindings, and the submit key via ~/.claude/keybindings.json.",tag:"purple"},
-    {id:"simplify",name:"Simplify",desc:"Review changed code for reuse, quality, and efficiency, then fix any issues found.",tag:"purple"},
-    {id:"codex-setup",name:"Codex Setup",desc:"Check whether the local Codex CLI is ready and toggle the stop-time review gate.",tag:"purple"}
+  "Documents and visuals": [
+    {
+      "id": "documents",
+      "name": "Word Documents",
+      "desc": "Creates, edits, and redlines document files, with rendered pages checked for layout.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "pdf",
+      "name": "PDFs",
+      "desc": "Reads, creates, extracts from, and checks PDF documents and forms.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "spreadsheets",
+      "name": "Spreadsheets",
+      "desc": "Builds and analyzes workbooks with formulas, formatting, and verification.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "presentations",
+      "name": "Presentations",
+      "desc": "Creates or edits slide decks for PowerPoint and Google Slides workflows.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "visualize",
+      "name": "Interactive Explanations",
+      "desc": "Builds charts, diagrams, and interactive tools to help explain a question or compare choices.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "manim-video",
+      "name": "Animated Explanations",
+      "desc": "Creates technical and mathematical animations to show how a concept or process works.",
+      "host": "Codex",
+      "tag": "cyan"
+    },
+    {
+      "id": "notebooklm-source-prep",
+      "name": "NotebookLM Source Prep",
+      "desc": "Prepares an article or paper as a checked source dossier for a learning discussion.",
+      "host": "Claude Code",
+      "tag": "cyan"
+    }
   ]
 };
 
-// ── Agents Data ──
+// ── Available Specialist Data ──
 const AGENTS = {
-  "Core Helpers": [
-    {id:"general-purpose",name:"General Purpose",desc:"Multi-step research and code search across the whole codebase when the right file isn't obvious."},
-    {id:"Explore",name:"Explore",desc:"Fast codebase explorer. Finds files, searches code, answers structural questions at 3 thoroughness levels."},
-    {id:"Plan",name:"Plan",desc:"Software architect. Designs implementation plans, identifies critical files, weighs architectural trade-offs."},
-    {id:"architect",name:"Architect",desc:"Senior architect for system-level design decisions, boundary definitions, and major refactors."},
-    {id:"code-reviewer",name:"Code Reviewer",desc:"Independent review of migrations, risky changes, and production-bound code."},
-    {id:"claude-code-guide",name:"Claude Code Guide",desc:"Answers questions about Claude Code, the Agent SDK, and the Anthropic API."}
-  ],
   "Engineering": [
-    {id:"AI Engineer",name:"AI Engineer",desc:"ML model development, deployment, and production AI integration. Data pipelines, scalable AI features."},
-    {id:"Backend Architect",name:"Backend Architect",desc:"Scalable system design, database architecture, API development, cloud infrastructure."},
-    {id:"Frontend Developer",name:"Frontend Developer",desc:"Modern React/Vue/Angular, UI implementation, performance optimization."},
-    {id:"Senior Developer",name:"Senior Developer",desc:"Premium implementation — Laravel/Livewire/FluxUI, advanced CSS, Three.js integration."},
-    {id:"Mobile App Builder",name:"Mobile App Builder",desc:"Native iOS/Android + cross-platform frameworks (React Native, Expo, Flutter)."},
-    {id:"Rapid Prototyper",name:"Rapid Prototyper",desc:"Ultra-fast proof-of-concept and MVP creation with efficient tools and frameworks."},
-    {id:"DevOps Automator",name:"DevOps Automator",desc:"Infrastructure automation, CI/CD pipelines, cloud operations."},
-    {id:"Data Engineer",name:"Data Engineer",desc:"Lakehouse, ETL/ELT, Apache Spark, dbt, streaming systems, cloud data platforms."},
-    {id:"Security Engineer",name:"Security Engineer",desc:"Threat modeling, vulnerability assessment, secure code review, security architecture."}
+    {
+      "id": "architect",
+      "name": "Architecture Advisor",
+      "desc": "Examines service boundaries, data ownership, and build-or-buy choices.",
+      "host": "Claude Code"
+    },
+    {
+      "id": "backend-architect",
+      "name": "Backend Architect",
+      "desc": "Reviews database architecture, APIs, and server-side system design.",
+      "host": "Claude Code"
+    },
+    {
+      "id": "code-reviewer",
+      "name": "Code Reviewer",
+      "desc": "Reviews application changes for logic, security, type safety, and conventions.",
+      "host": "Claude Code"
+    },
+    {
+      "id": "test-writer",
+      "name": "Test Writer",
+      "desc": "Writes tests for expected behavior, failures, and edge cases.",
+      "host": "Claude Code"
+    }
   ],
-  "Marketing": [
-    {id:"Content Creator",name:"Content Creator",desc:"Multi-platform editorial calendars, compelling copy, brand storytelling, engagement optimization."},
-    {id:"SEO Specialist",name:"SEO Specialist",desc:"Technical SEO, content optimization, link authority, organic search growth."},
-    {id:"Social Media Strategist",name:"Social Media Strategist",desc:"LinkedIn, Twitter, professional platforms. Cross-platform campaigns and thought leadership."},
-    {id:"Instagram Curator",name:"Instagram Curator",desc:"Visual storytelling, community building, multi-format content optimization."},
-    {id:"TikTok Strategist",name:"TikTok Strategist",desc:"Viral content creation, algorithm optimization, community building."},
-    {id:"Twitter Engager",name:"Twitter Engager",desc:"Real-time engagement, thought leadership, authentic conversation participation."},
-    {id:"App Store Optimizer",name:"App Store Optimizer",desc:"ASO, conversion rate optimization, app discoverability."},
-    {id:"Carousel Growth Engine",name:"Carousel Growth Engine",desc:"Autonomous TikTok/Instagram carousel generation and analytics feedback loop."}
+  "Code quality": [
+    {
+      "id": "ce-correctness-reviewer",
+      "name": "Correctness Reviewer",
+      "desc": "Traces logic and state changes to find behavior that contradicts the intended result.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-security-reviewer",
+      "name": "Security Reviewer",
+      "desc": "Examines authentication, permissions, public endpoints, and user-input handling.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-testing-reviewer",
+      "name": "Testing Reviewer",
+      "desc": "Checks whether tests cover meaningful behavior and important failure cases.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-performance-reviewer",
+      "name": "Performance Reviewer",
+      "desc": "Looks for avoidable runtime, query, caching, and data-processing costs.",
+      "host": "Codex"
+    }
   ],
-  "Paid Media": [
-    {id:"Ad Creative Strategist",name:"Ad Creative Strategist",desc:"Ad copywriting, RSA optimization, asset group design, creative testing frameworks."},
-    {id:"Paid Social Strategist",name:"Paid Social Strategist",desc:"Full-funnel Meta, LinkedIn, TikTok, Pinterest, X, Snap social ad programs."},
-    {id:"Tracking & Measurement Specialist",name:"Tracking & Measurement",desc:"GTM, GA4, Google Ads, Meta CAPI, LinkedIn Insight Tag, server-side tracking."}
+  "Plans and decisions": [
+    {
+      "id": "ce-product-lens-reviewer",
+      "name": "Product Reviewer",
+      "desc": "Challenges a plan’s premise, intended user value, and alignment with its goals.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-feasibility-reviewer",
+      "name": "Feasibility Reviewer",
+      "desc": "Tests whether a proposed approach can work with the actual architecture and dependencies.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-scope-guardian-reviewer",
+      "name": "Scope Reviewer",
+      "desc": "Flags work and abstractions that exceed the stated objective.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-security-lens-reviewer",
+      "name": "Security Plan Reviewer",
+      "desc": "Checks security assumptions and data-exposure risks before implementation.",
+      "host": "Codex"
+    }
   ],
-  "Strategy & Finance": [
-    {id:"Finance Tracker",name:"Finance Tracker",desc:"Financial planning, budget management, business performance, cash flow optimization."},
-    {id:"Analytics Reporter",name:"Analytics Reporter",desc:"Dashboards, KPI tracking, statistical analysis, strategic decision support."},
-    {id:"Executive Summary Generator",name:"Executive Summary",desc:"Consultant-grade briefs using McKinsey SCQA, BCG Pyramid, Bain frameworks."},
-    {id:"Legal Compliance Checker",name:"Legal Compliance",desc:"Business ops, data handling, content compliance across multiple jurisdictions."}
-  ],
-  "Specialized": [
-    {id:"Agents Orchestrator",name:"Agents Orchestrator",desc:"Autonomous pipeline manager. Orchestrates the entire multi-agent development workflow."},
-    {id:"Compliance Auditor",name:"Compliance Auditor",desc:"SOC 2, ISO 27001, HIPAA, PCI-DSS audits from readiness through certification."},
-    {id:"ZK Steward",name:"ZK Steward",desc:"Zettelkasten knowledge-base steward in the spirit of Luhmann. Atomic notes, connectivity, validation."},
-    {id:"presentation-curator",name:"Presentation Curator",desc:"Proactively updates presentation slides, structure, styling, and weights."}
+  "Research and design": [
+    {
+      "id": "ce-repo-research-analyst",
+      "name": "Repository Researcher",
+      "desc": "Maps a project’s structure, conventions, and existing implementation patterns.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-learnings-researcher",
+      "name": "Past-learnings Researcher",
+      "desc": "Finds relevant lessons from earlier work before the same problem is solved again.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-web-researcher",
+      "name": "Web Researcher",
+      "desc": "Gathers current external evidence and relevant examples for a decision or idea.",
+      "host": "Codex"
+    },
+    {
+      "id": "ce-design-implementation-reviewer",
+      "name": "Design Reviewer",
+      "desc": "Compares a rendered interface with the design it is meant to implement.",
+      "host": "Codex"
+    }
   ]
 };
 
 // ── Stepper (ARIA tab widget — preserved) ──
-document.querySelectorAll('.step-tab').forEach(tab => {
-  tab.setAttribute('tabindex', '0');
+const stepperTabs = document.getElementById('stepperTabs');
+const stepTabs = [...stepperTabs.querySelectorAll('.step-tab')];
+function setStepTabStop(tab) {
+  stepTabs.forEach(t => { t.tabIndex = t === tab ? 0 : -1; });
+}
+function keepStepVisible(tab) {
+  const tablist = tab.parentElement;
+  if (tablist.scrollWidth <= tablist.clientWidth) return;
+  const row = tablist.getBoundingClientRect();
+  const selected = tab.getBoundingClientRect();
+  // Move only the row, preserving the page position and the user's focus.
+  if (selected.left < row.left + 4) tablist.scrollLeft += selected.left - row.left - 4;
+  else if (selected.right > row.right - 4) tablist.scrollLeft += selected.right - row.right + 4;
+}
+new ResizeObserver(() => {
+  const focusedTab = stepTabs.find(tab => tab === document.activeElement);
+  const visibleTab = focusedTab || stepperTabs.querySelector('.step-tab.active');
+  if (visibleTab) keepStepVisible(visibleTab);
+}).observe(stepperTabs);
+stepperTabs.addEventListener('focusout', event => {
+  // Return to the selected step when entering the widget again.
+  if (!stepperTabs.contains(event.relatedTarget)) {
+    setStepTabStop(stepperTabs.querySelector('.step-tab.active'));
+  }
+});
+stepTabs.forEach(tab => {
+  tab.tabIndex = tab.classList.contains('active') ? 0 : -1;
   tab.setAttribute('role', 'tab');
   tab.setAttribute('aria-selected', tab.classList.contains('active') ? 'true' : 'false');
   const activate = () => {
-    document.querySelectorAll('.step-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    stepTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
     document.querySelectorAll('.step-panel').forEach(p => { p.classList.remove('active'); p.setAttribute('aria-hidden', 'true'); p.setAttribute('tabindex', '-1'); });
     tab.classList.add('active');
     tab.setAttribute('aria-selected', 'true');
+    setStepTabStop(tab);
+    keepStepVisible(tab);
     const panel = document.querySelector(`.step-panel[data-panel="${tab.dataset.step}"]`);
     panel.classList.add('active');
     panel.setAttribute('aria-hidden', 'false');
     panel.setAttribute('tabindex', '0');
   };
+  tab.addEventListener('focus', () => {
+    setStepTabStop(tab);
+    keepStepVisible(tab);
+  });
   tab.addEventListener('click', activate);
   tab.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); return; }
-    const tabs = [...document.querySelectorAll('.step-tab')];
-    const idx = tabs.indexOf(tab);
-    if (e.key === 'ArrowRight') { e.preventDefault(); tabs[(idx + 1) % tabs.length].focus(); }
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+    const idx = stepTabs.indexOf(tab);
+    if (e.key === 'ArrowRight') { e.preventDefault(); stepTabs[(idx + 1) % stepTabs.length].focus(); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); stepTabs[(idx - 1 + stepTabs.length) % stepTabs.length].focus(); }
   });
 });
 
 // ── Generic library renderer (works for skills + agents) ──
-function buildLibrary({data, pillsEl, gridEl, statusEl}) {
+function buildLibrary({data, pillsEl, gridEl, statusEl, noun, initialCategory}) {
   const cats = Object.keys(data);
-  let active = cats[0];
+  let active = data[initialCategory] ? initialCategory : cats[0];
+  if (initialCategory && data[initialCategory]) {
+    cats.splice(cats.indexOf(initialCategory), 1);
+    cats.unshift(initialCategory);
+  }
+  let updateDisclosures = () => {};
+
+  function keepCategoryVisible(pill) {
+    if (!pill || pillsEl.scrollWidth <= pillsEl.clientWidth) return;
+    const row = pillsEl.getBoundingClientRect();
+    const selected = pill.getBoundingClientRect();
+    if (selected.left < row.left + 4) pillsEl.scrollLeft += selected.left - row.left - 4;
+    else if (selected.right > row.right - 4) pillsEl.scrollLeft += selected.right - row.right + 4;
+  }
 
   function renderPills() {
     pillsEl.innerHTML = '';
     cats.forEach(cat => {
-      const pill = document.createElement('div');
+      const pill = document.createElement('button');
+      pill.type = 'button';
       pill.className = 'cat-pill' + (cat === active ? ' active' : '');
-      pill.setAttribute('tabindex', '0');
-      pill.setAttribute('role', 'button');
+      pill.setAttribute('aria-pressed', String(cat === active));
       pill.innerHTML = `${cat}<span class="pill-count">${data[cat].length}</span>`;
-      const select = () => { active = cat; renderPills(); renderGrid(); };
+      const select = () => {
+        active = cat;
+        // Retain focus and the mobile row's scroll position when changing categories.
+        pillsEl.querySelectorAll('.cat-pill').forEach(item => {
+          item.classList.toggle('active', item === pill);
+          item.setAttribute('aria-pressed', String(item === pill));
+        });
+        keepCategoryVisible(pill);
+        renderGrid();
+      };
       pill.addEventListener('click', select);
-      pill.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(); } });
+      pill.addEventListener('focus', () => keepCategoryVisible(pill));
       pillsEl.appendChild(pill);
     });
   }
 
   function renderGrid() {
     gridEl.innerHTML = '';
-    if (statusEl) statusEl.textContent = `Showing ${data[active].length} items in ${active}`;
-    data[active].forEach(item => {
-      const card = document.createElement('div');
+    const count = data[active].length;
+    if (statusEl) statusEl.textContent = `${active} · ${count} ${count === 1 ? noun.slice(0, -1) : noun}`;
+    const disclosures = [];
+    data[active].forEach((item, index) => {
+      const card = document.createElement('article');
       card.className = 'skill-card';
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-expanded', 'false');
+      const descriptionId = `${gridEl.id}-description-${index}`;
       card.innerHTML = `
         <h4>${item.name}</h4>
-        <p>${item.desc}</p>
+        <small class="skill-source">${item.host}</small>
+        <p id="${descriptionId}">${item.desc}</p>
+        <button class="card-disclosure" type="button" aria-expanded="false" aria-controls="${descriptionId}" hidden>Read more <span aria-hidden="true">+</span></button>
       `;
-      const toggle = () => { const open = card.classList.toggle('open'); card.setAttribute('aria-expanded', open ? 'true' : 'false'); };
-      card.addEventListener('click', toggle);
-      card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      const paragraph = card.querySelector('p');
+      const button = card.querySelector('button');
+      function syncDisclosure() {
+        const open = card.classList.contains('open');
+        const clipped = paragraph.scrollHeight > paragraph.clientHeight + 1;
+        // Keep a focused control available when a resize makes its text fit.
+        const available = open || clipped || document.activeElement === button;
+        button.hidden = !available;
+        card.classList.toggle('expandable', available);
+        button.setAttribute('aria-label', `${open ? 'Collapse' : 'Read full'} description for ${item.name}`);
+      }
+      button.addEventListener('click', () => {
+        const open = card.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(open));
+        button.innerHTML = open ? 'Show less <span aria-hidden="true">−</span>' : 'Read more <span aria-hidden="true">+</span>';
+        syncDisclosure();
+      });
+      card.addEventListener('click', event => {
+        if (!event.target.closest('button') && !button.hidden && !window.getSelection().toString()) button.click();
+      });
+      button.addEventListener('blur', syncDisclosure);
+      disclosures.push(syncDisclosure);
       gridEl.appendChild(card);
     });
+    updateDisclosures = () => disclosures.forEach(sync => sync());
+    requestAnimationFrame(() => updateDisclosures());
   }
 
   renderPills();
   renderGrid();
+  new ResizeObserver(() => requestAnimationFrame(() => updateDisclosures())).observe(gridEl);
+  function keepCurrentCategoryVisible() {
+    const focused = pillsEl.contains(document.activeElement) ? document.activeElement : null;
+    keepCategoryVisible(focused || pillsEl.querySelector('.active'));
+  }
+  new ResizeObserver(() => requestAnimationFrame(keepCurrentCategoryVisible)).observe(pillsEl, { box: 'border-box' });
+  document.fonts.ready.then(() => {
+    updateDisclosures();
+    keepCurrentCategoryVisible();
+  });
 }
 
 buildLibrary({
   data: SKILLS,
   pillsEl: document.getElementById('catPills'),
   gridEl: document.getElementById('skillsGrid'),
-  statusEl: document.getElementById('skillsStatus')
+  statusEl: document.getElementById('skillsStatus'),
+  noun: 'playbooks'
 });
 
 buildLibrary({
   data: AGENTS,
   pillsEl: document.getElementById('agentCatPills'),
   gridEl: document.getElementById('agentsGrid'),
-  statusEl: document.getElementById('agentsStatus')
+  statusEl: document.getElementById('agentsStatus'),
+  noun: 'specialists',
+  initialCategory: 'Engineering'
 });
 
 // ── Subtle parallax on hero background (Huge-style) ──
@@ -1382,5 +1878,7 @@ setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(fun
 <!-- Cinematic ambient layer (Vite-bundled): smooth scroll + custom cursor + WebGL grain,
      for art-direction parity with the homepage. -->
 <script type="module" src="/src/inventory.js"></script>
+<script type="module" src="/src/inventoryNavigation.js"></script>
+<script type="module" src="/src/marketDemoEntry.js"></script>
 </body>
 </html>

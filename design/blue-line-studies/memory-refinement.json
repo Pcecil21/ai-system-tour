@@ -1,0 +1,14 @@
+{
+  "method": "Built-in image_gen edit of memory-original.png",
+  "reason": "Visual review found cropped divider tops and repetitive band weight. Widen the same construction and reduce the desktop memory band to3.6:1.",
+  "prompt": "Use case: precise-object-edit. Reference/edit target: the supplied ivory-paper archive with three cobalt indexing fins. Revise only composition and camera distance to make this same sculpture readable as an architectural whole. Preserve its paper grain, crisp layered ivory cotton-paper geometry, three satin cobalt-blue fins, continuous blue base edge, quiet dark ink-blue background, physically plausible light from upper left and photorealistic editorial studio style. Pull the camera substantially farther back and slightly higher: show ALL THREE fin tops completely, two complete compartments between the fins, the stepped sheets and a generous visible surface around the sculpture. No fin or important edge touches the top or sides. Keep the three fins and both complete compartments grouped inside the central 50% of the panoramic frame width. The sculpture's full meaningful silhouette must also fit within the central 65% of image height, leaving enough headroom and foreground for a later shallow banner crop. Use a very wide 3:1 landscape image, ideally 3072x1024. Let low paper layers and their shadows extend laterally into the periphery, so the wider composition feels intentionally architectural rather than an object abandoned in a blank field. This is the quieter, more ordered companion to an expressive paper arch image. Keep strong but restrained cobalt/ivory/ink contrast; no new colorful objects. Do not add fins, additional props, people, writing, labels, logos, numbers, charts, screens or interface elements. Output the complete newly framed artwork only.",
+  "selected": true,
+  "original": "memory-v2-original.png",
+  "output": "../../public/images/blue-line-memory-v2.webp",
+  "dimensions": [
+    1881,
+    836
+  ],
+  "desktopObjectPosition": "center 57%",
+  "phoneAspectRatio": "1.8:1"
+}

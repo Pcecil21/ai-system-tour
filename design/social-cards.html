@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Blue Line Advisors · Sharing artwork</title>
+<style>
+@font-face{font-family:DM Sans;src:url('/fonts/dm-sans-optical-latin.woff2') format('woff2');font-weight:100 1000}
+@font-face{font-family:Newsreader;src:url('/fonts/newsreader-italic-latin.woff2') format('woff2');font-weight:400;font-style:italic}
+*{box-sizing:border-box}body{margin:0;padding:24px;background:#dfe1dd;font-family:'DM Sans',Arial,sans-serif}h1,p,figure{margin:0}
+.card{position:relative;width:1200px;height:630px;margin-bottom:24px;overflow:hidden;background:#f7f5ef;color:#20231e;font-optical-sizing:auto;-webkit-font-smoothing:antialiased}
+.wordmark{position:absolute;left:56px;top:42px;display:flex;flex-direction:column;gap:11px}
+.wordmark strong{font-size:36px;font-weight:500;line-height:1;letter-spacing:-.025em;font-variation-settings:'opsz' 36}
+.wordmark small{font-size:12px;line-height:1;font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+.line{color:#1947f5}.letter-l{position:relative;display:inline-block;width:.54em;color:transparent;letter-spacing:0}.letter-l svg{position:absolute;left:.035em;top:.14em;width:.55em;height:.715em;fill:currentColor;color:#1947f5}
+.location{position:absolute;right:56px;top:54px;color:#555b55;font-size:17px}
+.horizon{position:absolute;left:56px;right:56px;top:115px;height:2px;background:#1947f5}
+.home-card h1{position:absolute;left:56px;top:166px;max-width:8ch;color:#1947f5;font-size:104px;font-weight:500;font-variation-settings:'opsz' 40;line-height:.98;letter-spacing:-.025em}
+.home-card .promise{position:absolute;left:56px;top:419px;width:510px;font-size:26px;line-height:1.4;text-wrap:balance}
+.home-card .byline{position:absolute;left:56px;top:551px;color:#555b55;font-size:19px}
+.home-card figure{position:absolute;left:660px;top:96px;width:484px}
+.home-card img{display:block;width:484px;height:459px;object-fit:cover;object-position:center bottom}
+.home-card figcaption{margin-top:16px;color:#555b55;font:italic 400 18px/1.4 Newsreader,Georgia,serif}
+.inventory-card{background:#1947f5;color:#f7f5ef}
+.inventory-card .line,.inventory-card .letter-l svg{color:#f7f5ef}
+.inventory-card .location{color:#f7f5ef}
+.inventory-card h1{position:absolute;left:56px;top:175px;max-width:9ch;font-size:104px;font-weight:500;font-variation-settings:'opsz' 40;line-height:.99;letter-spacing:-.025em}
+.guide{position:absolute;right:56px;top:158px;width:352px;border-top:1px solid #ffffff80}
+.guide p{display:flex;justify-content:space-between;gap:24px;padding:13px 0;border-bottom:1px solid #ffffff60;font-size:23px;line-height:1.3}
+.guide span{font-size:15px;align-self:center}
+.inventory-card .description{position:absolute;left:56px;right:56px;bottom:44px;padding-top:25px;border-top:1px solid #ffffff80;font-size:24px;line-height:1.4}
+</style>
+</head>
+<body>
+<article id="social-home" class="card home-card" aria-label="Homepage sharing artwork">
+  <div class="wordmark"><strong>Blue <span class="line"><span class="letter-l">L<svg viewBox="0 0 16 20" aria-hidden="true"><path d="M1 0H4V14C4 16 5 17 7 17H16L13 20H1Z"/></svg></span>ine</span></strong><small>Advisors</small></div>
+  <p class="location">Kenilworth, Illinois</p>
+  <div class="horizon" aria-hidden="true"></div>
+  <h1>A longer<br>view.</h1>
+  <p class="promise">Financial planning with your family at the center.</p>
+  <p class="byline">Independent financial advice from Pete Cecil</p>
+  <figure><img src="/images/boys-beach.jpg" alt="Pete’s two sons looking out over the lake" width="1400" height="1867"><figcaption>My two reasons for taking the long view.</figcaption></figure>
+</article>
+<article id="social-inventory" class="card inventory-card" aria-label="Inventory sharing artwork">
+  <div class="wordmark"><strong>Blue <span class="line"><span class="letter-l">L<svg viewBox="0 0 16 20" aria-hidden="true"><path d="M1 0H4V14C4 16 5 17 7 17H16L13 20H1Z"/></svg></span>ine</span></strong><small>Advisors</small></div>
+  <p class="location">Behind the practice</p>
+  <h1>Under<br>the hood.</h1>
+  <div class="guide"><p>Overview <span>01</span></p><p>Playbooks <span>02</span></p><p>AI specialists <span>03</span></p><p>Memory <span>04</span></p><p>Connections <span>05</span></p><p>Safeguards <span>06</span></p></div>
+  <p class="description">A look at the playbooks, AI specialists, and tools behind the practice.</p>
+</article>
+</body>
+</html>
